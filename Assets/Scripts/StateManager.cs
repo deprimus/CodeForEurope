@@ -1,8 +1,13 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+    [Foldout("Components"), SerializeField] private GameObject[] _scenes;
+
     public static StateManager Instance { get; private set; }
+
+    private State _currentState;
 
     private void Awake()
     {
@@ -11,13 +16,16 @@ public class StateManager : MonoBehaviour
 
     public void SwitchState(State newState)
     {
-        //_currentState = newState;
+        _scenes[(int)_currentState].SetActive(false);
+        _scenes[(int)newState].SetActive(true);
+
+        _currentState = newState;
     }
 }
 
 public enum State
 {
     RoundTable,
-    Beauregard,
+    Beaureu,
     Library,
 }

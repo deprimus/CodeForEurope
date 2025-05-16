@@ -1,26 +1,38 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
+using NaughtyAttributes;
 
 public class GameManager : MonoBehaviour
 {
+    [Foldout("References")] public LawManager _lawManager;
+
     public static GameManager Instance { get; private set; }
 
-    public int _roundIndex = 0;
+    public Law CurrentLaw { get; private set; }
 
-    private void Awake()
+    private int _roundIndex = 0;
+
+    private async void Awake()
     {
         Instance = this;
+
+        await UniTask.Delay(500);
+
+        StartGame();
     }
 
     public void StartGame()
     {
         _roundIndex = 0;
 
+        StateManager.Instance.SwitchState(State.RoundTable);
         ShowNextLaw();
     }
 
-    private void ShowNextLaw()
+    private async void ShowNextLaw()
     {
-        
+        CurrentLaw = _lawManager.PickLaw();
+        RoundTableManager.Instance.ShowLawCard();
     }
 
     public void OnLawCardHidden()
@@ -30,6 +42,37 @@ public class GameManager : MonoBehaviour
 
     public void OnMoodBarsHidden()
     {
-        
+        StateManager.Instance.SwitchState(State.Beaureu);
+    }
+
+    public void OnBeaureauEnded()
+    {
+        StateManager.Instance.SwitchState(State.Library);
+    }
+
+    public void OnLibraryEnded()
+    {
+        StateManager.Instance.SwitchState(State.RoundTable);
+
+        VoteLaw();
+    }
+
+    private void VoteLaw()
+    {
+
+    }
+
+    public void OnVoteEnded()
+    {
+        _roundIndex++;
+
+        if (_roundIndex < Config.Rounds)
+        {
+            ShowNextLaw();
+        }
+        else
+        {
+            // End game
+        }
     }
 }
