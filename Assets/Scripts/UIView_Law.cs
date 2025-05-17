@@ -23,7 +23,6 @@ public class UIView_Law : MonoBehaviour
     {
         _title.text = law.Name;
         _description.text = law.Description;
-        _effect.text = law.Effect;
 
         await UniTask.Delay(500);
 

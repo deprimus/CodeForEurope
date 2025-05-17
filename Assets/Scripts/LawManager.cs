@@ -7,17 +7,14 @@ public class LawManager : ScriptableObject
         new Law {
             Name = "Law 1",
             Description = "Description 1",
-            Effect = "Effect 1"
         },
         new Law {
             Name = "Law 2",
             Description = "Description 2",
-            Effect = "Effect 2"
         },
         new Law {
             Name = "Law 3",
             Description = "Description 3",
-            Effect = "Effect 3"
         }
     };
 
@@ -25,12 +22,4 @@ public class LawManager : ScriptableObject
     {
         return _laws[Random.Range(0, _laws.Count)];
     }
-}
-
-[System.Serializable]
-public class Law
-{
-    public string Name;
-    public string Description;
-    public string Effect;
 }
