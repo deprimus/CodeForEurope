@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public List<Law> Laws;
+    public List<NPCInteraction> NPCInteractions;
 }
 
 

@@ -5,6 +5,8 @@ using NaughtyAttributes;
 public class GameManager : MonoBehaviour
 {
     [Foldout("References")] public LawManager _lawManager;
+    [Foldout("References")] public NPCManager _npcManager;
+    
 
     public static GameManager Instance { get; private set; }
 
@@ -49,9 +51,20 @@ public class GameManager : MonoBehaviour
         RoundTableManager.Instance.ShowMoodBars();
     }
 
-    public void OnMoodBarsHidden()
+    public async void OnMoodBarsHidden()
     {
         StateManager.Instance.SwitchState(State.Beaureu);
+        
+        var npcInteractions = _npcManager.GetAllNPCInteractions();
+        foreach (var npcInteraction in npcInteractions)
+        {
+            BeaureauManager.Instance.AddNPC(npcInteraction);
+        }
+        BeaureauManager.Instance.Initialize();
+
+        await UniTask.Delay(1000);
+
+        BeaureauManager.Instance.ShowNextNPC();
     }
 
     public void OnBeaureauEnded()

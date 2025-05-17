@@ -29,3 +29,8 @@ MonoBehaviour:
       Value: 2
     - Type: 3
       Value: 1
+  NPCInteractions:
+  - NPC: {fileID: 11400000, guid: 525f344a7f1fb4c31a68b86dd4c52173, type: 2}
+    Dialogue: DA-MI BANII MEI
+  - NPC: {fileID: 11400000, guid: b0122ed8a5a98479bb3f0d03e254a653, type: 2}
+    Dialogue: Am venit sa te impung

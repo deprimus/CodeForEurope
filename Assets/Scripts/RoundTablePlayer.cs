@@ -5,7 +5,7 @@ public class RoundTablePlayer : Faction
 {
     [Foldout("References")] public UIView_MoodPicker _moodPicker;
 
-    public async override Task ShowMood()
+    protected async override Task PickFactionMood()
     {
         var moodPicked = false;
 
@@ -14,8 +14,6 @@ public class RoundTablePlayer : Faction
         await UniTask.WaitUntil(() => moodPicked);
 
         await UniTask.Delay(250);
-
-        await base.ShowMood();
 
         return;
 

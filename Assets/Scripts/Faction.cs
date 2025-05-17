@@ -13,7 +13,7 @@ public class Faction : MonoBehaviour
 
     public async virtual Task ShowMood()
     {
-        PickFactionMood();
+        await PickFactionMood();
 
         _moodView.ShowMood(_mood);
     }
@@ -23,7 +23,7 @@ public class Faction : MonoBehaviour
         _mood = mood;
     }
 
-    private void PickFactionMood()
+    protected virtual async Task PickFactionMood()
     {
         var law = GameManager.Instance.CurrentLaw;
         if (law == null)
