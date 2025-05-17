@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c734492d725c49a48142e8f3567ae3d, type: 3}
   m_Name: LawManager
   m_EditorClassIdentifier: 
+  _gameData: {fileID: 11400000, guid: 503c4d3cb7eab4933b647e6a2ad41d03, type: 2}

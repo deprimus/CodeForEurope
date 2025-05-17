@@ -53,13 +53,15 @@ public class LawWindow : EditorWindow
 
             if (GUILayout.Button("Add Effect"))
             {
-                _newLawEffects.Add(new LawEffect { Type = LawEffectType.Traditionalist, Value = 0 });
+                _newLawEffects.Add(new LawEffect { Type = FactionType.Traditionalist, Value = 0 });
             }
 
             for (int i = 0; i < _newLawEffects.Count; i++)
             {
+                GUILayout.Space(8);
+
                 EditorGUILayout.BeginVertical("box");
-                _newLawEffects[i].Type = (LawEffectType)EditorGUILayout.EnumPopup("Type", _newLawEffects[i].Type);
+                _newLawEffects[i].Type = (FactionType)EditorGUILayout.EnumPopup("Type", _newLawEffects[i].Type);
                 _newLawEffects[i].Value = EditorGUILayout.IntField("Value", _newLawEffects[i].Value);
 
                 if (GUILayout.Button("Remove Effect"))
@@ -95,10 +97,17 @@ public class LawWindow : EditorWindow
                     _gameData.Laws[i].Effects = new List<LawEffect>();
                 }
 
+                if (GUILayout.Button("Add Effect"))
+                {
+                    _gameData.Laws[i].Effects.Add(new LawEffect { Type = FactionType.Traditionalist, Value = 0 });
+                }
+
                 for (int j = 0; j < _gameData.Laws[i].Effects.Count; j++)
                 {
+                    GUILayout.Space(8);
+
                     EditorGUILayout.BeginVertical("box");
-                    _gameData.Laws[i].Effects[j].Type = (LawEffectType)EditorGUILayout.EnumPopup("Type", _gameData.Laws[i].Effects[j].Type);
+                    _gameData.Laws[i].Effects[j].Type = (FactionType)EditorGUILayout.EnumPopup("Type", _gameData.Laws[i].Effects[j].Type);
                     _gameData.Laws[i].Effects[j].Value = EditorGUILayout.IntField("Value", _gameData.Laws[i].Effects[j].Value);
 
                     if (GUILayout.Button("Remove Effect"))
@@ -106,11 +115,6 @@ public class LawWindow : EditorWindow
                         _gameData.Laws[i].Effects.RemoveAt(j);
                     }
                     EditorGUILayout.EndVertical();
-                }
-
-                if (GUILayout.Button("Add Effect"))
-                {
-                    _gameData.Laws[i].Effects.Add(new LawEffect { Type = LawEffectType.Traditionalist, Value = 0 });
                 }
 
                 GUILayout.Space(16);
@@ -122,6 +126,8 @@ public class LawWindow : EditorWindow
                 }
                 
                 EditorGUILayout.EndVertical();
+
+                GUILayout.Space(32);
             }
         }
     }
@@ -135,7 +141,7 @@ public class LawWindow : EditorWindow
                 Name = _newLawName,
                 Description = _newLawDescription,
                 Icon = _newLawIcon,
-                Effects = _newLawEffects
+                Effects = _newLawEffects,
             };
             _gameData.Laws.Add(newLaw);
             EditorUtility.SetDirty(_gameData);

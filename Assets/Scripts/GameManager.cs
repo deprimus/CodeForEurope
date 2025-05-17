@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     {
         _roundIndex = 0;
 
+        _lawManager.Initialize();
+
         StateManager.Instance.SwitchState(State.RoundTable);
         ShowNextLaw();
     }
@@ -32,6 +34,13 @@ public class GameManager : MonoBehaviour
     private async void ShowNextLaw()
     {
         CurrentLaw = _lawManager.PickLaw();
+
+        if (CurrentLaw == null)
+        {
+            EndGame();
+            return;
+        }
+
         RoundTableManager.Instance.ShowLawCard();
     }
 
@@ -72,7 +81,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // End game
+            EndGame();
         }
+    }
+
+    private void EndGame()
+    {
+        // TODO: End game
     }
 }

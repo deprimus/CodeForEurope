@@ -20,12 +20,12 @@ public class Law
 [System.Serializable]
 public class LawEffect
 {
-    public LawEffectType Type;
+    public FactionType Type;
     public int Value;
 }
 
 [System.Serializable]
-public enum LawEffectType
+public enum FactionType
 {
     Traditionalist,
     Left,
