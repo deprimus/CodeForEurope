@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
-public class RoundTablePlayer : Person
+public class RoundTablePlayer : Faction
 {
     [Foldout("References")] public UIView_MoodPicker _moodPicker;
 

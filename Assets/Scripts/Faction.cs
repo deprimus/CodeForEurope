@@ -2,7 +2,7 @@ using UnityEngine;
 using NaughtyAttributes;
 using System.Threading.Tasks;
 
-public class Person : MonoBehaviour
+public class Faction : MonoBehaviour
 {
     [Foldout("Components")] public UIView_Mood _moodView;
 

@@ -6,7 +6,7 @@ using Cysharp.Threading.Tasks;
 public class RoundTableManager : MonoBehaviour
 {
     [Foldout("Components")] public UIView_Law _lawView;
-    [Foldout("Components")] public Person[] _people;
+    [Foldout("Components")] public Faction[] _people;
 
     public static RoundTableManager Instance { get; private set; }
 
