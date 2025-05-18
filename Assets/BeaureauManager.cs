@@ -6,12 +6,15 @@ public class BeaureauManager : MonoBehaviour
 {
     [Foldout("References")] public Transform _NPCSpawnPoint;
     [Foldout("References")] public Transform _NPCArrivalPoint;
-
+    [Foldout("References")] public UIView_BeaureauPrompt _beaureauPrompt;
+    [Foldout("References")] public RoundTableManager _roundTableManager;
     public static BeaureauManager Instance;
 
     private List<NPCInteraction> _npcQueue = new List<NPCInteraction>();
 
     private List<NPCView> _npcs = new List<NPCView>();
+
+    private NPCView _currentNPC;
 
     private void Awake()
     {
@@ -37,10 +40,30 @@ public class BeaureauManager : MonoBehaviour
             return;
         }
 
-        var npc = _npcs[0];
+        _currentNPC = _npcs[0];
         _npcs.RemoveAt(0);
 
-        npc.BeginInteraction();
+        _currentNPC.BeginInteraction();
+    }
+
+    public void OnInteractionEnded()
+    {
+        _beaureauPrompt.Show(OnOptionPicked);
+    }
+
+    private async void OnOptionPicked(bool option)
+    {
+        var effects = _currentNPC.Interaction.Effects;
+
+        foreach (var effect in effects)
+        {
+            var value = option ? effect.Value : -effect.Value;
+            _roundTableManager.Influence(effect.Type, value);
+        }
+
+        await _currentNPC.OnChoicePicked();
+        
+        ShowNextNPC();
     }
 
     public void AddNPC(NPCInteraction npc)

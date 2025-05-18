@@ -1,17 +1,18 @@
-using UnityEngine;
 using System;
-using TMPro;
+using UnityEngine;
 using NaughtyAttributes;
+using TMPro;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
 using System.Threading.Tasks;
-public class UIView_MoodPicker : MonoBehaviour
+
+public class UIView_BeaureauPrompt : MonoBehaviour
 {
     [Foldout("Components")] public CanvasGroup _canvasGroup;
     [Foldout("Components")] public TextMeshProUGUI _title;
-    [Foldout("Components")] public CanvasGroup _moodsCanvasGroup;
+    [Foldout("Components")] public CanvasGroup _buttonsCanvasGroup;
 
-    private Action<Mood> _onMoodPicked;
+    private Action<bool> _onOptionPicked;
 
     private void Awake()
     {
@@ -20,12 +21,12 @@ public class UIView_MoodPicker : MonoBehaviour
         _canvasGroup.interactable = false;
 
         _title.alpha = 0;
-        _moodsCanvasGroup.alpha = 0;
+        _buttonsCanvasGroup.alpha = 0;
     }
 
-    public async Task Show(Action<Mood> onMoodPicked)
+    public async Task Show(Action<bool> onOptionPicked)
     {
-        _onMoodPicked = onMoodPicked;
+        _onOptionPicked = onOptionPicked;
 
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.interactable = true;
@@ -38,25 +39,25 @@ public class UIView_MoodPicker : MonoBehaviour
 
         await UniTask.Delay(100);
 
-        _moodsCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
+        _buttonsCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
     }
 
-    public void PickMood(int mood)
+    public void PickOption(int option)
     {
-        PickMoodAsync((Mood)mood);
+        PickOptionAsync((option == 1));
     }
 
-    private async Task PickMoodAsync(Mood mood)
+    private async Task PickOptionAsync(bool option)
     {
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.interactable = false;
 
         _canvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
         _title.DOFade(0, 0.33f).SetEase(Ease.InCubic);
-        _moodsCanvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
+        _buttonsCanvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
 
         await UniTask.Delay(250);
 
-        _onMoodPicked?.Invoke((Mood)mood);
+        _onOptionPicked?.Invoke(option);
     }
 }

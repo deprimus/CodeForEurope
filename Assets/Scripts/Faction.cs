@@ -4,11 +4,16 @@ using System.Threading.Tasks;
 using System.Linq;
 public class Faction : MonoBehaviour
 {
-    [Foldout("Components")] public FactionType _primaryOrientation;
-    [Foldout("Components")] public FactionType _secondaryOrientation;
-    [Foldout("Components")] public UIView_Mood _moodView;
+    [Foldout("Components"), SerializeField] private FactionType _primaryOrientation;
+    [Foldout("Components"), SerializeField] private FactionType _secondaryOrientation;
+    [Foldout("Components"), SerializeField] private UIView_Mood _moodView;
 
+    public FactionType PrimaryOrientation => _primaryOrientation;
+    public FactionType SecondaryOrientation => _secondaryOrientation;
+
+    [Foldout("Debug"), SerializeField, ReadOnly]
     private int _moodValue;
+    [Foldout("Debug"), SerializeField, ReadOnly]
     private Mood _mood;
 
     public async virtual Task ShowMood()
@@ -47,6 +52,11 @@ public class Faction : MonoBehaviour
 
         _moodValue = (int)score.Map(-cap, cap, 0, 100);
 
+        UpdateMood();
+    }
+
+    private void UpdateMood()
+    {
         switch (_moodValue)
         {
             case >= 70:
@@ -62,7 +72,6 @@ public class Faction : MonoBehaviour
                 break;
         }
     }
-
     private FactionType GetOpposingFaction(FactionType faction)
     {
         switch (faction)
@@ -82,5 +91,21 @@ public class Faction : MonoBehaviour
             default:
                 return FactionType.Traditionalist;
         }
+    }
+
+    public void Influence(int value)
+    {
+        _moodValue += value;
+
+        if (_moodValue < 0)
+        {
+            _moodValue = 0;
+        }
+        else if (_moodValue > 100)
+        {
+            _moodValue = 100;
+        }
+
+        UpdateMood();
     }
 }

@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411bda043634540ed8416aff4acf823a, type: 3}
-  m_Name: NPCManager
+  m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
+  m_Name: Tepusa_Interaction
   m_EditorClassIdentifier: 
-  NPCInteractions:
-  - {fileID: 11400000, guid: 3f15b8d78106444c88799b763a597773, type: 2}
-  - {fileID: 11400000, guid: 84e99e9e8cc224a10aff6f9bf4584600, type: 2}
+  Name: Tepusa
+  NPC: {fileID: 11400000, guid: b0122ed8a5a98479bb3f0d03e254a653, type: 2}
+  Dialogue:
+  - Buna ziua
+  Effects:
+  - Type: 1
+    Value: 10
+  - Type: 2
+    Value: -10

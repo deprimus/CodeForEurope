@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public List<Law> Laws;
-    public List<NPCInteraction> NPCInteractions;
 }
 
 
@@ -16,6 +15,7 @@ public class Law
     public string Description;
     public Sprite Icon;
     public List<LawEffect> Effects;
+    public NPCInteraction NPCInteraction;
 }
 
 [System.Serializable]

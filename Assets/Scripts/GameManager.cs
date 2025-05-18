@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         _roundIndex = 0;
 
         _lawManager.Initialize();
+        _npcManager.Initialize();
 
         StateManager.Instance.SwitchState(State.RoundTable);
         ShowNextLaw();
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         StateManager.Instance.SwitchState(State.Beaureu);
         
-        var npcInteractions = _npcManager.GetAllNPCInteractions();
+        var npcInteractions = _npcManager.PickNPCs();
         foreach (var npcInteraction in npcInteractions)
         {
             BeaureauManager.Instance.AddNPC(npcInteraction);
