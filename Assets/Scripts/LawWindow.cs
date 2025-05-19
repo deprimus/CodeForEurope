@@ -6,6 +6,7 @@ public class LawWindow : EditorWindow
     private GameData _gameData;
     private string _newLawName = "";
     private string _newLawDescription = "";
+    private NPCInteraction _npcInteraction;
     private Sprite _newLawIcon;
     private List<LawEffect> _newLawEffects;
     private Vector2 _scrollPosition;
@@ -43,6 +44,7 @@ public class LawWindow : EditorWindow
             EditorGUILayout.LabelField("Create New Law", EditorStyles.boldLabel);
             _newLawName = EditorGUILayout.TextField("Name", _newLawName);
             _newLawDescription = EditorGUILayout.TextField("Description", _newLawDescription);
+            _npcInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _npcInteraction, typeof(NPCInteraction), false);
             _newLawIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _newLawIcon, typeof(Sprite), false);
 
             EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
@@ -89,6 +91,7 @@ public class LawWindow : EditorWindow
                 EditorGUILayout.BeginVertical("box");
                 _gameData.Laws[i].Name = EditorGUILayout.TextField("Name", _gameData.Laws[i].Name);
                 _gameData.Laws[i].Description = EditorGUILayout.TextField("Description", _gameData.Laws[i].Description);
+                _gameData.Laws[i].NPCInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _gameData.Laws[i].NPCInteraction, typeof(NPCInteraction), false);
                 _gameData.Laws[i].Icon = (Sprite)EditorGUILayout.ObjectField("Icon", _gameData.Laws[i].Icon, typeof(Sprite), false);
 
                 EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
@@ -142,6 +145,7 @@ public class LawWindow : EditorWindow
                 Description = _newLawDescription,
                 Icon = _newLawIcon,
                 Effects = _newLawEffects,
+                NPCInteraction = _npcInteraction,
             };
             _gameData.Laws.Add(newLaw);
             EditorUtility.SetDirty(_gameData);
@@ -150,6 +154,7 @@ public class LawWindow : EditorWindow
             _newLawDescription = "";
             _newLawIcon = null;
             _newLawEffects = null;
+            _npcInteraction = null;
         }
     }
 }

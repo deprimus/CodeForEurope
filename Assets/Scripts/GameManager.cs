@@ -1,18 +1,30 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
-
 public class GameManager : MonoBehaviour
 {
     [Foldout("References")] public LawManager _lawManager;
     [Foldout("References")] public NPCManager _npcManager;
-    
 
+    public int TraditionalistPoints => _traditionalistPoints;
+    public int LeftPoints => _leftPoints;
+    public int RightPoints => _rightPoints;
+    public int LibertarianPoints => _libertarianPoints;
+    
     public static GameManager Instance { get; private set; }
 
     public Law CurrentLaw { get; private set; }
 
     private int _roundIndex = 0;
+
+    [Foldout("Debug"), SerializeField, ReadOnly]
+    private int _traditionalistPoints;
+    [Foldout("Debug"), SerializeField, ReadOnly]
+    private int _leftPoints;
+    [Foldout("Debug"), SerializeField, ReadOnly]
+    private int _rightPoints;
+    [Foldout("Debug"), SerializeField, ReadOnly]
+    private int _libertarianPoints;
 
     private async void Awake()
     {
@@ -28,6 +40,7 @@ public class GameManager : MonoBehaviour
         _roundIndex = 0;
 
         _lawManager.Initialize();
+        _npcManager.Initialize();
 
         StateManager.Instance.SwitchState(State.RoundTable);
         ShowNextLaw();
@@ -36,6 +49,7 @@ public class GameManager : MonoBehaviour
     private async void ShowNextLaw()
     {
         CurrentLaw = _lawManager.PickLaw();
+        LibraryManager.Instance.Initialize();
 
         if (CurrentLaw == null)
         {
@@ -55,11 +69,8 @@ public class GameManager : MonoBehaviour
     {
         StateManager.Instance.SwitchState(State.Beaureu);
         
-        var npcInteractions = _npcManager.GetAllNPCInteractions();
-        foreach (var npcInteraction in npcInteractions)
-        {
-            BeaureauManager.Instance.AddNPC(npcInteraction);
-        }
+        var npcInteractions = _npcManager.PickNPCs();
+        BeaureauManager.Instance.SetQueue(npcInteractions);
         BeaureauManager.Instance.Initialize();
 
         await UniTask.Delay(1000);
@@ -81,12 +92,34 @@ public class GameManager : MonoBehaviour
 
     private void VoteLaw()
     {
-
+        RoundTableManager.Instance.VoteLaw();
     }
 
-    public void OnVoteEnded()
+    public void OnVoteEnded(bool lawApproved)
     {
         _roundIndex++;
+
+        if (lawApproved)
+        {
+            foreach (var effect in CurrentLaw.Effects)
+            {
+                switch (effect.Type)
+                {
+                    case FactionType.Traditionalist:
+                        _traditionalistPoints += effect.Value;
+                        break;
+                    case FactionType.Left:
+                        _leftPoints += effect.Value;
+                        break;
+                    case FactionType.Right:
+                        _rightPoints += effect.Value;
+                        break;
+                    case FactionType.Libertarian:
+                        _libertarianPoints += effect.Value;
+                        break;
+                }
+            }
+        }
 
         if (_roundIndex < Config.Rounds)
         {
@@ -100,6 +133,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        // TODO: End game
+        StateManager.Instance.SwitchState(State.GameEnd);
+        GameEndManager.Instance.ShowGameEnd();
     }
 }

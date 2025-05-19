@@ -1,17 +1,17 @@
 using UnityEngine;
-using System;
-using TMPro;
 using NaughtyAttributes;
-using DG.Tweening;
+using TMPro;
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
+using System;
 using System.Threading.Tasks;
-public class UIView_MoodPicker : MonoBehaviour
+public class UIView_VotePicker : MonoBehaviour
 {
     [Foldout("Components")] public CanvasGroup _canvasGroup;
     [Foldout("Components")] public TextMeshProUGUI _title;
-    [Foldout("Components")] public CanvasGroup _moodsCanvasGroup;
+    [Foldout("Components")] public CanvasGroup _votesCanvasGroup;
 
-    private Action<Mood> _onMoodPicked;
+    private Action<bool> _onVotePicked;
 
     private void Awake()
     {
@@ -20,12 +20,12 @@ public class UIView_MoodPicker : MonoBehaviour
         _canvasGroup.interactable = false;
 
         _title.alpha = 0;
-        _moodsCanvasGroup.alpha = 0;
+        _votesCanvasGroup.alpha = 0;
     }
 
-    public async Task Show(Action<Mood> onMoodPicked)
+    public async Task Show(Action<bool> onVotePicked)
     {
-        _onMoodPicked = onMoodPicked;
+        _onVotePicked = onVotePicked;
 
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.interactable = true;
@@ -38,25 +38,25 @@ public class UIView_MoodPicker : MonoBehaviour
 
         await UniTask.Delay(100);
 
-        _moodsCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
+        _votesCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
     }
 
-    public void PickMood(int mood)
+    public void PickVote(int vote)
     {
-        PickMoodAsync((Mood)mood);
+        PickVoteAsync(vote == 1);
     }
 
-    private async Task PickMoodAsync(Mood mood)
+    private async Task PickVoteAsync(bool vote)
     {
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.interactable = false;
 
         _canvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
         _title.DOFade(0, 0.33f).SetEase(Ease.InCubic);
-        _moodsCanvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
+        _votesCanvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
 
         await UniTask.Delay(250);
 
-        _onMoodPicked?.Invoke((Mood)mood);
+        _onVotePicked?.Invoke(vote);
     }
 }

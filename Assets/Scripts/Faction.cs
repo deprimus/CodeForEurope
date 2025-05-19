@@ -4,11 +4,18 @@ using System.Threading.Tasks;
 using System.Linq;
 public class Faction : MonoBehaviour
 {
-    [Foldout("Components")] public FactionType _primaryOrientation;
-    [Foldout("Components")] public FactionType _secondaryOrientation;
-    [Foldout("Components")] public UIView_Mood _moodView;
+    [Foldout("Components"), SerializeField] private FactionType _primaryOrientation;
+    [Foldout("Components"), SerializeField] private FactionType _secondaryOrientation;
+    [Foldout("Components"), SerializeField] private UIView_Mood _moodView;
+    [Foldout("Components"), SerializeField] private UIView_Vote _voteView;
+    public FactionType PrimaryOrientation => _primaryOrientation;
+    public FactionType SecondaryOrientation => _secondaryOrientation;
 
+    public float Vote { get; protected set; }
+
+    [Foldout("Debug"), SerializeField, ReadOnly]
     private int _moodValue;
+    [Foldout("Debug"), SerializeField, ReadOnly]
     private Mood _mood;
 
     public async virtual Task ShowMood()
@@ -16,6 +23,13 @@ public class Faction : MonoBehaviour
         await PickFactionMood();
 
         _moodView.ShowMood(_mood);
+    }
+
+    public async virtual Task ShowVote()
+    {
+        await PickFactionVote();
+
+        _voteView.SetPercentage(Vote);
     }
 
     protected void SetMood(Mood mood)
@@ -47,6 +61,18 @@ public class Faction : MonoBehaviour
 
         _moodValue = (int)score.Map(-cap, cap, 0, 100);
 
+        Influence(Random.Range(-Config.MoodVariance, Config.MoodVariance));
+
+        UpdateMood();
+    }
+
+    protected virtual async Task PickFactionVote()
+    {
+        Vote = _moodValue / 100f;
+    }
+
+    private void UpdateMood()
+    {
         switch (_moodValue)
         {
             case >= 70:
@@ -62,7 +88,6 @@ public class Faction : MonoBehaviour
                 break;
         }
     }
-
     private FactionType GetOpposingFaction(FactionType faction)
     {
         switch (faction)
@@ -82,5 +107,21 @@ public class Faction : MonoBehaviour
             default:
                 return FactionType.Traditionalist;
         }
+    }
+
+    public void Influence(int value)
+    {
+        _moodValue += value;
+
+        if (_moodValue < 0)
+        {
+            _moodValue = 0;
+        }
+        else if (_moodValue > 100)
+        {
+            _moodValue = 100;
+        }
+
+        UpdateMood();
     }
 }

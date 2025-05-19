@@ -1,14 +1,15 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
-
+using System.Collections.Generic;
 public class NPCView : MonoBehaviour
 {
     [HideInInspector]
     public float MoveSpeed = 1f; 
 
+    public NPCInteraction Interaction => _interaction;
     private NPCInteraction _interaction;
-    private string _dialogue;
+    private List<string> _dialogue;
     private Vector3 _spawnPoint;
     private Vector3 _arrivalPoint;
 
@@ -28,12 +29,22 @@ public class NPCView : MonoBehaviour
 
         await Task.Delay(250);
 
-        Tale.Dialog(_interaction.NPC.Name, _dialogue);
+        foreach (var dialogue in _dialogue)
+        {
+            Tale.Dialog(_interaction.NPC.Name, dialogue);
+        }
 
         Tale.Exec(() =>
         {
             EndInteraction();
         });
+    }
+
+    public async Task OnChoicePicked()
+    {
+        await MoveTo(_spawnPoint);
+
+        await Task.Delay(250);
     }
 
     private async Task MoveTo(Vector3 target)
@@ -47,10 +58,6 @@ public class NPCView : MonoBehaviour
 
     private async Task EndInteraction()
     {
-        await MoveTo(_spawnPoint);
-
-        await Task.Delay(250);
-
-        BeaureauManager.Instance.ShowNextNPC();
+        BeaureauManager.Instance.OnInteractionEnded();
     }
 }

@@ -5,6 +5,7 @@ public class NPCWindow : EditorWindow
 {
     private string npcName;
     private GameObject model3D;
+    private List<FactionType> orientations = new List<FactionType>();
     private float moveSpeed = 5f;
 
     private Vector2 scrollPosition;
@@ -39,22 +40,47 @@ public class NPCWindow : EditorWindow
     private void DisplayNPCList()
     {
         GUILayout.Label("NPC List", EditorStyles.boldLabel);
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Height(200));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 
-        foreach (var npc in npcs)
+        for (int i = 0; i < npcs.Count; i++)
         {
-            EditorGUILayout.BeginHorizontal();
+            var npc = npcs[i];
+            EditorGUILayout.BeginVertical("box");
+
+            GUILayout.Space(32);
+
             EditorGUILayout.LabelField(npc.Name, GUILayout.Width(200));
             GUI.enabled = false;
             EditorGUILayout.ObjectField(npc.Prefab, typeof(GameObject), false, GUILayout.Width(100));
             GUI.enabled = true;
 
+            GUILayout.Space(16);
+
+            GUILayout.Label("Orientations", EditorStyles.boldLabel);
+
+            if (GUILayout.Button("Add Orientation", GUILayout.Width(150)))
+            {
+                npc.Orientations.Add(FactionType.Traditionalist);
+            }
+
+            for (int j = 0; j < npc.Orientations.Count; j++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                npc.Orientations[j] = (FactionType)EditorGUILayout.EnumPopup("Orientation", npc.Orientations[j]);
+                if (GUILayout.Button("Delete", GUILayout.Width(100)))
+                {
+                    npc.Orientations.RemoveAt(j);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+
+            GUILayout.Space(16);
+
             if (GUILayout.Button("Delete", GUILayout.Width(60)))
             {
                 DeleteNPC(npc);
-                break;
             }
-            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndVertical();
         }
 
         GUILayout.EndScrollView();
@@ -68,11 +94,17 @@ public class NPCWindow : EditorWindow
         if (guids.Length > 0)
         {
             string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-            GameData gameData = AssetDatabase.LoadAssetAtPath<GameData>(path);
-            if (gameData != null)
+            NPCManager npcManager = AssetDatabase.LoadAssetAtPath<NPCManager>(path);
+            if (npcManager != null)
             {
-                gameData.NPCInteractions.RemoveAll(interaction => interaction.NPC == npc);
-                EditorUtility.SetDirty(gameData);
+                var interactionsToRemove = npcManager.NPCInteractions.FindAll(interaction => interaction.NPC == npc);
+                foreach (var interaction in interactionsToRemove)
+                {
+                    string interactionPath = AssetDatabase.GetAssetPath(interaction);
+                    AssetDatabase.DeleteAsset(interactionPath);
+                }
+                npcManager.NPCInteractions.RemoveAll(interaction => interaction.NPC == npc);
+                EditorUtility.SetDirty(npcManager);
             }
         }
 
@@ -98,6 +130,31 @@ public class NPCWindow : EditorWindow
         npcName = EditorGUILayout.TextField("NPC Name", npcName);
         moveSpeed = EditorGUILayout.FloatField("Move Speed", moveSpeed);
         model3D = (GameObject)EditorGUILayout.ObjectField("3D Model", model3D, typeof(GameObject), false, GUILayout.Width(300));
+
+        GUILayout.Label("Orientations", EditorStyles.boldLabel);
+
+        if (orientations == null)
+        {
+            orientations = new List<FactionType>();
+        }
+
+        if (GUILayout.Button("Add Orientation"))
+        {
+            orientations.Add(FactionType.Traditionalist);
+        }
+
+        for (int i = 0; i < orientations.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            orientations[i] = (FactionType)EditorGUILayout.EnumPopup($"Orientation {i + 1}", orientations[i]);
+            if (GUILayout.Button("Delete", GUILayout.Width(100)))
+            {
+                orientations.RemoveAt(i);
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+
+        GUILayout.Space(16);
 
         if (GUILayout.Button("Create Prefab"))
         {

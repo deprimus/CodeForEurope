@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411bda043634540ed8416aff4acf823a, type: 3}
   m_Name: NPCManager
   m_EditorClassIdentifier: 
-  _gameData: {fileID: 11400000, guid: 503c4d3cb7eab4933b647e6a2ad41d03, type: 2}
+  NPCInteractions:
+  - {fileID: 11400000, guid: 3f15b8d78106444c88799b763a597773, type: 2}
+  - {fileID: 11400000, guid: 84e99e9e8cc224a10aff6f9bf4584600, type: 2}
+  - {fileID: 11400000, guid: 73b74d77ac1024117a688fbfee8f8663, type: 2}
