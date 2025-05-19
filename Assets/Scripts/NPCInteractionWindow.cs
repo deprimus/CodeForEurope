@@ -103,7 +103,14 @@ public class NPCInteractionWindow : EditorWindow
                 {
                     EditorGUILayout.BeginVertical("box");
                     EditorGUILayout.LabelField("NPC: " + interaction.NPC.Name);
-                    interaction.Name = EditorGUILayout.TextField("Interaction Name", interaction.Name);
+                    string newName = EditorGUILayout.TextField("Interaction Name", interaction.Name);
+                    if (newName != interaction.Name)
+                    {
+                        interaction.Name = newName;
+                        EditorUtility.SetDirty(npcManager);
+                        AssetDatabase.SaveAssets();
+                        AssetDatabase.Refresh();
+                    }
 
                     GUILayout.Space(16);
 
@@ -153,8 +160,22 @@ public class NPCInteractionWindow : EditorWindow
                     for (int k = 0; k < interaction.Effects.Count; k++)
                     {
                         EditorGUILayout.BeginHorizontal();
-                        interaction.Effects[k].Type = (InteractionEffectType)EditorGUILayout.EnumPopup("Effect Type", interaction.Effects[k].Type);
-                        interaction.Effects[k].Value = EditorGUILayout.IntField("Effect Value", interaction.Effects[k].Value);
+                        InteractionEffectType newType = (InteractionEffectType)EditorGUILayout.EnumPopup("Effect Type", interaction.Effects[k].Type);
+                        if (newType != interaction.Effects[k].Type)
+                        {
+                            interaction.Effects[k].Type = newType;
+                            EditorUtility.SetDirty(npcManager);
+                            AssetDatabase.SaveAssets();
+                            AssetDatabase.Refresh();
+                        }
+                        int newValue = EditorGUILayout.IntField("Effect Value", interaction.Effects[k].Value);
+                        if (newValue != interaction.Effects[k].Value)
+                        {
+                            interaction.Effects[k].Value = newValue;
+                            EditorUtility.SetDirty(npcManager);
+                            AssetDatabase.SaveAssets();
+                            AssetDatabase.Refresh();
+                        }
                         if (GUILayout.Button("Delete Effect", GUILayout.Width(100)))
                         {
                             interaction.Effects.RemoveAt(k);

@@ -49,7 +49,15 @@ public class NPCWindow : EditorWindow
 
             GUILayout.Space(32);
 
-            EditorGUILayout.LabelField(npc.Name, GUILayout.Width(200));
+            string newName = EditorGUILayout.TextField("Name", npc.Name, GUILayout.Width(200));
+            if (newName != npc.Name)
+            {
+                npc.Name = newName;
+                EditorUtility.SetDirty(npc);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
+
             GUI.enabled = false;
             EditorGUILayout.ObjectField(npc.Prefab, typeof(GameObject), false, GUILayout.Width(100));
             GUI.enabled = true;
@@ -61,15 +69,28 @@ public class NPCWindow : EditorWindow
             if (GUILayout.Button("Add Orientation", GUILayout.Width(150)))
             {
                 npc.Orientations.Add(FactionType.Traditionalist);
+                EditorUtility.SetDirty(npc);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
             }
 
             for (int j = 0; j < npc.Orientations.Count; j++)
             {
                 EditorGUILayout.BeginHorizontal();
-                npc.Orientations[j] = (FactionType)EditorGUILayout.EnumPopup("Orientation", npc.Orientations[j]);
+                FactionType newOrientation = (FactionType)EditorGUILayout.EnumPopup("Orientation", npc.Orientations[j]);
+                if (newOrientation != npc.Orientations[j])
+                {
+                    npc.Orientations[j] = newOrientation;
+                    EditorUtility.SetDirty(npc);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
                 if (GUILayout.Button("Delete", GUILayout.Width(100)))
                 {
                     npc.Orientations.RemoveAt(j);
+                    EditorUtility.SetDirty(npc);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
                 }
                 EditorGUILayout.EndHorizontal();
             }

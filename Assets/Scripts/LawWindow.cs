@@ -89,10 +89,42 @@ public class LawWindow : EditorWindow
             for (int i = 0; i < _gameData.Laws.Count; i++)
             {
                 EditorGUILayout.BeginVertical("box");
-                _gameData.Laws[i].Name = EditorGUILayout.TextField("Name", _gameData.Laws[i].Name);
-                _gameData.Laws[i].Description = EditorGUILayout.TextField("Description", _gameData.Laws[i].Description);
-                _gameData.Laws[i].NPCInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _gameData.Laws[i].NPCInteraction, typeof(NPCInteraction), false);
-                _gameData.Laws[i].Icon = (Sprite)EditorGUILayout.ObjectField("Icon", _gameData.Laws[i].Icon, typeof(Sprite), false);
+
+                string newName = EditorGUILayout.TextField("Name", _gameData.Laws[i].Name);
+                if (newName != _gameData.Laws[i].Name)
+                {
+                    _gameData.Laws[i].Name = newName;
+                    EditorUtility.SetDirty(_gameData);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
+
+                string newDescription = EditorGUILayout.TextField("Description", _gameData.Laws[i].Description);
+                if (newDescription != _gameData.Laws[i].Description)
+                {
+                    _gameData.Laws[i].Description = newDescription;
+                    EditorUtility.SetDirty(_gameData);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
+
+                NPCInteraction newNPCInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _gameData.Laws[i].NPCInteraction, typeof(NPCInteraction), false);
+                if (newNPCInteraction != _gameData.Laws[i].NPCInteraction)
+                {
+                    _gameData.Laws[i].NPCInteraction = newNPCInteraction;
+                    EditorUtility.SetDirty(_gameData);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
+
+                Sprite newIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _gameData.Laws[i].Icon, typeof(Sprite), false);
+                if (newIcon != _gameData.Laws[i].Icon)
+                {
+                    _gameData.Laws[i].Icon = newIcon;
+                    EditorUtility.SetDirty(_gameData);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
+                }
 
                 EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
                 if (_gameData.Laws[i].Effects == null)
@@ -103,6 +135,9 @@ public class LawWindow : EditorWindow
                 if (GUILayout.Button("Add Effect"))
                 {
                     _gameData.Laws[i].Effects.Add(new LawEffect { Type = FactionType.Traditionalist, Value = 0 });
+                    EditorUtility.SetDirty(_gameData);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
                 }
 
                 for (int j = 0; j < _gameData.Laws[i].Effects.Count; j++)
@@ -110,12 +145,31 @@ public class LawWindow : EditorWindow
                     GUILayout.Space(8);
 
                     EditorGUILayout.BeginVertical("box");
-                    _gameData.Laws[i].Effects[j].Type = (FactionType)EditorGUILayout.EnumPopup("Type", _gameData.Laws[i].Effects[j].Type);
-                    _gameData.Laws[i].Effects[j].Value = EditorGUILayout.IntField("Value", _gameData.Laws[i].Effects[j].Value);
+
+                    FactionType newType = (FactionType)EditorGUILayout.EnumPopup("Type", _gameData.Laws[i].Effects[j].Type);
+                    if (newType != _gameData.Laws[i].Effects[j].Type)
+                    {
+                        _gameData.Laws[i].Effects[j].Type = newType;
+                        EditorUtility.SetDirty(_gameData);
+                        AssetDatabase.SaveAssets();
+                        AssetDatabase.Refresh();
+                    }
+
+                    int newValue = EditorGUILayout.IntField("Value", _gameData.Laws[i].Effects[j].Value);
+                    if (newValue != _gameData.Laws[i].Effects[j].Value)
+                    {
+                        _gameData.Laws[i].Effects[j].Value = newValue;
+                        EditorUtility.SetDirty(_gameData);
+                        AssetDatabase.SaveAssets();
+                        AssetDatabase.Refresh();
+                    }
 
                     if (GUILayout.Button("Remove Effect"))
                     {
                         _gameData.Laws[i].Effects.RemoveAt(j);
+                        EditorUtility.SetDirty(_gameData);
+                        AssetDatabase.SaveAssets();
+                        AssetDatabase.Refresh();
                     }
                     EditorGUILayout.EndVertical();
                 }
@@ -126,6 +180,8 @@ public class LawWindow : EditorWindow
                 {
                     _gameData.Laws.RemoveAt(i);
                     EditorUtility.SetDirty(_gameData);
+                    AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
                 }
                 
                 EditorGUILayout.EndVertical();
