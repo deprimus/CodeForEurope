@@ -30,4 +30,4 @@ MonoBehaviour:
       Value: 1
     - Type: 3
       Value: 2
-    NPCInteraction: {fileID: 11400000, guid: 63e194edc418047209e52008d9b659a9, type: 2}
+    NPCInteraction: {fileID: 11400000, guid: 73b74d77ac1024117a688fbfee8f8663, type: 2}
