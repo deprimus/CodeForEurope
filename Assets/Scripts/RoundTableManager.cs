@@ -2,11 +2,14 @@ using UnityEngine;
 using NaughtyAttributes;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
-
+using System.Linq;
+using DG.Tweening;
 public class RoundTableManager : MonoBehaviour
 {
     [Foldout("Components")] public UIView_Law _lawView;
     [Foldout("Components")] public Faction[] _people;
+    [Foldout("References")] public CanvasGroup _lawApproved;
+    [Foldout("References")] public CanvasGroup _lawRejected;
 
     public static RoundTableManager Instance { get; private set; }
 
@@ -75,6 +78,34 @@ public class RoundTableManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public async void VoteLaw()
+    {
+        await UniTask.Delay(2000);
+
+        foreach (var person in _people)
+        {
+            await person.ShowVote();
+
+            await UniTask.Delay(2000);
+        }
+
+        var lawApproved = _people.Sum(p => p.Vote) / _people.Length > 0.5f;
+
+        var lawObject = lawApproved ? _lawApproved : _lawRejected;
+
+        lawObject.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.InCubic).ChangeStartValue(Vector3.one * 1.2f);
+        lawObject.DOFade(1, 0.5f).SetEase(Ease.InCubic).ChangeStartValue(0);
+
+        await UniTask.Delay(2000);
+
+        lawObject.transform.DOScale(Vector3.one * 0.8f, 0.5f).SetEase(Ease.InCubic);
+        lawObject.DOFade(0, 0.5f).SetEase(Ease.InCubic);
+
+        await UniTask.Delay(1000);
+
+        GameManager.Instance.OnVoteEnded(lawApproved);
     }
 
     private (FactionType primary, FactionType secondary) GetFaction(InteractionEffectType effect)

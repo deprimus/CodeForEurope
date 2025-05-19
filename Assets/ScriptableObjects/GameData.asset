@@ -22,3 +22,12 @@ MonoBehaviour:
     - Type: 1
       Value: 1
     NPCInteraction: {fileID: 11400000, guid: 3f15b8d78106444c88799b763a597773, type: 2}
+  - Name: Test Law 2
+    Description: ok
+    Icon: {fileID: 21300000, guid: 66305a19e3614694f868c75a982e6b68, type: 3}
+    Effects:
+    - Type: 0
+      Value: 1
+    - Type: 3
+      Value: 2
+    NPCInteraction: {fileID: 11400000, guid: 63e194edc418047209e52008d9b659a9, type: 2}

@@ -1,5 +1,7 @@
 using NaughtyAttributes;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BeaureauManager : MonoBehaviour
@@ -8,6 +10,8 @@ public class BeaureauManager : MonoBehaviour
     [Foldout("References")] public Transform _NPCArrivalPoint;
     [Foldout("References")] public UIView_BeaureauPrompt _beaureauPrompt;
     [Foldout("References")] public RoundTableManager _roundTableManager;
+    [Foldout("References")] public LawManager _lawManager;
+
     public static BeaureauManager Instance;
 
     private List<NPCInteraction> _npcQueue = new List<NPCInteraction>();
@@ -30,6 +34,8 @@ public class BeaureauManager : MonoBehaviour
 
             npcView.Initialize(npc, _NPCSpawnPoint.position, _NPCArrivalPoint.position);
         }
+
+        _lawManager.SetCurrentLawEffects(null);
     }
 
     public void ShowNextNPC()
@@ -48,6 +54,12 @@ public class BeaureauManager : MonoBehaviour
 
     public void OnInteractionEnded()
     {
+        if (_currentNPC.Interaction.NPC.Orientations.Count > 1) // If the NPC is a faction NPC
+        {
+            var effects = GenerateRandomEffects();
+            _lawManager.SetCurrentLawEffects(effects);
+        }
+
         _beaureauPrompt.Show(OnOptionPicked);
     }
 
@@ -66,8 +78,26 @@ public class BeaureauManager : MonoBehaviour
         ShowNextNPC();
     }
 
-    public void AddNPC(NPCInteraction npc)
+    public void SetQueue(List<NPCInteraction> npcInteractions)
     {
-        _npcQueue.Add(npc);
+        _npcQueue = npcInteractions;
+    }
+
+    private List<LawEffect> GenerateRandomEffects()
+    {
+        var factions = Enum.GetValues(typeof(FactionType)).Cast<FactionType>().ToList();
+        var effects = new List<LawEffect>();
+        for (int i = 0; i < 2; i++)
+        {
+            var effect = new LawEffect
+            {
+                Type = factions[UnityEngine.Random.Range(0, factions.Count)],
+                Value = UnityEngine.Random.Range(1, 3)
+            };
+            effects.Add(effect);
+
+            factions.Remove(effect.Type);
+        }
+        return effects;
     }
 }

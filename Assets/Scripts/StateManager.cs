@@ -28,4 +28,5 @@ public enum State
     RoundTable,
     Beaureu,
     Library,
+    GameEnd
 }

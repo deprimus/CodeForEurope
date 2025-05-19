@@ -7,9 +7,11 @@ public class Faction : MonoBehaviour
     [Foldout("Components"), SerializeField] private FactionType _primaryOrientation;
     [Foldout("Components"), SerializeField] private FactionType _secondaryOrientation;
     [Foldout("Components"), SerializeField] private UIView_Mood _moodView;
-
+    [Foldout("Components"), SerializeField] private UIView_Vote _voteView;
     public FactionType PrimaryOrientation => _primaryOrientation;
     public FactionType SecondaryOrientation => _secondaryOrientation;
+
+    public float Vote { get; protected set; }
 
     [Foldout("Debug"), SerializeField, ReadOnly]
     private int _moodValue;
@@ -21,6 +23,13 @@ public class Faction : MonoBehaviour
         await PickFactionMood();
 
         _moodView.ShowMood(_mood);
+    }
+
+    public async virtual Task ShowVote()
+    {
+        await PickFactionVote();
+
+        _voteView.SetPercentage(Vote);
     }
 
     protected void SetMood(Mood mood)
@@ -52,7 +61,14 @@ public class Faction : MonoBehaviour
 
         _moodValue = (int)score.Map(-cap, cap, 0, 100);
 
+        Influence(Random.Range(-Config.MoodVariance, Config.MoodVariance));
+
         UpdateMood();
+    }
+
+    protected virtual async Task PickFactionVote()
+    {
+        Vote = _moodValue / 100f;
     }
 
     private void UpdateMood()

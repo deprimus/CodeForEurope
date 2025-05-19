@@ -15,3 +15,4 @@ MonoBehaviour:
   NPCInteractions:
   - {fileID: 11400000, guid: 3f15b8d78106444c88799b763a597773, type: 2}
   - {fileID: 11400000, guid: 84e99e9e8cc224a10aff6f9bf4584600, type: 2}
+  - {fileID: 11400000, guid: 73b74d77ac1024117a688fbfee8f8663, type: 2}
