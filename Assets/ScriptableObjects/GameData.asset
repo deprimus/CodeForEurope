@@ -73,7 +73,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1ccfd9f7a9c2c4f6f9fbe552e30f100b, type: 2}
     - {fileID: 11400000, guid: cfafb05c9a9e34a8aac2e86b8c3983d4, type: 2}
     - {fileID: 11400000, guid: 7fd1f0e27835c4d248bc2b423bd37fd7, type: 2}
-<<<<<<< HEAD
   - Name: Blockchain Financial Institutions Initiative
     Description: Banks must transition to using blockchain based transaction systems.
     Icon: {fileID: 0}
@@ -124,30 +123,3 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 31c4b5e70e61c4445878b335addcfbc7, type: 2}
     - {fileID: 11400000, guid: 45d36507a34584048a99842eeb63c6b1, type: 2}
     - {fileID: 11400000, guid: e63edd83e1ef83b4e8531aa88fd35833, type: 2}
-=======
-  - Name: Auto polution norm restriction
-    Description: Reduce car pollution by banning old cars and mor taxes for having
-      a vehicle.
-    Icon: {fileID: 0}
-    Effects:
-    - Type: 1
-      Value: 1
-    - Type: 3
-      Value: 1
-    NPCInteractions:
-    - {fileID: 11400000, guid: db80d8db5ce36456ba5092b3132f88e5, type: 2}
-    - {fileID: 11400000, guid: c68d2f1c08626434e9dcd15eecc89f0b, type: 2}
-    - {fileID: 11400000, guid: 9170f178ee931451d8bfe230edc94f95, type: 2}
-  - Name: Green Innovation Fund
-    Description: Invest 800bilion euro in renewable energy initiatives.
-    Icon: {fileID: 0}
-    Effects:
-    - Type: 1
-      Value: 1
-    - Type: 3
-      Value: 2
-    NPCInteractions:
-    - {fileID: 11400000, guid: a4bfecb068eb148dba77f057608834cd, type: 2}
-    - {fileID: 11400000, guid: bbca66a8cf1cd4f35acd481dd6247b1b, type: 2}
-    - {fileID: 11400000, guid: 29b5bf0d9cb304158a8fdfe42824364f, type: 2}
->>>>>>> 202afc1b3f22acf9b83967cf46a50b4af0fc0bbd
