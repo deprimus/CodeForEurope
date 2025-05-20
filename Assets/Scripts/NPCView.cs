@@ -45,7 +45,8 @@ public class NPCView : MonoBehaviour
         }
         else
         {
-            Debug.LogError("NPC has no MeshRenderer assigned; either this NPC is a placeholder, or this is a bug");
+            // COM: for now, see if the NPCs look better with Lit shaders
+            //Debug.LogError("NPC has no MeshRenderer assigned; either this NPC is a placeholder, or this is a bug");
         }
 
         transform.localScale = Vector3.zero;
