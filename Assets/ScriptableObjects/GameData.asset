@@ -12,4 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a018f42fef02b4075bf7dcd0a7d4932f, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  Laws: []
+  Laws:
+  - Name: Government Representatives in  Corporations Act
+    Description: Ensure good governance over big corporations by placing a government
+      representative.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 2
+    - Type: 1
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: e7ff9233b53364968a38b9413b999193, type: 2}
+    - {fileID: 11400000, guid: 489fb83a7e1cb4726acf1d5f339fc046, type: 2}
+    - {fileID: 11400000, guid: 5d40ff11e82b94106aa2db96ea198259, type: 2}
