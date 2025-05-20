@@ -922,41 +922,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1057977375226891445, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 1057977375226891445, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_isOrthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1057977375226891445, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 1057977375226891445, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2643566418152534159, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
       propertyPath: m_Name
       value: Tale Master
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186932592535333477, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 3186932592535333477, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_isOrthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3186932592535333477, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 3186932592535333477, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
-      propertyPath: m_ActiveFontFeatures.Array.size
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5260835105892539497, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
       propertyPath: m_LocalPosition.x
