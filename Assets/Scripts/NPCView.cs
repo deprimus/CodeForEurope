@@ -56,7 +56,7 @@ public class NPCView : MonoBehaviour
     {
         if (_animator != null)
         {
-            _animator.Play("Walk");
+            _animator.SetTrigger("Walk");
         }
 
         if (_meshRenderer != null)
@@ -70,7 +70,7 @@ public class NPCView : MonoBehaviour
 
         if (_animator != null)
         {
-            _animator.Play("Idle");
+            _animator.SetTrigger("Idle");
         }
 
         await Task.Delay(250);
@@ -92,7 +92,7 @@ public class NPCView : MonoBehaviour
 
         if (_animator != null)
         {
-            _animator.Play("Walk");
+            _animator.SetTrigger("Walk");
         }
 
         if (_meshRenderer != null)
