@@ -14,7 +14,7 @@ public class ScrollingSkybox : MonoBehaviour
 
     void Update()
     {
-        angle = (angle + Time.deltaTime * 5f) % 360f;
+        angle = (angle + Time.deltaTime * 1f) % 360f;
         skybox.SetFloat("_Rotation", angle);
     }
 }
