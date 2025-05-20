@@ -1314,6 +1314,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Round Table
       objectReference: {fileID: 0}
+    - target: {fileID: 4563900526725513467, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5720600804856198532, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1457,6 +1461,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1387265031}
     m_Modifications:
     - target: {fileID: 91069159004760868, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 91069159004760868, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -52.72
       objectReference: {fileID: 0}
@@ -1467,6 +1475,14 @@ PrefabInstance:
     - target: {fileID: 1477580910785410848, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_Name
       value: Library
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477580910785410848, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779337743443967616, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40.22
       objectReference: {fileID: 0}
     - target: {fileID: 1977827751609618196, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1508,10 +1524,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1993295086955770389, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 04f51043cf65a394b8715b467c62329e, type: 2}
     - target: {fileID: 4442773610413561930, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2113993131}
+    - target: {fileID: 5374028067576665523, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8415373070952027181, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 647.56
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
