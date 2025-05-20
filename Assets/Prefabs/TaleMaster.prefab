@@ -59,13 +59,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556602211239419347}
-  m_LocalRotation: {x: 0, y: -0, z: 0, w: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4453553744155201894}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4b620eee40d811046979b56f2d55c3fe, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -662,7 +662,7 @@ MonoBehaviour:
       data:
         canvas: {fileID: 1533927800124943171}
         animator: {fileID: 7212898424216640976}
-    - name: Rip
+    - name: Sweep
       data:
         canvas: {fileID: 2892582435090404700}
         animator: {fileID: 4193582704135558111}
@@ -779,7 +779,7 @@ GameObject:
   - component: {fileID: 7726629412948155619}
   - component: {fileID: 4193582704135558111}
   m_Layer: 0
-  m_Name: Transition Rip Canvas
+  m_Name: Transition Sweep Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

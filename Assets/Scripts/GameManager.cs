@@ -42,14 +42,14 @@ public class GameManager : MonoBehaviour
         _lawManager.Initialize();
         _npcManager.Initialize();
 
-        Transition.RipOut(0f);
+        Transition.SweepOut(0f);
 
         Tale.Exec(() =>
         {
             StateManager.Instance.SwitchState(State.RoundTable);
         });
 
-        Transition.RipIn();
+        Transition.SweepIn();
 
         Tale.Exec(() => ShowNextLaw());
     }
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     public async void OnMoodBarsHidden()
     {
-        Transition.RipOut();
+        Transition.SweepOut();
 
         Tale.Exec(() =>
         {
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
             BeaureauManager.Instance.Initialize();
         });
 
-        Transition.RipIn();
+        Transition.SweepIn();
 
         Tale.Exec(async () =>
         {
@@ -98,20 +98,20 @@ public class GameManager : MonoBehaviour
 
     public void OnBeaureauEnded()
     {
-        Transition.RipOut();
+        Transition.SweepOut();
 
         Tale.Exec(() => StateManager.Instance.SwitchState(State.Library));
 
-        Transition.RipIn();
+        Transition.SweepIn();
     }
 
     public void OnLibraryEnded()
     {
-        Transition.RipOut();
+        Transition.SweepOut();
 
         Tale.Exec(() => StateManager.Instance.SwitchState(State.RoundTable));
 
-        Transition.RipIn();
+        Transition.SweepIn();
 
         Tale.Exec(() => VoteLaw());
     }
@@ -159,11 +159,11 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        Transition.RipOut();
+        Transition.SweepOut();
 
         Tale.Exec(() => StateManager.Instance.SwitchState(State.GameEnd));
 
-        Transition.RipIn();
+        Transition.SweepIn();
 
         Tale.Exec(() => GameEndManager.Instance.ShowGameEnd());
     }
