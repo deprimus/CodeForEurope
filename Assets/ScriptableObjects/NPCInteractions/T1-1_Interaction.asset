@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
-  m_Name: Test2_Interaction
+  m_Name: T1-1_Interaction
   m_EditorClassIdentifier: 
-  Name: Test2
-  NPC: {fileID: 11400000, guid: 525f344a7f1fb4c31a68b86dd4c52173, type: 2}
+  Name: T1-1
+  NPC: {fileID: 11400000, guid: 30e663b49121e423b9e7d440dedf191a, type: 2}
   Dialogue:
-  - Giocas
+  - Would you like to implement temporary restrictions for anti-nationalist media?
   Effects:
-  - Type: 2
-    Value: 10
-  - Type: 3
-    Value: -10
+  - Type: 7
+    Value: 2
+  - Type: 4
+    Value: 2

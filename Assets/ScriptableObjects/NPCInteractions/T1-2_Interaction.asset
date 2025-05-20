@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
-  m_Name: Tepusa_Interaction
+  m_Name: T1-2_Interaction
   m_EditorClassIdentifier: 
-  Name: Tepusa
-  NPC: {fileID: 11400000, guid: b0122ed8a5a98479bb3f0d03e254a653, type: 2}
+  Name: T1-2
+  NPC: {fileID: 11400000, guid: 2c4d029d9822e2f439a423963531795f, type: 2}
   Dialogue:
-  - Buna ziua
+  - If I wanted a public official at the boardroom table, I'd list the company as
+    a ministry.
   Effects:
-  - Type: 1
-    Value: 10
-  - Type: 2
-    Value: -10
+  - Type: 5
+    Value: 1

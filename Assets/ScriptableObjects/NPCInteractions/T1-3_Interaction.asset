@@ -10,16 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
-  m_Name: Test_Interaction
+  m_Name: T1-3_Interaction
   m_EditorClassIdentifier: 
-  Name: Test
-  NPC: {fileID: 11400000, guid: 525f344a7f1fb4c31a68b86dd4c52173, type: 2}
-  interactionType: 0
+  Name: T1-3
+  NPC: {fileID: 11400000, guid: 228489777db15134ea8d7c0ffd2258b2, type: 2}
   Dialogue:
-  - Alo
-  - Da-mi banii mei
+  - "You don\u2019t fix corporate greed by sending in the state. That\u2019s just
+    swapping one leash for another."
   Effects:
-  - Type: 4
-    Value: 10
-  - Type: 5
-    Value: -10
+  - Type: 7
+    Value: 1

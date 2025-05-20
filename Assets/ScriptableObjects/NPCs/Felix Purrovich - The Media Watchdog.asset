@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
-  m_Name: Random1
+  m_Name: Felix Purrovich - The Media Watchdog
   m_EditorClassIdentifier: 
-  Name: Random1
-  Prefab: {fileID: 6802049581383808089, guid: 55b7c44e79cde7c4fbc50c5ea62dfa08, type: 3}
-  Orientations: 
+  Name: Felix Purrovich - The Media Watchdog
+  Prefab: {fileID: 7746356302962821107, guid: efb042568c09140f18818f5046e99130, type: 3}
+  Orientations: 0000000001000000
