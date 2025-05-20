@@ -1383,6 +1383,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1387265031}
     m_Modifications:
+    - target: {fileID: 508015807821484860, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 62.35
+      objectReference: {fileID: 0}
     - target: {fileID: 713607561932387402, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1431,13 +1435,37 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2233263170647967384, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 40.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497312662048459977, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_margin.w
+      value: 279.55615
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076135866605493331, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_margin.y
+      value: 50.62242
+      objectReference: {fileID: 0}
     - target: {fileID: 3292024194554272419, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 0b8e3bd37ce316f4381cc3e24a234f25, type: 2}
+    - target: {fileID: 5505923683897226262, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5538087548676582827, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5913659988078657568, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
       propertyPath: m_Name
       value: Desk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8252343281451052085, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 647.56
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
