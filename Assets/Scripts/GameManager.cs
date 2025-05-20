@@ -40,7 +40,6 @@ public class GameManager : MonoBehaviour
         _roundIndex = 0;
 
         _lawManager.Initialize();
-        _npcManager.Initialize();
 
         Transition.SweepOut(0f);
 
