@@ -42,8 +42,16 @@ public class GameManager : MonoBehaviour
         _lawManager.Initialize();
         _npcManager.Initialize();
 
-        StateManager.Instance.SwitchState(State.RoundTable);
-        ShowNextLaw();
+        Transition.RipOut(0f);
+
+        Tale.Exec(() =>
+        {
+            StateManager.Instance.SwitchState(State.RoundTable);
+        });
+
+        Transition.RipIn();
+
+        Tale.Exec(() => ShowNextLaw());
     }
 
     private async void ShowNextLaw()
@@ -67,27 +75,45 @@ public class GameManager : MonoBehaviour
 
     public async void OnMoodBarsHidden()
     {
-        StateManager.Instance.SwitchState(State.Beaureu);
-        
-        var npcInteractions = _npcManager.PickNPCs();
-        BeaureauManager.Instance.SetQueue(npcInteractions);
-        BeaureauManager.Instance.Initialize();
+        Transition.RipOut();
 
-        await UniTask.Delay(1000);
+        Tale.Exec(() =>
+        {
+            StateManager.Instance.SwitchState(State.Beaureu);
 
-        BeaureauManager.Instance.ShowNextNPC();
+            var npcInteractions = _npcManager.PickNPCs();
+            BeaureauManager.Instance.SetQueue(npcInteractions);
+            BeaureauManager.Instance.Initialize();
+        });
+
+        Transition.RipIn();
+
+        Tale.Exec(async () =>
+        {
+            await UniTask.Delay(1000);
+
+            BeaureauManager.Instance.ShowNextNPC();
+        });
     }
 
     public void OnBeaureauEnded()
     {
-        StateManager.Instance.SwitchState(State.Library);
+        Transition.RipOut();
+
+        Tale.Exec(() => StateManager.Instance.SwitchState(State.Library));
+
+        Transition.RipIn();
     }
 
     public void OnLibraryEnded()
     {
-        StateManager.Instance.SwitchState(State.RoundTable);
+        Transition.RipOut();
 
-        VoteLaw();
+        Tale.Exec(() => StateManager.Instance.SwitchState(State.RoundTable));
+
+        Transition.RipIn();
+
+        Tale.Exec(() => VoteLaw());
     }
 
     private void VoteLaw()
@@ -133,7 +159,12 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        StateManager.Instance.SwitchState(State.GameEnd);
-        GameEndManager.Instance.ShowGameEnd();
+        Transition.RipOut();
+
+        Tale.Exec(() => StateManager.Instance.SwitchState(State.GameEnd));
+
+        Transition.RipIn();
+
+        Tale.Exec(() => GameEndManager.Instance.ShowGameEnd());
     }
 }
