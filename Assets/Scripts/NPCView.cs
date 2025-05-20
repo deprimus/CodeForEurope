@@ -8,9 +8,6 @@ public class NPCView : MonoBehaviour
     [NonSerialized]
     const float MoveSpeed = 3f;
 
-    [SerializeField]
-    SkinnedMeshRenderer _meshRenderer;
-
     public NPCInteraction Interaction => _interaction;
     private NPCInteraction _interaction;
     private List<string> _dialogue;
@@ -38,17 +35,6 @@ public class NPCView : MonoBehaviour
             Debug.LogError("NPC has no Animator component; either this NPC is a placeholder, or this is a bug");
         }
 
-
-        if (_meshRenderer != null)
-        {
-            _meshRenderer.material.color = Color.black;
-        }
-        else
-        {
-            // COM: for now, see if the NPCs look better with Lit shaders
-            //Debug.LogError("NPC has no MeshRenderer assigned; either this NPC is a placeholder, or this is a bug");
-        }
-
         transform.localScale = Vector3.zero;
     }
 
@@ -57,11 +43,6 @@ public class NPCView : MonoBehaviour
         if (_animator != null)
         {
             _animator.SetTrigger("Walk");
-        }
-
-        if (_meshRenderer != null)
-        {
-            _meshRenderer.material.DOColor(Color.white, 2f);
         }
 
         Scale(_initialScale, 0f);
@@ -93,11 +74,6 @@ public class NPCView : MonoBehaviour
         if (_animator != null)
         {
             _animator.SetTrigger("Walk");
-        }
-
-        if (_meshRenderer != null)
-        {
-            _meshRenderer.material.DOColor(Color.black, 2f);
         }
 
         Scale(Vector3.zero, 2f);
