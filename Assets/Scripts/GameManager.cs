@@ -101,6 +101,8 @@ public class GameManager : MonoBehaviour
 
         Tale.Exec(() => StateManager.Instance.SwitchState(State.Library));
 
+        LibraryManager.Instance.InitializeUI();
+
         Transition.SweepIn();
     }
 
