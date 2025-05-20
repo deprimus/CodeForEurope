@@ -30,6 +30,12 @@ public class LawManager : ScriptableObject
     public Law PickLaw()
     {
         var law = _laws[UnityEngine.Random.Range(0, _laws.Count)];
+
+        // COM: delete this debugging code
+        if (_laws.Count == 3)
+        {
+            law = _laws[2];
+        }
         _laws.Remove(law);
         return law;
     }

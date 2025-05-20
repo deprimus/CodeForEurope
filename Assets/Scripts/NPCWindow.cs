@@ -188,7 +188,6 @@ public class NPCWindow : EditorWindow
 
             npcName = "";
             model3D = null;
-            moveSpeed = 5f;
             LoadNPCs();
         }
         
@@ -207,7 +206,6 @@ public class NPCWindow : EditorWindow
 
         GameObject npcObject = new GameObject(npcName);
         var npcView = npcObject.AddComponent<NPCView>();
-        npcView.MoveSpeed = moveSpeed;
         
         GameObject modelInstance = Instantiate(model3D, npcObject.transform);
         modelInstance.name = model3D.name;
