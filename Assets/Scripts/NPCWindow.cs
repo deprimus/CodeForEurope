@@ -47,9 +47,7 @@ public class NPCWindow : EditorWindow
             var npc = npcs[i];
             EditorGUILayout.BeginVertical("box");
 
-            GUILayout.Space(32);
-
-            string newName = EditorGUILayout.TextField("Name", npc.Name, GUILayout.Width(200));
+            string newName = EditorGUILayout.TextField("Name", npc.Name);
             if (newName != npc.Name)
             {
                 npc.Name = newName;
@@ -59,7 +57,7 @@ public class NPCWindow : EditorWindow
             }
 
             GUI.enabled = false;
-            EditorGUILayout.ObjectField(npc.Prefab, typeof(GameObject), false, GUILayout.Width(100));
+            EditorGUILayout.ObjectField(npc.Prefab, typeof(GameObject), false);
             GUI.enabled = true;
 
             GUILayout.Space(16);
@@ -183,11 +181,13 @@ public class NPCWindow : EditorWindow
             CreateNPCScriptableObject(new NPC
             {
                 Name = npcName,
-                Prefab = prefab
+                Prefab = prefab,
+                Orientations = orientations
             });
 
             npcName = "";
             model3D = null;
+            orientations = new List<FactionType>();
             LoadNPCs();
         }
         
