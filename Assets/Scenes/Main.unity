@@ -1315,22 +1315,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Beaureau
       objectReference: {fileID: 0}
-    - target: {fileID: 1208063873285884119, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774814497956490619, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.017
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774814497956490619, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.017
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774814497956490619, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.017
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
