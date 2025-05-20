@@ -73,3 +73,53 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1ccfd9f7a9c2c4f6f9fbe552e30f100b, type: 2}
     - {fileID: 11400000, guid: cfafb05c9a9e34a8aac2e86b8c3983d4, type: 2}
     - {fileID: 11400000, guid: 7fd1f0e27835c4d248bc2b423bd37fd7, type: 2}
+  - Name: Blockchain Financial Institutions Initiative
+    Description: Banks must transition to using blockchain based transaction systems.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 2
+      Value: 1
+    - Type: 3
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 26edfd129d461c5449af9d77082ede9c, type: 2}
+    - {fileID: 11400000, guid: c3b668c06a2ef1b45b99b0cb2a98d092, type: 2}
+    - {fileID: 11400000, guid: a07eeab83f4e4f94d9f7d4cb3aa38f23, type: 2}
+  - Name: ' Digital Government Transformation Act'
+    Description: All government services available digitally.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 2
+      Value: 1
+    - Type: 3
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 2f8be630c578e634ebc1a1515a9373de, type: 2}
+    - {fileID: 11400000, guid: d00df9526bf9e774c86cc5d4186d7b04, type: 2}
+    - {fileID: 11400000, guid: aaea28617f4b4b541ae28aecabc19096, type: 2}
+  - Name: Growth Private Education
+    Description: Reduce budget for state educational institutions and fund private
+      solutions over government education systems
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 3
+    - Type: 2
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 74f49102fd17aa04b8464a1070b43d4c, type: 2}
+    - {fileID: 11400000, guid: 6df1fe8fe75845c45b6917bc3b6a2685, type: 2}
+    - {fileID: 11400000, guid: 09398f2f638fe9446970d338b55b2644, type: 2}
+  - Name: Traditional Family Law
+    Description: Laws defining marriage in traditional terms. Adoption restrictions
+      for non-traditional families. Traditional parental authority structures.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 3
+    - Type: 1
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 31c4b5e70e61c4445878b335addcfbc7, type: 2}
+    - {fileID: 11400000, guid: 45d36507a34584048a99842eeb63c6b1, type: 2}
+    - {fileID: 11400000, guid: e63edd83e1ef83b4e8531aa88fd35833, type: 2}
