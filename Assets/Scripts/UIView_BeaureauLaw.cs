@@ -83,7 +83,11 @@ public class UIView_BeaureauLaw : MonoBehaviour
 
     public void HideLaw()
     {
-        _openLawButton.SetActive(true);
+        if (_openLawButton != null)
+        {
+            _openLawButton.SetActive(true);
+        }
+
         gameObject.SetActive(false);
     }
 }
