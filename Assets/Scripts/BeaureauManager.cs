@@ -74,7 +74,7 @@ public class BeaureauManager : MonoBehaviour
         }
 
         await _currentNPC.OnChoicePicked();
-        
+
         ShowNextNPC();
     }
 
@@ -99,5 +99,11 @@ public class BeaureauManager : MonoBehaviour
             factions.Remove(effect.Type);
         }
         return effects;
+    }
+
+    public void OnChoiceMade(string description, List<LawEffect> effects)
+    {
+        // Store the choice when it's made
+        LibraryManager.Instance.AddBureauChoice(description, effects);
     }
 }
