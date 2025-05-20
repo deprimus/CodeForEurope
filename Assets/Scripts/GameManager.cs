@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
         _lawManager.Initialize();
 
+        Tale.Music.Play("Background", Tale.Music.PlayMode.LOOP);
+
         Transition.SweepOut(0f);
 
         Tale.Exec(() =>
