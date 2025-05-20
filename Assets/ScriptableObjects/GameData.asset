@@ -26,3 +26,50 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e7ff9233b53364968a38b9413b999193, type: 2}
     - {fileID: 11400000, guid: 489fb83a7e1cb4726acf1d5f339fc046, type: 2}
     - {fileID: 11400000, guid: 5d40ff11e82b94106aa2db96ea198259, type: 2}
+  - Name: National Media Oversight Board
+    Description: The press must serve our values, and any deviation from these principles
+      will be subject to state control and sanction.
+    Icon: {fileID: 0}
+    Effects: []
+    NPCInteractions:
+    - {fileID: 11400000, guid: 207e3654a733a4a7a977dc2079c3d6bf, type: 2}
+    - {fileID: 11400000, guid: 7a65d2aa972e648379ce95712e3737d9, type: 2}
+    - {fileID: 11400000, guid: c182833ef29ce4cd39a9f3e02d59d899, type: 2}
+  - Name: Corporate Tax Reduction
+    Description: Provide broad tax cuts to corporations.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 1
+    - Type: 2
+      Value: 2
+    NPCInteractions:
+    - {fileID: 11400000, guid: 3276c2cf7cee74ab7a12492cf1968361, type: 2}
+    - {fileID: 11400000, guid: 97ed8f915f9d84a31b5ff41f76d50f6d, type: 2}
+    - {fileID: 11400000, guid: 9bad1a9f300994731b134cab87dc0a7a, type: 2}
+  - Name: Privatization of Natural Resources Act
+    Description: Monetize natural resource exploitation rights without ecological
+      provisions.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 2
+    - Type: 2
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: d4be06b578a124387832658e713e4021, type: 2}
+    - {fileID: 11400000, guid: 510ca928919124580b7adc7ddcc12ad9, type: 2}
+    - {fileID: 11400000, guid: 86dcee41e68f140f3bd8176f5a895357, type: 2}
+  - Name: Heavy Carbon Tax
+    Description: 50euro fee is charged per ton of carbon dioxide (CO2) emissions
+      produced.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 1
+      Value: 1
+    - Type: 3
+      Value: 2
+    NPCInteractions:
+    - {fileID: 11400000, guid: 1ccfd9f7a9c2c4f6f9fbe552e30f100b, type: 2}
+    - {fileID: 11400000, guid: cfafb05c9a9e34a8aac2e86b8c3983d4, type: 2}
+    - {fileID: 11400000, guid: 7fd1f0e27835c4d248bc2b423bd37fd7, type: 2}
