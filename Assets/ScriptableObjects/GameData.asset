@@ -21,22 +21,6 @@ MonoBehaviour:
       Value: 2
     - Type: 1
       Value: 1
-    NPCInteraction: {fileID: 11400000, guid: 3f15b8d78106444c88799b763a597773, type: 2}
-  - Name: Test Law 2
-    Description: ok
-    Icon: {fileID: 21300000, guid: 66305a19e3614694f868c75a982e6b68, type: 3}
-    Effects:
-    - Type: 0
-      Value: 1
-    - Type: 3
-      Value: 2
-    NPCInteraction: {fileID: 11400000, guid: 73b74d77ac1024117a688fbfee8f8663, type: 2}
-  - Name: Test Law 3
-    Description: ok
-    Icon: {fileID: 21300000, guid: 66305a19e3614694f868c75a982e6b68, type: 3}
-    Effects:
-    - Type: 0
-      Value: 1
-    - Type: 3
-      Value: 2
-    NPCInteraction: {fileID: 11400000, guid: 61d7c7321e6917a4b80005b9d6798d4e, type: 2}
+    NPCInteractions:
+    - {fileID: 11400000, guid: 61d7c7321e6917a4b80005b9d6798d4e, type: 2}
+    - {fileID: 11400000, guid: 84e99e9e8cc224a10aff6f9bf4584600, type: 2}
