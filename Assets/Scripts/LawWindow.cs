@@ -6,7 +6,7 @@ public class LawWindow : EditorWindow
     private GameData _gameData;
     private string _newLawName = "";
     private string _newLawDescription = "";
-    private NPCInteraction _npcInteraction;
+    private List<NPCInteraction> _npcInteractions;
     private Sprite _newLawIcon;
     private List<LawEffect> _newLawEffects;
     private Vector2 _scrollPosition;
@@ -44,8 +44,33 @@ public class LawWindow : EditorWindow
             EditorGUILayout.LabelField("Create New Law", EditorStyles.boldLabel);
             _newLawName = EditorGUILayout.TextField("Name", _newLawName);
             _newLawDescription = EditorGUILayout.TextField("Description", _newLawDescription);
-            _npcInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _npcInteraction, typeof(NPCInteraction), false);
             _newLawIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _newLawIcon, typeof(Sprite), false);
+
+            if (_npcInteractions == null)
+            {
+                _npcInteractions = new List<NPCInteraction>();
+            }
+
+            EditorGUILayout.LabelField("NPC Interactions", EditorStyles.boldLabel);
+
+            if (GUILayout.Button("Add NPC Interaction"))
+            {
+                _npcInteractions.Add(new NPCInteraction());
+            }
+
+            for (int i = 0; i < _npcInteractions.Count; i++)
+            {
+                GUILayout.Space(8);
+
+                EditorGUILayout.BeginVertical("box");
+                _npcInteractions[i] = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _npcInteractions[i], typeof(NPCInteraction), false);
+
+                if (GUILayout.Button("Remove NPC Interaction"))
+                {
+                    _npcInteractions.RemoveAt(i);
+                }
+                EditorGUILayout.EndVertical();
+            }
 
             EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
             if (_newLawEffects == null)
@@ -108,19 +133,50 @@ public class LawWindow : EditorWindow
                     AssetDatabase.Refresh();
                 }
 
-                NPCInteraction newNPCInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _gameData.Laws[i].NPCInteraction, typeof(NPCInteraction), false);
-                if (newNPCInteraction != _gameData.Laws[i].NPCInteraction)
+                Sprite newIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _gameData.Laws[i].Icon, typeof(Sprite), false);
+                if (newIcon != _gameData.Laws[i].Icon)
                 {
-                    _gameData.Laws[i].NPCInteraction = newNPCInteraction;
+                    _gameData.Laws[i].Icon = newIcon;
                     EditorUtility.SetDirty(_gameData);
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();
                 }
 
-                Sprite newIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _gameData.Laws[i].Icon, typeof(Sprite), false);
-                if (newIcon != _gameData.Laws[i].Icon)
+                if (_gameData.Laws[i].NPCInteractions == null)
                 {
-                    _gameData.Laws[i].Icon = newIcon;
+                    _gameData.Laws[i].NPCInteractions = new List<NPCInteraction>();
+                }
+
+                EditorGUILayout.LabelField("NPC Interactions", EditorStyles.boldLabel);
+
+                for (int j = 0; j < _gameData.Laws[i].NPCInteractions.Count; j++)
+                {
+                    EditorGUILayout.BeginHorizontal();
+
+                    NPCInteraction newNPCInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _gameData.Laws[i].NPCInteractions[j], typeof(NPCInteraction), false);
+                    if (newNPCInteraction != _gameData.Laws[i].NPCInteractions[j])
+                    {
+                        _gameData.Laws[i].NPCInteractions[j] = newNPCInteraction;
+                        EditorUtility.SetDirty(_gameData);
+                        AssetDatabase.SaveAssets();
+                        AssetDatabase.Refresh();
+                    }
+
+                    if (GUILayout.Button("Remove"))
+                    {
+                        _gameData.Laws[i].NPCInteractions.RemoveAt(j);
+                        EditorUtility.SetDirty(_gameData);
+                        AssetDatabase.SaveAssets();
+                        AssetDatabase.Refresh();
+                        break;
+                    }
+
+                    EditorGUILayout.EndHorizontal();
+                }
+
+                if (GUILayout.Button("Add NPC Interaction"))
+                {
+                    _gameData.Laws[i].NPCInteractions.Add(null);
                     EditorUtility.SetDirty(_gameData);
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();
@@ -201,7 +257,7 @@ public class LawWindow : EditorWindow
                 Description = _newLawDescription,
                 Icon = _newLawIcon,
                 Effects = _newLawEffects,
-                NPCInteraction = _npcInteraction,
+                NPCInteractions = _npcInteractions,
             };
             _gameData.Laws.Add(newLaw);
             EditorUtility.SetDirty(_gameData);
@@ -210,7 +266,7 @@ public class LawWindow : EditorWindow
             _newLawDescription = "";
             _newLawIcon = null;
             _newLawEffects = null;
-            _npcInteraction = null;
+            _npcInteractions = null;
         }
     }
 }

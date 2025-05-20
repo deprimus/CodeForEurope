@@ -15,7 +15,7 @@ public class Law
     public string Description;
     public Sprite Icon;
     public List<LawEffect> Effects;
-    public NPCInteraction NPCInteraction;
+    public List<NPCInteraction> NPCInteractions;
 }
 
 [System.Serializable]
