@@ -5,6 +5,7 @@ public class RoundTablePlayer : Faction
 {
     [Foldout("References")] public UIView_MoodPicker _moodPicker;
     [Foldout("References")] public UIView_VotePicker _votePicker;
+
     protected async override Task PickFactionMood()
     {
         var moodPicked = false;

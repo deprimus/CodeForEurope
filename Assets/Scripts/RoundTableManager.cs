@@ -8,6 +8,7 @@ public class RoundTableManager : MonoBehaviour
 {
     [Foldout("Components")] public UIView_Law _lawView;
     [Foldout("Components")] public Faction[] _people;
+    [Foldout("Components")] public SoundManager _sound;
     [Foldout("References")] public CanvasGroup _lawApproved;
     [Foldout("References")] public CanvasGroup _lawRejected;
 
@@ -28,9 +29,35 @@ public class RoundTableManager : MonoBehaviour
     {
         foreach (var person in _people)
         {
-            await person.ShowMood();
+            var mood = await person.ShowMood();
 
-            await UniTask.Delay(500);
+            if (person is not RoundTablePlayer)
+            {
+                AudioClip clip = null;
+
+                switch (mood)
+                {
+                    case Mood.Neutral:
+                    {
+                        clip = _sound.hmm[Random.Range(0, _sound.hmm.Length)];
+                        break;
+                    }
+                    case Mood.Happy:
+                    {
+                        clip = _sound.yes[Random.Range(0, _sound.yes.Length)];
+                        break;
+                    }
+                    case Mood.Angry:
+                    {
+                        clip = _sound.no[Random.Range(0, _sound.no.Length)];
+                        break;
+                    }
+                }
+
+                _sound.Play(clip);
+            }
+
+            await UniTask.Delay(1500);
         }
 
         await UniTask.Delay(3000);
