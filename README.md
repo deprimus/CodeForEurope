@@ -37,7 +37,7 @@ NPCs react immediately, with **mood bars** showing their opinions. These quick i
 
 ➡️ This step highlights **the challenge of limited knowledge** and encourages curiosity, skepticism, and further inquiry.
 
-![Step one]([images/level1.gif](https://drive.google.com/file/d/1C4rr2p0bNdHxw3lPJv_AD8V1qLHt8dy_/view?usp=sharing))
+![Step one](https://drive.google.com/file/d/1C4rr2p0bNdHxw3lPJv_AD8V1qLHt8dy_/view?usp=sharing)
 
 ---
 
@@ -56,7 +56,7 @@ Players must:
 
 ➡️ This stage develops **information filtering** and teaches players to question sources before accepting them as fact.
 
-![Step two]([images/level2.gif](https://drive.google.com/file/d/1MeTUD3RVHoGBCRNOZY0MCLCXJMw8gPIf/view?usp=sharing))
+![Step two](https://drive.google.com/file/d/1MeTUD3RVHoGBCRNOZY0MCLCXJMw8gPIf/view?usp=sharing)
 
 ---
 
@@ -74,7 +74,7 @@ Players are **encouraged to consult multiple sources**, compare conflicting narr
 
 All these steps are repeated multiple times until an ending in reached.
 
-![Step three]([images/level3.gif](https://drive.google.com/file/d/1CTZkNXEUMq_VosUDOy2Gi5Ducb38IQtJ/view?usp=sharing))
+![Step three](https://drive.google.com/file/d/1CTZkNXEUMq_VosUDOy2Gi5Ducb38IQtJ/view?usp=sharing)
 
 ---
 
