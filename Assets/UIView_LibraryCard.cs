@@ -12,8 +12,6 @@ public class UIView_LibraryCard : MonoBehaviour
     [Foldout("Components"), SerializeField] private TextMeshProUGUI _effects;
     [Foldout("Components"), SerializeField] private GameObject _revertButton;
     [Foldout("Components"), SerializeField] private GameObject _backImage;
-    
-    private SoundManager _sound;
 
     private bool _revealed = false;
     private bool _debunked = false;
@@ -31,7 +29,7 @@ public class UIView_LibraryCard : MonoBehaviour
 
         _revealed = true;
 
-        _sound.Play(_sound.flip);
+        SoundManager.instance.Play(SoundManager.instance.flip);
 
         _originalScale = transform.localScale.x;
 
@@ -51,7 +49,7 @@ public class UIView_LibraryCard : MonoBehaviour
 
         _debunked = true;
 
-        SetData(_name, _interactionEffects, _option, _sound);
+        SetData(_name, _interactionEffects, _option);
 
         _revertButton.SetActive(true);
     }
@@ -69,7 +67,7 @@ public class UIView_LibraryCard : MonoBehaviour
             }
         }
 
-        _sound.Play(_sound.select);
+        SoundManager.instance.Play(SoundManager.instance.select);
 
         LibraryManager.Instance.OnRevertApplied();
     }
@@ -79,7 +77,7 @@ public class UIView_LibraryCard : MonoBehaviour
         _revertButton.SetActive(false);
     }
 
-    public void SetData(string name, List<InteractionEffect> effects, bool option, SoundManager sound)
+    public void SetData(string name, List<InteractionEffect> effects, bool option)
     {
         _title.text = name;
         _effects.text = GetEffectsText(effects);
@@ -87,8 +85,6 @@ public class UIView_LibraryCard : MonoBehaviour
         _name = name;
         _interactionEffects = effects;
         _option = option;
-
-        _sound = sound;
     }
 
     private string GetEffectsText(List<InteractionEffect> effects)

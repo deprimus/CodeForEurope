@@ -15,6 +15,21 @@ public class SoundManager : MonoBehaviour
     public AudioClip appear;
     public AudioClip appear2;
 
+    public static SoundManager instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Play(AudioClip clip)
     {
         _src.PlayOneShot(clip);

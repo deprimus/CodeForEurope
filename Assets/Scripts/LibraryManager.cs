@@ -9,7 +9,6 @@ public class LibraryManager : MonoBehaviour
     [Foldout("References")] public LawManager _lawManager;
     [Foldout("References")] public UIView_LibraryCard _cardPrefab;
     [Foldout("References")] public Transform _cardsParent;
-    [Foldout("References")] public SoundManager _sound;
 
     public static LibraryManager Instance;
 
@@ -49,7 +48,7 @@ public class LibraryManager : MonoBehaviour
         foreach (var interaction in _interactions)
         {
             var card = Instantiate(_cardPrefab, _cardsParent);
-            card.SetData(interaction.Item1.Name, interaction.Item1.Effects, interaction.Item2, _sound);
+            card.SetData(interaction.Item1.Name, interaction.Item1.Effects, interaction.Item2);
             _spawnedCards.Add(card);
         }
     }

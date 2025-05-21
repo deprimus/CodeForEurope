@@ -10,7 +10,6 @@ public class UIView_Law : MonoBehaviour
     [Foldout("Components")] public TextMeshProUGUI _title;
     [Foldout("Components")] public TextMeshProUGUI _description;
     [Foldout("Components")] public TextMeshProUGUI _effect;
-    [Foldout("Components")] public SoundManager _sound;
 
     private void Awake()
     {
@@ -30,7 +29,7 @@ public class UIView_Law : MonoBehaviour
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.interactable = true;
 
-        _sound.Play(_sound.appear);
+        SoundManager.instance.Play(SoundManager.instance.appear);
 
         _canvasGroup.DOFade(1, 0.25f).SetEase(Ease.OutCubic);
         _transform.DOScale(1, 0.25f).SetEase(Ease.OutCubic).ChangeStartValue(Vector3.one * 0.75f);

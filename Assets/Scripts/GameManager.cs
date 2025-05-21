@@ -41,9 +41,7 @@ public class GameManager : MonoBehaviour
 
         _lawManager.Initialize();
 
-        Tale.Music.Play("Background", Tale.Music.PlayMode.LOOP, 0.7f);
-
-        Transition.SweepOut(0f);
+        //Transition.SweepOut(0f);
 
         Tale.Exec(() =>
         {
@@ -51,6 +49,8 @@ public class GameManager : MonoBehaviour
         });
 
         Transition.SweepIn();
+
+        Tale.Wait();
 
         Tale.Exec(() => ShowNextLaw());
     }
