@@ -1,13 +1,27 @@
 using NaughtyAttributes;
 using UnityEngine;
 using DG.Tweening;
-using TMPro;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameEndManager : MonoBehaviour
 {
     [Foldout("References")] public CanvasGroup _canvasGroup;
-    [Foldout("References")] public TextMeshProUGUI _title;
+    [Foldout("References")] public Image _ending;
+
+    [Foldout("References")] public Sprite traditionalistEnd;
+    [Foldout("References")] public Sprite leftEnd;
+    [Foldout("References")] public Sprite rightEnd;
+    [Foldout("References")] public Sprite libertarianEnd;
+    [Foldout("References")] public Sprite harmonyEnd;
+
+    public enum Ending
+    {
+        Traditionalist,
+        Left,
+        Right,
+        Libertarian,
+        Harmony
+    }
 
     public static GameEndManager Instance { get; private set; }
 
@@ -18,56 +32,71 @@ public class GameEndManager : MonoBehaviour
 
     public void ShowGameEnd()
     {
-        _canvasGroup.DOFade(1, 0.5f).SetEase(Ease.InCubic).ChangeStartValue(0);
-        _canvasGroup.blocksRaycasts = true;
-        _canvasGroup.interactable = true;
+        //_canvasGroup.DOFade(1, 0.5f).SetEase(Ease.InCubic).ChangeStartValue(0);
+        //_canvasGroup.blocksRaycasts = true;
+        //_canvasGroup.interactable = true;
 
-        var titleText = PickTitle();
-        _title.text = titleText;
+        Transition.SweepIn();
+        Tale.Advance();
+        Transition.SweepOut();
+
+        Tale.Multiplex(
+            Tale.Wait(),
+            Tale.Music.Stop()
+        );
+
+        Tale.Scene("MainMenu");
+
+        var ending = PickEnding();
+
+        switch (ending) {
+            case Ending.Traditionalist:
+            {
+                _ending.sprite = traditionalistEnd;
+                break;
+            }
+            case Ending.Left:
+            {
+                _ending.sprite = leftEnd;
+                break;
+            }
+            case Ending.Right:
+            {
+                _ending.sprite = rightEnd;
+                break;
+            }
+            case Ending.Libertarian:
+            {
+                _ending.sprite = libertarianEnd;
+                break;
+            }
+            case Ending.Harmony:
+            {
+                _ending.sprite = harmonyEnd;
+                break;
+            }
+        }
     }
 
-    private string PickTitle()
-    {
-        if (GameManager.Instance.TraditionalistPoints < Config.LossThreshold)
-        {
-            return "Loss due to traditionalist party underperformance";
-        }
-        else if (GameManager.Instance.LeftPoints < Config.LossThreshold)
-        {
-            return "Loss due to left party underperformance";
-        }
-        else if (GameManager.Instance.RightPoints < Config.LossThreshold)
-        {
-            return "Loss due to right party underperformance";
-        }
-        else if (GameManager.Instance.LibertarianPoints < Config.LossThreshold)
-        {
-            return "Loss due to libertarian party underperformance";
-        }
-        
-        
+    private Ending PickEnding()
+    {        
         if (GameManager.Instance.TraditionalistPoints >= Config.DominanceThreshold)
         {
-            return "Loss due to traditionalist party dominance";
+            return Ending.Traditionalist;
         }
         else if (GameManager.Instance.LeftPoints >= Config.DominanceThreshold)
         {
-            return "Loss due to left party dominance";
+            return Ending.Left;
         }
         else if (GameManager.Instance.RightPoints >= Config.DominanceThreshold)
         {
-            return "Loss due to right party dominance";
+            return Ending.Right;
         }
         else if (GameManager.Instance.LibertarianPoints >= Config.DominanceThreshold)
         {
-            return "Loss due to libertarian party dominance";
+            return Ending.Libertarian;
         }
 
-        return "True equilibrium!";
-    }
-
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        return Ending.Harmony;
     }
 }

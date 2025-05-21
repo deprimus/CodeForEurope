@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
+  m_Name: L1-2_Interaction
+  m_EditorClassIdentifier: 
+  Name: L1-2
+  NPC: {fileID: 11400000, guid: aae8e58f6e5a1504db448878821a2b9c, type: 2}
+  Dialogue:
+  - Oh, tax cuts for the wealthy again? Let me know when they plan on cutting food
+    prices for workers too.
+  Effects:
+  - Type: 4
+    Value: 1

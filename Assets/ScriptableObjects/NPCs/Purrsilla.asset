@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
   m_Name: Purrsilla
   m_EditorClassIdentifier: 
-  Name: Purrsilla
+  Name: <color=#f94e40>Purrsilla</color>
   Prefab: {fileID: 6519042394497146901, guid: 759f0469b1a0dbc4682ccab2d9f04305, type: 3}
-  Orientations: 
+  Orientations: 01000000

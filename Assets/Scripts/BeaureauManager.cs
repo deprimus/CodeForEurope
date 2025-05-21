@@ -73,6 +73,8 @@ public class BeaureauManager : MonoBehaviour
             _roundTableManager.Influence(effect.Type, value);
         }
 
+        LibraryManager.Instance.AddInteraction(_currentNPC.Interaction, option);
+
         await _currentNPC.OnChoicePicked();
         
         ShowNextNPC();

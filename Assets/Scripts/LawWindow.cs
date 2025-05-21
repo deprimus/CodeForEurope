@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+
 public class LawWindow : EditorWindow
 {
     private GameData _gameData;
@@ -270,3 +274,4 @@ public class LawWindow : EditorWindow
         }
     }
 }
+#endif

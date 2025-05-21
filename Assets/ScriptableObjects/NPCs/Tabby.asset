@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
   m_Name: Tabby
   m_EditorClassIdentifier: 
-  Name: Tabby
+  Name: <color=#70f940>Tabby</color>
   Prefab: {fileID: 6619870236794248561, guid: 5db44218c2828d64281ffe9ca695a752, type: 3}
-  Orientations: 
+  Orientations: 0300000001000000

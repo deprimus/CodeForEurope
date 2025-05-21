@@ -28,9 +28,35 @@ public class RoundTableManager : MonoBehaviour
     {
         foreach (var person in _people)
         {
-            await person.ShowMood();
+            var mood = await person.ShowMood();
 
-            await UniTask.Delay(500);
+            if (person is not RoundTablePlayer)
+            {
+                AudioClip clip = null;
+
+                switch (mood)
+                {
+                    case Mood.Neutral:
+                    {
+                        clip = SoundManager.instance.hmm[Random.Range(0, SoundManager.instance.hmm.Length)];
+                        break;
+                    }
+                    case Mood.Happy:
+                    {
+                        clip = SoundManager.instance.yes[Random.Range(0, SoundManager.instance.yes.Length)];
+                        break;
+                    }
+                    case Mood.Angry:
+                    {
+                        clip = SoundManager.instance.no[Random.Range(0, SoundManager.instance.no.Length)];
+                        break;
+                    }
+                }
+
+                SoundManager.instance.Play(clip);
+            }
+
+            await UniTask.Delay(1500);
         }
 
         await UniTask.Delay(3000);
@@ -87,6 +113,8 @@ public class RoundTableManager : MonoBehaviour
         foreach (var person in _people)
         {
             await person.ShowVote();
+
+            SoundManager.instance.Play(SoundManager.instance.appear2);
 
             await UniTask.Delay(2000);
         }

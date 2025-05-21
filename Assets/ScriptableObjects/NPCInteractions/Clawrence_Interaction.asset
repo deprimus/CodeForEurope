@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Clawrence_Interaction
   m_EditorClassIdentifier: 
   Name: Clawrence
-  NPC: {fileID: 11400000, guid: 2c4d029d9822e2f439a423963531795f, type: 2}
+  NPC: {fileID: 11400000, guid: 567cde642c8dda345bc11fa080cac561, type: 2}
   Dialogue:
   - Hello!
   Effects:

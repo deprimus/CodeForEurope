@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
+  m_Name: L4-1_Interaction
+  m_EditorClassIdentifier: 
+  Name: L4-1
+  NPC: {fileID: 11400000, guid: d8178a16a4854524798a3a65f4393636, type: 2}
+  Dialogue:
+  - The market, not bureaucrats, should determine optimal extraction levels.
+  Effects:
+  - Type: 3
+    Value: 1

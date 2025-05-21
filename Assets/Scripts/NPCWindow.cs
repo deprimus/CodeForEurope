@@ -1,6 +1,9 @@
-using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+
 public class NPCWindow : EditorWindow
 {
     private string npcName;
@@ -242,3 +245,4 @@ public class NPCWindow : EditorWindow
         AssetDatabase.Refresh();
     }
 }
+#endif

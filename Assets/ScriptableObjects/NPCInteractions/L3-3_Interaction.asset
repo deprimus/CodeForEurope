@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
+  m_Name: L3-3_Interaction
+  m_EditorClassIdentifier: 
+  Name: L3-3
+  NPC: {fileID: 11400000, guid: 228489777db15134ea8d7c0ffd2258b2, type: 2}
+  Dialogue:
+  - "Borders don\u2019t stop injustice\u2014they just tell you where it changes shape.
+    Everyone deserves a chance to roam."
+  Effects:
+  - Type: 6
+    Value: 1

@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         _lawManager.Initialize();
 
-        Transition.SweepOut(0f);
+        //Transition.SweepOut(0f);
 
         Tale.Exec(() =>
         {
@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
         });
 
         Transition.SweepIn();
+
+        Tale.Wait();
 
         Tale.Exec(() => ShowNextLaw());
     }
@@ -76,6 +78,8 @@ public class GameManager : MonoBehaviour
     {
         Transition.SweepOut();
 
+        Tale.Wait();
+
         Tale.Exec(() =>
         {
             StateManager.Instance.SwitchState(State.Beaureu);
@@ -99,7 +103,11 @@ public class GameManager : MonoBehaviour
     {
         Transition.SweepOut();
 
+        Tale.Wait();
+
         Tale.Exec(() => StateManager.Instance.SwitchState(State.Library));
+
+        LibraryManager.Instance.InitializeUI();
 
         Transition.SweepIn();
     }
@@ -107,6 +115,8 @@ public class GameManager : MonoBehaviour
     public void OnLibraryEnded()
     {
         Transition.SweepOut();
+
+        Tale.Wait();
 
         Tale.Exec(() => StateManager.Instance.SwitchState(State.RoundTable));
 
@@ -160,10 +170,10 @@ public class GameManager : MonoBehaviour
     {
         Transition.SweepOut();
 
-        Tale.Exec(() => StateManager.Instance.SwitchState(State.GameEnd));
-
-        Transition.SweepIn();
-
-        Tale.Exec(() => GameEndManager.Instance.ShowGameEnd());
+        Tale.Exec(() =>
+        {
+            StateManager.Instance.SwitchState(State.GameEnd);
+            GameEndManager.Instance.ShowGameEnd();
+        });
     }
 }
