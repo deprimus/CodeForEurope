@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
   m_Name: Tom
   m_EditorClassIdentifier: 
-  Name: Tom
+  Name: <color=#ffff00>Tom</color>
   Prefab: {fileID: 6936479986141643370, guid: 458cf7978d03c9c4a8cfec86111a626d, type: 3}
   Orientations: 0000000002000000

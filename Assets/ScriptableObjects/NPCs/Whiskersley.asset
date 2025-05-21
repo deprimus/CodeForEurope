@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
   m_Name: Whiskersley
   m_EditorClassIdentifier: 
-  Name: Whiskersley
+  Name: <color=#ff8000>Whiskersley</color>
   Prefab: {fileID: 7545586152946360218, guid: 645efcf7a9377ea46ad46ecafe8a0285, type: 3}
   Orientations: 00000000

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
   m_Name: Mittens
   m_EditorClassIdentifier: 
-  Name: Mittens
+  Name: <color=#e400ff>Mittens</color>
   Prefab: {fileID: 4736830914342938215, guid: bb9b8d991f6eac84c810c52767fcdc12, type: 3}
   Orientations: 0300000002000000

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968de1e87b65a493cad3968c13797623, type: 3}
   m_Name: Felix Purrovich - The Media Watchdog
   m_EditorClassIdentifier: 
-  Name: Felix Purrovich - The Media Watchdog
+  Name: <color=#ff8000>Felix</color>
   Prefab: {fileID: 7449388151590742759, guid: b5075559cf4c442488f0b66e4e6199ef, type: 3}
   Orientations: 0000000001000000
