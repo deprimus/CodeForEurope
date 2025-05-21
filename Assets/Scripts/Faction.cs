@@ -18,11 +18,13 @@ public class Faction : MonoBehaviour
     [Foldout("Debug"), SerializeField, ReadOnly]
     private Mood _mood;
 
-    public async virtual Task ShowMood()
+    public async virtual Task<Mood> ShowMood()
     {
         await PickFactionMood();
 
         _moodView.ShowMood(_mood);
+
+        return _mood;
     }
 
     public async virtual Task ShowVote()

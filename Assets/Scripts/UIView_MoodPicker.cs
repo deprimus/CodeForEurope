@@ -10,6 +10,7 @@ public class UIView_MoodPicker : MonoBehaviour
     [Foldout("Components")] public CanvasGroup _canvasGroup;
     [Foldout("Components")] public TextMeshProUGUI _title;
     [Foldout("Components")] public CanvasGroup _moodsCanvasGroup;
+    [Foldout("Components")] public SoundManager _sound;
 
     private Action<Mood> _onMoodPicked;
 
@@ -27,9 +28,6 @@ public class UIView_MoodPicker : MonoBehaviour
     {
         _onMoodPicked = onMoodPicked;
 
-        _canvasGroup.blocksRaycasts = true;
-        _canvasGroup.interactable = true;
-
         _canvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
 
         await UniTask.Delay(250);
@@ -39,6 +37,11 @@ public class UIView_MoodPicker : MonoBehaviour
         await UniTask.Delay(100);
 
         _moodsCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
+
+        await UniTask.Delay(330);
+
+        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.interactable = true;
     }
 
     public void PickMood(int mood)
@@ -54,6 +57,8 @@ public class UIView_MoodPicker : MonoBehaviour
         _canvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
         _title.DOFade(0, 0.33f).SetEase(Ease.InCubic);
         _moodsCanvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
+
+        _sound.Play(_sound.select);
 
         await UniTask.Delay(250);
 
