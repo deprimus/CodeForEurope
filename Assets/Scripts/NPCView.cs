@@ -58,7 +58,7 @@ public class NPCView : MonoBehaviour
 
         foreach (var dialogue in _dialogue)
         {
-            Tale.Dialog(_interaction.NPC.Name, dialogue);
+            Tale.Dialog(_interaction.NPC.Name, dialogue, null, "loop", true);
         }
 
         Tale.Exec(() =>
