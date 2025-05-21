@@ -28,9 +28,6 @@ public class UIView_BeaureauPrompt : MonoBehaviour
     {
         _onOptionPicked = onOptionPicked;
 
-        _canvasGroup.blocksRaycasts = true;
-        _canvasGroup.interactable = true;
-
         _canvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
 
         await UniTask.Delay(250);
@@ -40,6 +37,11 @@ public class UIView_BeaureauPrompt : MonoBehaviour
         await UniTask.Delay(100);
 
         _buttonsCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
+
+        await UniTask.Delay(330);
+
+        _canvasGroup.blocksRaycasts = true;
+        _canvasGroup.interactable = true;
     }
 
     public void PickOption(int option)
@@ -55,6 +57,8 @@ public class UIView_BeaureauPrompt : MonoBehaviour
         _canvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
         _title.DOFade(0, 0.33f).SetEase(Ease.InCubic);
         _buttonsCanvasGroup.DOFade(0, 0.33f).SetEase(Ease.InCubic);
+
+        SoundManager.instance.Play(SoundManager.instance.select);
 
         await UniTask.Delay(250);
 
