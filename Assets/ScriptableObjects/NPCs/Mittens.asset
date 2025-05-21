@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Mittens
   Prefab: {fileID: 4736830914342938215, guid: bb9b8d991f6eac84c810c52767fcdc12, type: 3}
-  Orientations: 
+  Orientations: 0300000002000000

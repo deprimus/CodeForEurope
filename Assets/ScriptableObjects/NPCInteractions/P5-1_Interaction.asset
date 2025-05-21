@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: P5-1_Interaction
   m_EditorClassIdentifier: 
   Name: P5-1
-  NPC: {fileID: 11400000, guid: b0122ed8a5a98479bb3f0d03e254a653, type: 2}
+  NPC: {fileID: 11400000, guid: 55a51b24e9d9cbf42b3f926094f45298, type: 2}
   Dialogue:
   - Diverting funds from public schools to private institutions deepens inequality
     and turns education into a privilege, not a right.

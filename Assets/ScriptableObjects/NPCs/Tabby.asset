@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tabby
   Prefab: {fileID: 6619870236794248561, guid: 5db44218c2828d64281ffe9ca695a752, type: 3}
-  Orientations: 
+  Orientations: 0300000001000000

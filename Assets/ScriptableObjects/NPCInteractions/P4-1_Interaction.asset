@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: P4-1_Interaction
   m_EditorClassIdentifier: 
   Name: P4-1
-  NPC: {fileID: 11400000, guid: b0122ed8a5a98479bb3f0d03e254a653, type: 2}
+  NPC: {fileID: 11400000, guid: 55a51b24e9d9cbf42b3f926094f45298, type: 2}
   Dialogue:
   - "This regulation looks backward\u2014cutting use instead of driving innovation.
     We should fund biodegradable polymers, not ban essential materials."

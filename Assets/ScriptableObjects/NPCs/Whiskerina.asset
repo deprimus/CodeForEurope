@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Whiskerina
   Prefab: {fileID: 1936199909911087839, guid: 7d58edf7182c1064087bd2bbc3570a8f, type: 3}
-  Orientations: 
+  Orientations: 03000000

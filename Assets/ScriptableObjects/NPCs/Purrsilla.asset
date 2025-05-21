@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Purrsilla
   Prefab: {fileID: 6519042394497146901, guid: 759f0469b1a0dbc4682ccab2d9f04305, type: 3}
-  Orientations: 
+  Orientations: 01000000

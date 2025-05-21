@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: <color=#ffff00>Clawrence</color>
   Prefab: {fileID: 5691069135288533016, guid: 94401a77dc21a0c4f974b94a0732d312, type: 3}
-  Orientations: 
+  Orientations: 02000000
