@@ -1123,6 +1123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Round Table
       objectReference: {fileID: 0}
+    - target: {fileID: 4563900526725513467, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5720600804856198532, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1439,13 +1443,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5343423300353248270, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 111049406623233155, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1998449442534984984, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
