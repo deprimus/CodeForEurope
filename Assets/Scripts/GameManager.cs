@@ -164,10 +164,10 @@ public class GameManager : MonoBehaviour
     {
         Transition.SweepOut();
 
-        Tale.Exec(() => StateManager.Instance.SwitchState(State.GameEnd));
-
-        Transition.SweepIn();
-
-        Tale.Exec(() => GameEndManager.Instance.ShowGameEnd());
+        Tale.Exec(() =>
+        {
+            StateManager.Instance.SwitchState(State.GameEnd);
+            GameEndManager.Instance.ShowGameEnd();
+        });
     }
 }
