@@ -1,3 +1,17 @@
+// -----------------------------------------------------------------------------
+// LawWindow.cs
+//
+// Unity Editor window for creating and managing laws in the game.
+// Allows designers to define law properties (name, description, icon), attach effects, and link to NPC interactions.
+// Provides a UI for editing, deleting, and listing all laws and their effects on factions.
+//
+// Main Functions:
+// - ShowWindow(): Opens the Law Manager window in the Unity Editor.
+// - OnEnable(): Loads the GameData asset containing all laws.
+// - OnGUI(): Main UI for creating/editing laws, effects, and linked NPC interactions.
+// - AddNewLaw(): Adds a new law to the game data.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;

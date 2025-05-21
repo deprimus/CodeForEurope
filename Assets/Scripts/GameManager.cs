@@ -1,3 +1,20 @@
+// -----------------------------------------------------------------------------
+// GameManager.cs
+//
+// Main entry point for the game. Handles scene activation, round progression, and coordinates
+// other managers (LawManager, NPCManager, etc.). Maintains global game state and points for each faction.
+//
+// Main Functions:
+// - Awake(): Initializes the singleton instance and starts the game.
+// - StartGame(): Begins a new game session and resets round index.
+// - ShowNextLaw(): Advances to the next law and updates the scene.
+//
+// Fields:
+// - _lawManager, _npcManager: References to core managers.
+// - CurrentLaw: The law currently being discussed.
+// - Faction points: Tracks points for each political faction.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;

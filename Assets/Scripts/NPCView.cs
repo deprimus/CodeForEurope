@@ -1,3 +1,23 @@
+// -----------------------------------------------------------------------------
+// NPCView.cs
+//
+// MonoBehaviour for handling the in-game visual representation and behavior of NPCs.
+// Manages NPC movement, scaling, rotation, and dialogue presentation during interactions.
+// Integrates with the Tale utility for dialogue and prop manipulation.
+//
+// Main Functions:
+// - Initialize(NPCInteraction, Vector3, Vector3): Sets up the NPC for interaction.
+// - BeginInteraction(): Starts the NPC's approach and dialogue sequence.
+// - OnChoicePicked(): Handles NPC's reaction and exit after a player choice.
+// - MoveTo(), Scale(), Rotate(): Animate NPC movement and appearance.
+//
+// Fields:
+// - _interaction: The current NPCInteraction.
+// - _dialogue: Dialogue lines for the interaction.
+// - _spawnPoint, _arrivalPoint: Positions for NPC movement.
+// - _animator: Animator component for NPC animations.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;

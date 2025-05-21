@@ -1,3 +1,19 @@
+// -----------------------------------------------------------------------------
+// UIView_Law.cs
+//
+// MonoBehaviour for displaying law information in the game UI.
+// Handles showing and hiding law details, including title, description, and effects.
+// Animates the law card's appearance and disappearance.
+//
+// Main Functions:
+// - ShowLaw(Law law): Displays the law's information with animation.
+// - HideLaw(): Hides the law card with animation and notifies the GameManager.
+//
+// Fields:
+// - _canvasGroup, _transform: UI components for animation.
+// - _title, _description, _effect: UI text fields for law info.
+// -----------------------------------------------------------------------------
+
 using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;

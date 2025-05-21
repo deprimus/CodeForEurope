@@ -1,3 +1,19 @@
+// -----------------------------------------------------------------------------
+// NPCWindow.cs
+//
+// Unity Editor window for creating and managing NPCs as ScriptableObjects and prefabs.
+// Allows designers to define NPC names, 3D models, political orientations, and traits.
+// Provides a user-friendly interface for editing, deleting, and listing all NPCs.
+//
+// Main Functions:
+// - ShowWindow(): Opens the NPC Creator window in the Unity Editor.
+// - OnEnable(): Loads all existing NPCs.
+// - DisplayNPCList(): Shows and allows editing of all NPCs in the project.
+// - DeleteNPC(): Removes an NPC and its associated assets.
+// - CreatePrefab(): Creates a prefab for the NPC with the selected 3D model.
+// - CreateNPCScriptableObject(): Saves the NPC as a ScriptableObject asset.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using System.Collections.Generic;
 

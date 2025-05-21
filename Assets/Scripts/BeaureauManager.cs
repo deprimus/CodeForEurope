@@ -1,3 +1,22 @@
+// -----------------------------------------------------------------------------
+// BeaureauManager.cs
+//
+// Manages the office (bureau) scene, NPC queue, and the flow of NPC interactions and choices.
+// Coordinates with LawManager and RoundTableManager to update law effects and handle player decisions.
+//
+// Main Functions:
+// - Initialize(): Sets up the NPC queue and spawns NPCs for interaction.
+// - ShowNextNPC(): Advances to the next NPC in the queue.
+// - OnInteractionEnded(): Handles the end of an NPC interaction and applies effects.
+// - SetQueue(): Sets the list of NPC interactions for the current round.
+//
+// Fields:
+// - _NPCSpawnPoint, _NPCArrivalPoint: Positions for NPC movement.
+// - _beaureauPrompt: UI prompt for player choices.
+// - _roundTableManager, _lawManager: References to core managers.
+// - _npcQueue: List of NPC interactions for the round.
+// -----------------------------------------------------------------------------
+
 using NaughtyAttributes;
 using System;
 using System.Collections.Generic;

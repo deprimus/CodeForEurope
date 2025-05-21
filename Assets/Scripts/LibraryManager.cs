@@ -1,3 +1,23 @@
+// -----------------------------------------------------------------------------
+// LibraryManager.cs
+//
+// Manages the library scene, including tracking player actions (book/laptop usage),
+// storing NPC interactions, and managing the UI for reviewing past choices and debunking misinformation.
+//
+// Main Functions:
+// - Initialize(): Sets up the library state and clears previous data.
+// - AddInteraction(): Stores an NPC interaction and the player's choice.
+// - Debunk(): Handles the debunking process and updates law effects.
+// - OnRevertApplied(): Resets the UI after a revert action.
+//
+// Fields:
+// - _debunkButton, _continueButton: UI elements for player actions.
+// - _lawManager: Reference to the LawManager.
+// - _cardPrefab, _cardsParent: UI for displaying interaction cards.
+// - _interactions: List of all player interactions.
+// -----------------------------------------------------------------------------
+
+
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;

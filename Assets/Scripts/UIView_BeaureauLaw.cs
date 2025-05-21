@@ -1,3 +1,22 @@
+// -----------------------------------------------------------------------------
+// UIView_BeaureauLaw.cs
+//
+// MonoBehaviour for displaying law details and effects in the Bureau (Office) UI.
+// Updates UI elements with the current law's title, description, and effects on factions.
+// Listens for law effect changes and updates the display accordingly.
+//
+// Main Functions:
+// - SetEffect(List<LawEffect> effects): Updates the UI with the current law's effects.
+// - ShowLaw(): Shows the law details panel.
+// - HideLaw(): Hides the law details panel.
+//
+// Fields:
+// - _title, _description, _effect: UI text fields for law info.
+// - _layout: Layout container for UI updates.
+// - _openLawButton: Button to open the law panel.
+// - _lawManager: Reference to the LawManager for effect updates.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using NaughtyAttributes;
 using TMPro;

@@ -1,3 +1,16 @@
+// -----------------------------------------------------------------------------
+// NPCInteractionWindow.cs
+//
+// Unity Editor window for creating and managing NPC interactions (dialogue trees, choices, and effects).
+// Allows designers to author dialogue, set up branching outcomes, and link interactions to NPCs.
+//
+// Main Functions:
+// - ShowWindow(): Opens the NPC Interaction Creator window in the Unity Editor.
+// - OnGUI(): Main UI for creating/editing interactions, dialogue, and effects.
+// - LoadNPCManager(): Loads the NPCManager asset for storing interactions.
+// - SaveInteraction(): Saves a new or edited interaction as a ScriptableObject.
+// -----------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using UnityEngine;
 

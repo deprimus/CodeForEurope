@@ -1,3 +1,21 @@
+// -----------------------------------------------------------------------------
+// RoundTableManager.cs
+//
+// Controls the round table scene, showing law cards, managing faction moods, and handling voting and influence mechanics.
+// Coordinates with GameManager and LawManager to update the game state based on player and NPC actions.
+//
+// Main Functions:
+// - ShowLawCard(): Displays the current law card in the UI.
+// - ShowMoodBars(): Animates and displays faction mood bars.
+// - Influence(): Applies influence to a faction based on interaction effects.
+// - VoteLaw(): Handles the law voting process.
+//
+// Fields:
+// - _lawView: UI component for law display.
+// - _people: Array of faction representatives.
+// - _lawApproved, _lawRejected: UI elements for law outcomes.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using NaughtyAttributes;
 using System.Threading.Tasks;

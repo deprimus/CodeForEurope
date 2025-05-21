@@ -4,6 +4,39 @@
 
 ![Parliament here representing picture](images/parliament_hero.png)
 
+---
+
+## 📑 Table of Contents
+
+- [🏛️ Parliament Hero](#️-parliament-hero)
+  - [📑 Table of Contents](#-table-of-contents)
+  - [🎯 What You'll Learn](#-what-youll-learn)
+  - [🟦🟨🟩🟥 Factions: Choose Your Democratic Identity](#-factions-choose-your-democratic-identity)
+  - [🔁 Gameplay Loop: The Four Steps of Democracy](#-gameplay-loop-the-four-steps-of-democracy)
+    - [🧾 Step 1 – A Law Appears](#-step-1--a-law-appears)
+    - [🏢 Step 2 – The Office](#-step-2--the-office)
+    - [📚 Step 3 – The Library](#-step-3--the-library)
+    - [🎬 Endings – Your Votes Shape the World](#-endings--your-votes-shape-the-world)
+    - [🗳️ Step 4 – Voting Time - Going back to step 1](#️-step-4--voting-time---going-back-to-step-1)
+  - [🧠 Mechanics \& Game Framework](#-mechanics--game-framework)
+    - [🔧 1. **NPC Creator Component**](#-1-npc-creator-component)
+    - [💬 2. **NPC Interaction Creator**](#-2-npc-interaction-creator)
+    - [🏛️ 3. **Law Manager**](#️-3-law-manager)
+  - [� Code \& Tooling Documentation](#-code--tooling-documentation)
+  - [📚 Educational Impact](#-educational-impact)
+  - [⚠️ Challenges We Faced](#️-challenges-we-faced)
+    - [🧩 Gamifying Real Processes](#-gamifying-real-processes)
+    - [🔄 Managing Complexity](#-managing-complexity)
+    - [🧠 Pedagogical Alignment](#-pedagogical-alignment)
+    - [🧪 Disinformation Design](#-disinformation-design)
+    - [🧰 Framework Modularity](#-framework-modularity)
+- [🔮 Future Plans](#-future-plans)
+- [🎵 Assets](#-assets)
+  - [🔊 Audio](#-audio)
+  - [🧊 3D Models](#-3d-models)
+  
+---
+
 ## 🎯 What You'll Learn
 
 Through interactive missions and dynamic NPC interactions, players will explore:
@@ -151,6 +184,14 @@ These tools combine to make **Parliament Hero a full game framework**, not just 
 - Scale and reuse the platform for other audiences  
 
 ➡️ Our goal is to support **repeatable, adaptable educational experiences** accessible to all ages.
+
+---
+
+## 📖 Code & Tooling Documentation
+
+We provide detailed documentation for our codebase and Unity tools in the [`Scripts/README.md`](./Assets/Scripts/README.md) file.  
+Every feature and system described above—including the NPC Creator, NPC Interaction Creator, Law Manager, and supporting managers—are explained in detail there.  
+If you want to understand or extend the game's core functionalities, please refer to that documentation.
 
 ---
 
