@@ -1375,6 +1375,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2113993131}
+    - target: {fileID: 4826716986811170171, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.01
+      objectReference: {fileID: 0}
     - target: {fileID: 5374028067576665523, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -1387,7 +1391,13 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 5343423300353248270, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 111049406623233155, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 1998449442534984984, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
