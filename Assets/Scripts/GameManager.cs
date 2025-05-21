@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
     {
         Transition.SweepOut();
 
+        Tale.Wait();
+
         Tale.Exec(() =>
         {
             StateManager.Instance.SwitchState(State.Beaureu);
@@ -101,6 +103,8 @@ public class GameManager : MonoBehaviour
     {
         Transition.SweepOut();
 
+        Tale.Wait();
+
         Tale.Exec(() => StateManager.Instance.SwitchState(State.Library));
 
         LibraryManager.Instance.InitializeUI();
@@ -111,6 +115,8 @@ public class GameManager : MonoBehaviour
     public void OnLibraryEnded()
     {
         Transition.SweepOut();
+
+        Tale.Wait();
 
         Tale.Exec(() => StateManager.Instance.SwitchState(State.RoundTable));
 
