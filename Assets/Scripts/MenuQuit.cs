@@ -29,7 +29,7 @@ public class MenuQuit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Transition.SweepOut();
 
         Tale.Wait();
-        Application.Quit();
+        Tale.Exec(() => Application.Quit());
     }
 
     public void OnPointerEnter(PointerEventData eventData)
