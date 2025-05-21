@@ -37,7 +37,7 @@ NPCs react immediately, with **mood bars** showing their opinions. These quick i
 
 ➡️ This step highlights **the challenge of limited knowledge** and encourages curiosity, skepticism, and further inquiry.
 
-![Step one](https://static.exom.dev/parliamenthero/level1.gif)
+![Step one](images/level1.gif)
 
 ---
 
@@ -56,7 +56,7 @@ Players must:
 
 ➡️ This stage develops **information filtering** and teaches players to question sources before accepting them as fact.
 
-![Step two](https://static.exom.dev/parliamenthero/level2.gif)
+👉 [View "Step Two" as a GIF (opens in new tab)](https://static.exom.dev/parliamenthero/level2.gif)
 
 ---
 
@@ -74,7 +74,7 @@ Players are **encouraged to consult multiple sources**, compare conflicting narr
 
 All these steps are repeated multiple times until an ending in reached.
 
-![Step three](https://static.exom.dev/parliamenthero/level3.gif)
+![Step three](images/level3.gif)
 
 ---
 
