@@ -37,7 +37,7 @@ NPCs react immediately, with **mood bars** showing their opinions. These quick i
 
 ➡️ This step highlights **the challenge of limited knowledge** and encourages curiosity, skepticism, and further inquiry.
 
-<img src="https://static.exom.dev/parliamenthero/level1.gif" alt="Demo" width="500"/>
+![Step one](https://static.exom.dev/parliamenthero/level1.gif)
 
 ---
 
