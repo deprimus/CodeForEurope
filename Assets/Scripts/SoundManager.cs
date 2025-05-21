@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] no;
 
     public AudioClip select;
+    public AudioClip flip;
 
     public void Play(AudioClip clip)
     {

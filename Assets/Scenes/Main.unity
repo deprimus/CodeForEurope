@@ -998,6 +998,7 @@ MonoBehaviour:
   _lawManager: {fileID: 11400000, guid: fe393d0ef761d4ddc9643463575bae7a, type: 2}
   _cardPrefab: {fileID: 6573027929284042457, guid: 2d7ca1fadf1894659a4c2e6dbd35943d, type: 3}
   _cardsParent: {fileID: 311923678}
+  _sound: {fileID: 1808620921}
 --- !u!1001 &1656435579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1115,6 +1116,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61293da2c21b89e45b1d875fbf846824, type: 3}
   - {fileID: 8300000, guid: d454664de5287e94c97242932916af9b, type: 3}
   select: {fileID: 8300000, guid: b689d423c2eae6d4cb08d93eaeae1372, type: 3}
+  flip: {fileID: 8300000, guid: 0728fd068e09be44f81a8a8cf3208777, type: 3}
 --- !u!82 &1808620922
 AudioSource:
   m_ObjectHideFlags: 0

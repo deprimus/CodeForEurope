@@ -12,6 +12,8 @@ public class UIView_LibraryCard : MonoBehaviour
     [Foldout("Components"), SerializeField] private TextMeshProUGUI _effects;
     [Foldout("Components"), SerializeField] private GameObject _revertButton;
     [Foldout("Components"), SerializeField] private GameObject _backImage;
+    
+    private SoundManager _sound;
 
     private bool _revealed = false;
     private bool _debunked = false;
@@ -28,6 +30,8 @@ public class UIView_LibraryCard : MonoBehaviour
             return;
 
         _revealed = true;
+
+        _sound.Play(_sound.flip);
 
         _originalScale = transform.localScale.x;
 
@@ -47,7 +51,7 @@ public class UIView_LibraryCard : MonoBehaviour
 
         _debunked = true;
 
-        SetData(_name, _interactionEffects, _option);
+        SetData(_name, _interactionEffects, _option, _sound);
 
         _revertButton.SetActive(true);
     }
@@ -65,6 +69,8 @@ public class UIView_LibraryCard : MonoBehaviour
             }
         }
 
+        _sound.Play(_sound.select);
+
         LibraryManager.Instance.OnRevertApplied();
     }
 
@@ -73,7 +79,7 @@ public class UIView_LibraryCard : MonoBehaviour
         _revertButton.SetActive(false);
     }
 
-    public void SetData(string name, List<InteractionEffect> effects, bool option)
+    public void SetData(string name, List<InteractionEffect> effects, bool option, SoundManager sound)
     {
         _title.text = name;
         _effects.text = GetEffectsText(effects);
@@ -81,6 +87,8 @@ public class UIView_LibraryCard : MonoBehaviour
         _name = name;
         _interactionEffects = effects;
         _option = option;
+
+        _sound = sound;
     }
 
     private string GetEffectsText(List<InteractionEffect> effects)
@@ -92,6 +100,11 @@ public class UIView_LibraryCard : MonoBehaviour
             var valueStr = _debunked ? ((value > 0 ? "+" : "") + value) : "?";
             var typeStr = _debunked ? string.Concat(effect.Type.ToString().Select(x => char.IsUpper(x) ? (" " + x) : x.ToString())).TrimStart() : "?";
             str += typeStr + ": " + valueStr + " Influence\n";
+        }
+
+        if (!_debunked)
+        {
+            str += "(inform yourself first to debunk)";
         }
 
         return str;
