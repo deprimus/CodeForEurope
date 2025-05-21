@@ -17,7 +17,7 @@ MonoBehaviour:
   Dialogue:
   - Private health insurance creates a two-tier system where wealthy citizens receive
     superior healthcare while poor and vulnerable populations are left with minimal
-    coverage
+    coverage.
   Effects:
   - Type: 4
     Value: 1

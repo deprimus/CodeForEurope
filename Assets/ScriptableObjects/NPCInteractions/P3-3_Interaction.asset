@@ -16,7 +16,7 @@ MonoBehaviour:
   NPC: {fileID: 11400000, guid: 228489777db15134ea8d7c0ffd2258b2, type: 2}
   Dialogue:
   - Family is what you build with love and care. I don't need a government chart
-    to define who counts as kin
+    to define who counts as kin.
   Effects:
   - Type: 6
     Value: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
   NPC: {fileID: 11400000, guid: 228489777db15134ea8d7c0ffd2258b2, type: 2}
   Dialogue:
   - Letting companies loot the land without responsibility? That's not liberty, it's
-    legalized extraction with no leash
+    legalized extraction with no leash.
   Effects:
   - Type: 6
     Value: 1
