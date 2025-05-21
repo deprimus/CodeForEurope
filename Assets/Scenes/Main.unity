@@ -1117,6 +1117,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d454664de5287e94c97242932916af9b, type: 3}
   select: {fileID: 8300000, guid: b689d423c2eae6d4cb08d93eaeae1372, type: 3}
   flip: {fileID: 8300000, guid: 0728fd068e09be44f81a8a8cf3208777, type: 3}
+  appear: {fileID: 8300000, guid: 25fe148e5b4d90140a1356a5d721959b, type: 3}
+  appear2: {fileID: 8300000, guid: ac990eba48424544fadb553cdacc6734, type: 3}
 --- !u!82 &1808620922
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1479,6 +1481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1387265031}
     m_Modifications:
+    - target: {fileID: 1985599238282030942, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
+      propertyPath: _sound
+      value: 
+      objectReference: {fileID: 1808620921}
     - target: {fileID: 4563900526725513467, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
       propertyPath: m_Name
       value: Round Table
@@ -1668,6 +1674,10 @@ PrefabInstance:
     - target: {fileID: 91069159004760868, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 97455928483716115, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_text
+      value: Inform Yourself
       objectReference: {fileID: 0}
     - target: {fileID: 319458233886469933, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

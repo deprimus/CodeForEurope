@@ -12,6 +12,8 @@ public class SoundManager : MonoBehaviour
 
     public AudioClip select;
     public AudioClip flip;
+    public AudioClip appear;
+    public AudioClip appear2;
 
     public void Play(AudioClip clip)
     {

@@ -115,6 +115,8 @@ public class RoundTableManager : MonoBehaviour
         {
             await person.ShowVote();
 
+            _sound.Play(_sound.appear2);
+
             await UniTask.Delay(2000);
         }
 
