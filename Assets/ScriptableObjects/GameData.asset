@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   Laws:
-  - Name: Government Representatives in  Corporations Act
+  - Name: Government Representatives in Corporations Act
     Description: Ensure good governance over big corporations by placing a government
       representative.
     Icon: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 26edfd129d461c5449af9d77082ede9c, type: 2}
     - {fileID: 11400000, guid: c3b668c06a2ef1b45b99b0cb2a98d092, type: 2}
     - {fileID: 11400000, guid: a07eeab83f4e4f94d9f7d4cb3aa38f23, type: 2}
-  - Name: ' Digital Government Transformation Act'
+  - Name: Digital Government Transformation Act
     Description: All government services available digitally.
     Icon: {fileID: 0}
     Effects:
@@ -123,3 +123,141 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 31c4b5e70e61c4445878b335addcfbc7, type: 2}
     - {fileID: 11400000, guid: 45d36507a34584048a99842eeb63c6b1, type: 2}
     - {fileID: 11400000, guid: e63edd83e1ef83b4e8531aa88fd35833, type: 2}
+  - Name: Green Innovation Fund
+    Description: Invest 800bilion euro in renewable energy initiatives.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 1
+      Value: 1
+    - Type: 3
+      Value: 2
+    NPCInteractions:
+    - {fileID: 11400000, guid: a4bfecb068eb148dba77f057608834cd, type: 2}
+    - {fileID: 11400000, guid: bbca66a8cf1cd4f35acd481dd6247b1b, type: 2}
+    - {fileID: 11400000, guid: 29b5bf0d9cb304158a8fdfe42824364f, type: 2}
+  - Name: Health Insurance
+    Description: Reduce budget for hospitals and Support private insurance models
+      over state insurance
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 3
+    - Type: 2
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 897485f5165124c7680cb2e79d060fa5, type: 2}
+    - {fileID: 11400000, guid: 90f39604c1a944054ae1d6ec10488c7f, type: 2}
+    - {fileID: 11400000, guid: a66c6e5f820904a58ac46770cbb92fd0, type: 2}
+  - Name: Auto polution norm restriction
+    Description: Reduce car polution by banning old cars and mor taxes for having
+      a vehicle.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 3
+      Value: 1
+    - Type: 1
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: db80d8db5ce36456ba5092b3132f88e5, type: 2}
+    - {fileID: 11400000, guid: c68d2f1c08626434e9dcd15eecc89f0b, type: 2}
+    - {fileID: 11400000, guid: 9170f178ee931451d8bfe230edc94f95, type: 2}
+  - Name: Plastic Products Regulation
+    Description: Reduce plastic manufacturing and reuse old plastic products
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 1
+      Value: 2
+    - Type: 3
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 7909fdf3b56ff534492623132ba48a7f, type: 2}
+    - {fileID: 11400000, guid: cc63ce8330ba9b14caa5add6051e198d, type: 2}
+    - {fileID: 11400000, guid: ea388163131f7764f91c9aaa381c4382, type: 2}
+  - Name: Demographic growth
+    Description: This policy actively incentivizes population growth when our planet
+      is already struggling with resource limitations.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 1
+      Value: 1
+    - Type: 0
+      Value: 2
+    NPCInteractions:
+    - {fileID: 11400000, guid: 90f190dd539a138498a84f6bd0562583, type: 2}
+    - {fileID: 11400000, guid: 00f5d9e1d0c20864b8a61cd90a5ed489, type: 2}
+    - {fileID: 11400000, guid: 306b5cc0bdac6a34fa68ce473a584e3f, type: 2}
+  - Name: Free Trade Agreements Without Environmental Provisions
+    Description: Remove barriers to goods without sustainability standards.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 0
+      Value: 2
+    - Type: 2
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 8c674976dc5e0a040ba9739a27d297a2, type: 2}
+    - {fileID: 11400000, guid: d489fe15d92309b43a3e744e0ef9bb62, type: 2}
+    - {fileID: 11400000, guid: aeb0de98d8a4ac14887512b26f40d3fa, type: 2}
+  - Name: Right to Privacy, Access to Information
+    Description: "Guarantees every citizen\u2019s right to privacy and access to
+      public information online."
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 2
+      Value: 1
+    - Type: 3
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: 309a40c36a61e984bb9f0351996904a4, type: 2}
+    - {fileID: 11400000, guid: a2bc95f25f347194789f67fe4d7ae1c0, type: 2}
+    - {fileID: 11400000, guid: fac398d5df9ac8d46bbd4b831eda8aca, type: 2}
+  - Name: Digital Innovation Fund
+    Description: 500bilion investment for National digitalization.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 3
+      Value: 1
+    - Type: 2
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: d7edcdcff0e7fed438ecb7be7a5bfbcd, type: 2}
+    - {fileID: 11400000, guid: ff4cad68baaf10a45b35f0aae99cf47d, type: 2}
+    - {fileID: 11400000, guid: ee7cf615f730e9f4f9eb7d5b88cbb17f, type: 2}
+  - Name: Immigration Agreement
+    Description: Limit the flow of immigrants to 5% of the total population for each
+      country. Strict border control policies.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 1
+      Value: 1
+    - Type: 0
+      Value: 2
+    NPCInteractions:
+    - {fileID: 11400000, guid: 425563976084f9743877e26f7479adbe, type: 2}
+    - {fileID: 11400000, guid: 03ad027f457736d41b410ff1ee8f3653, type: 2}
+    - {fileID: 11400000, guid: aea506cd7d503cf418e6a8170a00acf1, type: 2}
+  - Name: Rare Resource Mining Protection
+    Description: Large-scale extraction operations output limited per year.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 1
+      Value: 1
+    - Type: 3
+      Value: 2
+    NPCInteractions:
+    - {fileID: 11400000, guid: 26f6f26b697617e4b922a2df4d136f17, type: 2}
+    - {fileID: 11400000, guid: 6cf944ac4d25e0b479b5bd71c69d657a, type: 2}
+    - {fileID: 11400000, guid: 877483bd806741047907574f01030953, type: 2}
+  - Name: Digital Markets Act
+    Description: Make the markets in the digital sector fairer and more contestable,
+      regulate markets.
+    Icon: {fileID: 0}
+    Effects:
+    - Type: 2
+      Value: 1
+    - Type: 3
+      Value: 1
+    NPCInteractions:
+    - {fileID: 11400000, guid: f6fb2cbc35a6fdd43a9ae9186ae0e171, type: 2}
+    - {fileID: 11400000, guid: cf53061ef2e73084981faff9d1f651a2, type: 2}
+    - {fileID: 11400000, guid: 31699fb48cf68954b8c760c3ed8eb759, type: 2}

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79dcf570d8b3a4671aad10f7d366b300, type: 3}
-  m_Name: P4-2_Interaction
+  m_Name: G3-3_Interaction
   m_EditorClassIdentifier: 
-  Name: P4-2
-  NPC: {fileID: 11400000, guid: 2c4d029d9822e2f439a423963531795f, type: 2}
+  Name: G3-3
+  NPC: {fileID: 11400000, guid: 228489777db15134ea8d7c0ffd2258b2, type: 2}
   Dialogue:
-  - "If regulation were innovation, we\u2019d have solved everything by now. Let
-    the market lead the cleanup, it has the tools, and the motive."
+  - "Mandating more births while nature\u2019s stretched thin? That\u2019s not freedom,
+    it\u2019s forced legacy."
   Effects:
-  - Type: 5
+  - Type: 6
     Value: 1
