@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: L1-1
   NPC: {fileID: 11400000, guid: d8178a16a4854524798a3a65f4393636, type: 2}
   Dialogue:
-  - Bussiness Overlord want bigger profit. Would you like to lower Corporate Taxes
+  - Bussiness overlords want bigger profit. Would you like to lower Corporate Taxes
     Further with 15%?
   Effects:
   - Type: 3
