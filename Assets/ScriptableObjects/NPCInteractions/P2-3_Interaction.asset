@@ -19,4 +19,4 @@ MonoBehaviour:
     has internet, electricity, and a few hours left after their double shift."
   Effects:
   - Type: 4
-    Value: 10
+    Value: 20
