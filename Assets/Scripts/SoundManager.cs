@@ -45,8 +45,8 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void Play(AudioClip clip)
+    public void Play(AudioClip clip, float volume = 1f)
     {
-        _src.PlayOneShot(clip);
+        _src.PlayOneShot(clip, volume);
     }
 }

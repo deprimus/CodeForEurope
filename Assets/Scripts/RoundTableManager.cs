@@ -71,7 +71,7 @@ public class RoundTableManager : MonoBehaviour
                     }
                 }
 
-                SoundManager.instance.Play(clip);
+                SoundManager.instance.Play(clip, 0.7f);
             }
 
             await UniTask.Delay(1500);
@@ -104,10 +104,10 @@ public class RoundTableManager : MonoBehaviour
                 break;
             }
 
-            case InteractionEffectType.Lefts:
-            case InteractionEffectType.Rights:
-            case InteractionEffectType.Libertarians:
-            case InteractionEffectType.Traditionalists:
+            case InteractionEffectType.AllLefts:
+            case InteractionEffectType.AllRights:
+            case InteractionEffectType.AllLibertarians:
+            case InteractionEffectType.AllTraditionalists:
             {
                 var orientation = InteractionEffectToOrientation(faction);
 
@@ -179,16 +179,16 @@ public class RoundTableManager : MonoBehaviour
     {
         switch (effect)
         {
-            case InteractionEffectType.Lefts:
+            case InteractionEffectType.AllLefts:
                 return FactionType.Left;
 
-            case InteractionEffectType.Rights:
+            case InteractionEffectType.AllRights:
                 return FactionType.Right;
 
-            case InteractionEffectType.Libertarians:
+            case InteractionEffectType.AllLibertarians:
                 return FactionType.Libertarian;
 
-            case InteractionEffectType.Traditionalists:
+            case InteractionEffectType.AllTraditionalists:
                 return FactionType.Traditionalist;
 
             default:

@@ -67,8 +67,10 @@ public class LibraryManager : MonoBehaviour
         Debug.Log(_interactions.Count);
         foreach (var interaction in _interactions)
         {
+            var verdict = interaction.Item2 ? "<color=#009f00>accepted</color>" : "<color=#9f0000>rejected</color>";
+
             var card = Instantiate(_cardPrefab, _cardsParent);
-            card.SetData(interaction.Item1.Name, interaction.Item1.Effects, interaction.Item2);
+            card.SetData(string.Format("{0}'s Proposal\n({1})", interaction.Item1.NPC.Name, verdict), interaction.Item1.Effects, interaction.Item2);
             _spawnedCards.Add(card);
         }
     }

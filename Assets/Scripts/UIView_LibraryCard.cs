@@ -92,15 +92,23 @@ public class UIView_LibraryCard : MonoBehaviour
         var str = "";
         foreach (var effect in effects)
         {
+            var color = "#000000";
+
             var value = _option ? effect.Value : -effect.Value;
+
+            if (_debunked)
+            {
+                color = value > 0 ? "#009f00" : "#9f0000";
+            }
+
             var valueStr = _debunked ? ((value > 0 ? "+" : "") + value) : "?";
             var typeStr = _debunked ? string.Concat(effect.Type.ToString().Select(x => char.IsUpper(x) ? (" " + x) : x.ToString())).TrimStart() : "?";
-            str += typeStr + ": " + valueStr + " Influence\n";
+            str += string.Format("<b>{0}:</b>\n<b><color={1}>{2}</color></b> Influence\n", typeStr, color, valueStr);
         }
 
         if (!_debunked)
         {
-            str += "(inform yourself first to debunk)";
+            str += "(inform yourself first)";
         }
 
         return str;

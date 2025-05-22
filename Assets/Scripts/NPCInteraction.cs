@@ -42,8 +42,8 @@ public enum InteractionEffectType
     ProgressistParty,
     LiberalParty,
 
-    Lefts,
-    Rights,
-    Libertarians,
-    Traditionalists
+    AllLefts,
+    AllRights,
+    AllLibertarians,
+    AllTraditionalists
 }
