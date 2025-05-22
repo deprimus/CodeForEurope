@@ -34,7 +34,12 @@ public class MenuPlay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         Transition.SweepOut();
 
-        Tale.Wait();
+        Tale.Scene();
+
+        Transition.SweepIn();
+        Tale.Advance();
+        Transition.SweepOut();
+
         Tale.Scene();
     }
 
