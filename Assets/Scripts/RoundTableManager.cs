@@ -77,7 +77,7 @@ public class RoundTableManager : MonoBehaviour
             await UniTask.Delay(1500);
         }
 
-        await UniTask.Delay(3000);
+        await UniTask.Delay(2000);
 
         GameManager.Instance.OnMoodBarsHidden();
     }
