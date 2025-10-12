@@ -24,6 +24,7 @@ using System.Linq;
 using DG.Tweening;
 public class RoundTableManager : MonoBehaviour
 {
+    [Foldout("References")] public Animator _cameraAnimator;
     [Foldout("Components")] public UIView_Law _lawView;
     [Foldout("Components")] public Faction[] _people;
     [Foldout("References")] public CanvasGroup _lawApproved;
@@ -34,6 +35,11 @@ public class RoundTableManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void SetCameraAnimation(string animation)
+    {
+        _cameraAnimator.Play(animation);
     }
 
     public void ShowLawCard()

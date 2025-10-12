@@ -65,9 +65,15 @@ public class GameManager : MonoBehaviour
             StateManager.Instance.SwitchState(State.RoundTable);
         });
 
+        Tale.Exec(() => RoundTableManager.Instance.SetCameraAnimation("before_transition"));
+
         Transition.SweepIn();
 
-        Tale.Wait();
+        Tale.Wait(0.55f);
+
+        Tale.Exec(() => RoundTableManager.Instance.SetCameraAnimation("transition"));
+
+        Tale.Wait(3);
 
         Tale.Exec(() => ShowNextLaw());
     }
