@@ -429,7 +429,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2643566418152534159, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
       propertyPath: m_Name
-      value: TaleMaster
+      value: Tale Master
       objectReference: {fileID: 0}
     - target: {fileID: 5260835105892539497, guid: 49db8656ba57940f6aa5468031dbfc3f, type: 3}
       propertyPath: m_LocalPosition.x

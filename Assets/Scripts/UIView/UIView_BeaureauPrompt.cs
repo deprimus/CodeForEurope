@@ -24,26 +24,6 @@ public class UIView_BeaureauPrompt : MonoBehaviour
         _buttonsCanvasGroup.alpha = 0;
     }
 
-    public async Task Show(Action<bool> onOptionPicked)
-    {
-        _onOptionPicked = onOptionPicked;
-
-        _canvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
-
-        await UniTask.Delay(250);
-
-        _title.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
-
-        await UniTask.Delay(100);
-
-        _buttonsCanvasGroup.DOFade(1, 0.33f).SetEase(Ease.OutCubic);
-
-        await UniTask.Delay(330);
-
-        _canvasGroup.blocksRaycasts = true;
-        _canvasGroup.interactable = true;
-    }
-
     public void PickOption(int option)
     {
         PickOptionAsync((option == 1));

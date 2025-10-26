@@ -68,21 +68,16 @@ public class BeaureauManager : MonoBehaviour
         _currentNPC = _npcs[0];
         _npcs.RemoveAt(0);
 
-        _currentNPC.BeginInteraction();
-    }
-
-    public void OnInteractionEnded()
-    {
         if (_currentNPC.Interaction.NPC.Orientations.Count > 1) // If the NPC is a faction NPC
         {
             var effects = GenerateRandomEffects();
             _lawManager.SetCurrentLawEffects(effects);
         }
 
-        _beaureauPrompt.Show(OnOptionPicked);
+        _currentNPC.BeginInteraction();
     }
 
-    private async void OnOptionPicked(bool option)
+    internal async void OnOptionPicked(bool option)
     {
         var effects = _currentNPC.Interaction.Effects;
 
