@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 5260835105892539497}
   - component: {fileID: 502679941047918246}
   m_Layer: 0
-  m_Name: TaleMaster
+  m_Name: Tale Master
   m_TagString: TaleMaster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
