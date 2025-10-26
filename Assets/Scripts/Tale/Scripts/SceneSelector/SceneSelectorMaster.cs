@@ -6,17 +6,21 @@ namespace TaleUtil.Scripts
 {
     public class SceneSelectorMaster : MonoBehaviour
     {
-        [SerializeField]
-        RectTransform sceneItemParent;
+        public RectTransform sceneItemParent;
 
-        [SerializeField]
-        GameObject sceneItemPrefab;
+        public GameObject sceneItemPrefab;
 
-        [SerializeField]
-        SceneSelectorScrollbar scrollbar;
+        public SceneSelectorScrollbar scrollbar;
 
         void Awake()
         {
+            if (!Tale.config.SCENE_SELECTOR_ENABLE)
+            {
+                Log.Warning("Scene Selector", "Scene selector is disabled, but somehow we got here; loading the next scene");
+                Tale.Scene();
+                return;
+            }
+
             var count = SceneManager.sceneCountInBuildSettings;
 
             var blacklist = Tale.config.SCENE_SELECTOR_BLACKLIST;
@@ -26,7 +30,7 @@ namespace TaleUtil.Scripts
                 var path = SceneUtility.GetScenePathByBuildIndex(i);
                 var name = System.IO.Path.GetFileNameWithoutExtension(path);
 
-                if (path == SceneManager.GetActiveScene().path || (blacklist != null && blacklist.Contains(Path.NormalizeAssetPath(path))))
+                if (path == SceneManager.GetActiveScene().path || (blacklist != null && blacklist.Contains(Path.NormalizeResourcePath(path))))
                 {
                     continue; // Ignore scene selector + blacklisted
                 }
@@ -44,10 +48,12 @@ namespace TaleUtil.Scripts
         {
             enabled = false;
 
-            Tale.Transition("Fade", Tale.TransitionType.OUT, 0.5f);
+            Tale.TransitionOut("Fade", 0.5f);
             Tale.Wait(0.5f);
             Tale.Scene(scene);
-            Tale.Transition("Fade", Tale.TransitionType.IN, 0.5f);
+
+            // Handled directly by each scene
+            //Tale.TransitionIn(0.5f);
         }
     }
 }

@@ -165,22 +165,6 @@ namespace TaleUtil
 
                 Console.WriteLine("---");
 
-                Console.WriteLine("Writing Transition.cs");
-
-                using (StreamWriter sw = new StreamWriter(System.IO.Path.Combine(workingDir, "Transition.cs")))
-                {
-                    sw.Write(@"using UnityEngine;
-
-public static class Transition {
-    public static TaleUtil.Action FadeIn(float duration = 1f) =>
-        Tale.Transition(""fade"", Tale.TransitionType.IN, duration);
-
-    public static TaleUtil.Action FadeOut(float duration = 1f) =>
-        Tale.Transition(""fade"", Tale.TransitionType.OUT, duration);
-}
-");
-                }
-
                 Console.WriteLine("Writing Dialog.cs");
 
                 using (StreamWriter sw = new StreamWriter(System.IO.Path.Combine(workingDir, "Dialog.cs")))
@@ -193,8 +177,8 @@ public static class Dialog {");
                     foreach (var character in characters)
                     {
                         sw.Write(string.Format(@"
-    public static TaleUtil.Action {0}(string what, string voice = null, bool additive = false, bool reverb = false) =>
-        Tale.Dialog(""{0}"", what, null, voice != null ? Path.Combine(""{0}"", voice) : null, voice != null && voice.ToLower().EndsWith(""loop""), additive, reverb);
+    public static TaleUtil.Action {0}(string what, string voice = null, bool additive = false, bool reverb = false, bool keepOpen = false, TaleUtil.Action action = null) =>
+        Tale.Dialog(""{0}"", what, null, voice != null ? Path.Combine(""{0}"", voice) : null, voice != null && voice.ToLower().EndsWith(""loop""), additive, reverb, keepOpen, action);
 ", character));
                     }
 
@@ -218,7 +202,7 @@ public static class Dialog {");
 public class {0} : MonoBehaviour {{
     void Awake() {{
         Tale.Wait();
-        Transition.FadeIn();
+        Tale.TransitionIn();
 ", scene));
             }
 
@@ -226,7 +210,7 @@ public class {0} : MonoBehaviour {{
             {
                 sw.Write(@"
         Tale.Wait();
-        Transition.FadeOut();
+        Tale.TransitionOut(""fade"");
         Tale.Scene();
     }
 }

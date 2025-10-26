@@ -16,7 +16,6 @@ public class MenuPlay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         text = GetComponent<TextMeshProUGUI>();
 
         Tale.Music.Play("Background", Tale.Music.PlayMode.LOOP, SettingsMaster.instance.musicVolume);
-        Tale.MagicFix();
         Transition.SweepIn();
         Tale.Exec(() => disable = false);
     }

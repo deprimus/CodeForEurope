@@ -38,6 +38,7 @@ public class TaleMaster : MonoBehaviour
         TaleUtil.Parallel.Init();
         TaleUtil.Triggers.Init();
         TaleUtil.Hooks.Init();
+        TaleUtil.Flags.Init();
         TaleUtil.Props.Init(props);
 
         // Events
@@ -73,7 +74,7 @@ public class TaleMaster : MonoBehaviour
     {
         string path = "SceneSelector";
 
-        if (SceneManager.GetSceneByPath(TaleUtil.Path.NormalizeAssetPath(TaleUtil.Config.Setup.ASSET_ROOT_SCENE, path)) == null)
+        if (SceneManager.GetSceneByPath(TaleUtil.Path.NormalizeResourcePath(TaleUtil.Config.Editor.ASSET_ROOT_SCENE, path)) == null)
         {
             return;
         }
@@ -175,6 +176,11 @@ public class TaleMaster : MonoBehaviour
 #endif
         public AudioSource[] audioSound;
 
+
+#if UNITY_EDITOR
+        [Header("Choice")]
+#endif
+        public TaleUtil.Props.ChoiceStyle[] choiceStyles;
 
 #if UNITY_EDITOR
         [Header("Cinematic")]

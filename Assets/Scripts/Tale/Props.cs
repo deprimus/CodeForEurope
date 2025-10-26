@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using TMPro;
+using System.Linq;
 
 #if UNITY_POST_PROCESSING_STACK_V2
 using UnityEngine.Rendering.PostProcessing;
@@ -12,43 +13,34 @@ namespace TaleUtil
 {
     public static class Props
     {
-        public static Props.Camera camera;
-        public static Props.Dialog dialog;
-        public static Props.Audio audio;
-        public static Props.Cinematic cinematic;
+        public static Transitions transitions;
+        public static Camera camera;
+        public static Dialog dialog;
+        public static Audio audio;
+        public static Choice choice;
+        public static Cinematic cinematic;
 
 #if UNITY_POST_PROCESSING_STACK_V2
-        public static Props.PostProcessing postProcessing;
+        public static PostProcessing postProcessing;
 #endif
 
         public static GameObject advanceCanvas;
 
-        public static Dictionary<string, TransitionData> transitions;
         public static Dictionary<string, Texture> cameraEffects;
 
         public static void Init(TaleMaster.InspectorProps props)
         {
             ReinitCamera();
 
+            transitions          = new Transitions(props.transitions);
             dialog               = new Dialog(props.dialogCanvas, props.dialogActor, props.dialogContent, props.dialogAvatar, props.dialogAnimator, props.dialogCtc, props.dialogActc);
             audio                = new Audio(props.audioGroup, props.audioSoundGroup, props.audioSound, props.audioMusic, props.audioVoice);
+            choice               = new Choice(props.choiceStyles);
             cinematic            = new Cinematic(props.cinematicCanvas, props.cinematicSubtitles, props.cinematicSubtitlesBackground, props.cinematicSubtitlesGroup);
             cinematic.background = new CinematicBackground(props.cinematicBackgroundGroupAnimator, props.cinematicBackground, props.cinematicBackgroundAlt);
             cinematic.video      = new CinematicVideo(props.cinematicVideoGroup, props.cinematicVideoPlayer, props.cinematicVideoAudioSource);
 
             advanceCanvas = props.advanceCanvas;
-
-            transitions = new Dictionary<string, TransitionData>();
-
-            for (int i = 0; i < props.transitions.Length; ++i)
-            {
-                if (props.transitions[i].data.canvas == null || props.transitions[i].data.animator == null)
-                    Warning(string.Format("Canvas or animator is null for transition '{0}'; the entry will be ignored", props.transitions[i].name));
-                else transitions[props.transitions[i].name.ToLowerInvariant()] = new TransitionData(props.transitions[i].data.canvas, props.transitions[i].data.animator);
-            }
-
-            if (props.transitions.Length != transitions.Count)
-                Warning("Two or more transitions with same name exist; in these cases, the last one is kept");
 
 #if UNITY_POST_PROCESSING_STACK_V2
             cameraEffects = new Dictionary<string, Texture>();
@@ -72,6 +64,11 @@ namespace TaleUtil
 
         public static void Reset()
         {
+            if (transitions != null)
+            {
+                transitions.Reset();
+            }
+
             if (dialog != null)
             {
                 dialog.Reset();
@@ -85,16 +82,6 @@ namespace TaleUtil
             if (cinematic != null)
             {
                 cinematic.Reset();
-            }
-
-            foreach (var t in transitions)
-            {
-                if (t.Value.canvas.activeSelf)
-                {
-                    Tale.Parallel(
-                        Tale.Transition(t.Key, Tale.TransitionType.IN, 0f)
-                    );
-                }
             }
         }
 
@@ -323,6 +310,47 @@ namespace TaleUtil
             }
         }
 
+        public class Choice
+        {
+            public Dictionary<string, GameObject> styles;
+
+            public Choice(ChoiceStyle[] styles)
+            {
+                this.styles = new Dictionary<string, GameObject>();
+
+                if (styles == null)
+                {
+                    return;
+                }
+
+                for (int i = 0; i < styles.Length; ++i)
+                {
+                    if (styles[i].obj == null)
+                    {
+                        Warning(string.Format("Object is null for choice style '{0}'; the entry will be ignored", styles[i].name));
+                    }
+                    else
+                    {
+                        var key = styles[i].name.ToLowerInvariant();
+
+                        if (this.styles.ContainsKey(key))
+                        {
+                            Warning("There are two choice styles with the name '{0}'; the last one will take precedence");
+                        }
+
+                        this.styles[styles[i].name.ToLowerInvariant()] = styles[i].obj;
+                    }
+                }
+            }
+        }
+
+        [System.Serializable]
+        public class ChoiceStyle
+        {
+            public string name;
+            public GameObject obj;
+        }
+
         public class Cinematic
         {
             public GameObject canvas;
@@ -539,6 +567,59 @@ namespace TaleUtil
             }
         }
 #endif
+        [System.Serializable]
+        public class Transitions
+        {
+            public Dictionary<string, TransitionData> entries;
+
+            // Tale.TransitionIn uses these
+            internal string lastName;
+            internal float lastDuration;
+
+            public Transitions(Transition[] transitions)
+            {
+                entries = new Dictionary<string, TransitionData>();
+
+                for (int i = 0; i < transitions.Length; ++i)
+                {
+                    if (transitions[i].data.canvas == null || transitions[i].data.animator == null)
+                    {
+                        Warning(string.Format("Canvas or animator is null for transition '{0}'; the entry will be ignored", transitions[i].name));
+                    }
+                    else
+                    {
+                        entries[transitions[i].name.ToLowerInvariant()] = new TransitionData(transitions[i].data.canvas, transitions[i].data.animator);
+                    }
+                }
+
+                if (transitions.Length != entries.Count)
+                {
+                    Warning("Two or more transitions with same name exist; in these cases, the last one is kept");
+                }
+
+                lastName = null;
+                lastDuration = Tale.Default.FLOAT;
+            }
+
+            public void Reset()
+            {
+                if (HasLastTransition())
+                {
+                    Tale.Parallel(Tale.TransitionIn(0f));
+                }
+            }
+
+            public void ResetLast()
+            {
+                lastName = null;
+                lastDuration = Tale.Default.FLOAT;
+            }
+
+            public bool HasLastTransition()
+            {
+                return !string.IsNullOrEmpty(lastName);
+            }
+        }
 
         [System.Serializable]
         public class Transition
