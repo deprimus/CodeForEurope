@@ -545,11 +545,11 @@ MonoBehaviour:
   _cameraAnimator: {fileID: 826628275}
   _lawView: {fileID: 1430848013}
   _people:
+  - {fileID: 344408253}
+  - {fileID: 1507836164}
   - {fileID: 1341023194}
   - {fileID: 883873723}
   - {fileID: 1300688557}
-  - {fileID: 344408253}
-  - {fileID: 1507836164}
   _lawApproved: {fileID: 1333037314}
   _lawRejected: {fileID: 814286449}
 --- !u!114 &344408253 stripped
