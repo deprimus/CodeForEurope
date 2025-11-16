@@ -66,6 +66,6 @@ public class SettingsMaster : MonoBehaviour
         musicVolumeSlider.value = vol;
         musicVolume = vol;
 
-        TaleUtil.Props.audio.music.volume = musicVolume;
+        Tale.Master.Props.audio.music.volume = musicVolume;
     }
 }

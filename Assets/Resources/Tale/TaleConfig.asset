@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64da09f489388a347849f9e5742a81ea, type: 3}
+  m_Name: TaleConfig
+  m_EditorClassIdentifier: Tale::TaleUtil.Config
+  Core:
+    APPLICATION_RUN_IN_BACKGROUND: 1
+    ACTION_POOL_MAX_CAPACITY: 4096
+    QUEUE_BASE_CAPACITY: 64
+    QUEUE_VACUUM: 1
+    QUEUE_VACUUM_CAPACITY: 8192
+    QUEUE_VACUUM_FACTOR: 4
+    PARALLEL_BASE_CAPACITY: 64
+    PARALLEL_VACUUM: 1
+    PARALLEL_VACUUM_CAPACITY: 8192
+    PARALLEL_VACUUM_FACTOR: 4
+  Dialog:
+    CPS: 50
+    FADE_FACTOR: 5
+    ADDITIVE_SEPARATOR: ' '
+    KEY_NEXT: 0d0000000f0100001301000020000000
+    KEY_SKIP: 306
+    KEY_AUTO: 283
+    AUTO_DELAY: 1
+    CTC_OVERRIDE_ALIGNMENT: 0
+    CTC_ADDITIVE_ALIGNMENT: 0
+    CTC_OVERRIDE_OFFSET: {x: 48, y: 0}
+    CTC_ADDITIVE_OFFSET: {x: 48, y: 0}
+    ANIMATION_IN_MODE: 2
+    ANIMATION_OUT_MODE: 2
+  Transitions:
+    SKIP_SPEED: 100
+    INSTANT_SPEED: 1000
+  Cinematic:
+    SUBTITLE_BACKGROUND_PADDING: {x: 5, y: 5}
+    SUBTITLE_CPS: 50
+  AssetRoots:
+    AUDIO_SOUND: Audio/Sound/
+    AUDIO_MUSIC: Audio/Music/
+    AUDIO_VOICE: Audio/Voice/
+    CINEMATIC_BACKGROUND: Cinematic/Backgrounds
+    CINEMATIC_VIDEO: Cinematic/Video
+  SceneSelector:
+    ENABLE: 1
+    KEY: 293
+    BLACKLIST: []
+  Debug:
+    INFO_ENABLE: 1
+    INFO_KEY: 284
+    SHOW_INFO_BY_DEFAULT: 0
+    INFO_TEXT_COLOR_PRIMARY: {r: 1, g: 1, b: 1, a: 1}
+    INFO_TEXT_COLOR_SECONDARY: {r: 0.59, g: 1, b: 0.59, a: 1}
+    INFO_ACCENT_COLOR_PRIMARY: {r: 1, g: 1, b: 0, a: 1}
+    INFO_ACCENT_COLOR_SECONDARY: {r: 0, g: 1, b: 1, a: 1}

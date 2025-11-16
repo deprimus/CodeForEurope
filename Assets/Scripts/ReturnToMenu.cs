@@ -21,9 +21,8 @@ public class ReturnToMenu : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         SettingsMaster.instance.Toggle();
 
         // TODO: this is a hack and doesn't get rid of the old props which still exist
+        Tale.Master.Props.audio.music.Stop();
         DestroyImmediate(GameObject.FindAnyObjectByType<TaleMaster>());
-        Tale.alive = false;
-        TaleUtil.Props.audio.music.Stop();
         SceneManager.LoadScene("Scenes/MainMenu");
     }
 
