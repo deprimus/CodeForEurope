@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efebce0073c54cd42a137129671e03e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpriteManager
-  emoteHeart: {fileID: 21300000, guid: 2d2332dbd538949f6a613655cfdb908b, type: 3}
-  emoteAngry: {fileID: 21300000, guid: 7897787c0373042a0b63f22f45c5766e, type: 3}
+  emoteHeart: {fileID: 21300000, guid: b8af701a898274b6ab89b94474b61d27, type: 3}
+  emoteAngry: {fileID: 21300000, guid: 972f54c37882641138b3b428bae2f24f, type: 3}
