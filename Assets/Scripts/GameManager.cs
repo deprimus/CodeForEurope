@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         await UniTask.Delay(500);
 
-        StartGame();
+        //StartGame();
     }
 
     public void StartGame()
