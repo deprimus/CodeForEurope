@@ -1,27 +1,9 @@
-// -----------------------------------------------------------------------------
-// UIView_BeaureauLaw.cs
-//
-// MonoBehaviour for displaying law details and effects in the Bureau (Office) UI.
-// Updates UI elements with the current law's title, description, and effects on factions.
-// Listens for law effect changes and updates the display accordingly.
-//
-// Main Functions:
-// - SetEffect(List<LawEffect> effects): Updates the UI with the current law's effects.
-// - ShowLaw(): Shows the law details panel.
-// - HideLaw(): Hides the law details panel.
-//
-// Fields:
-// - _title, _description, _effect: UI text fields for law info.
-// - _layout: Layout container for UI updates.
-// - _openLawButton: Button to open the law panel.
-// - _lawManager: Reference to the LawManager for effect updates.
-// -----------------------------------------------------------------------------
-
 using UnityEngine;
 using NaughtyAttributes;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
+
 public class UIView_BeaureauLaw : MonoBehaviour
 {
     [Foldout("Components")] public TextMeshProUGUI _title;
@@ -29,10 +11,13 @@ public class UIView_BeaureauLaw : MonoBehaviour
     [Foldout("Components")] public TextMeshProUGUI _effect;
     [Foldout("Components")] public RectTransform _layout;
     [Foldout("References")] public GameObject _openLawButton;
-    [Foldout("References")] public LawManager _lawManager;
+
+    private LawManager _lawManager;
 
     private void OnEnable()
     {
+        _lawManager = GameDatabase.Instance.LawManager;
+
         var currentLaw = GameManager.Instance.CurrentLaw;
         _title.text = currentLaw.Name;
         _description.text = currentLaw.Description;
@@ -43,7 +28,8 @@ public class UIView_BeaureauLaw : MonoBehaviour
 
     private void OnDisable()
     {
-        _lawManager.OnLawEffectsChanged -= OnLawEffectsChanged;
+        if (_lawManager != null)
+            _lawManager.OnLawEffectsChanged -= OnLawEffectsChanged;
     }
 
     private void OnLawEffectsChanged()

@@ -1,23 +1,13 @@
-// -----------------------------------------------------------------------------
-// NPCManager.cs
-//
-// ScriptableObject that manages all NPC interactions in the game.
-// Stores a list of all NPCInteraction assets and provides methods to retrieve them for gameplay.
-//
-// Main Functions:
-// - PickNPCs(): Returns the list of NPC interactions relevant to the current law.
-//
-// Fields:
-// - NPCInteractions: List of all NPCInteraction assets in the project.
-// -----------------------------------------------------------------------------
-
 using System.Collections.Generic;
-using UnityEngine;
 
-[CreateAssetMenu(fileName = "NPCManager", menuName = "Game/NPCManager")]
-public class NPCManager : ScriptableObject
+public class NPCManager
 {
-    public List<NPCInteraction> NPCInteractions = new List<NPCInteraction>();
+    public List<NPCInteraction> NPCInteractions { get; private set; }
+
+    public NPCManager(List<NPCInteraction> interactions)
+    {
+        NPCInteractions = new List<NPCInteraction>(interactions);
+    }
 
     public List<NPCInteraction> PickNPCs()
     {

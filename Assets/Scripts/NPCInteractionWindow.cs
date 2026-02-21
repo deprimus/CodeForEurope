@@ -1,29 +1,19 @@
-// -----------------------------------------------------------------------------
-// NPCInteractionWindow.cs
-//
-// Unity Editor window for creating and managing NPC interactions (dialogue trees, choices, and effects).
-// Allows designers to author dialogue, set up branching outcomes, and link interactions to NPCs.
-//
-// Main Functions:
-// - ShowWindow(): Opens the NPC Interaction Creator window in the Unity Editor.
-// - OnGUI(): Main UI for creating/editing interactions, dialogue, and effects.
-// - LoadNPCManager(): Loads the NPCManager asset for storing interactions.
-// - SaveInteraction(): Saves a new or edited interaction as a ScriptableObject.
-// -----------------------------------------------------------------------------
-
-using System.Collections.Generic;
-using UnityEngine;
-
 #if UNITY_EDITOR
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEditor;
 
 public class NPCInteractionWindow : EditorWindow
 {
     private string interactionName;
-    private NPC selectedNPC;
+    private int selectedNPCIndex;
     private List<string> dialogueText = new List<string>();
-    private List<InteractionEffect> effects = new List<InteractionEffect>();
-    private NPCManager npcManager;
+    private List<InteractionEffectJson> effects = new List<InteractionEffectJson>();
+
+    private GameDatabaseRoot _database;
+    private Vector2 scrollPosition;
+    private string searchQuery = "";
 
     [MenuItem("Game/NPC Interaction Creator")]
     public static void ShowWindow()
@@ -31,22 +21,40 @@ public class NPCInteractionWindow : EditorWindow
         GetWindow<NPCInteractionWindow>("NPC Interaction Creator");
     }
 
-    private Vector2 scrollPosition;
-    private string searchQuery = "";
+    private void OnEnable()
+    {
+        _database = GameDatabaseJsonIO.Load();
+    }
 
     private void OnGUI()
     {
+        if (_database == null)
+        {
+            EditorGUILayout.LabelField("No game_database.json found. Use Game > Export ScriptableObjects to JSON first.");
+            if (GUILayout.Button("Reload"))
+                _database = GameDatabaseJsonIO.Load();
+            return;
+        }
+
         GUILayout.Label("Create a new NPC Interaction", EditorStyles.boldLabel);
 
         interactionName = EditorGUILayout.TextField("Interaction Name", interactionName);
-        selectedNPC = (NPC)EditorGUILayout.ObjectField("NPC", selectedNPC, typeof(NPC), false);
+
+        var npcNames = _database.npcs.Select(n => n.id).ToArray();
+        if (npcNames.Length > 0)
+        {
+            selectedNPCIndex = Mathf.Clamp(selectedNPCIndex, 0, npcNames.Length - 1);
+            selectedNPCIndex = EditorGUILayout.Popup("NPC", selectedNPCIndex, npcNames);
+        }
+        else
+        {
+            EditorGUILayout.LabelField("No NPCs defined yet.");
+        }
 
         GUILayout.Space(16);
 
         if (GUILayout.Button("Add Dialogue Line"))
-        {
             dialogueText.Add("");
-        }
 
         for (int i = 0; i < dialogueText.Count; i++)
         {
@@ -61,19 +69,16 @@ public class NPCInteractionWindow : EditorWindow
         }
 
         GUILayout.Space(16);
-
         GUILayout.Label("Effects", EditorStyles.boldLabel);
 
         if (GUILayout.Button("Add Effect"))
-        {
-            effects.Add(new InteractionEffect());
-        }
+            effects.Add(new InteractionEffectJson());
 
         for (int i = 0; i < effects.Count; i++)
         {
             EditorGUILayout.BeginHorizontal();
-            effects[i].Type = (InteractionEffectType)EditorGUILayout.EnumPopup("Effect Type", effects[i].Type);
-            effects[i].Value = EditorGUILayout.IntField("Value", effects[i].Value);
+            effects[i].type = (int)(InteractionEffectType)EditorGUILayout.EnumPopup("Effect Type", (InteractionEffectType)effects[i].type);
+            effects[i].value = EditorGUILayout.IntField("Value", effects[i].value);
             if (GUILayout.Button("Delete", GUILayout.Width(100)))
             {
                 effects.RemoveAt(i);
@@ -86,18 +91,25 @@ public class NPCInteractionWindow : EditorWindow
 
         if (GUILayout.Button("Save Interaction"))
         {
-            if (selectedNPC != null && dialogueText.Count > 0)
+            if (npcNames.Length > 0 && dialogueText.Count > 0 && !string.IsNullOrEmpty(interactionName))
             {
-                SaveInteraction();
+                _database.interactions.Add(new InteractionJson
+                {
+                    name = interactionName,
+                    npcId = npcNames[selectedNPCIndex],
+                    dialogue = new List<string>(dialogueText),
+                    effects = effects.Select(e => new InteractionEffectJson { type = e.type, value = e.value }).ToList()
+                });
 
-                selectedNPC = null;
-                dialogueText = new List<string>();
-                effects = new List<InteractionEffect>();
+                GameDatabaseJsonIO.Save(_database);
+
                 interactionName = "";
+                dialogueText = new List<string>();
+                effects = new List<InteractionEffectJson>();
             }
             else
             {
-                Debug.LogError("NPC and Dialogue must be set.");
+                Debug.LogError("Name, NPC, and at least one Dialogue line are required.");
             }
         }
 
@@ -109,161 +121,106 @@ public class NPCInteractionWindow : EditorWindow
         GUILayout.Label("NPC Interactions", EditorStyles.boldLabel);
         scrollPosition = GUILayout.BeginScrollView(scrollPosition);
 
-        if (npcManager != null)
+        for (int i = 0; i < _database.interactions.Count; i++)
         {
-            for (int i = 0; i < npcManager.NPCInteractions.Count; i++)
+            var interaction = _database.interactions[i];
+            if (!string.IsNullOrEmpty(searchQuery) && !interaction.npcId.ToLower().Contains(searchQuery.ToLower())
+                && !interaction.name.ToLower().Contains(searchQuery.ToLower()))
+                continue;
+
+            EditorGUILayout.BeginVertical("box");
+            EditorGUILayout.LabelField("NPC: " + interaction.npcId);
+
+            string newName = EditorGUILayout.TextField("Interaction Name", interaction.name);
+            if (newName != interaction.name)
             {
-                var interaction = npcManager.NPCInteractions[i];
-                if (string.IsNullOrEmpty(searchQuery) || interaction.NPC.Name.ToLower().Contains(searchQuery.ToLower()))
+                var oldName = interaction.name;
+                interaction.name = newName;
+
+                foreach (var law in _database.laws)
                 {
-                    EditorGUILayout.BeginVertical("box");
-                    EditorGUILayout.LabelField("NPC: " + interaction.NPC.Name);
-                    string newName = EditorGUILayout.TextField("Interaction Name", interaction.Name);
-                    if (newName != interaction.Name)
+                    for (int li = 0; li < law.interactionNames.Count; li++)
                     {
-                        interaction.Name = newName;
-                        EditorUtility.SetDirty(npcManager);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
+                        if (law.interactionNames[li] == oldName)
+                            law.interactionNames[li] = newName;
                     }
-
-                    GUILayout.Space(16);
-
-                    if (GUILayout.Button("Add Dialogue Line"))
-                    {
-                        interaction.Dialogue.Add("");
-                        EditorUtility.SetDirty(npcManager);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-
-                    GUILayout.Space(16);
-
-                    for (int j = 0; j < interaction.Dialogue.Count; j++)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        string newDialogue = EditorGUILayout.TextField($"Dialogue {j + 1}", interaction.Dialogue[j]);
-                        if (newDialogue != interaction.Dialogue[j])
-                        {
-                            interaction.Dialogue[j] = newDialogue;
-                            EditorUtility.SetDirty(npcManager);
-                            AssetDatabase.SaveAssets();
-                            AssetDatabase.Refresh();
-                        }
-                        if (GUILayout.Button("Delete", GUILayout.Width(100)))
-                        {
-                            interaction.Dialogue.RemoveAt(j);
-                            EditorUtility.SetDirty(npcManager);
-                            AssetDatabase.SaveAssets();
-                            AssetDatabase.Refresh();
-                        }
-                        EditorGUILayout.EndHorizontal();
-                    }
-
-                    GUILayout.Space(16);
-
-                    if (GUILayout.Button("Add Effect"))
-                    {
-                        interaction.Effects.Add(new InteractionEffect());
-                        EditorUtility.SetDirty(npcManager);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-
-                    GUILayout.Space(16);
-
-                    for (int k = 0; k < interaction.Effects.Count; k++)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        InteractionEffectType newType = (InteractionEffectType)EditorGUILayout.EnumPopup("Effect Type", interaction.Effects[k].Type);
-                        if (newType != interaction.Effects[k].Type)
-                        {
-                            interaction.Effects[k].Type = newType;
-                            EditorUtility.SetDirty(npcManager);
-                            AssetDatabase.SaveAssets();
-                            AssetDatabase.Refresh();
-                        }
-                        int newValue = EditorGUILayout.IntField("Effect Value", interaction.Effects[k].Value);
-                        if (newValue != interaction.Effects[k].Value)
-                        {
-                            interaction.Effects[k].Value = newValue;
-                            EditorUtility.SetDirty(npcManager);
-                            AssetDatabase.SaveAssets();
-                            AssetDatabase.Refresh();
-                        }
-                        if (GUILayout.Button("Delete Effect", GUILayout.Width(100)))
-                        {
-                            interaction.Effects.RemoveAt(k);
-                            EditorUtility.SetDirty(npcManager);
-                            AssetDatabase.SaveAssets();
-                            AssetDatabase.Refresh();
-                        }
-                        EditorGUILayout.EndHorizontal();
-                    }
-
-                    GUILayout.Space(16);
-
-                    if (GUILayout.Button("Delete Interaction"))
-                    {
-                        npcManager.NPCInteractions.Remove(interaction);
-                        AssetDatabase.DeleteAsset(AssetDatabase.GetAssetPath(interaction));
-                        EditorUtility.SetDirty(npcManager);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-                    EditorGUILayout.EndVertical();
                 }
+
+                GameDatabaseJsonIO.Save(_database);
             }
-        }
-        else
-        {
-            LoadNPCManager();
+
+            GUILayout.Space(8);
+
+            if (GUILayout.Button("Add Dialogue Line"))
+            {
+                interaction.dialogue.Add("");
+                GameDatabaseJsonIO.Save(_database);
+            }
+
+            for (int j = 0; j < interaction.dialogue.Count; j++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                string newDialogue = EditorGUILayout.TextField($"Dialogue {j + 1}", interaction.dialogue[j]);
+                if (newDialogue != interaction.dialogue[j])
+                {
+                    interaction.dialogue[j] = newDialogue;
+                    GameDatabaseJsonIO.Save(_database);
+                }
+                if (GUILayout.Button("Delete", GUILayout.Width(100)))
+                {
+                    interaction.dialogue.RemoveAt(j);
+                    GameDatabaseJsonIO.Save(_database);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+
+            GUILayout.Space(8);
+            GUILayout.Label("Effects", EditorStyles.boldLabel);
+
+            if (GUILayout.Button("Add Effect"))
+            {
+                interaction.effects.Add(new InteractionEffectJson());
+                GameDatabaseJsonIO.Save(_database);
+            }
+
+            for (int k = 0; k < interaction.effects.Count; k++)
+            {
+                EditorGUILayout.BeginHorizontal();
+                var newType = (int)(InteractionEffectType)EditorGUILayout.EnumPopup("Effect Type", (InteractionEffectType)interaction.effects[k].type);
+                if (newType != interaction.effects[k].type)
+                {
+                    interaction.effects[k].type = newType;
+                    GameDatabaseJsonIO.Save(_database);
+                }
+                int newValue = EditorGUILayout.IntField("Value", interaction.effects[k].value);
+                if (newValue != interaction.effects[k].value)
+                {
+                    interaction.effects[k].value = newValue;
+                    GameDatabaseJsonIO.Save(_database);
+                }
+                if (GUILayout.Button("Delete", GUILayout.Width(100)))
+                {
+                    interaction.effects.RemoveAt(k);
+                    GameDatabaseJsonIO.Save(_database);
+                }
+                EditorGUILayout.EndHorizontal();
+            }
+
+            GUILayout.Space(8);
+
+            if (GUILayout.Button("Delete Interaction"))
+            {
+                foreach (var law in _database.laws)
+                    law.interactionNames.Remove(interaction.name);
+
+                _database.interactions.RemoveAt(i);
+                GameDatabaseJsonIO.Save(_database);
+            }
+
+            EditorGUILayout.EndVertical();
         }
 
         GUILayout.EndScrollView();
-    }
-
-    private void LoadNPCManager()
-    {
-        string[] guids = AssetDatabase.FindAssets("t:NPCManager");
-        if (guids.Length > 0)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-            npcManager = AssetDatabase.LoadAssetAtPath<NPCManager>(path);
-        }
-        else
-        {
-            Debug.LogError("NPCManager asset not found.");
-        }
-    }
-
-    private void SaveInteraction()
-    {
-        string[] guids = AssetDatabase.FindAssets("t:NPCManager");
-        if (guids.Length > 0)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-            npcManager = AssetDatabase.LoadAssetAtPath<NPCManager>(path);
-        }
-        else
-        {
-            Debug.LogError("NPCManager asset not found.");
-            return;
-        }
-
-        NPCInteraction newInteraction = ScriptableObject.CreateInstance<NPCInteraction>();
-        newInteraction.Name = interactionName;
-        newInteraction.NPC = selectedNPC;
-        newInteraction.Dialogue = new List<string>(dialogueText);
-        newInteraction.Effects = new List<InteractionEffect>(effects);
-
-        AssetDatabase.CreateAsset(newInteraction, $"Assets/ScriptableObjects/NPCInteractions/{interactionName}_Interaction.asset");
-        AssetDatabase.SaveAssets();
-
-        npcManager.NPCInteractions.Add(newInteraction);
-        EditorUtility.SetDirty(npcManager);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
     }
 }
 #endif
