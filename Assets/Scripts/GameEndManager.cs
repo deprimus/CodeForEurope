@@ -1,3 +1,18 @@
+// -----------------------------------------------------------------------------
+// GameEndManager.cs
+//
+// Handles the end-of-game sequence, displaying the appropriate ending based on player choices and faction outcomes.
+// Manages the end screen UI and transitions.
+//
+// Main Functions:
+// - ShowGameEnd(): Displays the game end screen and triggers transitions.
+//
+// Fields:
+// - _canvasGroup: UI group for fade-in/out.
+// - _ending: Image for the ending illustration.
+// - traditionalistEnd, leftEnd, rightEnd, libertarianEnd, harmonyEnd: Sprites for each ending.
+// -----------------------------------------------------------------------------
+
 using NaughtyAttributes;
 using UnityEngine;
 using DG.Tweening;

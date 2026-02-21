@@ -18,7 +18,7 @@ namespace TaleUtil
             string filename = path.Replace('/', '_');
             filename = System.IO.Path.GetFileNameWithoutExtension(filename);
 
-            return System.IO.Path.Combine("Assets/Resources", Config.Setup.ASSET_ROOT_SCENE_THUMBNAIL, filename).Replace('\\', '/');
+            return System.IO.Path.Combine(Config.Editor.RESOURCE_ROOT_SCENE_THUMBNAIL, filename + ".png").Replace('\\', '/');
         }
 
 #if UNITY_EDITOR
@@ -54,8 +54,8 @@ namespace TaleUtil
 
             string path = GetThumbnailPathForScenePath(SceneManager.GetActiveScene().path);
 
-            int width = Config.Setup.SCENE_THUMBNAIL_WIDTH;
-            int height = Config.Setup.SCENE_THUMBNAIL_HEIGHT;
+            int width = Config.Editor.SCENE_THUMBNAIL_WIDTH;
+            int height = Config.Editor.SCENE_THUMBNAIL_HEIGHT;
 
             RenderTexture captured = new RenderTexture(Screen.width, Screen.height, 24);
 
@@ -71,7 +71,9 @@ namespace TaleUtil
             switch (SystemInfo.graphicsDeviceType)
             {
                 case GraphicsDeviceType.OpenGLCore:
+#if !UNITY_2023_1_OR_NEWER
                 case GraphicsDeviceType.OpenGLES2:
+#endif
                 case GraphicsDeviceType.OpenGLES3:
                 case GraphicsDeviceType.Vulkan:
                     break;
@@ -96,7 +98,7 @@ namespace TaleUtil
 
             RenderTexture.active = backup;
 
-            File.WriteAllBytes(path + ".png", texture.EncodeToPNG());
+            File.WriteAllBytes(path, texture.EncodeToPNG());
 
             DestroyImmediate(texture);
             resized.Release();
@@ -112,5 +114,5 @@ namespace TaleUtil
             task.SetResult(true);
         }
 #endif
-    }
+            }
 }

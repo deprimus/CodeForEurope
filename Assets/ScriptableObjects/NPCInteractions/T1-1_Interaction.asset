@@ -18,6 +18,6 @@ MonoBehaviour:
   - Would you like to implement temporary restrictions for anti-nationalist media?
   Effects:
   - Type: 7
-    Value: 2
+    Value: 25
   - Type: 4
-    Value: 2
+    Value: 10

@@ -1,3 +1,21 @@
+// -----------------------------------------------------------------------------
+// RoundTableManager.cs
+//
+// Controls the round table scene, showing law cards, managing faction moods, and handling voting and influence mechanics.
+// Coordinates with GameManager and LawManager to update the game state based on player and NPC actions.
+//
+// Main Functions:
+// - ShowLawCard(): Displays the current law card in the UI.
+// - ShowMoodBars(): Animates and displays faction mood bars.
+// - Influence(): Applies influence to a faction based on interaction effects.
+// - VoteLaw(): Handles the law voting process.
+//
+// Fields:
+// - _lawView: UI component for law display.
+// - _people: Array of faction representatives.
+// - _lawApproved, _lawRejected: UI elements for law outcomes.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using NaughtyAttributes;
 using System.Threading.Tasks;
@@ -6,6 +24,7 @@ using System.Linq;
 using DG.Tweening;
 public class RoundTableManager : MonoBehaviour
 {
+    [Foldout("References")] public Animator _cameraAnimator;
     [Foldout("Components")] public UIView_Law _lawView;
     [Foldout("Components")] public Faction[] _people;
     [Foldout("References")] public CanvasGroup _lawApproved;
@@ -16,6 +35,11 @@ public class RoundTableManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    public void SetCameraAnimation(string animation)
+    {
+        _cameraAnimator.Play(animation);
     }
 
     public void ShowLawCard()
@@ -53,13 +77,13 @@ public class RoundTableManager : MonoBehaviour
                     }
                 }
 
-                SoundManager.instance.Play(clip);
+                SoundManager.instance.Play(clip, 0.7f);
             }
 
             await UniTask.Delay(1500);
         }
 
-        await UniTask.Delay(3000);
+        await UniTask.Delay(2000);
 
         GameManager.Instance.OnMoodBarsHidden();
     }
@@ -86,10 +110,10 @@ public class RoundTableManager : MonoBehaviour
                 break;
             }
 
-            case InteractionEffectType.Lefts:
-            case InteractionEffectType.Rights:
-            case InteractionEffectType.Libertarians:
-            case InteractionEffectType.Traditionalists:
+            case InteractionEffectType.AllLefts:
+            case InteractionEffectType.AllRights:
+            case InteractionEffectType.AllLibertarians:
+            case InteractionEffectType.AllTraditionalists:
             {
                 var orientation = InteractionEffectToOrientation(faction);
 
@@ -161,16 +185,16 @@ public class RoundTableManager : MonoBehaviour
     {
         switch (effect)
         {
-            case InteractionEffectType.Lefts:
+            case InteractionEffectType.AllLefts:
                 return FactionType.Left;
 
-            case InteractionEffectType.Rights:
+            case InteractionEffectType.AllRights:
                 return FactionType.Right;
 
-            case InteractionEffectType.Libertarians:
+            case InteractionEffectType.AllLibertarians:
                 return FactionType.Libertarian;
 
-            case InteractionEffectType.Traditionalists:
+            case InteractionEffectType.AllTraditionalists:
                 return FactionType.Traditionalist;
 
             default:

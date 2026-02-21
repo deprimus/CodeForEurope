@@ -18,4 +18,4 @@ MonoBehaviour:
   - "This law ignores the massive ecological footprint of data storage and processing.\_"
   Effects:
   - Type: 4
-    Value: 1
+    Value: 10

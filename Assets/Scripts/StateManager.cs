@@ -1,3 +1,17 @@
+// -----------------------------------------------------------------------------
+// StateManager.cs
+//
+// Controls scene transitions and the current state of the game (e.g., RoundTable, Bureau, Library, GameEnd).
+// Provides methods to switch between scenes and manage the active state.
+//
+// Main Functions:
+// - SwitchState(State newState): Changes the active scene/state.
+//
+// Fields:
+// - _scenes: Array of GameObjects representing each scene.
+// - _currentState: The current game state.
+// -----------------------------------------------------------------------------
+
 using NaughtyAttributes;
 using UnityEngine;
 

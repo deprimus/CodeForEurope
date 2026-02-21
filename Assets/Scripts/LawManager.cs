@@ -1,3 +1,19 @@
+// -----------------------------------------------------------------------------
+// LawManager.cs
+//
+// ScriptableObject for managing all laws and their effects in the game.
+// Handles initialization, selection, and updating of laws and their effects on factions.
+//
+// Main Functions:
+// - Initialize(): Loads laws from game data.
+// - SetCurrentLawEffects(): Sets and broadcasts the current law's effects.
+// - PickLaw(): Randomly selects a law for the current round.
+//
+// Fields:
+// - _gameData: Reference to the main game data asset.
+// - CurrentLawEffects: List of effects for the current law.
+// -----------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;

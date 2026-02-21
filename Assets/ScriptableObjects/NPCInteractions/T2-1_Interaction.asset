@@ -19,6 +19,6 @@ MonoBehaviour:
     systems.
   Effects:
   - Type: 7
-    Value: 2
+    Value: 30
   - Type: 4
-    Value: 2
+    Value: 10

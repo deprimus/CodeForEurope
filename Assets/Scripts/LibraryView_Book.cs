@@ -6,6 +6,8 @@ using NaughtyAttributes;
 public class LibraryView_Book : MonoBehaviour
 {
     [Foldout("References")] public Transform _target;
+    [Foldout("References")] public GameObject _text;
+    [Foldout("References")] public GameObject _arrow;
 
     private Vector3 _originalPosition;
     private Quaternion _originalRotation;
@@ -18,9 +20,15 @@ public class LibraryView_Book : MonoBehaviour
         _originalRotation = transform.rotation;
     }
 
+    private void OnEnable()
+    {
+        _text.SetActive(true);
+        _arrow.SetActive(true);
+    }
+
     private void OnMouseDown()
     {
-        if (_isBeingUsed)
+        if (_isBeingUsed || !_text.activeSelf)
             return;
 
         UseBook();
@@ -28,6 +36,9 @@ public class LibraryView_Book : MonoBehaviour
 
     private async void UseBook()
     {
+        _text.SetActive(false);
+        _arrow.SetActive(false);
+
         _isBeingUsed = true;
         transform.DOMove(_target.position, 0.5f).SetEase(Ease.OutCubic);
         transform.DORotate(_target.rotation.eulerAngles, 0.5f).SetEase(Ease.OutCubic);

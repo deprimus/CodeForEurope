@@ -1,0 +1,24 @@
+---
+globs: **/*.cs
+alwaysApply: false
+---
+
+- do not use "private" unless absolutely necessary, since classes and fields are by default private
+- prefer to use [SerializeField] instead of public variables, if able
+- do not spam unnecessary comments or documentation
+- always use braces, even if there is a single line following the statement
+- always use var where possible
+- if you need a component attached to the current object, create a field that will hold a reference to it, and initialize it in Awake via GetComponent
+- avoid IEnumerable and yield at all costs; instead, use async and tasks as much as possible
+- braces are always placed on the same line, like this:
+
+if (...) {
+    ....
+}
+
+and NOT this:
+
+if (...)
+{
+    ...
+}

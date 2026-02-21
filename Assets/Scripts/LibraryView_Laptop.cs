@@ -5,6 +5,8 @@ using Cysharp.Threading.Tasks;
 public class LibraryView_Laptop : MonoBehaviour
 {
     [Foldout("References")] public Transform _target;
+    [Foldout("References")] public GameObject _text;
+    [Foldout("References")] public GameObject _arrow;
 
     private Vector3 _originalPosition;
     private Quaternion _originalRotation;
@@ -17,9 +19,15 @@ public class LibraryView_Laptop : MonoBehaviour
         _originalRotation = transform.rotation;
     }
 
+    private void OnEnable()
+    {
+        _text.SetActive(true);
+        _arrow.SetActive(true);
+    }
+
     private void OnMouseDown()
     {
-        if (_isBeingUsed)
+        if (_isBeingUsed || !_text.activeSelf)
             return;
 
         UseLaptop();
@@ -27,6 +35,9 @@ public class LibraryView_Laptop : MonoBehaviour
 
     private async void UseLaptop()
     {
+        _text.SetActive(false);
+        _arrow.SetActive(false);
+
         _isBeingUsed = true;
         transform.DOMove(_target.position, 0.5f).SetEase(Ease.OutCubic);
         transform.DORotate(_target.rotation.eulerAngles, 0.5f).SetEase(Ease.OutCubic);

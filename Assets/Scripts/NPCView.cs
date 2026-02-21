@@ -1,3 +1,23 @@
+// -----------------------------------------------------------------------------
+// NPCView.cs
+//
+// MonoBehaviour for handling the in-game visual representation and behavior of NPCs.
+// Manages NPC movement, scaling, rotation, and dialogue presentation during interactions.
+// Integrates with the Tale utility for dialogue and prop manipulation.
+//
+// Main Functions:
+// - Initialize(NPCInteraction, Vector3, Vector3): Sets up the NPC for interaction.
+// - BeginInteraction(): Starts the NPC's approach and dialogue sequence.
+// - OnChoicePicked(): Handles NPC's reaction and exit after a player choice.
+// - MoveTo(), Scale(), Rotate(): Animate NPC movement and appearance.
+//
+// Fields:
+// - _interaction: The current NPCInteraction.
+// - _dialogue: Dialogue lines for the interaction.
+// - _spawnPoint, _arrivalPoint: Positions for NPC movement.
+// - _animator: Animator component for NPC animations.
+// -----------------------------------------------------------------------------
+
 using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
@@ -56,15 +76,19 @@ public class NPCView : MonoBehaviour
 
         await Task.Delay(250);
 
-        foreach (var dialogue in _dialogue)
+        for (int i = 0; i < _dialogue.Count; ++i)
         {
-            Tale.Dialog(_interaction.NPC.Name, dialogue, null, "loop", true);
-        }
+            TaleUtil.Action choice = null;
 
-        Tale.Exec(() =>
-        {
-            EndInteraction();
-        });
+            if (i == _dialogue.Count - 1) {
+                choice = TaleExtra.Choice.Dialog("Do you agree?",
+                    ("Agree",    SpriteManager.instance.emoteHeart, () => { BeaureauManager.Instance.OnOptionPicked(true); }),
+                    ("Disagree", SpriteManager.instance.emoteAngry, () => { BeaureauManager.Instance.OnOptionPicked(false); })
+                );
+            }
+
+            Tale.Dialog(_interaction.NPC.Name, _dialogue[i], null, "loop", true, action: choice);
+        }
     }
 
     public async Task OnChoicePicked()
@@ -110,10 +134,5 @@ public class NPCView : MonoBehaviour
         transform.DORotate(new Vector3(0f, transform.eulerAngles.y - 180f, 0f), duration);
 
         await Task.Delay((int)(duration * 1000));
-    }
-
-    private async Task EndInteraction()
-    {
-        BeaureauManager.Instance.OnInteractionEnded();
     }
 }

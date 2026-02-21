@@ -20,4 +20,4 @@ MonoBehaviour:
   - Raise tax from 50euro to 75 euro.
   Effects:
   - Type: 0
-    Value: 1
+    Value: 10

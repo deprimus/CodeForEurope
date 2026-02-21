@@ -1,3 +1,16 @@
+// -----------------------------------------------------------------------------
+// NPCManager.cs
+//
+// ScriptableObject that manages all NPC interactions in the game.
+// Stores a list of all NPCInteraction assets and provides methods to retrieve them for gameplay.
+//
+// Main Functions:
+// - PickNPCs(): Returns the list of NPC interactions relevant to the current law.
+//
+// Fields:
+// - NPCInteractions: List of all NPCInteraction assets in the project.
+// -----------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using UnityEngine;
 
