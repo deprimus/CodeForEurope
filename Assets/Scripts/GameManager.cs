@@ -18,6 +18,7 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
+using MEC;
 public class GameManager : MonoBehaviour
 {
     [Foldout("References")] public LawManager _lawManager;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     public Law CurrentLaw { get; private set; }
 
+    public int UserWinPercentage => _userWinPercentage;
+
     private int _roundIndex = 0;
 
     [Foldout("Debug"), SerializeField, ReadOnly]
@@ -43,13 +46,17 @@ public class GameManager : MonoBehaviour
     [Foldout("Debug"), SerializeField, ReadOnly]
     private int _libertarianPoints;
 
+    private const int BaseUserWinPercentage = 66;
+
+    private int _userWinPercentage = BaseUserWinPercentage;
+
     private async void Awake()
     {
         Instance = this;
 
         await UniTask.Delay(500);
 
-        //StartGame();
+        StartGame();
     }
 
     public void StartGame()
@@ -80,6 +87,8 @@ public class GameManager : MonoBehaviour
 
     private async void ShowNextLaw()
     {
+        _userWinPercentage = BaseUserWinPercentage;
+
         CurrentLaw = _lawManager.PickLaw();
         LibraryManager.Instance.Initialize();
 
@@ -133,6 +142,10 @@ public class GameManager : MonoBehaviour
         LibraryManager.Instance.InitializeUI();
 
         Transition.SweepIn();
+
+        Tale.Wait(1f);
+
+        Tale.Exec(() => OnLibraryEnded());
     }
 
     public void OnLibraryEnded()
@@ -186,6 +199,20 @@ public class GameManager : MonoBehaviour
         else
         {
             EndGame();
+        }
+    }
+
+    public void InfluenceUserWinPercentage(int value)
+    {
+        _userWinPercentage += value;
+
+        if (_userWinPercentage < 0)
+        {
+            _userWinPercentage = 0;
+        }
+        else if (_userWinPercentage > 100)
+        {
+            _userWinPercentage = 100;
         }
     }
 

@@ -88,48 +88,6 @@ public class RoundTableManager : MonoBehaviour
         GameManager.Instance.OnMoodBarsHidden();
     }
 
-    public void Influence(InteractionEffectType faction, int value)
-    {
-        switch (faction)
-        {
-            case InteractionEffectType.TraditionalistParty:
-            case InteractionEffectType.ProgressistParty:
-            case InteractionEffectType.LiberalParty:
-            case InteractionEffectType.GreensParty:
-            {
-                var (primary, secondary) = GetFaction(faction);
-
-                foreach (var person in _people)
-                {
-                    if (person.PrimaryOrientation == primary && person.SecondaryOrientation == secondary)
-                    {
-                        person.Influence(value);
-                    }
-                }
-
-                break;
-            }
-
-            case InteractionEffectType.AllLefts:
-            case InteractionEffectType.AllRights:
-            case InteractionEffectType.AllLibertarians:
-            case InteractionEffectType.AllTraditionalists:
-            {
-                var orientation = InteractionEffectToOrientation(faction);
-
-                foreach (var person in _people)
-                {
-                    if (person.PrimaryOrientation == orientation || person.SecondaryOrientation == orientation)
-                    {
-                        person.Influence(value);
-                    }
-                }
-
-                break;
-            }
-        }
-    }
-
     public async void VoteLaw()
     {
         await UniTask.Delay(2000);
@@ -143,7 +101,9 @@ public class RoundTableManager : MonoBehaviour
             await UniTask.Delay(2000);
         }
 
-        var lawApproved = _people.Sum(p => p.Vote) / _people.Length > 0.5f;
+        var random = Random.Range(0, 101);
+        var userWinPercentage = GameManager.Instance.UserWinPercentage;
+        var lawApproved = random <= userWinPercentage;
 
         var lawObject = lawApproved ? _lawApproved : _lawRejected;
 
