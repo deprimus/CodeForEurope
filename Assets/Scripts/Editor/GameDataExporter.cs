@@ -23,6 +23,7 @@ public static class GameDataExporter
     {
         var root = new GameDatabaseRoot
         {
+            fieldDetails = BuildFieldDetails(),
             npcs = new List<NpcJson>(),
             interactions = new List<InteractionJson>(),
             laws = new List<LawJson>()
@@ -240,9 +241,35 @@ public static class GameDataExporter
         return assetPath;
     }
 
-    /// <summary>
-    /// Creates a folder path using AssetDatabase so Unity properly tracks each directory.
-    /// </summary>
+    private static List<FieldDetailEntry> BuildFieldDetails()
+    {
+        return new List<FieldDetailEntry>
+        {
+            BuildEnumEntry<FactionType>("FactionType", "NpcJson.orientations, LawEffectJson.type"),
+            BuildEnumEntry<InteractionEffectType>("InteractionEffectType", "InteractionEffectJson.type")
+        };
+    }
+
+    private static FieldDetailEntry BuildEnumEntry<T>(string enumName, string usedIn) where T : System.Enum
+    {
+        var values = System.Enum.GetValues(typeof(T));
+        var entries = new List<EnumValueEntry>();
+        foreach (T val in values)
+        {
+            entries.Add(new EnumValueEntry
+            {
+                name = val.ToString(),
+                value = System.Convert.ToInt32(val)
+            });
+        }
+        return new FieldDetailEntry
+        {
+            enumName = enumName,
+            usedIn = usedIn,
+            values = entries
+        };
+    }
+
     private static void EnsureAssetDirectoryExists(string path)
     {
         if (AssetDatabase.IsValidFolder(path))

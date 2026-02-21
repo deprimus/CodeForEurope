@@ -1,4 +1,66 @@
 {
+    "fieldDetails": [
+        {
+            "enumName": "FactionType",
+            "usedIn": "NpcJson.orientations, LawEffectJson.type",
+            "values": [
+                {
+                    "name": "Traditionalist",
+                    "value": 0
+                },
+                {
+                    "name": "Left",
+                    "value": 1
+                },
+                {
+                    "name": "Right",
+                    "value": 2
+                },
+                {
+                    "name": "Libertarian",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "enumName": "InteractionEffectType",
+            "usedIn": "InteractionEffectJson.type",
+            "values": [
+                {
+                    "name": "GreensParty",
+                    "value": 0
+                },
+                {
+                    "name": "TraditionalistParty",
+                    "value": 1
+                },
+                {
+                    "name": "ProgressistParty",
+                    "value": 2
+                },
+                {
+                    "name": "LiberalParty",
+                    "value": 3
+                },
+                {
+                    "name": "AllLefts",
+                    "value": 4
+                },
+                {
+                    "name": "AllRights",
+                    "value": 5
+                },
+                {
+                    "name": "AllLibertarians",
+                    "value": 6
+                },
+                {
+                    "name": "AllTraditionalists",
+                    "value": 7
+                }
+            ]
+        }
+    ],
     "npcs": [
         {
             "id": "Clawrence",

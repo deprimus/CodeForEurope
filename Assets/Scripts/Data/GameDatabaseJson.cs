@@ -4,9 +4,25 @@ using System.Collections.Generic;
 [Serializable]
 public class GameDatabaseRoot
 {
+    public List<FieldDetailEntry> fieldDetails;
     public List<NpcJson> npcs;
     public List<InteractionJson> interactions;
     public List<LawJson> laws;
+}
+
+[Serializable]
+public class FieldDetailEntry
+{
+    public string enumName;
+    public string usedIn;
+    public List<EnumValueEntry> values;
+}
+
+[Serializable]
+public class EnumValueEntry
+{
+    public string name;
+    public int value;
 }
 
 [Serializable]
