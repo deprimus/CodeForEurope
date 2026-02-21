@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public Law CurrentLaw { get; private set; }
 
-    public int UserWinPercentage => _userWinPercentage;
+    public int UserLawInfluence => _userLawInfluence;
 
     private int _roundIndex = 0;
 
@@ -46,9 +46,9 @@ public class GameManager : MonoBehaviour
     [Foldout("Debug"), SerializeField, ReadOnly]
     private int _libertarianPoints;
 
-    private const int BaseUserWinPercentage = 66;
-
-    private int _userWinPercentage = BaseUserWinPercentage;
+    public static int BaseUserWinPercentage = 60;
+    
+    private int _userLawInfluence = 0;
 
     private async void Awake()
     {
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     private async void ShowNextLaw()
     {
-        _userWinPercentage = BaseUserWinPercentage;
+        _userLawInfluence = 0;
 
         CurrentLaw = _lawManager.PickLaw();
         LibraryManager.Instance.Initialize();
@@ -199,20 +199,6 @@ public class GameManager : MonoBehaviour
         else
         {
             EndGame();
-        }
-    }
-
-    public void InfluenceUserWinPercentage(int value)
-    {
-        _userWinPercentage += value;
-
-        if (_userWinPercentage < 0)
-        {
-            _userWinPercentage = 0;
-        }
-        else if (_userWinPercentage > 100)
-        {
-            _userWinPercentage = 100;
         }
     }
 

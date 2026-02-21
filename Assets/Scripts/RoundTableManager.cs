@@ -32,9 +32,13 @@ public class RoundTableManager : MonoBehaviour
 
     public static RoundTableManager Instance { get; private set; }
 
+    private RoundTablePlayer _user;
+
     private void Awake()
     {
         Instance = this;
+
+        _user = _people.FirstOrDefault(p => p is RoundTablePlayer) as RoundTablePlayer;
     }
 
     public void SetCameraAnimation(string animation)
@@ -101,9 +105,16 @@ public class RoundTableManager : MonoBehaviour
             await UniTask.Delay(2000);
         }
 
+        var userLawApprovalStatus = _user.UserLawApprovalStatus;
+
         var random = Random.Range(0, 101);
-        var userWinPercentage = GameManager.Instance.UserWinPercentage;
-        var lawApproved = random <= userWinPercentage;
+        var userWinPercentage = GameManager.BaseUserWinPercentage;
+        var userLawInfluence = GameManager.Instance.UserLawInfluence;
+
+        //userWinPercentage += ((userLawApprovalStatus ^ (userLawInfluence > 0)) * (-2) + 1) * Mathf.Abs(userLawInfluence);
+        userWinPercentage += userLawApprovalStatus ? userLawInfluence : -userLawInfluence;
+        
+        var lawApproved = random <= userWinPercentage ? userLawApprovalStatus : !userLawApprovalStatus;
 
         var lawObject = lawApproved ? _lawApproved : _lawRejected;
 
