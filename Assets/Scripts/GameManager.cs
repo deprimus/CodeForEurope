@@ -1,33 +1,14 @@
-// -----------------------------------------------------------------------------
-// GameManager.cs
-//
-// Main entry point for the game. Handles scene activation, round progression, and coordinates
-// other managers (LawManager, NPCManager, etc.). Maintains global game state and points for each faction.
-//
-// Main Functions:
-// - Awake(): Initializes the singleton instance and starts the game.
-// - StartGame(): Begins a new game session and resets round index.
-// - ShowNextLaw(): Advances to the next law and updates the scene.
-//
-// Fields:
-// - _lawManager, _npcManager: References to core managers.
-// - CurrentLaw: The law currently being discussed.
-// - Faction points: Tracks points for each political faction.
-// -----------------------------------------------------------------------------
-
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
+
 public class GameManager : MonoBehaviour
 {
-    [Foldout("References")] public LawManager _lawManager;
-    [Foldout("References")] public NPCManager _npcManager;
-
     public int TraditionalistPoints => _traditionalistPoints;
     public int LeftPoints => _leftPoints;
     public int RightPoints => _rightPoints;
     public int LibertarianPoints => _libertarianPoints;
-    
+
     public static GameManager Instance { get; private set; }
 
     public Law CurrentLaw { get; private set; }
@@ -43,6 +24,9 @@ public class GameManager : MonoBehaviour
     [Foldout("Debug"), SerializeField, ReadOnly]
     private int _libertarianPoints;
 
+    private LawManager _lawManager;
+    private NPCManager _npcManager;
+
     private async void Awake()
     {
         Instance = this;
@@ -56,9 +40,16 @@ public class GameManager : MonoBehaviour
     {
         _roundIndex = 0;
 
-        _lawManager.Initialize();
+        if (GameDatabase.Instance == null)
+        {
+            Debug.LogError("GameDatabase not found in scene. Add a GameObject with the GameDatabase component.");
+            return;
+        }
 
-        //Transition.SweepOut(0f);
+        _lawManager = GameDatabase.Instance.LawManager;
+        _npcManager = GameDatabase.Instance.NPCManager;
+
+        _lawManager.Initialize();
 
         Tale.Exec(() =>
         {

@@ -1,0 +1,1350 @@
+{
+    "fieldDetails": [
+        {
+            "enumName": "FactionType",
+            "usedIn": "NpcJson.orientations, LawEffectJson.type",
+            "values": [
+                {
+                    "name": "Traditionalist",
+                    "value": 0
+                },
+                {
+                    "name": "Left",
+                    "value": 1
+                },
+                {
+                    "name": "Right",
+                    "value": 2
+                },
+                {
+                    "name": "Libertarian",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "enumName": "InteractionEffectType",
+            "usedIn": "InteractionEffectJson.type",
+            "values": [
+                {
+                    "name": "GreensParty",
+                    "value": 0
+                },
+                {
+                    "name": "TraditionalistParty",
+                    "value": 1
+                },
+                {
+                    "name": "ProgressistParty",
+                    "value": 2
+                },
+                {
+                    "name": "LiberalParty",
+                    "value": 3
+                },
+                {
+                    "name": "AllLefts",
+                    "value": 4
+                },
+                {
+                    "name": "AllRights",
+                    "value": 5
+                },
+                {
+                    "name": "AllLibertarians",
+                    "value": 6
+                },
+                {
+                    "name": "AllTraditionalists",
+                    "value": 7
+                }
+            ]
+        }
+    ],
+    "npcs": [
+        {
+            "id": "Clawrence",
+            "name": "<color=#ffff00>Clawrence</color>",
+            "prefabPath": "Prefabs/NPCs/Clawrence",
+            "orientations": [
+                2
+            ]
+        },
+        {
+            "id": "Cubulescu",
+            "name": "Cubulescu",
+            "prefabPath": "Prefabs/NPCs/Cubulescu",
+            "orientations": []
+        },
+        {
+            "id": "Felix Purrovich - The Media Watchdog",
+            "name": "<color=#ff8000>Felix</color>",
+            "prefabPath": "Prefabs/NPCs/Felix",
+            "orientations": [
+                0,
+                1
+            ]
+        },
+        {
+            "id": "Mittens",
+            "name": "<color=#e400ff>Mittens</color>",
+            "prefabPath": "Prefabs/NPCs/Mittens",
+            "orientations": [
+                3,
+                2
+            ]
+        },
+        {
+            "id": "Purrsilla",
+            "name": "<color=#f94e40>Purrsilla</color>",
+            "prefabPath": "Prefabs/NPCs/Purrsilla",
+            "orientations": [
+                1
+            ]
+        },
+        {
+            "id": "Tabby",
+            "name": "<color=#70f940>Tabby</color>",
+            "prefabPath": "Prefabs/NPCs/Tabby",
+            "orientations": [
+                3,
+                1
+            ]
+        },
+        {
+            "id": "Tepusa",
+            "name": "Tepusa",
+            "prefabPath": "Prefabs/NPCs/Tepusa",
+            "orientations": []
+        },
+        {
+            "id": "Tom",
+            "name": "<color=#ffff00>Tom</color>",
+            "prefabPath": "Prefabs/NPCs/Tom",
+            "orientations": [
+                0,
+                2
+            ]
+        },
+        {
+            "id": "Whiskerina",
+            "name": "<color=#e400ff>Whiskerina</color>",
+            "prefabPath": "Prefabs/NPCs/Whiskerina",
+            "orientations": [
+                3
+            ]
+        },
+        {
+            "id": "Whiskersley",
+            "name": "<color=#ff8000>Whiskersley</color>",
+            "prefabPath": "Prefabs/NPCs/Whiskersley",
+            "orientations": [
+                0
+            ]
+        }
+    ],
+    "interactions": [
+        {
+            "name": "Clawrence",
+            "npcId": "",
+            "dialogue": [
+                "Hello!"
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 10
+                },
+                {
+                    "type": 5,
+                    "value": -10
+                }
+            ]
+        },
+        {
+            "name": "G1-1",
+            "npcId": "Tabby",
+            "dialogue": [
+                "Polluters must pay their share. Raising the carbon tax to 75 euros isn’t just fair, it’s overdue.",
+                "Raise tax from 50euro to 75 euro."
+            ],
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G1-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "Fifty euros per ton? If the goal is to punish growth, they’ve found a very elegant stick."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G1-3",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "If stewardship of the land requires a price upon pollution, so be it. The ancients, too, knew to respect the balance of nature."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G2-1",
+            "npcId": "Tabby",
+            "dialogue": [
+                "Cleaner air starts with tough choices. Banning diesel cars is a necessary step toward a breathable future. ",
+                "Let's ban diesel cars."
+            ],
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G2-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "Punishing older vehicles won’t clean the air—it’ll just empty wallets. Especially the ones that can't afford a new ride every season."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G2-3",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "The old must sometimes yield to the new—but let us not punish legacy without compassion. Provide means for all to walk the cleaner path."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G3-1",
+            "npcId": "Tabby",
+            "dialogue": [
+                "This policy actively incentivizes population growth when our planet is already struggling with resource limitations."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G3-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "Growth without a plan is just chaos. Incentives are fine—if they don’t bankrupt the future."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G3-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Mandating more births while nature’s stretched thin? That’s not freedom, it’s forced legacy."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G4-1",
+            "npcId": "Tabby",
+            "dialogue": [
+                "Free trade without environmental safeguards opens the door to pollution-heavy products and rewards those who ignore sustainability."
+            ],
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G4-2",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "Cheap labor, ruined nature, and profits for the few. What they call ‘free trade’ is just another word for exploitation."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G4-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "If your trade kills ecosystems and communities, don’t call it 'free'—call it what it is: exploitation with a passport."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G5-1",
+            "npcId": "Tabby",
+            "dialogue": [
+                "This law ignores the massive ecological footprint of data storage and processing. "
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G5-2",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "Every citizen should retain the dignity of privacy. It is a cornerstone of civilized society—one that predates our devices."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "G5-3",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "Transparency is essential. When governments hide things, it’s workers who pay the price. I respect this initiative."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "L1-1",
+            "npcId": "Tom",
+            "dialogue": [
+                "Bussiness overlords want bigger profit. Would you like to lower Corporate Taxes Further with 15%?"
+            ],
+            "effects": [
+                {
+                    "type": 3,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L1-2",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "Oh, tax cuts for the wealthy again? Let me know when they plan on cutting food prices for workers too."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L1-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Cutting taxes for mega-corps while people scrape by? That’s not freedom—it’s favoritism dressed in a suit."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L2-1",
+            "npcId": "Tom",
+            "dialogue": [
+                "Would you want to use advanced extraction techniques in exchange for increased economic returns?"
+            ],
+            "effects": [
+                {
+                    "type": 3,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L2-2",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "They’re selling off our forests, rivers, and air for pennies, then handing us the cleanup bill. And who breathes it in first? The people who labor."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L2-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Letting companies loot the land without responsibility? That's not liberty, it's legalized extraction with no leash."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L3-1",
+            "npcId": "Tom",
+            "dialogue": [
+                "Reducing number of immigrants will not be helpful for our economy, we will not have enough work force."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L3-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "Talent doesn’t come with a passport. Neither does ambition. Close the gate too tightly, and you lock opportunity out."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L3-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Borders don’t stop injustice—they just tell you where it changes shape. Everyone deserves a chance to roam."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L4-1",
+            "npcId": "Tom",
+            "dialogue": [
+                "The market, not bureaucrats, should determine optimal extraction levels."
+            ],
+            "effects": [
+                {
+                    "type": 3,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L4-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "Limiting extraction? Curious tactic when the world is running on batteries and rare metals. Are we trying to save the planet or stall it?"
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L4-3",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "Restraint in extraction is not regression, but reverence. One cannot mine the past without scarring the future."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L5-1",
+            "npcId": "Tom",
+            "dialogue": [
+                "This so-called 'fairness' regulation is a direct assault on free market principles. Government bureaucrats cannot design better digital markets than natural competition."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L5-2",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "Regulation is the guardian of order. Even in the digital bazaar, rules must preserve dignity and fairness."
+            ],
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "L5-3",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "Leveling the digital playing field? Absolutely. No platform should be above the rules—or the workers."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 15
+                }
+            ]
+        },
+        {
+            "name": "P1-1",
+            "npcId": "Mittens",
+            "dialogue": [
+                "Blockchain brings transparency and security. Storing personal data on-chain ensures trust and accountability. ",
+                "Would you like to also store personal information of citizens on blockchain?"
+            ],
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P1-2",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "I do not oppose the modernization of ledgers, so long as the ink of responsibility remains. But let us not discard wisdom for novelty."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P1-3",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "You can digitize all the banks you want, but if workers still can’t afford rent, it’s not progress—it’s glitter on the same old chain."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P2-1",
+            "npcId": "Mittens",
+            "dialogue": [
+                "Digital services mean faster access for all. Encouraging digital identity use is key to a modern state.",
+                "Would you like also encourage People to use their unique digital identity online?"
+            ],
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P2-2",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "Efficiency is commendable, yes, but a nation governed solely through wires and screens may forget the dignity of paper and presence."
+            ],
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P2-3",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "Sure, it’s nice to have services online. Now let’s make sure everyone has internet, electricity, and a few hours left after their double shift."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P3-1",
+            "npcId": "Mittens",
+            "dialogue": [
+                "I believe civil partnership should be supported."
+            ],
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P3-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "If a household is stable and the kittens are fed, the structure is none of my business. Nor should it be the government’s."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P3-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Family is what you build with love and care. I don't need a government chart to define who counts as kin."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P4-1",
+            "npcId": "Mittens",
+            "dialogue": [
+                "This regulation looks backward—cutting use instead of driving innovation. We should fund biodegradable polymers, not ban essential materials."
+            ],
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P4-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "If regulation were innovation, we’d have solved everything by now. Let the market lead the cleanup, it has the tools, and the motive."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P4-3",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "I favor the restoration of durable goods. We once built to last. There is wisdom in mending rather than discarding."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P5-1",
+            "npcId": "Mittens",
+            "dialogue": [
+                "Diverting funds from public schools to private institutions deepens inequality and turns education into a privilege, not a right."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P5-2",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "When school becomes a business, workers’ kids are left at the door. Education is a right, not a luxury sold to the highest bidder."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "P5-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Education shouldn't be pay-to-play. Real freedom includes the right to learn, not just the right to buy access to learning."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "T1-1",
+            "npcId": "Felix Purrovich - The Media Watchdog",
+            "dialogue": [
+                "Would you like to implement temporary restrictions for anti-nationalist media?"
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 25
+                },
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T1-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "If I wanted a public official at the boardroom table, I'd list the company as a ministry."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T1-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "You don’t fix corporate greed by sending in the state. That’s just swapping one leash for another."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T2-1",
+            "npcId": "Felix Purrovich - The Media Watchdog",
+            "dialogue": [
+                "Would you like to also inforce strict aderance to government approved digital systems."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 30
+                },
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T2-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "The press must be free to speak—even if what it says occasionally ruffles a few whiskers."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "T2-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "Censorship is censorship—whether it's in the name of tradition, safety, or national pride. Let cats speak freely."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "T3-1",
+            "npcId": "Felix Purrovich - The Media Watchdog",
+            "dialogue": [
+                "This 'green' initiative is a direct assault on the coal, oil, and gas sectors that built our nations and still employ millions of our citizens. "
+            ],
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "T3-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "This massive government intervention distorts energy markets by picking winners and losers. Innovation thrives through competition, not bureaucratic planning."
+            ],
+            "effects": [
+                {
+                    "type": 5,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T3-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "This massive fund strips away each nation's right to determine its own energy future. Brussels bureaucrats should not dictate energy policy for our unique communities."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 35
+                }
+            ]
+        },
+        {
+            "name": "T4-1",
+            "npcId": "Felix Purrovich - The Media Watchdog",
+            "dialogue": [
+                "Cutting hospital budgets and favoring private insurance undermines the promise of universal care and leaves the vulnerable behind."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 20
+                }
+            ]
+        },
+        {
+            "name": "T4-2",
+            "npcId": "Clawrence",
+            "dialogue": [
+                "Private health insurance creates a two-tier system where wealthy citizens receive superior healthcare while poor and vulnerable populations are left with minimal coverage."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T4-3",
+            "npcId": "Whiskerina",
+            "dialogue": [
+                "We need a system that allows direct patient-doctor transactions, transparent pricing, and removes regulatory barriers that prevent innovative healthcare delivery models."
+            ],
+            "effects": [
+                {
+                    "type": 6,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T5-1",
+            "npcId": "Felix Purrovich - The Media Watchdog",
+            "dialogue": [
+                "The law risks eroding the human dimension that underpins meaningful progress — vision, intuition, and emotional intelligence."
+            ],
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T5-2",
+            "npcId": "Whiskersley",
+            "dialogue": [
+                "Five hundred billion is a bold sum. If such an investment is to be made, let it honor tradition, protect artisanship, and not merely race toward abstraction."
+            ],
+            "effects": [
+                {
+                    "type": 7,
+                    "value": 10
+                }
+            ]
+        },
+        {
+            "name": "T5-3",
+            "npcId": "Purrsilla",
+            "dialogue": [
+                "500 billion? Finally, some serious money. Let’s just make sure it doesn’t all end up in the pockets of companies that dodge taxes and underpay staff."
+            ],
+            "effects": [
+                {
+                    "type": 4,
+                    "value": 10
+                }
+            ]
+        }
+    ],
+    "laws": [
+        {
+            "name": "Government Representatives in Corporations Act",
+            "description": "Ensure good governance over big corporations by placing a government representative.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 2
+                },
+                {
+                    "type": 1,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "T1-1",
+                "T1-2",
+                "T1-3"
+            ]
+        },
+        {
+            "name": "National Media Oversight Board",
+            "description": "The press must serve our values, and any deviation from these principles will be subject to state control and sanction.",
+            "iconPath": "",
+            "effects": [],
+            "interactionNames": [
+                "T2-1",
+                "T2-2",
+                "T2-3"
+            ]
+        },
+        {
+            "name": "Corporate Tax Reduction",
+            "description": "Provide broad tax cuts to corporations.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 1
+                },
+                {
+                    "type": 2,
+                    "value": 2
+                }
+            ],
+            "interactionNames": [
+                "L1-1",
+                "L1-2",
+                "L1-3"
+            ]
+        },
+        {
+            "name": "Privatization of Natural Resources Act",
+            "description": "Monetize natural resource exploitation rights without ecological provisions.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 2
+                },
+                {
+                    "type": 2,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "L2-1",
+                "L2-2",
+                "L2-3"
+            ]
+        },
+        {
+            "name": "Heavy Carbon Tax",
+            "description": "50euro fee is charged per ton of carbon dioxide (CO2) emissions produced.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 2
+                }
+            ],
+            "interactionNames": [
+                "G1-1",
+                "G1-2",
+                "G1-3"
+            ]
+        },
+        {
+            "name": "Blockchain Financial Institutions Initiative",
+            "description": "Banks must transition to using blockchain based transaction systems.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "P1-1",
+                "P1-2",
+                "P1-3"
+            ]
+        },
+        {
+            "name": "Digital Government Transformation Act",
+            "description": "All government services available digitally.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "P2-1",
+                "P2-2",
+                "P2-3"
+            ]
+        },
+        {
+            "name": "Growth Private Education",
+            "description": "Reduce budget for state educational institutions and fund private solutions over government education systems",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 3
+                },
+                {
+                    "type": 2,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "P5-1",
+                "P5-2",
+                "P5-3"
+            ]
+        },
+        {
+            "name": "Traditional Family Law",
+            "description": "Laws defining marriage in traditional terms. Adoption restrictions for non-traditional families. Traditional parental authority structures.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 3
+                },
+                {
+                    "type": 1,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "P3-1",
+                "P3-2",
+                "P3-3"
+            ]
+        },
+        {
+            "name": "Green Innovation Fund",
+            "description": "Invest 800bilion euro in renewable energy initiatives.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 2
+                }
+            ],
+            "interactionNames": [
+                "T3-1",
+                "T3-2",
+                "T3-3"
+            ]
+        },
+        {
+            "name": "Health Insurance",
+            "description": "Reduce budget for hospitals and Support private insurance models over state insurance",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 3
+                },
+                {
+                    "type": 2,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "T4-1",
+                "T4-2",
+                "T4-3"
+            ]
+        },
+        {
+            "name": "Auto polution norm restriction",
+            "description": "Reduce car polution by banning old cars and mor taxes for having a vehicle.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 3,
+                    "value": 1
+                },
+                {
+                    "type": 1,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "G2-1",
+                "G2-2",
+                "G2-3"
+            ]
+        },
+        {
+            "name": "Plastic Products Regulation",
+            "description": "Reduce plastic manufacturing and reuse old plastic products",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 2
+                },
+                {
+                    "type": 3,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "P4-1",
+                "P4-2",
+                "P4-3"
+            ]
+        },
+        {
+            "name": "Demographic growth",
+            "description": "This policy actively incentivizes population growth when our planet is already struggling with resource limitations.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 1
+                },
+                {
+                    "type": 0,
+                    "value": 2
+                }
+            ],
+            "interactionNames": [
+                "G3-1",
+                "G3-2",
+                "G3-3"
+            ]
+        },
+        {
+            "name": "Free Trade Agreements Without Environmental Provisions",
+            "description": "Remove barriers to goods without sustainability standards.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 0,
+                    "value": 2
+                },
+                {
+                    "type": 2,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "G4-1",
+                "G4-2",
+                "G4-3"
+            ]
+        },
+        {
+            "name": "Right to Privacy, Access to Information",
+            "description": "Guarantees every citizen’s right to privacy and access to public information online.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "G5-1",
+                "G5-2",
+                "G5-3"
+            ]
+        },
+        {
+            "name": "Digital Innovation Fund",
+            "description": "500bilion investment for National digitalization.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 3,
+                    "value": 1
+                },
+                {
+                    "type": 2,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "T5-1",
+                "T5-2",
+                "T5-3"
+            ]
+        },
+        {
+            "name": "Immigration Agreement",
+            "description": "Limit the flow of immigrants to 5% of the total population for each country. Strict border control policies.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 1
+                },
+                {
+                    "type": 0,
+                    "value": 2
+                }
+            ],
+            "interactionNames": [
+                "L3-1",
+                "L3-2",
+                "L3-3"
+            ]
+        },
+        {
+            "name": "Rare Resource Mining Protection",
+            "description": "Large-scale extraction operations output limited per year.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 1,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 2
+                }
+            ],
+            "interactionNames": [
+                "L4-1",
+                "L4-2",
+                "L4-3"
+            ]
+        },
+        {
+            "name": "Digital Markets Act",
+            "description": "Make the markets in the digital sector fairer and more contestable, regulate markets.",
+            "iconPath": "",
+            "effects": [
+                {
+                    "type": 2,
+                    "value": 1
+                },
+                {
+                    "type": 3,
+                    "value": 1
+                }
+            ],
+            "interactionNames": [
+                "L5-1",
+                "L5-2",
+                "L5-3"
+            ]
+        }
+    ]
+}
