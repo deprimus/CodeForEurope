@@ -182,7 +182,7 @@ public class QuizManager : MonoBehaviour {
         } else {
             social += score;
         }
-
+        
         current++;
 
         if (current >= rows.Count) {
@@ -203,7 +203,7 @@ public class QuizManager : MonoBehaviour {
                     str = "<color=yellow>Progresist</color>";
                     break;
                 case FactionType.Libertarian:
-                    str = "<color=blue>Libertarian</color>";
+                    str = "<color=blue>Liberal</color>";
                     break;
                 }
             }
