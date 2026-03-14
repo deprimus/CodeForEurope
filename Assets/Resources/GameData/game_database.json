@@ -946,6 +946,10 @@
           "value": 1
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": -200 },
+        { "indicator": 1, "value": -0.03 }
+      ],
       "interactionNames": ["T1-1", "T1-2", "T1-3"]
     },
     {
@@ -954,6 +958,10 @@
       "longDescription": "A government-appointed board is established to monitor and regulate all media outlets, including newspapers, television, and online platforms. Content deemed contrary to national values can be censored or sanctioned. Proponents say it protects citizens from misinformation, but opponents warn it silences dissent and threatens press freedom.",
       "iconPath": "",
       "effects": [],
+      "welfareEffects": [
+        { "indicator": 2, "value": -0.35 },
+        { "indicator": 3, "value": -0.4 }
+      ],
       "interactionNames": ["T2-1", "T2-2", "T2-3"]
     },
     {
@@ -970,6 +978,10 @@
           "type": 2,
           "value": 2
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 500 },
+        { "indicator": 1, "value": 0.04 }
       ],
       "interactionNames": ["L1-1", "L1-2", "L1-3"]
     },
@@ -988,6 +1000,11 @@
           "value": 1
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 400 },
+        { "indicator": 3, "value": -0.7 },
+        { "indicator": 1, "value": 0.03 }
+      ],
       "interactionNames": ["L2-1", "L2-2", "L2-3"]
     },
     {
@@ -1004,6 +1021,10 @@
           "type": 3,
           "value": 2
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 0, "value": -250 },
+        { "indicator": 3, "value": 1.2 }
       ],
       "interactionNames": ["G1-1", "G1-2", "G1-3"]
     },
@@ -1022,6 +1043,10 @@
           "value": 1
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 200 },
+        { "indicator": 2, "value": 0.3 }
+      ],
       "interactionNames": ["P1-1", "P1-2", "P1-3"]
     },
     {
@@ -1038,6 +1063,10 @@
           "type": 3,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 2, "value": 0.35 },
+        { "indicator": 0, "value": 200 }
       ],
       "interactionNames": ["P2-1", "P2-2", "P2-3"]
     },
@@ -1056,6 +1085,11 @@
           "value": 1
         }
       ],
+      "welfareEffects": [
+        { "indicator": 2, "value": 0.2 },
+        { "indicator": 1, "value": 0.04 },
+        { "indicator": 0, "value": 200 }
+      ],
       "interactionNames": ["P5-1", "P5-2", "P5-3"]
     },
     {
@@ -1072,6 +1106,10 @@
           "type": 1,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 2, "value": -0.3 },
+        { "indicator": 1, "value": 0.025 }
       ],
       "interactionNames": ["P3-1", "P3-2", "P3-3"]
     },
@@ -1090,6 +1128,11 @@
           "value": 2
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 250 },
+        { "indicator": 3, "value": 0.8 },
+        { "indicator": 1, "value": -0.025 }
+      ],
       "interactionNames": ["T3-1", "T3-2", "T3-3"]
     },
     {
@@ -1106,6 +1149,11 @@
           "type": 2,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 250 },
+        { "indicator": 3, "value": -1.0 },
+        { "indicator": 1, "value": 0.035 }
       ],
       "interactionNames": ["T4-1", "T4-2", "T4-3"]
     },
@@ -1124,6 +1172,11 @@
           "value": 1
         }
       ],
+      "welfareEffects": [
+        { "indicator": 3, "value": 1.0 },
+        { "indicator": 0, "value": -200 },
+        { "indicator": 1, "value": 0.02 }
+      ],
       "interactionNames": ["G2-1", "G2-2", "G2-3"]
     },
     {
@@ -1140,6 +1193,11 @@
           "type": 3,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 3, "value": 0.6 },
+        { "indicator": 0, "value": -200 },
+        { "indicator": 2, "value": 0.2 }
       ],
       "interactionNames": ["P4-1", "P4-2", "P4-3"]
     },
@@ -1158,6 +1216,11 @@
           "value": 2
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 250 },
+        { "indicator": 3, "value": -0.5 },
+        { "indicator": 1, "value": -0.02 }
+      ],
       "interactionNames": ["G3-1", "G3-2", "G3-3"]
     },
     {
@@ -1174,6 +1237,11 @@
           "type": 2,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 400 },
+        { "indicator": 3, "value": -0.6 },
+        { "indicator": 1, "value": 0.03 }
       ],
       "interactionNames": ["G4-1", "G4-2", "G4-3"]
     },
@@ -1192,6 +1260,10 @@
           "value": 1
         }
       ],
+      "welfareEffects": [
+        { "indicator": 2, "value": 0.4 },
+        { "indicator": 1, "value": -0.02 }
+      ],
       "interactionNames": ["G5-1", "G5-2", "G5-3"]
     },
     {
@@ -1208,6 +1280,10 @@
           "type": 2,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 350 },
+        { "indicator": 2, "value": 0.35 }
       ],
       "interactionNames": ["T5-1", "T5-2", "T5-3"]
     },
@@ -1226,6 +1302,11 @@
           "value": 2
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": -300 },
+        { "indicator": 1, "value": -0.025 },
+        { "indicator": 2, "value": -0.2 }
+      ],
       "interactionNames": ["L3-1", "L3-2", "L3-3"]
     },
     {
@@ -1243,6 +1324,11 @@
           "value": 2
         }
       ],
+      "welfareEffects": [
+        { "indicator": 0, "value": -250 },
+        { "indicator": 3, "value": 0.8 },
+        { "indicator": 2, "value": 0.2 }
+      ],
       "interactionNames": ["L4-1", "L4-2", "L4-3"]
     },
     {
@@ -1259,6 +1345,11 @@
           "type": 3,
           "value": 1
         }
+      ],
+      "welfareEffects": [
+        { "indicator": 0, "value": 200 },
+        { "indicator": 1, "value": -0.03 },
+        { "indicator": 2, "value": 0.2 }
       ],
       "interactionNames": ["L5-1", "L5-2", "L5-3"]
     }

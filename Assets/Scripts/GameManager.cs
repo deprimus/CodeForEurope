@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public Law CurrentLaw { get; private set; }
 
+    public WelfareManager Welfare { get; private set; }
+
     private int _roundIndex = 0;
 
     [Foldout("Debug"), SerializeField, ReadOnly]
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _roundIndex = 0;
+        Welfare = new WelfareManager();
 
         if (GameDatabase.Instance == null)
         {
@@ -168,6 +171,12 @@ public class GameManager : MonoBehaviour
                         break;
                 }
             }
+
+            Welfare.ApplyEffects(CurrentLaw.WelfareEffects);
+        }
+        else
+        {
+            Welfare.ApplyEffects(CurrentLaw.WelfareEffects, -1f);
         }
 
         if (_roundIndex < Config.Rounds)

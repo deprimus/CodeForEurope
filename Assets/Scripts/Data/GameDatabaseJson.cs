@@ -57,6 +57,7 @@ public class LawJson
     public string description;
     public string iconPath;
     public List<LawEffectJson> effects;
+    public List<WelfareEffectJson> welfareEffects;
     public List<string> interactionNames;
 }
 
@@ -65,4 +66,11 @@ public class LawEffectJson
 {
     public int type;
     public int value;
+}
+
+[Serializable]
+public class WelfareEffectJson
+{
+    public int indicator;
+    public float value;
 }
