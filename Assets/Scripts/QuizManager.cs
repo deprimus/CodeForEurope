@@ -33,6 +33,7 @@ public class QuizManager : MonoBehaviour {
     public Vector2 chart;
 
     public TextMeshProUGUI resultText;
+    public TextMeshProUGUI resultDescription;
 
     float economic;
     float social;
@@ -188,29 +189,45 @@ public class QuizManager : MonoBehaviour {
         if (current >= rows.Count) {
             Debug.Log($"Economic: {economic}, Social: {social}");
 
+            var anchoredEconomic = AnchorToThirds(economic);
+            var anchoredSocial = AnchorToThirds(social);
+            blip.anchoredPosition = new Vector2(anchoredEconomic / 10f * chart.x, anchoredSocial / 10f * chart.y);
+
             var alignment = GetPlayerAlignment();
             var str = "<color=gray>Neutral</color>";
+            var description = "Your answers reflect a preference for pragmatism and moderation. Within a democracy, this approach acts as a stabilizing force, prioritizing incremental progress and compromise over ideological polarization or radical shifts.";
 
             if (alignment.HasValue) {
                 switch (alignment.Value) {
                 case FactionType.Left:
-                    str = "<color=green>Green</color>";
+                    str = "<color=#43FF43>Green</color>";
+                    description = "Your answers reflect a strong preference for ecological sustainability. In a democratic system, this perspective advocates for the integration of environmental health into the legislative process, balancing immediate public demands with the long-term survival of natural resources.";
                     break;
                 case FactionType.Traditionalist:
-                    str = "<color=red>Traditionalist</color>";
+                    str = "<color=#FF3443>Traditionalist</color>";
+                    description = "Your answers reflect a preference for historical continuity and social stability. Within democratic frameworks, these values often manifest as a \"braking\" mechanism, ensuring that social changes do not erode the established institutions and cultural heritage that underpin the state.";
                     break;
                 case FactionType.Right:
-                    str = "<color=yellow>Progresist</color>";
+                    str = "<color=#FFD800>Progressist</color>";
+                    description = "Your answers reflect a strong preference for social reform and egalitarianism. In a democracy, this outlook drives the expansion of civil rights and the restructuring of institutions to better serve marginalized groups and address systemic inequalities.";
                     break;
                 case FactionType.Libertarian:
-                    str = "<color=blue>Liberal</color>";
+                    str = "<color=#7FC9FF>Liberal</color>";
+                    description = "Your answers reflect a preference for individual autonomy and civil liberties. This is a cornerstone of liberal democracy, operating on the principle that the state exists primarily to protect the rights of the individual and ensure equality before the law.";
                     break;
                 }
             }
 
-            resultText.text += str;
-
-            blip.anchoredPosition = new Vector2(economic / 10f * chart.x, social / 10f * chart.y);
+            var third = 10f / 3f;
+            var inOuterThird = Mathf.Abs(anchoredEconomic) >= 2f * third || Mathf.Abs(anchoredSocial) >= 2f * third;
+            if (!alignment.HasValue || (anchoredEconomic == 0 && anchoredSocial == 0)) {
+                resultText.text = "{str} preference";
+            } else if (inOuterThird) {
+                resultText.text = $"High {str} preference";
+            } else {
+                resultText.text = $"Moderate {str} preference";
+            }
+            resultDescription.text = description;
 
             phaseQuiz.SetActive(false);
             phaseResult.SetActive(true);
@@ -219,6 +236,21 @@ public class QuizManager : MonoBehaviour {
         }
 
         ShowCurrentQuestion();
+    }
+
+    static float AnchorToThirds(float value) {
+        var third = 10f / 3f;
+        if (value >= -0.01f && value <= 0.01f) {
+            return 0f;
+        }
+        if (value > 0) {
+            if (value <= third) return third;
+            if (value <= 2f * third) return 2f * third;
+            return 10f;
+        }
+        if (value >= -third) return -third;
+        if (value >= -2f * third) return -2f * third;
+        return -10f;
     }
 
     FactionType? GetPlayerAlignment() {
