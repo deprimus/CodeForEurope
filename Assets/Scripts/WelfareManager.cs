@@ -54,4 +54,102 @@ public class WelfareManager
 
     public float CompositeWelfareScore =>
         (NormalizedGDP + NormalizedGini + NormalizedHumanCapital + NormalizedLifeExpectancy) / 4f;
+
+    public enum CompositeTier { Flourishing, Stagnant, Crumbling }
+
+    public struct WelfareEnding
+    {
+        public CompositeTier Tier;
+        public string TierTitle;
+        public string TierNarration;
+        public WelfareIndicator DominantIndicator;
+        public string DominantTitle;
+        public string DominantNarration;
+    }
+
+    public WelfareEnding GetEnding()
+    {
+        var score = CompositeWelfareScore;
+        var ending = new WelfareEnding();
+
+        // Composite tier
+        if (score >= 0.52f)
+        {
+            ending.Tier = CompositeTier.Flourishing;
+            ending.TierTitle = "Flourishing Europe";
+            ending.TierNarration = "Against all odds, Europe flourishes. The economy grows, inequality shrinks, citizens are educated, and the air is clean. No single faction won \u2014 but everyone gained. History books will call this the European Renaissance. And in the footnotes, they'll mention the parliament that made it possible.";
+        }
+        else if (score >= 0.40f)
+        {
+            ending.Tier = CompositeTier.Stagnant;
+            ending.TierTitle = "Stagnant Europe";
+            ending.TierNarration = "Nothing changed. Twenty laws debated, voted, argued \u2014 and Europe ends exactly where it started. Not worse, not better. Just... the same. Citizens shrug and carry on. Your parliament proved that doing something and doing nothing can look remarkably alike.";
+        }
+        else
+        {
+            ending.Tier = CompositeTier.Crumbling;
+            ending.TierTitle = "Crumbling Europe";
+            ending.TierNarration = "Every indicator falls. The economy contracts, inequality widens, education declines, and health deteriorates. Europe doesn't collapse with a bang \u2014 it erodes, slowly, law by law, vote by vote. Your parliament didn't fail spectacularly. It failed quietly. And that's worse.";
+        }
+
+        // Dominant metric: best indicator if flourishing, worst if stagnant/crumbling
+        float[] values = { NormalizedGDP, NormalizedGini, NormalizedHumanCapital, NormalizedLifeExpectancy };
+        bool pickBest = ending.Tier == CompositeTier.Flourishing;
+
+        int dominant = 0;
+        for (int i = 1; i < 4; i++)
+        {
+            if (pickBest ? values[i] > values[dominant] : values[i] < values[dominant])
+                dominant = i;
+        }
+
+        ending.DominantIndicator = (WelfareIndicator)dominant;
+
+        if (pickBest)
+        {
+            switch (ending.DominantIndicator)
+            {
+                case WelfareIndicator.GDP:
+                    ending.DominantTitle = "GDP Titan";
+                    ending.DominantNarration = "Europe becomes the world's economic powerhouse. Gleaming megacities stretch across the continent, every citizen a consumer, every corner a marketplace. The numbers are dazzling. You built a rich Europe.";
+                    break;
+                case WelfareIndicator.Gini:
+                    ending.DominantTitle = "Equality Utopia";
+                    ending.DominantNarration = "The gap closes. For the first time in modern history, a janitor's child and a CEO's child attend the same schools, visit the same hospitals, dream the same dreams. You chose fairness, and genuine social trust appeared.";
+                    break;
+                case WelfareIndicator.HumanCapital:
+                    ending.DominantTitle = "Enlightened Society";
+                    ending.DominantNarration = "Europe becomes the world's classroom. Universities overflow, libraries never close, and citizens debate philosophy as naturally as they discuss the weather. You invested in minds \u2014 and minds repaid you a thousandfold.";
+                    break;
+                case WelfareIndicator.LifeExpectancy:
+                    ending.DominantTitle = "Golden Age of Health";
+                    ending.DominantNarration = "Europeans live longer, healthier lives than any generation before them. Clean air, universal care, and preventive medicine have added years and quality to every life. You chose life, and life chose you back.";
+                    break;
+            }
+        }
+        else
+        {
+            switch (ending.DominantIndicator)
+            {
+                case WelfareIndicator.GDP:
+                    ending.DominantTitle = "Economic Collapse";
+                    ending.DominantNarration = "Factories close. Shops shutter. The great European project stumbles as economies contract and unemployment soars. Citizens line up for aid packages, wondering how the continent that once led the world now struggles to feed itself.";
+                    break;
+                case WelfareIndicator.Gini:
+                    ending.DominantTitle = "Divided Europe";
+                    ending.DominantNarration = "Two Europes emerge \u2014 one of penthouses and private jets, another of food banks and crumbling infrastructure. Your parliament chose growth over fairness, and now the cracks run deep.";
+                    break;
+                case WelfareIndicator.HumanCapital:
+                    ending.DominantTitle = "Age of Ignorance";
+                    ending.DominantNarration = "Misinformation spreads unchecked. Critical thinking fades as education crumbles and media literacy vanishes. Citizens vote on headlines they never read past. Your parliament let the foundations rot.";
+                    break;
+                case WelfareIndicator.LifeExpectancy:
+                    ending.DominantTitle = "Public Health Crisis";
+                    ending.DominantNarration = "Hospitals overflow. Life expectancy drops for the first time in a century. Pollution, underfunded healthcare, and environmental neglect take their toll. Your parliament's choices echo in every waiting room.";
+                    break;
+            }
+        }
+
+        return ending;
+    }
 }
