@@ -44,7 +44,8 @@ public class BookBehavior : MonoBehaviour
         pageData.title = "Test Title";
         pageData.description = "Test Description";
         pageData.longDescription = "Test Long Description";
-        pageData.effects = "Test Effects";
+        pageData.effects = new List<string>{"Test Effect 1", "Test Effect 2", "Test Effect 3"};
+        pageData.effectsAreShown = false;
         AddPage(pageData);
     }
 
@@ -121,7 +122,12 @@ public class BookBehavior : MonoBehaviour
             {
                 if (forward == false)
                 {
+                    pages[index].GetComponent<UIBookPage>().ShowTextPage();
                     index--;
+                }
+                else
+                {
+                    pages[index].GetComponent<UIBookPage>().HideTextPage();
                 }
                 rotate = false;
                 break;
