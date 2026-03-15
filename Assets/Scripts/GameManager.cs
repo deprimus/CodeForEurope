@@ -1,39 +1,19 @@
-// -----------------------------------------------------------------------------
-// GameManager.cs
-//
-// Main entry point for the game. Handles scene activation, round progression, and coordinates
-// other managers (LawManager, NPCManager, etc.). Maintains global game state and points for each faction.
-//
-// Main Functions:
-// - Awake(): Initializes the singleton instance and starts the game.
-// - StartGame(): Begins a new game session and resets round index.
-// - ShowNextLaw(): Advances to the next law and updates the scene.
-//
-// Fields:
-// - _lawManager, _npcManager: References to core managers.
-// - CurrentLaw: The law currently being discussed.
-// - Faction points: Tracks points for each political faction.
-// -----------------------------------------------------------------------------
-
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
-using MEC;
 public class GameManager : MonoBehaviour
 {
-    [Foldout("References")] public LawManager _lawManager;
-    [Foldout("References")] public NPCManager _npcManager;
-
     public int TraditionalistPoints => _traditionalistPoints;
     public int LeftPoints => _leftPoints;
     public int RightPoints => _rightPoints;
     public int LibertarianPoints => _libertarianPoints;
-    
+
     public static GameManager Instance { get; private set; }
 
     public Law CurrentLaw { get; private set; }
 
     public int UserLawInfluence => _userLawInfluence;
+    public WelfareManager Welfare { get; private set; }
 
     private int _roundIndex = 0;
 
@@ -49,6 +29,8 @@ public class GameManager : MonoBehaviour
     public static int BaseUserWinPercentage = 60;
     
     private int _userLawInfluence = 0;
+    private LawManager _lawManager;
+    private NPCManager _npcManager;
 
     private async void Awake()
     {
@@ -62,10 +44,18 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         _roundIndex = 0;
+        Welfare = new WelfareManager();
+
+        if (GameDatabase.Instance == null)
+        {
+            Debug.LogError("GameDatabase not found in scene. Add a GameObject with the GameDatabase component.");
+            return;
+        }
+
+        _lawManager = GameDatabase.Instance.LawManager;
+        _npcManager = GameDatabase.Instance.NPCManager;
 
         _lawManager.Initialize();
-
-        //Transition.SweepOut(0f);
 
         Tale.Exec(() =>
         {
@@ -190,6 +180,12 @@ public class GameManager : MonoBehaviour
                         break;
                 }
             }
+
+            Welfare.ApplyEffects(CurrentLaw.WelfareEffects);
+        }
+        else
+        {
+            Welfare.ApplyEffects(CurrentLaw.WelfareEffects, -1f);
         }
 
         if (_roundIndex < Config.Rounds)

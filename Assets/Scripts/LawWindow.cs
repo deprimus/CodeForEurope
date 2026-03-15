@@ -1,32 +1,19 @@
-// -----------------------------------------------------------------------------
-// LawWindow.cs
-//
-// Unity Editor window for creating and managing laws in the game.
-// Allows designers to define law properties (name, description, icon), attach effects, and link to NPC interactions.
-// Provides a UI for editing, deleting, and listing all laws and their effects on factions.
-//
-// Main Functions:
-// - ShowWindow(): Opens the Law Manager window in the Unity Editor.
-// - OnEnable(): Loads the GameData asset containing all laws.
-// - OnGUI(): Main UI for creating/editing laws, effects, and linked NPC interactions.
-// - AddNewLaw(): Adds a new law to the game data.
-// -----------------------------------------------------------------------------
-
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-
-#if UNITY_EDITOR
-using UnityEditor;
+using System.IO;
+using System.Linq;
 
 public class LawWindow : EditorWindow
 {
-    private GameData _gameData;
+    private GameDatabaseRoot _database;
+
     private string _newLawName = "";
     private string _newLawDescription = "";
-    private List<NPCInteraction> _npcInteractions;
     private Sprite _newLawIcon;
-    private List<LawEffect> _newLawEffects;
+    private List<LawEffectJson> _newLawEffects;
+    private List<string> _newInteractionNames;
     private Vector2 _scrollPosition;
 
     [MenuItem("Game/Law Manager")]
@@ -37,255 +24,236 @@ public class LawWindow : EditorWindow
 
     private void OnEnable()
     {
-        string[] guids = AssetDatabase.FindAssets("t:GameData");
-        if (guids.Length > 0)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-            _gameData = AssetDatabase.LoadAssetAtPath<GameData>(path);
-        }
+        _database = GameDatabaseJsonIO.Load();
     }
 
     private void OnGUI()
     {
-        if (_gameData == null)
+        if (_database == null)
         {
-            EditorGUILayout.LabelField("GameData asset not found.");
+            EditorGUILayout.LabelField("No game_database.json found. Use Game > Export ScriptableObjects to JSON first.");
+            if (GUILayout.Button("Reload"))
+                _database = GameDatabaseJsonIO.Load();
             return;
         }
+
+        var interactionNames = _database.interactions.Select(i => i.name).ToArray();
 
         using (var scrollView = new EditorGUILayout.ScrollViewScope(_scrollPosition))
         {
             _scrollPosition = scrollView.scrollPosition;
 
-            EditorGUILayout.BeginVertical("box");
-            GUILayout.Space(8);
-            EditorGUILayout.LabelField("Create New Law", EditorStyles.boldLabel);
-            _newLawName = EditorGUILayout.TextField("Name", _newLawName);
-            _newLawDescription = EditorGUILayout.TextField("Description", _newLawDescription);
-            _newLawIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _newLawIcon, typeof(Sprite), false);
-
-            if (_npcInteractions == null)
-            {
-                _npcInteractions = new List<NPCInteraction>();
-            }
-
-            EditorGUILayout.LabelField("NPC Interactions", EditorStyles.boldLabel);
-
-            if (GUILayout.Button("Add NPC Interaction"))
-            {
-                _npcInteractions.Add(new NPCInteraction());
-            }
-
-            for (int i = 0; i < _npcInteractions.Count; i++)
-            {
-                GUILayout.Space(8);
-
-                EditorGUILayout.BeginVertical("box");
-                _npcInteractions[i] = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _npcInteractions[i], typeof(NPCInteraction), false);
-
-                if (GUILayout.Button("Remove NPC Interaction"))
-                {
-                    _npcInteractions.RemoveAt(i);
-                }
-                EditorGUILayout.EndVertical();
-            }
-
-            EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
-            if (_newLawEffects == null)
-            {
-                _newLawEffects = new List<LawEffect>();
-            }
-
-            if (GUILayout.Button("Add Effect"))
-            {
-                _newLawEffects.Add(new LawEffect { Type = FactionType.Traditionalist, Value = 0 });
-            }
-
-            for (int i = 0; i < _newLawEffects.Count; i++)
-            {
-                GUILayout.Space(8);
-
-                EditorGUILayout.BeginVertical("box");
-                _newLawEffects[i].Type = (FactionType)EditorGUILayout.EnumPopup("Type", _newLawEffects[i].Type);
-                _newLawEffects[i].Value = EditorGUILayout.IntField("Value", _newLawEffects[i].Value);
-
-                if (GUILayout.Button("Remove Effect"))
-                {
-                    _newLawEffects.RemoveAt(i);
-                }
-                EditorGUILayout.EndVertical();
-            }
-
-            GUILayout.Space(16);
-
-            if (GUILayout.Button("Add Law"))
-            {
-                AddNewLaw();
-            }
-
-            GUILayout.Space(8);
-            EditorGUILayout.EndVertical();
+            DrawNewLawSection(interactionNames);
 
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Existing Laws", EditorStyles.boldLabel);
 
-            for (int i = 0; i < _gameData.Laws.Count; i++)
+            for (int i = 0; i < _database.laws.Count; i++)
             {
-                EditorGUILayout.BeginVertical("box");
-
-                string newName = EditorGUILayout.TextField("Name", _gameData.Laws[i].Name);
-                if (newName != _gameData.Laws[i].Name)
-                {
-                    _gameData.Laws[i].Name = newName;
-                    EditorUtility.SetDirty(_gameData);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-
-                string newDescription = EditorGUILayout.TextField("Description", _gameData.Laws[i].Description);
-                if (newDescription != _gameData.Laws[i].Description)
-                {
-                    _gameData.Laws[i].Description = newDescription;
-                    EditorUtility.SetDirty(_gameData);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-
-                Sprite newIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _gameData.Laws[i].Icon, typeof(Sprite), false);
-                if (newIcon != _gameData.Laws[i].Icon)
-                {
-                    _gameData.Laws[i].Icon = newIcon;
-                    EditorUtility.SetDirty(_gameData);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-
-                if (_gameData.Laws[i].NPCInteractions == null)
-                {
-                    _gameData.Laws[i].NPCInteractions = new List<NPCInteraction>();
-                }
-
-                EditorGUILayout.LabelField("NPC Interactions", EditorStyles.boldLabel);
-
-                for (int j = 0; j < _gameData.Laws[i].NPCInteractions.Count; j++)
-                {
-                    EditorGUILayout.BeginHorizontal();
-
-                    NPCInteraction newNPCInteraction = (NPCInteraction)EditorGUILayout.ObjectField("NPC Interaction", _gameData.Laws[i].NPCInteractions[j], typeof(NPCInteraction), false);
-                    if (newNPCInteraction != _gameData.Laws[i].NPCInteractions[j])
-                    {
-                        _gameData.Laws[i].NPCInteractions[j] = newNPCInteraction;
-                        EditorUtility.SetDirty(_gameData);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-
-                    if (GUILayout.Button("Remove"))
-                    {
-                        _gameData.Laws[i].NPCInteractions.RemoveAt(j);
-                        EditorUtility.SetDirty(_gameData);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                        break;
-                    }
-
-                    EditorGUILayout.EndHorizontal();
-                }
-
-                if (GUILayout.Button("Add NPC Interaction"))
-                {
-                    _gameData.Laws[i].NPCInteractions.Add(null);
-                    EditorUtility.SetDirty(_gameData);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-
-                EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
-                if (_gameData.Laws[i].Effects == null)
-                {
-                    _gameData.Laws[i].Effects = new List<LawEffect>();
-                }
-
-                if (GUILayout.Button("Add Effect"))
-                {
-                    _gameData.Laws[i].Effects.Add(new LawEffect { Type = FactionType.Traditionalist, Value = 0 });
-                    EditorUtility.SetDirty(_gameData);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-
-                for (int j = 0; j < _gameData.Laws[i].Effects.Count; j++)
-                {
-                    GUILayout.Space(8);
-
-                    EditorGUILayout.BeginVertical("box");
-
-                    FactionType newType = (FactionType)EditorGUILayout.EnumPopup("Type", _gameData.Laws[i].Effects[j].Type);
-                    if (newType != _gameData.Laws[i].Effects[j].Type)
-                    {
-                        _gameData.Laws[i].Effects[j].Type = newType;
-                        EditorUtility.SetDirty(_gameData);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-
-                    int newValue = EditorGUILayout.IntField("Value", _gameData.Laws[i].Effects[j].Value);
-                    if (newValue != _gameData.Laws[i].Effects[j].Value)
-                    {
-                        _gameData.Laws[i].Effects[j].Value = newValue;
-                        EditorUtility.SetDirty(_gameData);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-
-                    if (GUILayout.Button("Remove Effect"))
-                    {
-                        _gameData.Laws[i].Effects.RemoveAt(j);
-                        EditorUtility.SetDirty(_gameData);
-                        AssetDatabase.SaveAssets();
-                        AssetDatabase.Refresh();
-                    }
-                    EditorGUILayout.EndVertical();
-                }
-
-                GUILayout.Space(16);
-
-                if (GUILayout.Button("Delete"))
-                {
-                    _gameData.Laws.RemoveAt(i);
-                    EditorUtility.SetDirty(_gameData);
-                    AssetDatabase.SaveAssets();
-                    AssetDatabase.Refresh();
-                }
-                
-                EditorGUILayout.EndVertical();
-
+                DrawExistingLaw(i, interactionNames);
                 GUILayout.Space(32);
             }
         }
     }
 
-    private void AddNewLaw()
+    private void DrawNewLawSection(string[] allInteractions)
     {
-        if (!string.IsNullOrEmpty(_newLawName) && !string.IsNullOrEmpty(_newLawDescription))
-        {
-            Law newLaw = new Law
-            {
-                Name = _newLawName,
-                Description = _newLawDescription,
-                Icon = _newLawIcon,
-                Effects = _newLawEffects,
-                NPCInteractions = _npcInteractions,
-            };
-            _gameData.Laws.Add(newLaw);
-            EditorUtility.SetDirty(_gameData);
+        EditorGUILayout.BeginVertical("box");
+        GUILayout.Space(8);
+        EditorGUILayout.LabelField("Create New Law", EditorStyles.boldLabel);
+        _newLawName = EditorGUILayout.TextField("Name", _newLawName);
+        _newLawDescription = EditorGUILayout.TextField("Description", _newLawDescription);
+        _newLawIcon = (Sprite)EditorGUILayout.ObjectField("Icon", _newLawIcon, typeof(Sprite), false);
 
-            _newLawName = "";
-            _newLawDescription = "";
-            _newLawIcon = null;
-            _newLawEffects = null;
-            _npcInteractions = null;
+        if (_newInteractionNames == null)
+            _newInteractionNames = new List<string>();
+
+        EditorGUILayout.LabelField("NPC Interactions", EditorStyles.boldLabel);
+
+        if (GUILayout.Button("Add Interaction Slot"))
+            _newInteractionNames.Add(allInteractions.Length > 0 ? allInteractions[0] : "");
+
+        for (int i = 0; i < _newInteractionNames.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            int idx = System.Array.IndexOf(allInteractions, _newInteractionNames[i]);
+            if (idx < 0) idx = 0;
+            if (allInteractions.Length > 0)
+            {
+                idx = EditorGUILayout.Popup("Interaction", idx, allInteractions);
+                _newInteractionNames[i] = allInteractions[idx];
+            }
+            if (GUILayout.Button("Remove", GUILayout.Width(80)))
+                _newInteractionNames.RemoveAt(i);
+            EditorGUILayout.EndHorizontal();
         }
+
+        EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
+        if (_newLawEffects == null)
+            _newLawEffects = new List<LawEffectJson>();
+
+        if (GUILayout.Button("Add Effect"))
+            _newLawEffects.Add(new LawEffectJson { type = 0, value = 0 });
+
+        for (int i = 0; i < _newLawEffects.Count; i++)
+        {
+            EditorGUILayout.BeginVertical("box");
+            _newLawEffects[i].type = (int)(FactionType)EditorGUILayout.EnumPopup("Type", (FactionType)_newLawEffects[i].type);
+            _newLawEffects[i].value = EditorGUILayout.IntField("Value", _newLawEffects[i].value);
+            if (GUILayout.Button("Remove Effect"))
+                _newLawEffects.RemoveAt(i);
+            EditorGUILayout.EndVertical();
+        }
+
+        GUILayout.Space(16);
+
+        if (GUILayout.Button("Add Law"))
+        {
+            if (!string.IsNullOrEmpty(_newLawName) && !string.IsNullOrEmpty(_newLawDescription))
+            {
+                var iconPath = "";
+                if (_newLawIcon != null)
+                    iconPath = SpriteToResourcesPath(_newLawIcon);
+
+                _database.laws.Add(new LawJson
+                {
+                    name = _newLawName,
+                    description = _newLawDescription,
+                    iconPath = iconPath,
+                    effects = _newLawEffects.Select(e => new LawEffectJson { type = e.type, value = e.value }).ToList(),
+                    interactionNames = new List<string>(_newInteractionNames)
+                });
+
+                GameDatabaseJsonIO.Save(_database);
+
+                _newLawName = "";
+                _newLawDescription = "";
+                _newLawIcon = null;
+                _newLawEffects = null;
+                _newInteractionNames = null;
+            }
+        }
+
+        EditorGUILayout.EndVertical();
+    }
+
+    private void DrawExistingLaw(int i, string[] allInteractions)
+    {
+        var law = _database.laws[i];
+
+        EditorGUILayout.BeginVertical("box");
+
+        string newName = EditorGUILayout.TextField("Name", law.name);
+        if (newName != law.name)
+        {
+            law.name = newName;
+            GameDatabaseJsonIO.Save(_database);
+        }
+
+        string newDesc = EditorGUILayout.TextField("Description", law.description);
+        if (newDesc != law.description)
+        {
+            law.description = newDesc;
+            GameDatabaseJsonIO.Save(_database);
+        }
+
+        Sprite currentIcon = string.IsNullOrEmpty(law.iconPath) ? null : Resources.Load<Sprite>(law.iconPath);
+        Sprite newIcon = (Sprite)EditorGUILayout.ObjectField("Icon", currentIcon, typeof(Sprite), false);
+        if (newIcon != currentIcon)
+        {
+            law.iconPath = newIcon != null ? SpriteToResourcesPath(newIcon) : "";
+            GameDatabaseJsonIO.Save(_database);
+        }
+
+        EditorGUILayout.LabelField("NPC Interactions", EditorStyles.boldLabel);
+
+        for (int j = 0; j < law.interactionNames.Count; j++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            int idx = System.Array.IndexOf(allInteractions, law.interactionNames[j]);
+            if (idx < 0) idx = 0;
+            if (allInteractions.Length > 0)
+            {
+                int newIdx = EditorGUILayout.Popup("Interaction", idx, allInteractions);
+                if (newIdx != idx)
+                {
+                    law.interactionNames[j] = allInteractions[newIdx];
+                    GameDatabaseJsonIO.Save(_database);
+                }
+            }
+            if (GUILayout.Button("Remove", GUILayout.Width(80)))
+            {
+                law.interactionNames.RemoveAt(j);
+                GameDatabaseJsonIO.Save(_database);
+                break;
+            }
+            EditorGUILayout.EndHorizontal();
+        }
+
+        if (GUILayout.Button("Add Interaction"))
+        {
+            law.interactionNames.Add(allInteractions.Length > 0 ? allInteractions[0] : "");
+            GameDatabaseJsonIO.Save(_database);
+        }
+
+        EditorGUILayout.LabelField("Effects", EditorStyles.boldLabel);
+
+        if (GUILayout.Button("Add Effect"))
+        {
+            law.effects.Add(new LawEffectJson { type = 0, value = 0 });
+            GameDatabaseJsonIO.Save(_database);
+        }
+
+        for (int j = 0; j < law.effects.Count; j++)
+        {
+            EditorGUILayout.BeginVertical("box");
+
+            var newType = (int)(FactionType)EditorGUILayout.EnumPopup("Type", (FactionType)law.effects[j].type);
+            if (newType != law.effects[j].type)
+            {
+                law.effects[j].type = newType;
+                GameDatabaseJsonIO.Save(_database);
+            }
+
+            int newValue = EditorGUILayout.IntField("Value", law.effects[j].value);
+            if (newValue != law.effects[j].value)
+            {
+                law.effects[j].value = newValue;
+                GameDatabaseJsonIO.Save(_database);
+            }
+
+            if (GUILayout.Button("Remove Effect"))
+            {
+                law.effects.RemoveAt(j);
+                GameDatabaseJsonIO.Save(_database);
+            }
+            EditorGUILayout.EndVertical();
+        }
+
+        GUILayout.Space(16);
+
+        if (GUILayout.Button("Delete Law"))
+        {
+            _database.laws.RemoveAt(i);
+            GameDatabaseJsonIO.Save(_database);
+        }
+
+        EditorGUILayout.EndVertical();
+    }
+
+    private string SpriteToResourcesPath(Sprite sprite)
+    {
+        var path = AssetDatabase.GetAssetPath(sprite);
+        const string prefix = "Assets/Resources/";
+        if (path.StartsWith(prefix))
+        {
+            var relative = path.Substring(prefix.Length);
+            var ext = Path.GetExtension(relative);
+            if (!string.IsNullOrEmpty(ext))
+                relative = relative.Substring(0, relative.Length - ext.Length);
+            return relative;
+        }
+        return path;
     }
 }
 #endif
