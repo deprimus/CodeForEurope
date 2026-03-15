@@ -15,10 +15,12 @@ public class BookBehavior : MonoBehaviour
     [SerializeField] GameObject backButton;
     [SerializeField] GameObject forwardButton;
 
+    [SerializeField] GameObject closeButton;
+
     [SerializeField] GameObject pagePrefab;
     [SerializeField] GameObject pageParent;
 
-
+    public event Action OnBookClosed;
     
     private void Start()
     {
@@ -33,6 +35,7 @@ public class BookBehavior : MonoBehaviour
         // }
         // pages[0].SetAsLastSibling();
         backButton.SetActive(false);
+        forwardButton.SetActive(false);
     }
 
     public void AddTestPage()
@@ -51,10 +54,6 @@ public class BookBehavior : MonoBehaviour
         GameObject page = Instantiate(pagePrefab, position, Quaternion.identity, pageParent.transform);
         page.transform.localPosition = Vector3.zero;
         pages.Add(page.transform);
-        if(index == -1)
-        {
-            index = 0;
-        }
         if(pages.Count > 1)
         {
             forwardButton.SetActive(true);
@@ -131,6 +130,16 @@ public class BookBehavior : MonoBehaviour
             yield return null;
 
         }
+    }
+
+    public void OpenBook()
+    {
+        gameObject.SetActive(true);
+    }
+    public void CloseBook()
+    {
+        OnBookClosed?.Invoke();
+        gameObject.SetActive(false);
     }
     
 }
