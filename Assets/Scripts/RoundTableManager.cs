@@ -32,9 +32,13 @@ public class RoundTableManager : MonoBehaviour
 
     public static RoundTableManager Instance { get; private set; }
 
+    private RoundTablePlayer _user;
+
     private void Awake()
     {
         Instance = this;
+
+        _user = _people.FirstOrDefault(p => p is RoundTablePlayer) as RoundTablePlayer;
     }
 
     public void SetCameraAnimation(string animation)
@@ -88,48 +92,6 @@ public class RoundTableManager : MonoBehaviour
         GameManager.Instance.OnMoodBarsHidden();
     }
 
-    public void Influence(InteractionEffectType faction, int value)
-    {
-        switch (faction)
-        {
-            case InteractionEffectType.TraditionalistParty:
-            case InteractionEffectType.ProgressistParty:
-            case InteractionEffectType.LiberalParty:
-            case InteractionEffectType.GreensParty:
-            {
-                var (primary, secondary) = GetFaction(faction);
-
-                foreach (var person in _people)
-                {
-                    if (person.PrimaryOrientation == primary && person.SecondaryOrientation == secondary)
-                    {
-                        person.Influence(value);
-                    }
-                }
-
-                break;
-            }
-
-            case InteractionEffectType.AllLefts:
-            case InteractionEffectType.AllRights:
-            case InteractionEffectType.AllLibertarians:
-            case InteractionEffectType.AllTraditionalists:
-            {
-                var orientation = InteractionEffectToOrientation(faction);
-
-                foreach (var person in _people)
-                {
-                    if (person.PrimaryOrientation == orientation || person.SecondaryOrientation == orientation)
-                    {
-                        person.Influence(value);
-                    }
-                }
-
-                break;
-            }
-        }
-    }
-
     public async void VoteLaw()
     {
         await UniTask.Delay(2000);
@@ -143,7 +105,16 @@ public class RoundTableManager : MonoBehaviour
             await UniTask.Delay(2000);
         }
 
-        var lawApproved = _people.Sum(p => p.Vote) / _people.Length > 0.5f;
+        var userLawApprovalStatus = _user.UserLawApprovalStatus;
+
+        var random = Random.Range(0, 101);
+        var userWinPercentage = GameManager.BaseUserWinPercentage;
+        var userLawInfluence = GameManager.Instance.UserLawInfluence;
+
+        //userWinPercentage += ((userLawApprovalStatus ^ (userLawInfluence > 0)) * (-2) + 1) * Mathf.Abs(userLawInfluence);
+        userWinPercentage += userLawApprovalStatus ? userLawInfluence : -userLawInfluence;
+        
+        var lawApproved = random <= userWinPercentage ? userLawApprovalStatus : !userLawApprovalStatus;
 
         var lawObject = lawApproved ? _lawApproved : _lawRejected;
 

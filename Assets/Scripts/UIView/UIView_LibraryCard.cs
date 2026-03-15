@@ -56,17 +56,6 @@ public class UIView_LibraryCard : MonoBehaviour
 
     public void Revert()
     {
-        var effects = _interactionEffects;
-
-        for (int i = 0; i < 2; i++)
-        {
-            foreach (var effect in effects)
-            {
-                var value = _option ? -effect.Value : effect.Value;
-                RoundTableManager.Instance.Influence(effect.Type, value);
-            }
-        }
-
         SoundManager.instance.Play(SoundManager.instance.select);
 
         LibraryManager.Instance.OnRevertApplied();
