@@ -21,6 +21,8 @@ public class WelfareManager
         Gini = GINI_INIT;
         HumanCapital = HC_INIT;
         LifeExpectancy = LE_INIT;
+
+        UpdateUI();
     }
 
     public void ApplyEffects(List<WelfareEffect> effects, float multiplier = 1f)
@@ -45,12 +47,14 @@ public class WelfareManager
                     break;
             }
         }
+
+        UpdateUI();
     }
     
-    public float NormalizedGDP => (GDP - 8000f) / 5000f;
+    public float NormalizedGDP => (GDP - GDP_MIN) / (GDP_MAX - GDP_MIN);
     public float NormalizedGini => 1f - Gini;
-    public float NormalizedHumanCapital => HumanCapital / 10f;
-    public float NormalizedLifeExpectancy => (LifeExpectancy - 65f) / 20f;
+    public float NormalizedHumanCapital => (HumanCapital - HC_MIN) / (HC_MAX - HC_MIN);
+    public float NormalizedLifeExpectancy => (LifeExpectancy - LE_MIN) / (LE_MAX - LE_MIN);
 
     public float CompositeWelfareScore =>
         (NormalizedGDP + NormalizedGini + NormalizedHumanCapital + NormalizedLifeExpectancy) / 4f;
@@ -151,5 +155,19 @@ public class WelfareManager
         }
 
         return ending;
+    }
+
+    public void UpdateUI() {
+        GameManager.Instance.indicators[(int)WelfareIndicator.GDP].text.text = $"{GDP}/{GDP_MAX}";
+        GameManager.Instance.indicators[(int)WelfareIndicator.GDP].bar.localScale = new Vector3(NormalizedGDP, 1f, 1f);
+
+        GameManager.Instance.indicators[(int)WelfareIndicator.Gini].text.text = $"{Gini}/{GINI_MAX}";
+        GameManager.Instance.indicators[(int)WelfareIndicator.Gini].bar.localScale = new Vector3(NormalizedGini, 1f, 1f);
+
+        GameManager.Instance.indicators[(int)WelfareIndicator.HumanCapital].text.text = $"{HumanCapital}/{HC_MAX}";
+        GameManager.Instance.indicators[(int)WelfareIndicator.HumanCapital].bar.localScale = new Vector3(NormalizedHumanCapital, 1f, 1f);
+
+        GameManager.Instance.indicators[(int)WelfareIndicator.LifeExpectancy].text.text = $"{LifeExpectancy}/{LE_MAX}";
+        GameManager.Instance.indicators[(int)WelfareIndicator.LifeExpectancy].bar.localScale = new Vector3(NormalizedLifeExpectancy, 1f, 1f);
     }
 }
