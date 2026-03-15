@@ -1,6 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static UIBookPage;
 
 public class BookBehavior : MonoBehaviour
 {
@@ -10,6 +14,11 @@ public class BookBehavior : MonoBehaviour
     bool rotate = false;
     [SerializeField] GameObject backButton;
     [SerializeField] GameObject forwardButton;
+
+    [SerializeField] GameObject pagePrefab;
+    [SerializeField] GameObject pageParent;
+
+
     
     private void Start()
     {
@@ -18,12 +27,40 @@ public class BookBehavior : MonoBehaviour
 
     public void InitialState()
     {
-        for (int i=0; i<pages.Count; i++)
-        {
-            pages[i].transform.rotation=Quaternion.identity;
-        }
-        pages[0].SetAsLastSibling();
+        // for (int i=0; i<pages.Count; i++)
+        // {
+        //     pages[i].transform.rotation=Quaternion.identity;
+        // }
+        // pages[0].SetAsLastSibling();
         backButton.SetActive(false);
+    }
+
+    public void AddTestPage()
+    {
+        RulePageData pageData = new RulePageData();
+        pageData.title = "Test Title";
+        pageData.description = "Test Description";
+        pageData.longDescription = "Test Long Description";
+        pageData.effects = "Test Effects";
+        AddPage(pageData);
+    }
+
+    public void AddPage(RulePageData pageData)
+    {
+        Vector3 position = new Vector3(0, 0, 0);
+        GameObject page = Instantiate(pagePrefab, position, Quaternion.identity, pageParent.transform);
+        page.transform.localPosition = Vector3.zero;
+        pages.Add(page.transform);
+        if(index == -1)
+        {
+            index = 0;
+        }
+        if(pages.Count > 1)
+        {
+            forwardButton.SetActive(true);
+        }
+        pages[pages.Count-1].SetAsLastSibling();
+        page.GetComponent<UIBookPage>().SetPageData(pageData);
     }
 
     public void RotateForward()
@@ -72,6 +109,7 @@ public class BookBehavior : MonoBehaviour
 
     IEnumerator Rotate(float angle, bool forward)
     {
+        //TODO: Add a check if we are over 50% of the rotation, then hide the text page
         float value = 0f;
         while (true)
         {
