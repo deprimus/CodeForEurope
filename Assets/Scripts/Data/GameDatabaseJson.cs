@@ -8,6 +8,45 @@ public class GameDatabaseRoot
     public List<NpcJson> npcs;
     public List<InteractionJson> interactions;
     public List<LawJson> laws;
+    public List<LawPostsJson> posts;
+}
+
+[Serializable]
+public class LawPostsJson
+{
+    public string lawName;
+    public List<PostJson> posts;
+}
+
+[Serializable]
+public class PostJson
+{
+    public PostAuthorJson author;
+    public string faction;
+    public string content;
+    public string imagePath;
+    public List<CommentJson> comments;
+}
+
+[Serializable]
+public class PostAuthorJson
+{
+    public string name;
+}
+
+[Serializable]
+public class CommentJson
+{
+    public PostAuthorJson author;
+    public string content;
+    public ReactionJson reaction;
+}
+
+[Serializable]
+public class ReactionJson
+{
+    public int likes;
+    public int dislikes;
 }
 
 [Serializable]

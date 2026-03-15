@@ -61,14 +61,6 @@ public class BeaureauManager : MonoBehaviour
 
     internal async void OnOptionPicked(bool option)
     {
-        var effects = _currentNPC.Interaction.Effects;
-
-        foreach (var effect in effects)
-        {
-            var value = option ? effect.Value : -effect.Value;
-            _roundTableManager.Influence(effect.Type, value);
-        }
-
         LibraryManager.Instance.AddInteraction(_currentNPC.Interaction, option);
 
         await _currentNPC.OnChoicePicked();

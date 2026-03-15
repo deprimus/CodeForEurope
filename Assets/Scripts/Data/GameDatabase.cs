@@ -10,6 +10,7 @@ public class GameDatabase : MonoBehaviour
     private Dictionary<string, NPC> _npcLookup;
     private Dictionary<string, NPCInteraction> _interactionLookup;
     private List<Law> _laws;
+    private Dictionary<string, List<PostJson>> _postsByLawName;
 
     private LawManager _lawManager;
     private NPCManager _npcManager;
@@ -20,6 +21,13 @@ public class GameDatabase : MonoBehaviour
     public IReadOnlyDictionary<string, NPC> NPCs => _npcLookup;
     public IReadOnlyDictionary<string, NPCInteraction> Interactions => _interactionLookup;
     public IReadOnlyList<Law> Laws => _laws;
+
+    public List<PostJson> GetPostsForLaw(string lawName)
+    {
+        if (_postsByLawName != null && _postsByLawName.TryGetValue(lawName, out var posts))
+            return posts;
+        return new List<PostJson>();
+    }
 
     private void Awake()
     {
@@ -47,6 +55,7 @@ public class GameDatabase : MonoBehaviour
         BuildNPCs(data.npcs);
         BuildInteractions(data.interactions);
         BuildLaws(data.laws);
+        BuildPosts(data.posts);
 
         _lawManager = new LawManager(_laws);
         _npcManager = new NPCManager(_interactionLookup.Values.ToList());
@@ -142,6 +151,15 @@ public class GameDatabase : MonoBehaviour
                 NPCInteractions = npcInteractions
             });
         }
+    }
+
+    private void BuildPosts(List<LawPostsJson> postsData)
+    {
+        _postsByLawName = new Dictionary<string, List<PostJson>>();
+        if (postsData == null) return;
+
+        foreach (var entry in postsData)
+            _postsByLawName[entry.lawName] = entry.posts;
     }
 
     private void OnDestroy()

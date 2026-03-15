@@ -56,5 +56,8 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "CodeForEurope.sln"
+    "dotnet.defaultSolution": "CodeForEurope.sln",
+    "dotrush.roslyn.projectOrSolutionFiles": [
+        "f:\\Macbook Stuff\\Personal\\Unity\\CodeForEurope\\Assembly-CSharp.csproj"
+    ]
 }

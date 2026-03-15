@@ -11,13 +11,12 @@ public class LibraryManager : MonoBehaviour
 
     public static LibraryManager Instance;
 
-    private bool _usedBook;
-    private bool _usedLaptop;
     private bool _debunked;
 
     private List<(NPCInteraction, bool)> _interactions;
     private List<UIView_LibraryCard> _spawnedCards;
 
+    private LibraryCamera _camera;
     private LawManager _lawManager;
 
     private void Awake()
@@ -25,12 +24,15 @@ public class LibraryManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
+    }
+
     public void Initialize()
     {
         _lawManager = GameDatabase.Instance.LawManager;
 
-        _usedBook = false;
-        _usedLaptop = false;
         _debunked = false;
         _interactions = new List<(NPCInteraction, bool)>();
 
@@ -41,13 +43,10 @@ public class LibraryManager : MonoBehaviour
         }
 
         _spawnedCards = new List<UIView_LibraryCard>();
-
-        UpdateUI();
     }
 
     public void InitializeUI()
     {
-        Debug.Log(_interactions.Count);
         foreach (var interaction in _interactions)
         {
             var verdict = interaction.Item2 ? "<color=#009f00>accepted</color>" : "<color=#9f0000>rejected</color>";
@@ -60,16 +59,14 @@ public class LibraryManager : MonoBehaviour
 
     public void UseBook()
     {
-        _usedBook = true;
-
-        UpdateUI();
     }
 
     public void UseLaptop()
     {
-        _usedLaptop = true;
+        if (_camera == null)
+            _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
 
-        UpdateUI();
+        _camera.MoveToLaptop();
     }
 
     public void AddInteraction(NPCInteraction interaction, bool option)
@@ -81,8 +78,6 @@ public class LibraryManager : MonoBehaviour
     {
         _debunked = true;
 
-        UpdateUI();
-
         _lawManager.SetCurrentLawEffects(GameManager.Instance.CurrentLaw.Effects);
 
         foreach (var card in _spawnedCards)
@@ -93,11 +88,5 @@ public class LibraryManager : MonoBehaviour
     {
         foreach (var card in _spawnedCards)
             card.gameObject.SetActive(false);
-    }
-
-    private void UpdateUI()
-    {
-        _debunkButton.SetActive(_usedBook && _usedLaptop && !_debunked);
-        _continueButton.SetActive(_debunked);
     }
 }

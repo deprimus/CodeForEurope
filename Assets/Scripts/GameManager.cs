@@ -1,7 +1,6 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
-
 public class GameManager : MonoBehaviour
 {
     public int TraditionalistPoints => _traditionalistPoints;
@@ -13,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     public Law CurrentLaw { get; private set; }
 
+    public int UserLawInfluence => _userLawInfluence;
     public WelfareManager Welfare { get; private set; }
 
     private int _roundIndex = 0;
@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     [Foldout("Debug"), SerializeField, ReadOnly]
     private int _libertarianPoints;
 
+    public static int BaseUserWinPercentage = 60;
+    
+    private int _userLawInfluence = 0;
     private LawManager _lawManager;
     private NPCManager _npcManager;
 
@@ -74,6 +77,8 @@ public class GameManager : MonoBehaviour
 
     private async void ShowNextLaw()
     {
+        _userLawInfluence = 0;
+
         CurrentLaw = _lawManager.PickLaw();
         LibraryManager.Instance.Initialize();
 
@@ -127,6 +132,10 @@ public class GameManager : MonoBehaviour
         LibraryManager.Instance.InitializeUI();
 
         Transition.SweepIn();
+
+        // TODO: Re-enable auto-advance after testing EuroChat/Laptop UI
+        // Tale.Wait(1f);
+        // Tale.Exec(() => OnLibraryEnded());
     }
 
     public void OnLibraryEnded()

@@ -6,6 +6,8 @@ public class RoundTablePlayer : Faction
     [Foldout("References")] public UIView_MoodPicker _moodPicker;
     [Foldout("References")] public UIView_VotePicker _votePicker;
 
+    public bool UserLawApprovalStatus { get; private set; }
+
     protected async override Task PickFactionMood()
     {
         var moodPicked = false;
@@ -41,6 +43,7 @@ public class RoundTablePlayer : Faction
         {
             votePicked = true;
             Vote = vote ? 1 : 0;
+            UserLawApprovalStatus = vote;
         }
     }
 }
