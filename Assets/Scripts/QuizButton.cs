@@ -14,8 +14,8 @@ public class QuizButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     TextMeshProUGUI text;
 
-    static readonly Color HoverColor = Color.red;
-    static readonly Color NormalColor = Color.black;
+    static readonly Color HoverColor = new Color(255, 216, 0);
+    static readonly Color NormalColor = Color.white;
 
     void Awake() {
         text = GetComponentInChildren<TextMeshProUGUI>();

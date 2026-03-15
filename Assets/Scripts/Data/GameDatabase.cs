@@ -132,6 +132,13 @@ public class GameDatabase : MonoBehaviour
                     Type = (FactionType)e.type,
                     Value = e.value
                 }).ToList(),
+                WelfareEffects = entry.welfareEffects != null
+                    ? entry.welfareEffects.Select(e => new WelfareEffect
+                    {
+                        Indicator = (WelfareIndicator)e.indicator,
+                        Value = e.value
+                    }).ToList()
+                    : new List<WelfareEffect>(),
                 NPCInteractions = npcInteractions
             });
         }

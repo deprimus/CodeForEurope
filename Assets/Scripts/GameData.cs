@@ -13,6 +13,7 @@ public class Law
     public string Description;
     public Sprite Icon;
     public List<LawEffect> Effects;
+    public List<WelfareEffect> WelfareEffects;
     public List<NPCInteraction> NPCInteractions;
 }
 
@@ -24,10 +25,26 @@ public class LawEffect
 }
 
 [System.Serializable]
+public class WelfareEffect
+{
+    public WelfareIndicator Indicator;
+    public float Value;
+}
+
+[System.Serializable]
 public enum FactionType
 {
     Traditionalist,
     Left,
     Right,
     Libertarian
+}
+
+[System.Serializable]
+public enum WelfareIndicator
+{
+    GDP,
+    Gini,
+    HumanCapital,
+    LifeExpectancy
 }
