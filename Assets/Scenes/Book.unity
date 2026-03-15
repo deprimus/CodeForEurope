@@ -344,9 +344,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2580777675123770554, guid: 9a67f9d5ed125324eaee5d4e2202c4bd, type: 3}
+      propertyPath: EffectsBackgroundImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3514260479143935453, guid: 9a67f9d5ed125324eaee5d4e2202c4bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3704496929667035417, guid: 9a67f9d5ed125324eaee5d4e2202c4bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5724348142570975298, guid: 9a67f9d5ed125324eaee5d4e2202c4bd, type: 3}
       propertyPath: m_Name
       value: LibraryBook
+      objectReference: {fileID: 0}
+    - target: {fileID: 5724348142570975298, guid: 9a67f9d5ed125324eaee5d4e2202c4bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
