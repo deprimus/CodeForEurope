@@ -210,7 +210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 355564055}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!114 &59237665
 MonoBehaviour:
@@ -816,7 +816,7 @@ Transform:
   m_LocalScale: {x: 8.656669, y: 25, z: 13.725}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 355564055}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1066151633
 MeshRenderer:
@@ -1948,7 +1948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1949738432}
   - component: {fileID: 1949738434}
-  - component: {fileID: 1949738433}
   m_Layer: 0
   m_Name: CameraManager
   m_TagString: Untagged
@@ -1971,18 +1970,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2135480045}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1949738433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949738431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8febe011a64c34bf589cd427969870db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1949738434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2163,7 +2150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 355564055}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!114 &2089060183
 MonoBehaviour:
@@ -4913,7 +4900,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 713607561932387402, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 100664194}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ebb14e6724bd4573abc5581c21beaf7, type: 3}
 --- !u!4 &4310076671188166846 stripped
@@ -5055,3 +5045,6 @@ SceneRoots:
   - {fileID: 2135480045}
   - {fileID: 1212731077}
   - {fileID: 1387265031}
+  - {fileID: 59237664}
+  - {fileID: 1066151632}
+  - {fileID: 2089060182}
