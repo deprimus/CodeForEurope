@@ -16,6 +16,6 @@ public class LibraryCamera : MonoBehaviour
 
     public void OpenLaptopUI()
     {
-        LaptopUI.Instance.Show();
+        EuroChat.Instance.Show();
     }
 }

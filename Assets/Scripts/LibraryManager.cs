@@ -63,7 +63,9 @@ public class LibraryManager : MonoBehaviour
 
     public void UseLaptop()
     {
-        var camera = CameraManager.Instance.Camera;
+        if (_camera == null)
+            _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
+
         _camera.MoveToLaptop();
     }
 
