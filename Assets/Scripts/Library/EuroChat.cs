@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -43,6 +44,14 @@ public class EuroChat : MonoBehaviour
             SpawnPost(post);
 
         gameObject.SetActive(true);
+        StartCoroutine(RebuildLayoutNextFrame());
+    }
+
+    private IEnumerator RebuildLayoutNextFrame()
+    {
+        yield return null;
+        if (content != null)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(content);
     }
 
     public void Hide()
