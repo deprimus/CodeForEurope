@@ -10,6 +10,6 @@ public class LibraryLaptop : MonoBehaviour
     public void CloseLaptopUI()
     {
         EuroChat.Instance.Hide();
-        LibraryManager.Instance.RestoreCamera();
+        LibraryManager.Instance.OnLaptopClosed();
     }
 }

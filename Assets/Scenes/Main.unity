@@ -797,6 +797,11 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &725747511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1873892568497305040, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+  m_PrefabInstance: {fileID: 9217963113802074700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &738984355 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4885012914894495698, guid: 441ae10f2871b994a96dbba4a497957c, type: 3}
@@ -1420,6 +1425,7 @@ MonoBehaviour:
   _continueButton: {fileID: 443353833}
   _cardPrefab: {fileID: 6573027929284042457, guid: 2d7ca1fadf1894659a4c2e6dbd35943d, type: 3}
   _cardsParent: {fileID: 311923678}
+  _libraryBookUI: {fileID: 725747511}
 --- !u!114 &1620797693 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7095537265960687002, guid: 441ae10f2871b994a96dbba4a497957c, type: 3}
@@ -6450,7 +6456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3407755370966504903, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 2897.605
+      value: 2929.9177
       objectReference: {fileID: 0}
     - target: {fileID: 3415054552615283746, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_AnchorMax.y
@@ -7811,6 +7817,10 @@ PrefabInstance:
     - target: {fileID: 8620324145363522523, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8669948276021094755, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -57.999878
       objectReference: {fileID: 0}
     - target: {fileID: 8677464052764875289, guid: f6c64766b56824844a11f5585fad3f40, type: 3}
       propertyPath: m_IsActive
