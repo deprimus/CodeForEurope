@@ -69,6 +69,14 @@ public class LibraryManager : MonoBehaviour
         _camera.MoveToLaptop();
     }
 
+    public void RestoreCamera()
+    {
+        if (_camera == null)
+            _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
+
+        _camera.RestoreCamera();
+    }
+
     public void AddInteraction(NPCInteraction interaction, bool option)
     {
         _interactions.Add((interaction, option));
