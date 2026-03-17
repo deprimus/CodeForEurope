@@ -8,30 +8,23 @@ public class GameEndManager : MonoBehaviour
 {
     [Foldout("References")] public CanvasGroup _canvasGroup;
 
-    [Foldout("Faction UI")] public Image _factionImage;
-    [Foldout("Faction UI")] public TextMeshProUGUI _factionText;
-
     [Foldout("Welfare Tier UI")] public TextMeshProUGUI _welfareScoreText;
     [Foldout("Welfare Tier UI")] public TextMeshProUGUI _welfareTierText;
     [Foldout("Welfare Tier UI")] public TextMeshProUGUI _welfareTierNarrationText;
 
+    [Foldout("Welfare Dominant UI")] public Image _welfareDominantImage;
     [Foldout("Welfare Dominant UI")] public TextMeshProUGUI _welfareDominantText;
     [Foldout("Welfare Dominant UI")] public TextMeshProUGUI _welfareDominantNarrationText;
 
-    [Foldout("Faction Endings")] public Sprite traditionalistEnd;
-    [Foldout("Faction Endings")] public Sprite leftEnd;
-    [Foldout("Faction Endings")] public Sprite rightEnd;
-    [Foldout("Faction Endings")] public Sprite libertarianEnd;
-    [Foldout("Faction Endings")] public Sprite harmonyEnd;
+    [Foldout("Welfare Dominant Sprites")] public Sprite gdpGoodSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite giniGoodSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite humanCapitalGoodSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite lifeExpectancyGoodSprite;
 
-    public enum Ending
-    {
-        Traditionalist,
-        Left,
-        Right,
-        Libertarian,
-        Harmony
-    }
+    [Foldout("Welfare Dominant Sprites")] public Sprite gdpBadSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite giniBadSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite humanCapitalBadSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite lifeExpectancyBadSprite;
 
     public static GameEndManager Instance { get; private set; }
 
@@ -49,15 +42,8 @@ public class GameEndManager : MonoBehaviour
             _canvasGroup.blocksRaycasts = true;
         }
 
-        var factionEnding = PickEnding();
         var welfare = GameManager.Instance.Welfare;
         var we = welfare.GetEnding();
-
-        // Faction
-        if (_factionImage != null)
-            _factionImage.sprite = GetFactionSprite(factionEnding);
-        if (_factionText != null)
-            _factionText.text = factionEnding.ToString();
 
         // Welfare tier
         if (_welfareScoreText != null)
@@ -68,6 +54,8 @@ public class GameEndManager : MonoBehaviour
             _welfareTierNarrationText.text = we.TierNarration;
 
         // Welfare dominant
+        if (_welfareDominantImage != null)
+            _welfareDominantImage.sprite = GetWelfareDominantSprite(we);
         if (_welfareDominantText != null)
             _welfareDominantText.text = we.DominantTitle;
         if (_welfareDominantNarrationText != null)
@@ -85,27 +73,21 @@ public class GameEndManager : MonoBehaviour
         Tale.Scene("MainMenu");
     }
 
-    private Sprite GetFactionSprite(Ending ending) => ending switch
+    private Sprite GetWelfareDominantSprite(WelfareManager.WelfareEnding we)
     {
-        Ending.Traditionalist => traditionalistEnd,
-        Ending.Left           => leftEnd,
-        Ending.Right          => rightEnd,
-        Ending.Libertarian    => libertarianEnd,
-        Ending.Harmony        => harmonyEnd,
-        _ => harmonyEnd
-    };
+        bool isGood = we.Tier == WelfareManager.CompositeTier.Flourishing;
 
-    private Ending PickEnding()
-    {
-        if (GameManager.Instance.TraditionalistPoints >= Config.DominanceThreshold)
-            return Ending.Traditionalist;
-        else if (GameManager.Instance.LeftPoints >= Config.DominanceThreshold)
-            return Ending.Left;
-        else if (GameManager.Instance.RightPoints >= Config.DominanceThreshold)
-            return Ending.Right;
-        else if (GameManager.Instance.LibertarianPoints >= Config.DominanceThreshold)
-            return Ending.Libertarian;
-
-        return Ending.Harmony;
+        return (we.DominantIndicator, isGood) switch
+        {
+            (WelfareIndicator.GDP, true) => gdpGoodSprite,
+            (WelfareIndicator.Gini, true) => giniGoodSprite,
+            (WelfareIndicator.HumanCapital, true) => humanCapitalGoodSprite,
+            (WelfareIndicator.LifeExpectancy, true) => lifeExpectancyGoodSprite,
+            (WelfareIndicator.GDP, false) => gdpBadSprite,
+            (WelfareIndicator.Gini, false) => giniBadSprite,
+            (WelfareIndicator.HumanCapital, false) => humanCapitalBadSprite,
+            (WelfareIndicator.LifeExpectancy, false) => lifeExpectancyBadSprite,
+            _ => null
+        };
     }
 }

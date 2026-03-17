@@ -317,6 +317,17 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &75500239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4626548413780768219, guid: d89d7a20905d34453a3a1adbf9f77606, type: 3}
+  m_PrefabInstance: {fileID: 1656435579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!114 &84348136 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1383183622174733261, guid: 441ae10f2871b994a96dbba4a497957c, type: 3}
@@ -877,17 +888,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddb5f34b56614244ae3c5e594ac7e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &915976267 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4626548413780768219, guid: d89d7a20905d34453a3a1adbf9f77606, type: 3}
-  m_PrefabInstance: {fileID: 1656435579}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1066151631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1062,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!114 &1248662289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3131864202611610453, guid: d89d7a20905d34453a3a1adbf9f77606, type: 3}
+  m_PrefabInstance: {fileID: 1656435579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &1300688557 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5114144769831538661, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
@@ -1170,20 +1181,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 1998596984}
+  _factionImage: {fileID: 75500239}
+  _factionText: {fileID: 1248662289}
   _welfareScoreText: {fileID: 419089199}
   _welfareTierText: {fileID: 446294208}
   _welfareTierNarrationText: {fileID: 335052719}
-  _welfareDominantImage: {fileID: 915976267}
   _welfareDominantText: {fileID: 2142222815}
   _welfareDominantNarrationText: {fileID: 842479556}
-  gdpGoodSprite: {fileID: 21300000, guid: 5a4770b28b956924b9ac986f2d816104, type: 3}
-  giniGoodSprite: {fileID: 21300000, guid: 5d5173e4949541249a2143ff1a2c8a85, type: 3}
-  humanCapitalGoodSprite: {fileID: 21300000, guid: c66da9ddea5cfee49ae0819352b25009, type: 3}
-  lifeExpectancyGoodSprite: {fileID: 21300000, guid: 896a43c6cf5e5be48afbab06bb159fb0, type: 3}
-  gdpBadSprite: {fileID: 21300000, guid: d8ff95a3257ca86488c05f9cc12144a2, type: 3}
-  giniBadSprite: {fileID: 21300000, guid: 1af5f1e71238b2c42a02a6ae098dfe01, type: 3}
-  humanCapitalBadSprite: {fileID: 21300000, guid: 1328bd9611b0a914a96f88dfac240ec2, type: 3}
-  lifeExpectancyBadSprite: {fileID: 21300000, guid: 93b66915b1292424a99e300451429cf5, type: 3}
+  traditionalistEnd: {fileID: 21300000, guid: 914f457b531526a46a834b0b2cf49302, type: 3}
+  leftEnd: {fileID: 21300000, guid: 6c06b03366ca4574484ca5dc78005efd, type: 3}
+  rightEnd: {fileID: 21300000, guid: 1da634894ac36d845bd768fba95547f9, type: 3}
+  libertarianEnd: {fileID: 21300000, guid: af555e2315a365948a5cba256a8f3fea, type: 3}
+  harmonyEnd: {fileID: 21300000, guid: 2b71b568838780f4e8717386448cc633, type: 3}
+  _welfareDominantImage: {fileID: 0}
+  gdpGoodSprite: {fileID: 0}
+  giniGoodSprite: {fileID: 0}
+  humanCapitalGoodSprite: {fileID: 0}
+  lifeExpectancyGoodSprite: {fileID: 0}
+  gdpBadSprite: {fileID: 0}
+  giniBadSprite: {fileID: 0}
+  humanCapitalBadSprite: {fileID: 0}
+  lifeExpectancyBadSprite: {fileID: 0}
 --- !u!114 &1430848013 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1985599238282030942, guid: 28334a4fc5e0746eca734d415bfa7ec8, type: 3}
