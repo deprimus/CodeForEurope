@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        return;
         _roundIndex = 0;
         Welfare = new WelfareManager();
 
