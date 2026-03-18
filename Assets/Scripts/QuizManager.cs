@@ -52,6 +52,7 @@ public class QuizManager : MonoBehaviour {
     void Awake() {
         Tale.Async(
             Tale.Queue(
+                Transition.SweepIn(),
                 Tale.Advance(),
                 Tale.Exec(async () => await Init())
             )
@@ -231,6 +232,15 @@ public class QuizManager : MonoBehaviour {
 
             phaseQuiz.SetActive(false);
             phaseResult.SetActive(true);
+
+            Tale.Async(
+                Tale.Queue(
+                    Tale.Wait(),
+                    Tale.Advance(),
+                    Transition.SweepOut(),
+                    Tale.Scene()
+                )
+            );
 
             return;
         }
