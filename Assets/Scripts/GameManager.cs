@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
 public class GameManager : MonoBehaviour
@@ -14,6 +16,15 @@ public class GameManager : MonoBehaviour
 
     public int UserLawInfluence => _userLawInfluence;
     public WelfareManager Welfare { get; private set; }
+
+    [System.Serializable]
+    public struct IndicatorUI {
+        public RectTransform bar;
+        public TextMeshProUGUI text;
+    }
+
+    [SerializeField]
+    public IndicatorUI[] indicators = new IndicatorUI[System.Enum.GetNames(typeof(WelfareIndicator)).Length];
 
     private int _roundIndex = 0;
 
@@ -134,9 +145,9 @@ public class GameManager : MonoBehaviour
 
         Transition.SweepIn();
 
-        Tale.Wait(1f);
-
-        Tale.Exec(() => OnLibraryEnded());
+        // TODO: Re-enable auto-advance after testing EuroChat/Laptop UI
+        //Tale.Wait(1f);
+        //Tale.Exec(() => OnLibraryEnded());
     }
 
     public void OnLibraryEnded()

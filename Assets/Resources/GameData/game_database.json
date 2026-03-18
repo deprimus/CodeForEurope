@@ -66,7 +66,9 @@
       "id": "Clawrence",
       "name": "<color=#ffff00>Clawrence</color>",
       "prefabPath": "Prefabs/NPCs/Clawrence",
-      "orientations": [2]
+      "orientations": [
+        2
+      ]
     },
     {
       "id": "Cubulescu",
@@ -78,25 +80,36 @@
       "id": "Felix Purrovich - The Media Watchdog",
       "name": "<color=#ff8000>Felix</color>",
       "prefabPath": "Prefabs/NPCs/Felix",
-      "orientations": [0, 1]
+      "orientations": [
+        0,
+        1
+      ]
     },
     {
       "id": "Mittens",
       "name": "<color=#e400ff>Mittens</color>",
       "prefabPath": "Prefabs/NPCs/Mittens",
-      "orientations": [3, 2]
+      "orientations": [
+        3,
+        2
+      ]
     },
     {
       "id": "Purrsilla",
       "name": "<color=#f94e40>Purrsilla</color>",
       "prefabPath": "Prefabs/NPCs/Purrsilla",
-      "orientations": [1]
+      "orientations": [
+        1
+      ]
     },
     {
       "id": "Tabby",
       "name": "<color=#70f940>Tabby</color>",
       "prefabPath": "Prefabs/NPCs/Tabby",
-      "orientations": [3, 1]
+      "orientations": [
+        3,
+        1
+      ]
     },
     {
       "id": "Tepusa",
@@ -108,26 +121,35 @@
       "id": "Tom",
       "name": "<color=#ffff00>Tom</color>",
       "prefabPath": "Prefabs/NPCs/Tom",
-      "orientations": [0, 2]
+      "orientations": [
+        0,
+        2
+      ]
     },
     {
       "id": "Whiskerina",
       "name": "<color=#e400ff>Whiskerina</color>",
       "prefabPath": "Prefabs/NPCs/Whiskerina",
-      "orientations": [3]
+      "orientations": [
+        3
+      ]
     },
     {
       "id": "Whiskersley",
       "name": "<color=#ff8000>Whiskersley</color>",
       "prefabPath": "Prefabs/NPCs/Whiskersley",
-      "orientations": [0]
+      "orientations": [
+        0
+      ]
     }
   ],
   "interactions": [
     {
       "name": "Clawrence",
       "npcId": "",
-      "dialogue": ["Hello!"],
+      "dialogue": [
+        "Hello!"
+      ],
       "effects": [
         {
           "type": 4,
@@ -614,7 +636,9 @@
     {
       "name": "P3-1",
       "npcId": "Mittens",
-      "dialogue": ["I believe civil partnership should be supported."],
+      "dialogue": [
+        "I believe civil partnership should be supported."
+      ],
       "effects": [
         {
           "type": 2,
@@ -947,10 +971,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": -200 },
-        { "indicator": 1, "value": -0.03 }
+        {
+          "indicator": 0,
+          "value": -200
+        },
+        {
+          "indicator": 1,
+          "value": -0.03
+        }
       ],
-      "interactionNames": ["T1-1", "T1-2", "T1-3"]
+      "interactionNames": [
+        "T1-1",
+        "T1-2",
+        "T1-3"
+      ]
     },
     {
       "name": "National Media Oversight Board",
@@ -959,10 +993,20 @@
       "iconPath": "",
       "effects": [],
       "welfareEffects": [
-        { "indicator": 2, "value": -0.35 },
-        { "indicator": 3, "value": -0.4 }
+        {
+          "indicator": 2,
+          "value": -0.35
+        },
+        {
+          "indicator": 3,
+          "value": -0.4
+        }
       ],
-      "interactionNames": ["T2-1", "T2-2", "T2-3"]
+      "interactionNames": [
+        "T2-1",
+        "T2-2",
+        "T2-3"
+      ]
     },
     {
       "name": "Corporate Tax Reduction",
@@ -980,10 +1024,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 500 },
-        { "indicator": 1, "value": 0.04 }
+        {
+          "indicator": 0,
+          "value": 500
+        },
+        {
+          "indicator": 1,
+          "value": 0.04
+        }
       ],
-      "interactionNames": ["L1-1", "L1-2", "L1-3"]
+      "interactionNames": [
+        "L1-1",
+        "L1-2",
+        "L1-3"
+      ]
     },
     {
       "name": "Privatization of Natural Resources Act",
@@ -1001,11 +1055,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 400 },
-        { "indicator": 3, "value": -0.7 },
-        { "indicator": 1, "value": 0.03 }
+        {
+          "indicator": 0,
+          "value": 400
+        },
+        {
+          "indicator": 3,
+          "value": -0.7
+        },
+        {
+          "indicator": 1,
+          "value": 0.03
+        }
       ],
-      "interactionNames": ["L2-1", "L2-2", "L2-3"]
+      "interactionNames": [
+        "L2-1",
+        "L2-2",
+        "L2-3"
+      ]
     },
     {
       "name": "Heavy Carbon Tax",
@@ -1023,10 +1090,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": -250 },
-        { "indicator": 3, "value": 1.2 }
+        {
+          "indicator": 0,
+          "value": -250
+        },
+        {
+          "indicator": 3,
+          "value": 1.2
+        }
       ],
-      "interactionNames": ["G1-1", "G1-2", "G1-3"]
+      "interactionNames": [
+        "G1-1",
+        "G1-2",
+        "G1-3"
+      ]
     },
     {
       "name": "Blockchain Financial Institutions Initiative",
@@ -1044,10 +1121,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 200 },
-        { "indicator": 2, "value": 0.3 }
+        {
+          "indicator": 0,
+          "value": 200
+        },
+        {
+          "indicator": 2,
+          "value": 0.3
+        }
       ],
-      "interactionNames": ["P1-1", "P1-2", "P1-3"]
+      "interactionNames": [
+        "P1-1",
+        "P1-2",
+        "P1-3"
+      ]
     },
     {
       "name": "Digital Government Transformation Act",
@@ -1065,10 +1152,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 2, "value": 0.35 },
-        { "indicator": 0, "value": 200 }
+        {
+          "indicator": 2,
+          "value": 0.35
+        },
+        {
+          "indicator": 0,
+          "value": 200
+        }
       ],
-      "interactionNames": ["P2-1", "P2-2", "P2-3"]
+      "interactionNames": [
+        "P2-1",
+        "P2-2",
+        "P2-3"
+      ]
     },
     {
       "name": "Growth Private Education",
@@ -1086,11 +1183,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 2, "value": 0.2 },
-        { "indicator": 1, "value": 0.04 },
-        { "indicator": 0, "value": 200 }
+        {
+          "indicator": 2,
+          "value": 0.2
+        },
+        {
+          "indicator": 1,
+          "value": 0.04
+        },
+        {
+          "indicator": 0,
+          "value": 200
+        }
       ],
-      "interactionNames": ["P5-1", "P5-2", "P5-3"]
+      "interactionNames": [
+        "P5-1",
+        "P5-2",
+        "P5-3"
+      ]
     },
     {
       "name": "Traditional Family Law",
@@ -1108,10 +1218,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 2, "value": -0.3 },
-        { "indicator": 1, "value": 0.025 }
+        {
+          "indicator": 2,
+          "value": -0.3
+        },
+        {
+          "indicator": 1,
+          "value": 0.025
+        }
       ],
-      "interactionNames": ["P3-1", "P3-2", "P3-3"]
+      "interactionNames": [
+        "P3-1",
+        "P3-2",
+        "P3-3"
+      ]
     },
     {
       "name": "Green Innovation Fund",
@@ -1129,11 +1249,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 250 },
-        { "indicator": 3, "value": 0.8 },
-        { "indicator": 1, "value": -0.025 }
+        {
+          "indicator": 0,
+          "value": 250
+        },
+        {
+          "indicator": 3,
+          "value": 0.8
+        },
+        {
+          "indicator": 1,
+          "value": -0.025
+        }
       ],
-      "interactionNames": ["T3-1", "T3-2", "T3-3"]
+      "interactionNames": [
+        "T3-1",
+        "T3-2",
+        "T3-3"
+      ]
     },
     {
       "name": "Health Insurance",
@@ -1151,11 +1284,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 250 },
-        { "indicator": 3, "value": -1.0 },
-        { "indicator": 1, "value": 0.035 }
+        {
+          "indicator": 0,
+          "value": 250
+        },
+        {
+          "indicator": 3,
+          "value": -1.0
+        },
+        {
+          "indicator": 1,
+          "value": 0.035
+        }
       ],
-      "interactionNames": ["T4-1", "T4-2", "T4-3"]
+      "interactionNames": [
+        "T4-1",
+        "T4-2",
+        "T4-3"
+      ]
     },
     {
       "name": "Auto polution norm restriction",
@@ -1173,11 +1319,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 3, "value": 1.0 },
-        { "indicator": 0, "value": -200 },
-        { "indicator": 1, "value": 0.02 }
+        {
+          "indicator": 3,
+          "value": 1.0
+        },
+        {
+          "indicator": 0,
+          "value": -200
+        },
+        {
+          "indicator": 1,
+          "value": 0.02
+        }
       ],
-      "interactionNames": ["G2-1", "G2-2", "G2-3"]
+      "interactionNames": [
+        "G2-1",
+        "G2-2",
+        "G2-3"
+      ]
     },
     {
       "name": "Plastic Products Regulation",
@@ -1195,11 +1354,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 3, "value": 0.6 },
-        { "indicator": 0, "value": -200 },
-        { "indicator": 2, "value": 0.2 }
+        {
+          "indicator": 3,
+          "value": 0.6
+        },
+        {
+          "indicator": 0,
+          "value": -200
+        },
+        {
+          "indicator": 2,
+          "value": 0.2
+        }
       ],
-      "interactionNames": ["P4-1", "P4-2", "P4-3"]
+      "interactionNames": [
+        "P4-1",
+        "P4-2",
+        "P4-3"
+      ]
     },
     {
       "name": "Demographic growth",
@@ -1217,11 +1389,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 250 },
-        { "indicator": 3, "value": -0.5 },
-        { "indicator": 1, "value": -0.02 }
+        {
+          "indicator": 0,
+          "value": 250
+        },
+        {
+          "indicator": 3,
+          "value": -0.5
+        },
+        {
+          "indicator": 1,
+          "value": -0.02
+        }
       ],
-      "interactionNames": ["G3-1", "G3-2", "G3-3"]
+      "interactionNames": [
+        "G3-1",
+        "G3-2",
+        "G3-3"
+      ]
     },
     {
       "name": "Free Trade Agreements Without Environmental Provisions",
@@ -1239,11 +1424,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 400 },
-        { "indicator": 3, "value": -0.6 },
-        { "indicator": 1, "value": 0.03 }
+        {
+          "indicator": 0,
+          "value": 400
+        },
+        {
+          "indicator": 3,
+          "value": -0.6
+        },
+        {
+          "indicator": 1,
+          "value": 0.03
+        }
       ],
-      "interactionNames": ["G4-1", "G4-2", "G4-3"]
+      "interactionNames": [
+        "G4-1",
+        "G4-2",
+        "G4-3"
+      ]
     },
     {
       "name": "Right to Privacy, Access to Information",
@@ -1261,10 +1459,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 2, "value": 0.4 },
-        { "indicator": 1, "value": -0.02 }
+        {
+          "indicator": 2,
+          "value": 0.4
+        },
+        {
+          "indicator": 1,
+          "value": -0.02
+        }
       ],
-      "interactionNames": ["G5-1", "G5-2", "G5-3"]
+      "interactionNames": [
+        "G5-1",
+        "G5-2",
+        "G5-3"
+      ]
     },
     {
       "name": "Digital Innovation Fund",
@@ -1282,10 +1490,20 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 350 },
-        { "indicator": 2, "value": 0.35 }
+        {
+          "indicator": 0,
+          "value": 350
+        },
+        {
+          "indicator": 2,
+          "value": 0.35
+        }
       ],
-      "interactionNames": ["T5-1", "T5-2", "T5-3"]
+      "interactionNames": [
+        "T5-1",
+        "T5-2",
+        "T5-3"
+      ]
     },
     {
       "name": "Immigration Agreement",
@@ -1303,11 +1521,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": -300 },
-        { "indicator": 1, "value": -0.025 },
-        { "indicator": 2, "value": -0.2 }
+        {
+          "indicator": 0,
+          "value": -300
+        },
+        {
+          "indicator": 1,
+          "value": -0.025
+        },
+        {
+          "indicator": 2,
+          "value": -0.2
+        }
       ],
-      "interactionNames": ["L3-1", "L3-2", "L3-3"]
+      "interactionNames": [
+        "L3-1",
+        "L3-2",
+        "L3-3"
+      ]
     },
     {
       "name": "Rare Resource Mining Protection",
@@ -1325,11 +1556,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": -250 },
-        { "indicator": 3, "value": 0.8 },
-        { "indicator": 2, "value": 0.2 }
+        {
+          "indicator": 0,
+          "value": -250
+        },
+        {
+          "indicator": 3,
+          "value": 0.8
+        },
+        {
+          "indicator": 2,
+          "value": 0.2
+        }
       ],
-      "interactionNames": ["L4-1", "L4-2", "L4-3"]
+      "interactionNames": [
+        "L4-1",
+        "L4-2",
+        "L4-3"
+      ]
     },
     {
       "name": "Digital Markets Act",
@@ -1347,11 +1591,24 @@
         }
       ],
       "welfareEffects": [
-        { "indicator": 0, "value": 200 },
-        { "indicator": 1, "value": -0.03 },
-        { "indicator": 2, "value": 0.2 }
+        {
+          "indicator": 0,
+          "value": 200
+        },
+        {
+          "indicator": 1,
+          "value": -0.03
+        },
+        {
+          "indicator": 2,
+          "value": 0.2
+        }
       ],
-      "interactionNames": ["L5-1", "L5-2", "L5-3"]
+      "interactionNames": [
+        "L5-1",
+        "L5-2",
+        "L5-3"
+      ]
     }
   ],
   "posts": [
@@ -1360,7 +1617,7 @@
       "posts": [
         {
           "author": {
-            "name": "Elena Verdescu"
+            "name": "Furrgus Hemingway"
           },
           "faction": "GREEN",
           "content": "Finally some accountability! Corporations have dodged environmental responsibility for too long. A government eye on the board is the least we can do.",
@@ -1368,7 +1625,7 @@
           "comments": [
             {
               "author": {
-                "name": "Radu Ionescu"
+                "name": "Purrsephone Summit"
               },
               "content": "Agreed. Maybe now they'll think twice before dumping waste.",
               "reaction": {
@@ -1378,7 +1635,7 @@
             },
             {
               "author": {
-                "name": "Cristina Marin"
+                "name": "Napsworth Doolittle"
               },
               "content": "This won't change anything. Corporations will just lobby the representative.",
               "reaction": {
@@ -1388,7 +1645,7 @@
             },
             {
               "author": {
-                "name": "Bogdan Petre"
+                "name": "Hissington Ford"
               },
               "content": "It's a step in the right direction, even if imperfect.",
               "reaction": {
@@ -1398,7 +1655,7 @@
             },
             {
               "author": {
-                "name": "Ana Dumitrescu"
+                "name": "Snuggles Petrov"
               },
               "content": "Government reps in private companies? Sounds like socialism to me.",
               "reaction": {
@@ -1410,7 +1667,7 @@
         },
         {
           "author": {
-            "name": "Andrei Popescu"
+            "name": "Tailsworth Cooper"
           },
           "faction": "LIBERAL",
           "content": "Government officials sitting on corporate boards? This is a direct attack on free enterprise. Let the market regulate itself.",
@@ -1418,7 +1675,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mihai Stanescu"
+                "name": "Purrkins Float"
               },
               "content": "Exactly. More bureaucracy never solved anything.",
               "reaction": {
@@ -1428,7 +1685,7 @@
             },
             {
               "author": {
-                "name": "Ioana Radu"
+                "name": "Pawsworth Feather"
               },
               "content": "The market didn't regulate itself during the last financial crisis either.",
               "reaction": {
@@ -1438,7 +1695,7 @@
             },
             {
               "author": {
-                "name": "Victor Neagu"
+                "name": "Meowster Cat357"
               },
               "content": "This will scare away foreign investors. Mark my words.",
               "reaction": {
@@ -1450,7 +1707,7 @@
         },
         {
           "author": {
-            "name": "Gheorghe Moldovan"
+            "name": "Kittredge Rice"
           },
           "faction": "TRADITIONAL",
           "content": "Our nation's industries built this country. Oversight is fine, but let's make sure it serves national interests, not foreign agendas.",
@@ -1458,7 +1715,7 @@
           "comments": [
             {
               "author": {
-                "name": "Maria Barbu"
+                "name": "Pawsworth Biscuit"
               },
               "content": "Exactly. Protect our own companies first.",
               "reaction": {
@@ -1468,7 +1725,7 @@
             },
             {
               "author": {
-                "name": "Florin Diaconu"
+                "name": "Fuzzaldo Gaiman"
               },
               "content": "As long as the representative upholds our values, I support it.",
               "reaction": {
@@ -1478,7 +1735,7 @@
             },
             {
               "author": {
-                "name": "Daniela Preda"
+                "name": "Catticus Rex"
               },
               "content": "Government meddling in business never ends well.",
               "reaction": {
@@ -1490,7 +1747,7 @@
         },
         {
           "author": {
-            "name": "Sofia Enache"
+            "name": "Kittsworth Jetty"
           },
           "faction": "PROGRESSIST",
           "content": "Corporate transparency is a human rights issue. Workers deserve to know what decisions are being made about their livelihoods.",
@@ -1498,7 +1755,7 @@
           "comments": [
             {
               "author": {
-                "name": "Catalin Voicu"
+                "name": "Tailbert Einstein"
               },
               "content": "This should have happened decades ago.",
               "reaction": {
@@ -1508,7 +1765,7 @@
             },
             {
               "author": {
-                "name": "Raluca Nistor"
+                "name": "Snoozebury Cliff"
               },
               "content": "Will the representative actually have power, or is this just for show?",
               "reaction": {
@@ -1518,7 +1775,7 @@
             },
             {
               "author": {
-                "name": "Dragos Ilie"
+                "name": "Fuzzington Poe"
               },
               "content": "I'd rather see workers on the board than government officials.",
               "reaction": {
@@ -1528,7 +1785,7 @@
             },
             {
               "author": {
-                "name": "Alina Gheorghe"
+                "name": "Hissworth Chambers"
               },
               "content": "Progress! Slow, but progress.",
               "reaction": {
@@ -1540,7 +1797,7 @@
         },
         {
           "author": {
-            "name": "Tudor Marinescu"
+            "name": "Meowster Cat348"
           },
           "faction": "NEUTRU",
           "content": "Interesting proposal. The devil is in the details — who appoints the representative, and what powers do they actually have?",
@@ -1548,7 +1805,7 @@
           "comments": [
             {
               "author": {
-                "name": "Simona Lazar"
+                "name": "Clawrence Pier"
               },
               "content": "Good point. Without clear rules, this could go either way.",
               "reaction": {
@@ -1558,7 +1815,7 @@
             },
             {
               "author": {
-                "name": "Adrian Costache"
+                "name": "Meowsley Jenkins"
               },
               "content": "I'll wait to see how it's implemented before judging.",
               "reaction": {
@@ -1568,7 +1825,7 @@
             },
             {
               "author": {
-                "name": "Luminita Serban"
+                "name": "Purrcy Rumble"
               },
               "content": "Both sides make valid arguments here.",
               "reaction": {
@@ -1585,7 +1842,7 @@
       "posts": [
         {
           "author": {
-            "name": "Marta Florescu"
+            "name": "Kittsworth Bonk"
           },
           "faction": "GREEN",
           "content": "Media accountability matters, but who watches the watchdog? State-controlled media is a slippery slope toward censorship.",
@@ -1593,7 +1850,7 @@
           "comments": [
             {
               "author": {
-                "name": "Ion Vasilescu"
+                "name": "Snoozebury Sunbeam"
               },
               "content": "Exactly. We need independent oversight, not government control.",
               "reaction": {
@@ -1603,7 +1860,7 @@
             },
             {
               "author": {
-                "name": "Claudia Toma"
+                "name": "Cuddleton Marsh"
               },
               "content": "Misinformation is destroying public trust. Something has to be done.",
               "reaction": {
@@ -1613,7 +1870,7 @@
             },
             {
               "author": {
-                "name": "Petru Anghel"
+                "name": "Tabbsworth Tundra"
               },
               "content": "Green issues are already underreported. This will make it worse.",
               "reaction": {
@@ -1625,7 +1882,7 @@
         },
         {
           "author": {
-            "name": "Razvan Cristea"
+            "name": "Pawlowski Dune"
           },
           "faction": "LIBERAL",
           "content": "Press freedom is non-negotiable. The moment the state decides what's 'acceptable' news, democracy dies.",
@@ -1633,7 +1890,7 @@
           "comments": [
             {
               "author": {
-                "name": "Diana Stoica"
+                "name": "Whiskerton Frost"
               },
               "content": "This is authoritarian, plain and simple.",
               "reaction": {
@@ -1643,7 +1900,7 @@
             },
             {
               "author": {
-                "name": "Cosmin Badea"
+                "name": "Snoozebury Adams"
               },
               "content": "Some regulation is needed though. Look at all the fake news.",
               "reaction": {
@@ -1653,7 +1910,7 @@
             },
             {
               "author": {
-                "name": "Oana Mihai"
+                "name": "Meowgli Thunder"
               },
               "content": "The free market of ideas will sort out bad journalism.",
               "reaction": {
@@ -1665,7 +1922,7 @@
         },
         {
           "author": {
-            "name": "Constantin Dragomir"
+            "name": "Tabbsworth Quinn"
           },
           "faction": "TRADITIONAL",
           "content": "Our media should reflect our values and traditions. Foreign-funded outlets pushing alien ideologies need to be held accountable.",
@@ -1673,7 +1930,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorica Munteanu"
+                "name": "Meowster Cat360"
               },
               "content": "Finally someone says it. Our culture is under attack.",
               "reaction": {
@@ -1683,7 +1940,7 @@
             },
             {
               "author": {
-                "name": "Stefan Lungu"
+                "name": "Mewton Rudder"
               },
               "content": "Careful what you wish for. Today it's 'foreign media,' tomorrow it's anyone who disagrees.",
               "reaction": {
@@ -1693,7 +1950,7 @@
             },
             {
               "author": {
-                "name": "Gabriela Rusu"
+                "name": "Scratchford Adams"
               },
               "content": "National values should be protected. Full support.",
               "reaction": {
@@ -1703,7 +1960,7 @@
             },
             {
               "author": {
-                "name": "Nicolae Cojocaru"
+                "name": "Hissandra Wave"
               },
               "content": "This is how dictatorships start. With 'protecting values.'",
               "reaction": {
@@ -1715,7 +1972,7 @@
         },
         {
           "author": {
-            "name": "Irina Tanase"
+            "name": "Purrfessor Ledge"
           },
           "faction": "PROGRESSIST",
           "content": "Censorship dressed as 'oversight' is still censorship. Marginalized voices are always the first to be silenced.",
@@ -1723,7 +1980,7 @@
           "comments": [
             {
               "author": {
-                "name": "Vlad Petrescu"
+                "name": "Meowster Cat363"
               },
               "content": "This law will be used against activists and minorities. Guaranteed.",
               "reaction": {
@@ -1733,7 +1990,7 @@
             },
             {
               "author": {
-                "name": "Andreea Dobre"
+                "name": "Fluffington Hayes"
               },
               "content": "We need media literacy education, not a government censor.",
               "reaction": {
@@ -1743,7 +2000,7 @@
             },
             {
               "author": {
-                "name": "Liviu Sandu"
+                "name": "Meowtague Beans"
               },
               "content": "Some oversight is needed, but this goes way too far.",
               "reaction": {
@@ -1755,7 +2012,7 @@
         },
         {
           "author": {
-            "name": "Cristian Matei"
+            "name": "Purrfessor Plum"
           },
           "faction": "NEUTRU",
           "content": "Media regulation is complex. Too little and misinformation spreads. Too much and you get state propaganda. Where's the balance?",
@@ -1763,7 +2020,7 @@
           "comments": [
             {
               "author": {
-                "name": "Elena Popa"
+                "name": "Pawsworth Bronte"
               },
               "content": "That's the million-euro question, isn't it?",
               "reaction": {
@@ -1773,7 +2030,7 @@
             },
             {
               "author": {
-                "name": "Marius Dinu"
+                "name": "Clawrence Yawn"
               },
               "content": "Independent regulatory bodies work in other countries. Why not here?",
               "reaction": {
@@ -1783,7 +2040,7 @@
             },
             {
               "author": {
-                "name": "Roxana Iancu"
+                "name": "Scratchford Veldt"
               },
               "content": "I don't trust the government OR the media at this point.",
               "reaction": {
@@ -1800,7 +2057,7 @@
       "posts": [
         {
           "author": {
-            "name": "Tabitha Verdeanu"
+            "name": "Fuzzaldo Deck"
           },
           "faction": "GREEN",
           "content": "Tax cuts for corporations while the planet burns? How about taxing polluters more instead of giving them a discount?",
@@ -1808,7 +2065,7 @@
           "comments": [
             {
               "author": {
-                "name": "Sorin Albescu"
+                "name": "Snoozebury Quay"
               },
               "content": "They'll use the savings to automate jobs, not create them.",
               "reaction": {
@@ -1818,7 +2075,7 @@
             },
             {
               "author": {
-                "name": "Camelia Florescu"
+                "name": "Whiskeria Santos"
               },
               "content": "This money should go to renewable energy, not corporate profits.",
               "reaction": {
@@ -1828,7 +2085,7 @@
             },
             {
               "author": {
-                "name": "Dan Grigorescu"
+                "name": "Scratchford Briggs"
               },
               "content": "Lower taxes attract investment. Investment creates green jobs too.",
               "reaction": {
@@ -1840,7 +2097,7 @@
         },
         {
           "author": {
-            "name": "Horia Economu"
+            "name": "Whiskerton Paws"
           },
           "faction": "LIBERAL",
           "content": "Lower taxes mean more investment, more jobs, and a stronger economy. This is how you grow a nation — by getting out of the way.",
@@ -1848,7 +2105,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mircea Banescu"
+                "name": "Cuddleton Puddle"
               },
               "content": "Finally, a policy that understands economics!",
               "reaction": {
@@ -1858,7 +2115,7 @@
             },
             {
               "author": {
-                "name": "Laura Oprea"
+                "name": "Napsworth Hammock"
               },
               "content": "Trickle-down economics has been debunked. This only helps the rich.",
               "reaction": {
@@ -1868,7 +2125,7 @@
             },
             {
               "author": {
-                "name": "Bogdan Sava"
+                "name": "Catarina Volkov"
               },
               "content": "Companies will reinvest the savings. That's how markets work.",
               "reaction": {
@@ -1878,7 +2135,7 @@
             },
             {
               "author": {
-                "name": "Anca Tomescu"
+                "name": "Purrlock Holmes"
               },
               "content": "Or they'll do stock buybacks like they always do.",
               "reaction": {
@@ -1890,7 +2147,7 @@
         },
         {
           "author": {
-            "name": "Dumitru Patriciu"
+            "name": "Cattington Dickens"
           },
           "faction": "TRADITIONAL",
           "content": "Our national businesses deserve support. But foreign corporations shouldn't get the same breaks as companies that employ our people.",
@@ -1898,7 +2155,7 @@
           "comments": [
             {
               "author": {
-                "name": "Rodica Manole"
+                "name": "Meowgli Outback"
               },
               "content": "Exactly. Protect local businesses first.",
               "reaction": {
@@ -1908,7 +2165,7 @@
             },
             {
               "author": {
-                "name": "Vasile Cernea"
+                "name": "Meowster Cat352"
               },
               "content": "A strong economy means a strong nation. I support this.",
               "reaction": {
@@ -1918,7 +2175,7 @@
             },
             {
               "author": {
-                "name": "Eugenia Balan"
+                "name": "Hissandra Christie"
               },
               "content": "Tax cuts without conditions are just handouts to the wealthy.",
               "reaction": {
@@ -1930,7 +2187,7 @@
         },
         {
           "author": {
-            "name": "Daria Novak"
+            "name": "Pawdington Bear"
           },
           "faction": "PROGRESSIST",
           "content": "Corporate tax cuts while schools crumble and hospitals are underfunded? This is a transfer of wealth from the many to the few.",
@@ -1938,7 +2195,7 @@
           "comments": [
             {
               "author": {
-                "name": "Alex Vintila"
+                "name": "Pounce Williams"
               },
               "content": "The inequality gap will only widen with this.",
               "reaction": {
@@ -1948,7 +2205,7 @@
             },
             {
               "author": {
-                "name": "Monica Chiriac"
+                "name": "Pawsworth Creek"
               },
               "content": "We need progressive taxation, not regressive giveaways.",
               "reaction": {
@@ -1958,7 +2215,7 @@
             },
             {
               "author": {
-                "name": "Rares Ungureanu"
+                "name": "Mewton Plateau"
               },
               "content": "Some tax relief for small businesses makes sense. But 15% across the board? No.",
               "reaction": {
@@ -1970,7 +2227,7 @@
         },
         {
           "author": {
-            "name": "Pavel Ionita"
+            "name": "Cuddleton Iceberg"
           },
           "faction": "NEUTRU",
           "content": "Tax policy is always a trade-off. Lower rates can boost growth, but only if the revenue gap doesn't gut public services.",
@@ -1978,7 +2235,7 @@
           "comments": [
             {
               "author": {
-                "name": "Silvia Manea"
+                "name": "Tabbsworth Reef"
               },
               "content": "Balanced take. We need to see the full budget impact.",
               "reaction": {
@@ -1988,7 +2245,7 @@
             },
             {
               "author": {
-                "name": "George Niculae"
+                "name": "Pawdington King"
               },
               "content": "Every country that cut corporate taxes saw growth. Facts.",
               "reaction": {
@@ -1998,7 +2255,7 @@
             },
             {
               "author": {
-                "name": "Teodora Bucur"
+                "name": "Scratchford Cabin"
               },
               "content": "Every country that cut corporate taxes also saw inequality rise. Also facts.",
               "reaction": {
@@ -2015,7 +2272,7 @@
       "posts": [
         {
           "author": {
-            "name": "Liana Padureanu"
+            "name": "Pawdington Box"
           },
           "faction": "GREEN",
           "content": "Handing our forests and rivers to corporations with zero ecological safeguards? This is environmental vandalism legalized.",
@@ -2023,7 +2280,7 @@
           "comments": [
             {
               "author": {
-                "name": "Ciprian Bratu"
+                "name": "Clawson Mitchell"
               },
               "content": "Our grandchildren will pay for this greed.",
               "reaction": {
@@ -2033,7 +2290,7 @@
             },
             {
               "author": {
-                "name": "Adina Coman"
+                "name": "Whiskers McFluff"
               },
               "content": "Once the damage is done, no amount of money can fix it.",
               "reaction": {
@@ -2043,7 +2300,7 @@
             },
             {
               "author": {
-                "name": "Florian Dima"
+                "name": "Purrfessor Tolkien"
               },
               "content": "Without private investment, these resources just sit there unused.",
               "reaction": {
@@ -2055,7 +2312,7 @@
         },
         {
           "author": {
-            "name": "Serban Capitalescu"
+            "name": "Tailsworth Estuary"
           },
           "faction": "LIBERAL",
           "content": "Private ownership drives efficiency. State-managed resources are wasted through bureaucracy. Let the market unlock their potential.",
@@ -2063,7 +2320,7 @@
           "comments": [
             {
               "author": {
-                "name": "Doina Avram"
+                "name": "Meowtague Capulet"
               },
               "content": "Efficiency at what cost? Poisoned rivers?",
               "reaction": {
@@ -2073,7 +2330,7 @@
             },
             {
               "author": {
-                "name": "Lucian Mocanu"
+                "name": "Tailsworth Blep"
               },
               "content": "Property rights are the foundation of prosperity.",
               "reaction": {
@@ -2083,7 +2340,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Pascu"
+                "name": "Clawdius Gust"
               },
               "content": "This will create jobs in rural areas that desperately need them.",
               "reaction": {
@@ -2095,7 +2352,7 @@
         },
         {
           "author": {
-            "name": "Ion Pamantescu"
+            "name": "Purrsephone Mouse"
           },
           "faction": "TRADITIONAL",
           "content": "The land belongs to the people, not to foreign investors. If we privatize, it must stay in national hands.",
@@ -2103,7 +2360,7 @@
           "comments": [
             {
               "author": {
-                "name": "Aurelia Codreanu"
+                "name": "Whiskerton Blake"
               },
               "content": "Our ancestors fought for this land. We can't sell it off.",
               "reaction": {
@@ -2113,7 +2370,7 @@
             },
             {
               "author": {
-                "name": "Traian Vladescu"
+                "name": "Meowster Cat347"
               },
               "content": "National resources should serve national interests. Period.",
               "reaction": {
@@ -2123,7 +2380,7 @@
             },
             {
               "author": {
-                "name": "Cornelia Ursache"
+                "name": "Purrsephone Green"
               },
               "content": "Privatization with patriotic conditions — I could support that.",
               "reaction": {
@@ -2135,7 +2392,7 @@
         },
         {
           "author": {
-            "name": "Anca Dreptescu"
+            "name": "Meowtimer Sullivan"
           },
           "faction": "PROGRESSIST",
           "content": "This law sacrifices communities and ecosystems for corporate profit. The people who live near these resources will suffer most.",
@@ -2143,7 +2400,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mirel Stanciu"
+                "name": "Mewberry Pond"
               },
               "content": "Environmental racism in action. Marginalized communities always bear the cost.",
               "reaction": {
@@ -2153,7 +2410,7 @@
             },
             {
               "author": {
-                "name": "Bianca Olteanu"
+                "name": "Purrtricia Nguyen"
               },
               "content": "We need community-owned resource management, not corporate extraction.",
               "reaction": {
@@ -2163,7 +2420,7 @@
             },
             {
               "author": {
-                "name": "Costel Fieraru"
+                "name": "Furrdinand Magellan"
               },
               "content": "Progress means moving forward, not selling off the ground beneath our feet.",
               "reaction": {
@@ -2173,7 +2430,7 @@
             },
             {
               "author": {
-                "name": "Ramona Iliescu"
+                "name": "Catamaran Mesa"
               },
               "content": "At least create a fund from the profits for affected communities.",
               "reaction": {
@@ -2185,7 +2442,7 @@
         },
         {
           "author": {
-            "name": "Mihai Balanta"
+            "name": "Kittredge Jump"
           },
           "faction": "NEUTRU",
           "content": "Resource management needs investment, but also safeguards. Can we find a model that allows private efficiency with public accountability?",
@@ -2193,7 +2450,7 @@
           "comments": [
             {
               "author": {
-                "name": "Otilia Soare"
+                "name": "Purrkins Snow"
               },
               "content": "Public-private partnerships might be the answer.",
               "reaction": {
@@ -2203,7 +2460,7 @@
             },
             {
               "author": {
-                "name": "Valentin Craciun"
+                "name": "Meowster Cat350"
               },
               "content": "Norway manages its oil wealth well. We could learn from them.",
               "reaction": {
@@ -2213,7 +2470,7 @@
             },
             {
               "author": {
-                "name": "Felicia Enescu"
+                "name": "Catamaran Verne"
               },
               "content": "The current proposal has zero environmental provisions. That's the problem.",
               "reaction": {
@@ -2230,7 +2487,7 @@
       "posts": [
         {
           "author": {
-            "name": "Verde Ionescu"
+            "name": "Meowster Cat356"
           },
           "faction": "GREEN",
           "content": "50 euros per ton is a start, but honestly it should be higher. The planet can't wait for half-measures.",
@@ -2238,7 +2495,7 @@
           "comments": [
             {
               "author": {
-                "name": "Silviu Branza"
+                "name": "Fuzzington Cove"
               },
               "content": "Make polluters pay the real cost of their damage!",
               "reaction": {
@@ -2248,7 +2505,7 @@
             },
             {
               "author": {
-                "name": "Corina Neacsu"
+                "name": "Purrcy Shelley"
               },
               "content": "This will drive real change in how companies operate.",
               "reaction": {
@@ -2258,7 +2515,7 @@
             },
             {
               "author": {
-                "name": "Marcel Tudose"
+                "name": "Mewberry Sploot"
               },
               "content": "And who pays when energy bills double? Regular people.",
               "reaction": {
@@ -2270,7 +2527,7 @@
         },
         {
           "author": {
-            "name": "Radu Liber"
+            "name": "Kittsworth Peak"
           },
           "faction": "LIBERAL",
           "content": "A carbon tax is just another way to punish productive industries. Innovation, not taxation, is the path to a cleaner future.",
@@ -2278,7 +2535,7 @@
           "comments": [
             {
               "author": {
-                "name": "Grigore Nastase"
+                "name": "Hissington Shelley"
               },
               "content": "Taxes kill growth. Let the market find green solutions.",
               "reaction": {
@@ -2288,7 +2545,7 @@
             },
             {
               "author": {
-                "name": "Tatiana Voiculescu"
+                "name": "Meowgli Galley"
               },
               "content": "The market had decades to find solutions. It didn't.",
               "reaction": {
@@ -2298,7 +2555,7 @@
             },
             {
               "author": {
-                "name": "Horatiu Beldiman"
+                "name": "Catsworth Radcliffe"
               },
               "content": "At least make it revenue-neutral. Return the money to citizens.",
               "reaction": {
@@ -2310,7 +2567,7 @@
         },
         {
           "author": {
-            "name": "Vasile Mostenescu"
+            "name": "Meowster Cat355"
           },
           "faction": "TRADITIONAL",
           "content": "Our industries are the backbone of this nation. Taxing them into oblivion won't save the environment — it'll destroy livelihoods.",
@@ -2318,7 +2575,7 @@
           "comments": [
             {
               "author": {
-                "name": "Paraschiva Lungu"
+                "name": "Tailsworth Avalanche"
               },
               "content": "Coal miners and factory workers will lose everything.",
               "reaction": {
@@ -2328,7 +2585,7 @@
             },
             {
               "author": {
-                "name": "Nicu Gheorghiu"
+                "name": "Napsworth Gale"
               },
               "content": "We can modernize without punishing our own people.",
               "reaction": {
@@ -2338,7 +2595,7 @@
             },
             {
               "author": {
-                "name": "Elisabeta Rotaru"
+                "name": "Clawrence Tolstoy"
               },
               "content": "Other countries pollute far more. Why should we sacrifice first?",
               "reaction": {
@@ -2348,7 +2605,7 @@
             },
             {
               "author": {
-                "name": "Tiberiu Mazilu"
+                "name": "Meowster Cat340"
               },
               "content": "Tradition doesn't mean clinging to pollution. We can adapt.",
               "reaction": {
@@ -2360,7 +2617,7 @@
         },
         {
           "author": {
-            "name": "Diana Progresescu"
+            "name": "Purrkins Darcy"
           },
           "faction": "PROGRESSIST",
           "content": "Climate justice demands that the biggest polluters pay the most. This tax is a tool for equity as much as ecology.",
@@ -2368,7 +2625,7 @@
           "comments": [
             {
               "author": {
-                "name": "Octavian Moise"
+                "name": "Kittredge Fog"
               },
               "content": "Revenue should fund green transitions in poor communities.",
               "reaction": {
@@ -2378,7 +2635,7 @@
             },
             {
               "author": {
-                "name": "Sabina Cristescu"
+                "name": "Furrnsworth Chaparral"
               },
               "content": "Finally, policy that takes the climate crisis seriously.",
               "reaction": {
@@ -2388,7 +2645,7 @@
             },
             {
               "author": {
-                "name": "Laurentiu Barbu"
+                "name": "Fuzzaldo Cushion"
               },
               "content": "Make sure the burden doesn't fall on working families.",
               "reaction": {
@@ -2400,7 +2657,7 @@
         },
         {
           "author": {
-            "name": "Cristian Echilibru"
+            "name": "Clawdius Nero"
           },
           "faction": "NEUTRU",
           "content": "Carbon pricing works in theory. The question is whether 50 euros is the right number and whether the revenue will be spent wisely.",
@@ -2408,7 +2665,7 @@
           "comments": [
             {
               "author": {
-                "name": "Amalia Sandu"
+                "name": "Furball Martinez"
               },
               "content": "Economists generally support carbon pricing. The debate is about the level.",
               "reaction": {
@@ -2418,7 +2675,7 @@
             },
             {
               "author": {
-                "name": "Dorel Panait"
+                "name": "Cuddleton Shelley"
               },
               "content": "I'd support it if there were clear exemptions for small businesses.",
               "reaction": {
@@ -2428,7 +2685,7 @@
             },
             {
               "author": {
-                "name": "Ileana Vaduva"
+                "name": "Cuddleton Catnip"
               },
               "content": "Let's see the impact assessment before we panic or celebrate.",
               "reaction": {
@@ -2445,7 +2702,7 @@
       "posts": [
         {
           "author": {
-            "name": "Ovidiu Ecotech"
+            "name": "Clawson Hail"
           },
           "faction": "GREEN",
           "content": "Blockchain sounds modern, but the energy consumption of these networks is massive. Are we trading financial fraud for environmental damage?",
@@ -2453,7 +2710,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezar Albinescu"
+                "name": "Furrnando Torres"
               },
               "content": "Proof-of-stake is much more efficient. Not all blockchain is Bitcoin.",
               "reaction": {
@@ -2463,7 +2720,7 @@
             },
             {
               "author": {
-                "name": "Lidia Florescu"
+                "name": "Hissington Knee"
               },
               "content": "We should mandate green blockchain only.",
               "reaction": {
@@ -2473,7 +2730,7 @@
             },
             {
               "author": {
-                "name": "Augustin Rosu"
+                "name": "Cuddlesworth Kim"
               },
               "content": "The environmental cost is real and being ignored.",
               "reaction": {
@@ -2485,7 +2742,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Finescu"
+            "name": "Napsworth Twirl"
           },
           "faction": "LIBERAL",
           "content": "Forcing banks onto blockchain is government overreach. Let financial institutions choose their own technology. Competition drives innovation.",
@@ -2493,7 +2750,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Bancescu"
+                "name": "Whiskerella Sail"
               },
               "content": "Mandating technology is the opposite of a free market.",
               "reaction": {
@@ -2503,7 +2760,7 @@
             },
             {
               "author": {
-                "name": "Adriana Leu"
+                "name": "Furrdinand Reyes"
               },
               "content": "But banks won't change voluntarily. They profit from opacity.",
               "reaction": {
@@ -2513,7 +2770,7 @@
             },
             {
               "author": {
-                "name": "Cornel Dobrin"
+                "name": "Fuzzington Wolfe"
               },
               "content": "Blockchain reduces costs for everyone. Even liberals should like that.",
               "reaction": {
@@ -2525,7 +2782,7 @@
         },
         {
           "author": {
-            "name": "Petru Vechiescu"
+            "name": "Meowriarty Canyon"
           },
           "faction": "TRADITIONAL",
           "content": "Our banking system has worked for generations. Why rush into untested technology that most citizens don't understand?",
@@ -2533,7 +2790,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Mocanescu"
+                "name": "Catsworth Moor"
               },
               "content": "My grandmother can barely use an ATM. Now blockchain?",
               "reaction": {
@@ -2543,7 +2800,7 @@
             },
             {
               "author": {
-                "name": "Ilie Brancoveanu"
+                "name": "Tabbsworth Salmon"
               },
               "content": "Stability matters more than novelty.",
               "reaction": {
@@ -2553,7 +2810,7 @@
             },
             {
               "author": {
-                "name": "Minerva Olaru"
+                "name": "Tailsworth Splash"
               },
               "content": "The world is changing. We can't stay in the past forever.",
               "reaction": {
@@ -2565,7 +2822,7 @@
         },
         {
           "author": {
-            "name": "Teodora Digitalescu"
+            "name": "Furrnsworth Bulkhead"
           },
           "faction": "PROGRESSIST",
           "content": "Transparent financial systems can fight corruption and empower citizens. But we must ensure no one is left behind in the digital transition.",
@@ -2573,7 +2830,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Echitate"
+                "name": "Clawdius Mirage"
               },
               "content": "Digital inclusion programs must come with this law.",
               "reaction": {
@@ -2583,7 +2840,7 @@
             },
             {
               "author": {
-                "name": "Catalina Viitor"
+                "name": "Pawtricia Reeves"
               },
               "content": "Blockchain can democratize finance if done right.",
               "reaction": {
@@ -2593,7 +2850,7 @@
             },
             {
               "author": {
-                "name": "Ionut Sarbu"
+                "name": "Clawdius Perch"
               },
               "content": "Or it can create new forms of exclusion. Depends on implementation.",
               "reaction": {
@@ -2603,7 +2860,7 @@
             },
             {
               "author": {
-                "name": "Delia Craciun"
+                "name": "Kittredge Sawyer"
               },
               "content": "I'm cautiously optimistic. The intent is good.",
               "reaction": {
@@ -2615,7 +2872,7 @@
         },
         {
           "author": {
-            "name": "Matei Pragmatic"
+            "name": "Whiskerella Bolt"
           },
           "faction": "NEUTRU",
           "content": "Blockchain has real potential for transparency, but a five-year mandatory migration for all banks is aggressive. Pilot programs first?",
@@ -2623,7 +2880,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Cumpanasu"
+                "name": "Meowster Cat358"
               },
               "content": "Phased rollout makes more sense than a hard deadline.",
               "reaction": {
@@ -2633,7 +2890,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Balescu"
+                "name": "Catamaran Tide"
               },
               "content": "Other countries are already ahead on this. We can't afford to wait.",
               "reaction": {
@@ -2643,7 +2900,7 @@
             },
             {
               "author": {
-                "name": "Sorina Calm"
+                "name": "Hissandra Berth"
               },
               "content": "Let's learn from early adopters before committing everything.",
               "reaction": {
@@ -2660,7 +2917,7 @@
       "posts": [
         {
           "author": {
-            "name": "Lavinia Ecodigital"
+            "name": "Catticus Cardboard"
           },
           "faction": "GREEN",
           "content": "Digital services reduce paper waste and commuting to government offices. But the data centers powering all this need to run on renewables.",
@@ -2668,7 +2925,7 @@
           "comments": [
             {
               "author": {
-                "name": "Horea Padure"
+                "name": "Purrkins Walpole"
               },
               "content": "Good point. Digitalization without green energy is half a solution.",
               "reaction": {
@@ -2678,7 +2935,7 @@
             },
             {
               "author": {
-                "name": "Daciana Frunza"
+                "name": "Fuzzaldo Emerson"
               },
               "content": "Less paper, less driving to offices. I'm for it.",
               "reaction": {
@@ -2688,7 +2945,7 @@
             },
             {
               "author": {
-                "name": "Emilian Carbune"
+                "name": "Snoozebury Orwell"
               },
               "content": "The e-waste from constant tech upgrades is also a concern.",
               "reaction": {
@@ -2700,7 +2957,7 @@
         },
         {
           "author": {
-            "name": "Felix Eficient"
+            "name": "Mewton Asimov"
           },
           "faction": "LIBERAL",
           "content": "Streamlining government through technology reduces costs and bureaucracy. This is one of the few government initiatives that actually makes sense.",
@@ -2708,7 +2965,7 @@
           "comments": [
             {
               "author": {
-                "name": "Bogdana Rapid"
+                "name": "Furrancis Drake"
               },
               "content": "Less time in queues, more time being productive. Yes please.",
               "reaction": {
@@ -2718,7 +2975,7 @@
             },
             {
               "author": {
-                "name": "Caius Liber"
+                "name": "Mewlius Caesar"
               },
               "content": "As long as it doesn't become another surveillance tool.",
               "reaction": {
@@ -2728,7 +2985,7 @@
             },
             {
               "author": {
-                "name": "Hortensia Piata"
+                "name": "Furrester Nap"
               },
               "content": "Private companies should build the platform. Government can't do tech.",
               "reaction": {
@@ -2740,7 +2997,7 @@
         },
         {
           "author": {
-            "name": "Aurel Cancelarie"
+            "name": "Purrcy Jackson"
           },
           "faction": "TRADITIONAL",
           "content": "Not everyone lives online. What about the elderly, the rural communities, the people who built this country with their hands, not keyboards?",
@@ -2748,7 +3005,7 @@
           "comments": [
             {
               "author": {
-                "name": "Filofteia Sat"
+                "name": "Pawlowski Clarke"
               },
               "content": "My village barely has phone signal. Digital government is a joke here.",
               "reaction": {
@@ -2758,7 +3015,7 @@
             },
             {
               "author": {
-                "name": "Neculai Batran"
+                "name": "Clawrence Rapids"
               },
               "content": "Keep physical offices open alongside digital ones.",
               "reaction": {
@@ -2768,7 +3025,7 @@
             },
             {
               "author": {
-                "name": "Smaranda Traditie"
+                "name": "Purrsephone Wharf"
               },
               "content": "Modernization is fine, but don't abandon those who can't keep up.",
               "reaction": {
@@ -2778,7 +3035,7 @@
             },
             {
               "author": {
-                "name": "Virgil Progres"
+                "name": "Meowster Cat361"
               },
               "content": "We can't hold back the whole country for a few who resist change.",
               "reaction": {
@@ -2790,7 +3047,7 @@
         },
         {
           "author": {
-            "name": "Ruxandra Acces"
+            "name": "Catticus Pampa"
           },
           "faction": "PROGRESSIST",
           "content": "Digital government can be a great equalizer — IF everyone has internet access and digital literacy training. Otherwise it just deepens the divide.",
@@ -2798,7 +3055,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mihnea Drept"
+                "name": "Whiskerton Soar"
               },
               "content": "Free broadband and digital education must come first.",
               "reaction": {
@@ -2808,7 +3065,7 @@
             },
             {
               "author": {
-                "name": "Iolanda Viitor"
+                "name": "Furrgus Laser"
               },
               "content": "This could make government more accessible to disabled citizens too.",
               "reaction": {
@@ -2818,7 +3075,7 @@
             },
             {
               "author": {
-                "name": "Silvian Grija"
+                "name": "Purrcy Shoal"
               },
               "content": "Accessibility standards must be built in from day one.",
               "reaction": {
@@ -2830,7 +3087,7 @@
         },
         {
           "author": {
-            "name": "Ciprian Centru"
+            "name": "Meowtilda Svensson"
           },
           "faction": "NEUTRU",
           "content": "E-government works well in Estonia and Denmark. The question is whether our infrastructure and digital literacy are ready for it.",
@@ -2838,7 +3095,7 @@
           "comments": [
             {
               "author": {
-                "name": "Melania Realist"
+                "name": "Furrnsworth Hop"
               },
               "content": "Start with the easy services first. Build trust gradually.",
               "reaction": {
@@ -2848,7 +3105,7 @@
             },
             {
               "author": {
-                "name": "Octav Masura"
+                "name": "Pawdington Drizzle"
               },
               "content": "The savings could be enormous if done properly.",
               "reaction": {
@@ -2858,7 +3115,7 @@
             },
             {
               "author": {
-                "name": "Flavia Atenta"
+                "name": "Whiskerella LeGuin"
               },
               "content": "Cybersecurity needs to be the top priority here.",
               "reaction": {
@@ -2875,7 +3132,7 @@
       "posts": [
         {
           "author": {
-            "name": "Iris Scoala"
+            "name": "Tailspin Shelf"
           },
           "faction": "GREEN",
           "content": "Defunding public schools to prop up private ones? Education should nurture future stewards of the planet, not just future consumers.",
@@ -2883,7 +3140,7 @@
           "comments": [
             {
               "author": {
-                "name": "Toma Gradina"
+                "name": "Meowster Cat343"
               },
               "content": "Public schools teach community values. Private ones teach competition.",
               "reaction": {
@@ -2893,7 +3150,7 @@
             },
             {
               "author": {
-                "name": "Stela Carte"
+                "name": "Pawlowski Mast"
               },
               "content": "Environmental education will disappear from private curricula.",
               "reaction": {
@@ -2903,7 +3160,7 @@
             },
             {
               "author": {
-                "name": "Relu Piata"
+                "name": "Purrfessor Sahara"
               },
               "content": "Competition improves quality. Even in education.",
               "reaction": {
@@ -2915,7 +3172,7 @@
         },
         {
           "author": {
-            "name": "Vlad Academescu"
+            "name": "Meowster Cat362"
           },
           "faction": "LIBERAL",
           "content": "School choice empowers parents and drives quality through competition. The state monopoly on education has failed too many students.",
@@ -2923,7 +3180,7 @@
           "comments": [
             {
               "author": {
-                "name": "Nadia Liber"
+                "name": "Meowriarty Falls"
               },
               "content": "Let parents decide what's best for their children.",
               "reaction": {
@@ -2933,7 +3190,7 @@
             },
             {
               "author": {
-                "name": "Costin Egal"
+                "name": "Pawlowski Katz"
               },
               "content": "Easy to say when you can afford private school fees.",
               "reaction": {
@@ -2943,7 +3200,7 @@
             },
             {
               "author": {
-                "name": "Beatrice Piata"
+                "name": "Furrguson Walsh"
               },
               "content": "Vouchers level the playing field. Everyone gets to choose.",
               "reaction": {
@@ -2953,7 +3210,7 @@
             },
             {
               "author": {
-                "name": "Gelu Sarbu"
+                "name": "Catticus Rowling"
               },
               "content": "Vouchers don't cover the full cost. It's still pay-to-play.",
               "reaction": {
@@ -2965,7 +3222,7 @@
         },
         {
           "author": {
-            "name": "Margareta Dascalu"
+            "name": "Cattington Loaf"
           },
           "faction": "TRADITIONAL",
           "content": "Education should pass on our heritage and values. Private schools often do this better than state institutions infected with modern ideologies.",
@@ -2973,7 +3230,7 @@
           "comments": [
             {
               "author": {
-                "name": "Toader Mosie"
+                "name": "Meowster Cat342"
               },
               "content": "Our children need to learn who they are and where they come from.",
               "reaction": {
@@ -2983,7 +3240,7 @@
             },
             {
               "author": {
-                "name": "Zenovia Traditie"
+                "name": "Meowster Cat364"
               },
               "content": "Religious and cultural education thrives in private settings.",
               "reaction": {
@@ -2993,7 +3250,7 @@
             },
             {
               "author": {
-                "name": "Sandu Carte"
+                "name": "Meowtague Bayou"
               },
               "content": "Public schools serve everyone equally. That's their strength.",
               "reaction": {
@@ -3005,7 +3262,7 @@
         },
         {
           "author": {
-            "name": "Alina Echitate"
+            "name": "Nuzzle Kowalski"
           },
           "faction": "PROGRESSIST",
           "content": "Education is a right, not a product. Cutting public school funding condemns poor children to inferior education while the rich buy advantages.",
@@ -3013,7 +3270,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "This will widen the gap between rich and poor for generations.",
               "reaction": {
@@ -3023,7 +3280,7 @@
             },
             {
               "author": {
-                "name": "Oana Scoala"
+                "name": "Scratchford Lightning"
               },
               "content": "Every child deserves the same quality of education regardless of income.",
               "reaction": {
@@ -3033,7 +3290,7 @@
             },
             {
               "author": {
-                "name": "Mihai Realist"
+                "name": "Catsworth Drift"
               },
               "content": "Some public schools are terrible though. Something needs to change.",
               "reaction": {
@@ -3045,7 +3302,7 @@
         },
         {
           "author": {
-            "name": "Dorin Balanta"
+            "name": "Tabbsworth Wilde"
           },
           "faction": "NEUTRU",
           "content": "Both public and private education have strengths. The real question is whether this law improves outcomes for all students or just those who can pay.",
@@ -3053,7 +3310,7 @@
           "comments": [
             {
               "author": {
-                "name": "Ligia Masura"
+                "name": "Clawson Toe"
               },
               "content": "Fund what works, regardless of whether it's public or private.",
               "reaction": {
@@ -3063,7 +3320,7 @@
             },
             {
               "author": {
-                "name": "Calin Centru"
+                "name": "Pawline Monroe"
               },
               "content": "We need data on student outcomes, not ideology.",
               "reaction": {
@@ -3073,7 +3330,7 @@
             },
             {
               "author": {
-                "name": "Rodica Atenta"
+                "name": "Fuzzaldo Kalahari"
               },
               "content": "Other countries blend public and private successfully. Let's study those models.",
               "reaction": {
@@ -3090,7 +3347,7 @@
       "posts": [
         {
           "author": {
-            "name": "Doru Natura"
+            "name": "Purrcy Bysshe"
           },
           "faction": "GREEN",
           "content": "Love is love, and families come in all forms — just like ecosystems. Diversity makes communities stronger, not weaker.",
@@ -3098,7 +3355,7 @@
           "comments": [
             {
               "author": {
-                "name": "Anemona Verde"
+                "name": "Yawnsworth Diaz"
               },
               "content": "Restricting family definitions is restricting human nature.",
               "reaction": {
@@ -3108,7 +3365,7 @@
             },
             {
               "author": {
-                "name": "Silviu Padure"
+                "name": "Meowriarty Dock"
               },
               "content": "This has nothing to do with the environment. Stay in your lane.",
               "reaction": {
@@ -3118,7 +3375,7 @@
             },
             {
               "author": {
-                "name": "Crina Floare"
+                "name": "Whiskerella Prince"
               },
               "content": "All families deserve equal rights and protections.",
               "reaction": {
@@ -3130,7 +3387,7 @@
         },
         {
           "author": {
-            "name": "Horia Libertescu"
+            "name": "Clawson Scratch"
           },
           "faction": "LIBERAL",
           "content": "The government has no business defining what a family looks like. Personal choices should remain personal.",
@@ -3138,7 +3395,7 @@
           "comments": [
             {
               "author": {
-                "name": "Dinu Drept"
+                "name": "Clawson Reed"
               },
               "content": "Marriage is a contract between individuals. The state should stay out.",
               "reaction": {
@@ -3148,7 +3405,7 @@
             },
             {
               "author": {
-                "name": "Magda Piata"
+                "name": "Fuzzington Zoom"
               },
               "content": "Tax benefits should be equal for all partnerships.",
               "reaction": {
@@ -3158,7 +3415,7 @@
             },
             {
               "author": {
-                "name": "Relu Vechi"
+                "name": "Tailspin Mojave"
               },
               "content": "Traditional families are the foundation of stable societies.",
               "reaction": {
@@ -3170,7 +3427,7 @@
         },
         {
           "author": {
-            "name": "Ileana Familescu"
+            "name": "Tailsworth Yarn"
           },
           "faction": "TRADITIONAL",
           "content": "Marriage between a man and a woman is the cornerstone of our civilization. This law protects what generations before us built and cherished.",
@@ -3178,7 +3435,7 @@
           "comments": [
             {
               "author": {
-                "name": "Gheorghita Mosie"
+                "name": "Snugglesworth Stoker"
               },
               "content": "Our values are what make us who we are. Protect them.",
               "reaction": {
@@ -3188,7 +3445,7 @@
             },
             {
               "author": {
-                "name": "Paraschiv Credinta"
+                "name": "Furrester Blizzard"
               },
               "content": "Children need a mother and a father. That's nature's design.",
               "reaction": {
@@ -3198,7 +3455,7 @@
             },
             {
               "author": {
-                "name": "Sanda Traditie"
+                "name": "Clawson Swamp"
               },
               "content": "Tradition evolves. Slavery was traditional too.",
               "reaction": {
@@ -3208,7 +3465,7 @@
             },
             {
               "author": {
-                "name": "Neculai Tara"
+                "name": "Snoozebury Ripple"
               },
               "content": "Don't compare sacred institutions to historical wrongs.",
               "reaction": {
@@ -3220,7 +3477,7 @@
         },
         {
           "author": {
-            "name": "Radu Egalescu"
+            "name": "Clawrence Ridge"
           },
           "faction": "PROGRESSIST",
           "content": "Denying rights to non-traditional families is discrimination, plain and simple. Every person deserves dignity regardless of who they love.",
@@ -3228,7 +3485,7 @@
           "comments": [
             {
               "author": {
-                "name": "Ioana Drept"
+                "name": "Cattington Treat"
               },
               "content": "This law belongs in the past century, not in modern legislation.",
               "reaction": {
@@ -3238,7 +3495,7 @@
             },
             {
               "author": {
-                "name": "Catalin Viitor"
+                "name": "Purrfecto Morales"
               },
               "content": "Children raised by loving parents thrive — regardless of family structure.",
               "reaction": {
@@ -3248,7 +3505,7 @@
             },
             {
               "author": {
-                "name": "Mirela Grija"
+                "name": "Cattington Brook"
               },
               "content": "Adoption restrictions hurt children who need homes most.",
               "reaction": {
@@ -3260,7 +3517,7 @@
         },
         {
           "author": {
-            "name": "Silviu Centru"
+            "name": "Mewberry Inlet"
           },
           "faction": "NEUTRU",
           "content": "Family policy affects real people's lives. Whatever we decide, it should be based on evidence about child welfare, not ideology from either side.",
@@ -3268,7 +3525,7 @@
           "comments": [
             {
               "author": {
-                "name": "Otilia Calm"
+                "name": "Hissington Dew"
               },
               "content": "Research shows children do well in all types of loving families.",
               "reaction": {
@@ -3278,7 +3535,7 @@
             },
             {
               "author": {
-                "name": "Marius Masura"
+                "name": "Purrsephone Nuzzle"
               },
               "content": "Let's separate the legal question from the moral debate.",
               "reaction": {
@@ -3288,7 +3545,7 @@
             },
             {
               "author": {
-                "name": "Flavia Realist"
+                "name": "Clawdius Bradbury"
               },
               "content": "Civil partnerships could be a compromise worth exploring.",
               "reaction": {
@@ -3305,7 +3562,7 @@
       "posts": [
         {
           "author": {
-            "name": "Aurora Solara"
+            "name": "Pawdrey Hepburn"
           },
           "faction": "GREEN",
           "content": "800 billion for renewables is exactly the kind of bold action the climate crisis demands. This is our generation's moonshot.",
@@ -3313,7 +3570,7 @@
           "comments": [
             {
               "author": {
-                "name": "Valeriu Eolian"
+                "name": "Meowster Cat351"
               },
               "content": "Wind and solar are already cheaper than coal. This accelerates the inevitable.",
               "reaction": {
@@ -3323,7 +3580,7 @@
             },
             {
               "author": {
-                "name": "Daciana Verde"
+                "name": "Meowgli Kipling"
               },
               "content": "Every euro spent here saves ten in future climate damage.",
               "reaction": {
@@ -3333,7 +3590,7 @@
             },
             {
               "author": {
-                "name": "Marian Sceptic"
+                "name": "Furrgus Knead"
               },
               "content": "800 billion of taxpayer money with no guarantee of returns? Reckless.",
               "reaction": {
@@ -3345,7 +3602,7 @@
         },
         {
           "author": {
-            "name": "Octavian Piata"
+            "name": "Snugglesworth Haze"
           },
           "faction": "LIBERAL",
           "content": "800 billion in government spending picking winners in the energy market? Let private capital flow to renewables naturally — it already is.",
@@ -3353,7 +3610,7 @@
           "comments": [
             {
               "author": {
-                "name": "Steliana Liber"
+                "name": "Napsworth Hull"
               },
               "content": "Government funds are always less efficient than private investment.",
               "reaction": {
@@ -3363,7 +3620,7 @@
             },
             {
               "author": {
-                "name": "Bogdan Investescu"
+                "name": "Snoozewell Grant"
               },
               "content": "The private sector won't move fast enough without incentives.",
               "reaction": {
@@ -3373,7 +3630,7 @@
             },
             {
               "author": {
-                "name": "Hortensia Capital"
+                "name": "Meowtague Purr"
               },
               "content": "Subsidies distort markets. Period.",
               "reaction": {
@@ -3385,7 +3642,7 @@
         },
         {
           "author": {
-            "name": "Dumitru Carbune"
+            "name": "Mewberry Twain"
           },
           "faction": "TRADITIONAL",
           "content": "This fund threatens millions of jobs in coal, oil, and gas — industries that built our nations. Transition must be gradual, not revolutionary.",
@@ -3393,7 +3650,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Mina"
+                "name": "Hissington Heath"
               },
               "content": "My family has worked in coal for three generations. What happens to us?",
               "reaction": {
@@ -3403,7 +3660,7 @@
             },
             {
               "author": {
-                "name": "Nicu Energie"
+                "name": "Tailspin Zephyr"
               },
               "content": "Retraining programs must come before shutting down plants.",
               "reaction": {
@@ -3413,7 +3670,7 @@
             },
             {
               "author": {
-                "name": "Elisabeta Viitor"
+                "name": "Purrsephone Woolf"
               },
               "content": "The coal jobs are disappearing anyway. Better to plan the transition.",
               "reaction": {
@@ -3423,7 +3680,7 @@
             },
             {
               "author": {
-                "name": "Tiberiu Mosie"
+                "name": "Meowster Cat341"
               },
               "content": "Respect the workers who powered this country for decades.",
               "reaction": {
@@ -3435,7 +3692,7 @@
         },
         {
           "author": {
-            "name": "Sabina Climatescu"
+            "name": "Pawdington Llano"
           },
           "faction": "PROGRESSIST",
           "content": "Climate action is social justice. The poorest communities suffer most from pollution and climate change. This fund must prioritize them.",
@@ -3443,7 +3700,7 @@
           "comments": [
             {
               "author": {
-                "name": "Laurentiu Verde"
+                "name": "Scratchford Post"
               },
               "content": "Green jobs can replace fossil fuel jobs if we invest in training.",
               "reaction": {
@@ -3453,7 +3710,7 @@
             },
             {
               "author": {
-                "name": "Delia Echitate"
+                "name": "Snugglesworth Pratt"
               },
               "content": "Make sure the money reaches small communities, not just big corporations.",
               "reaction": {
@@ -3463,7 +3720,7 @@
             },
             {
               "author": {
-                "name": "Ionut Drept"
+                "name": "Catamaran Blanket"
               },
               "content": "This is the most important investment we can make for future generations.",
               "reaction": {
@@ -3475,7 +3732,7 @@
         },
         {
           "author": {
-            "name": "Matei Energie"
+            "name": "Furrdinand Leap"
           },
           "faction": "NEUTRU",
           "content": "The scale of investment is impressive. Success depends on transparent allocation, measurable targets, and accountability for results.",
@@ -3483,7 +3740,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Set clear milestones. Review progress every two years.",
               "reaction": {
@@ -3493,7 +3750,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Realist"
+                "name": "Purrfessor Breeze"
               },
               "content": "Some of this money will be wasted. That's inevitable with any large fund. The question is the net benefit.",
               "reaction": {
@@ -3503,7 +3760,7 @@
             },
             {
               "author": {
-                "name": "Sorina Centru"
+                "name": "Catamaran Anchor"
               },
               "content": "Compare the cost of action to the cost of inaction. Then decide.",
               "reaction": {
@@ -3520,7 +3777,7 @@
       "posts": [
         {
           "author": {
-            "name": "Camelia Sanatescu"
+            "name": "Clawdette Colbert"
           },
           "faction": "GREEN",
           "content": "Health and environment are connected. Cutting public hospital funding while pollution rises is a recipe for a public health disaster.",
@@ -3528,7 +3785,7 @@
           "comments": [
             {
               "author": {
-                "name": "Remus Verde"
+                "name": "Napsworth Gobi"
               },
               "content": "Preventive care and clean air save more lives than any insurance model.",
               "reaction": {
@@ -3538,7 +3795,7 @@
             },
             {
               "author": {
-                "name": "Anda Natura"
+                "name": "Kitsworth Brennan"
               },
               "content": "Private insurance won't cover pollution-related diseases. Watch.",
               "reaction": {
@@ -3548,7 +3805,7 @@
             },
             {
               "author": {
-                "name": "Florin Piata"
+                "name": "Meowgli Pratchett"
               },
               "content": "Competition in healthcare drives innovation and quality.",
               "reaction": {
@@ -3560,7 +3817,7 @@
         },
         {
           "author": {
-            "name": "Serban Asigurescu"
+            "name": "Furrester Delta"
           },
           "faction": "LIBERAL",
           "content": "Private insurance introduces competition and choice. Citizens deserve options beyond a one-size-fits-all state system.",
@@ -3568,7 +3825,7 @@
           "comments": [
             {
               "author": {
-                "name": "Luciana Liber"
+                "name": "Tabbsworth Trill"
               },
               "content": "I should be able to choose my doctor and my plan.",
               "reaction": {
@@ -3578,7 +3835,7 @@
             },
             {
               "author": {
-                "name": "Cornel Eficient"
+                "name": "Cattington Steele"
               },
               "content": "Private hospitals have shorter wait times. That's a fact.",
               "reaction": {
@@ -3588,7 +3845,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Grija"
+                "name": "Pawlowski Swirl"
               },
               "content": "And what about those who can't afford private insurance?",
               "reaction": {
@@ -3600,7 +3857,7 @@
         },
         {
           "author": {
-            "name": "Ion Spitalescu"
+            "name": "Kittsworth Bird"
           },
           "faction": "TRADITIONAL",
           "content": "Our public hospitals have served communities for generations. Weakening them in favor of private profit betrays the social contract.",
@@ -3608,7 +3865,7 @@
           "comments": [
             {
               "author": {
-                "name": "Aurelia Sat"
+                "name": "Catticus Finch"
               },
               "content": "Rural hospitals will close first. They always do.",
               "reaction": {
@@ -3618,7 +3875,7 @@
             },
             {
               "author": {
-                "name": "Traian Mosie"
+                "name": "Meowster Cat344"
               },
               "content": "Healthcare is a duty of the state to its people.",
               "reaction": {
@@ -3628,7 +3885,7 @@
             },
             {
               "author": {
-                "name": "Cornelia Modern"
+                "name": "Clawrence Welch"
               },
               "content": "The current public system is broken. Something has to change.",
               "reaction": {
@@ -3640,7 +3897,7 @@
         },
         {
           "author": {
-            "name": "Monica Dreptescu"
+            "name": "Furrgus Spring"
           },
           "faction": "PROGRESSIST",
           "content": "Healthcare is a human right, not a commodity. This law creates a two-tier system where your wallet determines whether you live or die.",
@@ -3648,7 +3905,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mirel Echitate"
+                "name": "Fuzzington Lake"
               },
               "content": "The rich get premium care, the poor get waiting lists. Unacceptable.",
               "reaction": {
@@ -3658,7 +3915,7 @@
             },
             {
               "author": {
-                "name": "Bianca Sanatate"
+                "name": "Kittredge Palmer"
               },
               "content": "Universal healthcare should be strengthened, not dismantled.",
               "reaction": {
@@ -3668,7 +3925,7 @@
             },
             {
               "author": {
-                "name": "Costel Realist"
+                "name": "Mewton Abbot"
               },
               "content": "Some private involvement can improve efficiency without gutting public care.",
               "reaction": {
@@ -3678,7 +3935,7 @@
             },
             {
               "author": {
-                "name": "Ramona Grija"
+                "name": "Hissandra Bluff"
               },
               "content": "Look at countries with mixed systems. They work when regulated properly.",
               "reaction": {
@@ -3690,7 +3947,7 @@
         },
         {
           "author": {
-            "name": "Ciprian Diagnostic"
+            "name": "Furrester Gump"
           },
           "faction": "NEUTRU",
           "content": "Healthcare reform is needed, but the approach matters. Can we improve efficiency without creating inequality in access?",
@@ -3698,7 +3955,7 @@
           "comments": [
             {
               "author": {
-                "name": "Melania Masura"
+                "name": "Pawdington Skip"
               },
               "content": "Hybrid models work in Germany and France. Study those.",
               "reaction": {
@@ -3708,7 +3965,7 @@
             },
             {
               "author": {
-                "name": "Octav Centru"
+                "name": "Catticus Rumble"
               },
               "content": "The current system wastes money. Reform is overdue.",
               "reaction": {
@@ -3718,7 +3975,7 @@
             },
             {
               "author": {
-                "name": "Flavia Atenta"
+                "name": "Whiskerella LeGuin"
               },
               "content": "Any reform must guarantee a minimum standard of care for everyone.",
               "reaction": {
@@ -3735,7 +3992,7 @@
       "posts": [
         {
           "author": {
-            "name": "Luca Aerescu"
+            "name": "Furrester Boop"
           },
           "faction": "GREEN",
           "content": "Banning old diesel cars is essential for breathable cities. The air quality crisis kills thousands every year — this law saves lives.",
@@ -3743,7 +4000,7 @@
           "comments": [
             {
               "author": {
-                "name": "Daria Oxigen"
+                "name": "Furrnsworth Burns"
               },
               "content": "My child has asthma. I fully support cleaner air in cities.",
               "reaction": {
@@ -3753,7 +4010,7 @@
             },
             {
               "author": {
-                "name": "Emil Verde"
+                "name": "Kittsworth Austen"
               },
               "content": "Public transport and cycling infrastructure must come alongside this.",
               "reaction": {
@@ -3763,7 +4020,7 @@
             },
             {
               "author": {
-                "name": "Geta Masina"
+                "name": "Furrnsworth Barker"
               },
               "content": "Not everyone can afford an electric car. Think about that.",
               "reaction": {
@@ -3775,7 +4032,7 @@
         },
         {
           "author": {
-            "name": "Rares Autescu"
+            "name": "Furrdinand Butte"
           },
           "faction": "LIBERAL",
           "content": "Banning vehicles people already own is an attack on property rights. Offer incentives for upgrades instead of punishing ownership.",
@@ -3783,7 +4040,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Liber"
+                "name": "Purrfessor Stern"
               },
               "content": "Let the market phase out old cars naturally through better alternatives.",
               "reaction": {
@@ -3793,7 +4050,7 @@
             },
             {
               "author": {
-                "name": "Adriana Piata"
+                "name": "Scratchy Delgado"
               },
               "content": "Scrappage schemes work better than outright bans.",
               "reaction": {
@@ -3803,7 +4060,7 @@
             },
             {
               "author": {
-                "name": "Cornel Drept"
+                "name": "Mewberry Finn"
               },
               "content": "Sometimes you need regulation to fix market failures. Pollution is one.",
               "reaction": {
@@ -3815,7 +4072,7 @@
         },
         {
           "author": {
-            "name": "Vasile Drumescu"
+            "name": "Meowster Cat353"
           },
           "faction": "TRADITIONAL",
           "content": "These restrictions hit rural communities hardest. A farmer's old truck isn't a luxury — it's a livelihood.",
@@ -3823,7 +4080,7 @@
           "comments": [
             {
               "author": {
-                "name": "Paraschiva Sat"
+                "name": "Napsworth Glacier"
               },
               "content": "City politicians making rules for people whose lives they don't understand.",
               "reaction": {
@@ -3833,7 +4090,7 @@
             },
             {
               "author": {
-                "name": "Nicu Mosie"
+                "name": "Fuzzaldo Storm"
               },
               "content": "Exemptions for agricultural and rural vehicles are essential.",
               "reaction": {
@@ -3843,7 +4100,7 @@
             },
             {
               "author": {
-                "name": "Elisabeta Oras"
+                "name": "Meowriarty Kafka"
               },
               "content": "Cities are choking. Something has to give.",
               "reaction": {
@@ -3853,7 +4110,7 @@
             },
             {
               "author": {
-                "name": "Tiberiu Camp"
+                "name": "Meowster Cat339"
               },
               "content": "Phase it in over 10 years with subsidies for replacements.",
               "reaction": {
@@ -3865,7 +4122,7 @@
         },
         {
           "author": {
-            "name": "Diana Mobilescu"
+            "name": "Catsworth Ashby"
           },
           "faction": "PROGRESSIST",
           "content": "Clean air is a social justice issue. Low-income neighborhoods are always near highways and factories. This law protects the most vulnerable.",
@@ -3873,7 +4130,7 @@
           "comments": [
             {
               "author": {
-                "name": "Octavian Aer"
+                "name": "Furrnsworth Mist"
               },
               "content": "Pair the ban with free public transport passes for affected drivers.",
               "reaction": {
@@ -3883,7 +4140,7 @@
             },
             {
               "author": {
-                "name": "Sabina Drept"
+                "name": "Kittredge Maquis"
               },
               "content": "The health savings alone justify this policy.",
               "reaction": {
@@ -3893,7 +4150,7 @@
             },
             {
               "author": {
-                "name": "Laurentiu Grija"
+                "name": "Meowgli Throne"
               },
               "content": "Make sure the transition doesn't punish those who can least afford it.",
               "reaction": {
@@ -3905,7 +4162,7 @@
         },
         {
           "author": {
-            "name": "Cristian Trafic"
+            "name": "Tailspin Turner"
           },
           "faction": "NEUTRU",
           "content": "Air quality needs to improve, but implementation matters. Gradual phase-outs with financial support work better than sudden bans.",
@@ -3913,7 +4170,7 @@
           "comments": [
             {
               "author": {
-                "name": "Amalia Masura"
+                "name": "Catnip Rodriguez"
               },
               "content": "Give people time and help to transition. Don't just ban and punish.",
               "reaction": {
@@ -3923,7 +4180,7 @@
             },
             {
               "author": {
-                "name": "Dorel Centru"
+                "name": "Napsworth Byron"
               },
               "content": "London's ULEZ showed that gradual zones work.",
               "reaction": {
@@ -3933,7 +4190,7 @@
             },
             {
               "author": {
-                "name": "Ileana Realist"
+                "name": "Napsworth Tuna"
               },
               "content": "The goal is right. The timeline needs to be realistic.",
               "reaction": {
@@ -3950,7 +4207,7 @@
       "posts": [
         {
           "author": {
-            "name": "Marin Oceanescu"
+            "name": "Meowriarty Stretch"
           },
           "faction": "GREEN",
           "content": "Single-use plastics are choking our oceans and poisoning wildlife. This ban is long overdue — nature can't wait for corporate convenience.",
@@ -3958,7 +4215,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezara Mare"
+                "name": "Purrkins Aldrin"
               },
               "content": "Every piece of plastic ever made still exists somewhere. Let that sink in.",
               "reaction": {
@@ -3968,7 +4225,7 @@
             },
             {
               "author": {
-                "name": "Lidia Recicla"
+                "name": "Purrkins Chin"
               },
               "content": "40% recycled content is a good start. Push for 80% next.",
               "reaction": {
@@ -3978,7 +4235,7 @@
             },
             {
               "author": {
-                "name": "Augustin Piata"
+                "name": "Scratchley Morgan"
               },
               "content": "Alternatives are more expensive. Consumers will pay the price.",
               "reaction": {
@@ -3990,7 +4247,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Plastescu"
+            "name": "Meowgli Flip"
           },
           "faction": "LIBERAL",
           "content": "Banning materials instead of innovating replacements is backward thinking. Fund biodegradable research, don't restrict essential products.",
@@ -3998,7 +4255,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Inovescu"
+                "name": "Clawdius Bow"
               },
               "content": "The market is already developing alternatives. Let it work.",
               "reaction": {
@@ -4008,7 +4265,7 @@
             },
             {
               "author": {
-                "name": "Adriana Verde"
+                "name": "Whiskerino Rossi"
               },
               "content": "The market had 50 years. The oceans are full of plastic.",
               "reaction": {
@@ -4018,7 +4275,7 @@
             },
             {
               "author": {
-                "name": "Cornel Eficient"
+                "name": "Cattington Steele"
               },
               "content": "Regulation drives innovation when the market fails to self-correct.",
               "reaction": {
@@ -4030,7 +4287,7 @@
         },
         {
           "author": {
-            "name": "Petru Durabil"
+            "name": "Purrcy Taiga"
           },
           "faction": "TRADITIONAL",
           "content": "Our grandparents used glass jars and cloth bags. There's wisdom in the old ways. We don't need plastic to live well.",
@@ -4038,7 +4295,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Mosie"
+                "name": "Purrkins Fen"
               },
               "content": "We survived centuries without plastic. We can do it again.",
               "reaction": {
@@ -4048,7 +4305,7 @@
             },
             {
               "author": {
-                "name": "Ilie Traditie"
+                "name": "Mewberry Kibble"
               },
               "content": "Bring back reusable packaging. It worked before.",
               "reaction": {
@@ -4058,7 +4315,7 @@
             },
             {
               "author": {
-                "name": "Minerva Modern"
+                "name": "Furrester Plunge"
               },
               "content": "Nostalgia won't solve a modern waste crisis. We need new solutions.",
               "reaction": {
@@ -4070,7 +4327,7 @@
         },
         {
           "author": {
-            "name": "Teodora Curatescu"
+            "name": "Catticus Porthole"
           },
           "faction": "PROGRESSIST",
           "content": "Plastic pollution hits poor communities hardest — they live near landfills and lack recycling infrastructure. This is an equity issue.",
@@ -4078,7 +4335,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "Corporate responsibility for packaging waste is essential.",
               "reaction": {
@@ -4088,7 +4345,7 @@
             },
             {
               "author": {
-                "name": "Catalina Echitate"
+                "name": "Fuzzbert Humboldt"
               },
               "content": "Make producers pay for the full lifecycle of their products.",
               "reaction": {
@@ -4098,7 +4355,7 @@
             },
             {
               "author": {
-                "name": "Ionut Grija"
+                "name": "Pawlowski Basket"
               },
               "content": "Pair this with investment in recycling infrastructure in underserved areas.",
               "reaction": {
@@ -4108,7 +4365,7 @@
             },
             {
               "author": {
-                "name": "Delia Verde"
+                "name": "Hissington Wells"
               },
               "content": "This law should be just the beginning.",
               "reaction": {
@@ -4120,7 +4377,7 @@
         },
         {
           "author": {
-            "name": "Matei Ambalescu"
+            "name": "Snoozebury Flop"
           },
           "faction": "NEUTRU",
           "content": "Reducing plastic waste is necessary, but the transition needs to be managed. Small businesses need time and support to adapt.",
@@ -4128,7 +4385,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Phase in the requirements over 3-5 years.",
               "reaction": {
@@ -4138,7 +4395,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Realist"
+                "name": "Purrfessor Breeze"
               },
               "content": "Some plastic uses are genuinely hard to replace. Medical equipment, for example.",
               "reaction": {
@@ -4148,7 +4405,7 @@
             },
             {
               "author": {
-                "name": "Sorina Centru"
+                "name": "Catamaran Anchor"
               },
               "content": "Focus on the worst offenders first: packaging and single-use items.",
               "reaction": {
@@ -4165,7 +4422,7 @@
       "posts": [
         {
           "author": {
-            "name": "Liana Populescu"
+            "name": "Furrnsworth Bag"
           },
           "faction": "GREEN",
           "content": "More people means more consumption, more waste, more pressure on an already strained planet. This policy ignores ecological limits.",
@@ -4173,7 +4430,7 @@
           "comments": [
             {
               "author": {
-                "name": "Ciprian Natura"
+                "name": "Napsworth Becker"
               },
               "content": "The Earth can't sustain infinite growth. Basic math.",
               "reaction": {
@@ -4183,7 +4440,7 @@
             },
             {
               "author": {
-                "name": "Adina Verde"
+                "name": "Purrkins Thompson"
               },
               "content": "Instead of more births, invest in the people already here.",
               "reaction": {
@@ -4193,7 +4450,7 @@
             },
             {
               "author": {
-                "name": "Florian Familie"
+                "name": "Tailspin Herbert"
               },
               "content": "Declining populations collapse economies. Someone has to pay pensions.",
               "reaction": {
@@ -4205,7 +4462,7 @@
         },
         {
           "author": {
-            "name": "Serban Natalescu"
+            "name": "Cuddleton Atoll"
           },
           "faction": "LIBERAL",
           "content": "Financial incentives for having children distort personal choices. People should decide family size based on their own circumstances, not government bonuses.",
@@ -4213,7 +4470,7 @@
           "comments": [
             {
               "author": {
-                "name": "Doina Liber"
+                "name": "Furrester Whitman"
               },
               "content": "The state shouldn't be in the business of family planning.",
               "reaction": {
@@ -4223,7 +4480,7 @@
             },
             {
               "author": {
-                "name": "Lucian Piata"
+                "name": "Napsworth Mlem"
               },
               "content": "If the economy needs workers, immigration is more efficient.",
               "reaction": {
@@ -4233,7 +4490,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Familie"
+                "name": "Mewton Eddy"
               },
               "content": "Some support for families isn't unreasonable. It's about balance.",
               "reaction": {
@@ -4245,7 +4502,7 @@
         },
         {
           "author": {
-            "name": "Ion Neamescu"
+            "name": "Clawrence Ball"
           },
           "faction": "TRADITIONAL",
           "content": "A nation without children has no future. Supporting families is the most important investment a country can make.",
@@ -4253,7 +4510,7 @@
           "comments": [
             {
               "author": {
-                "name": "Aurelia Mama"
+                "name": "Fuzzworth Ortega"
               },
               "content": "Large families built this country. We should honor that tradition.",
               "reaction": {
@@ -4263,7 +4520,7 @@
             },
             {
               "author": {
-                "name": "Traian Tata"
+                "name": "Meowster Cat345"
               },
               "content": "Children are our greatest resource. Fund families, not corporations.",
               "reaction": {
@@ -4273,7 +4530,7 @@
             },
             {
               "author": {
-                "name": "Cornelia Modern"
+                "name": "Clawrence Welch"
               },
               "content": "You can't force people to have kids they can't afford to raise well.",
               "reaction": {
@@ -4283,7 +4540,7 @@
             },
             {
               "author": {
-                "name": "Vasile Mosie"
+                "name": "Meowster Cat354"
               },
               "content": "It's not about forcing. It's about making it possible.",
               "reaction": {
@@ -4295,7 +4552,7 @@
         },
         {
           "author": {
-            "name": "Anca Socialescu"
+            "name": "Clawdia Fontaine"
           },
           "faction": "PROGRESSIST",
           "content": "If you want people to have children, give them affordable housing, free childcare, and living wages. Bonuses alone don't fix systemic problems.",
@@ -4303,7 +4560,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mirel Drept"
+                "name": "Purrcy River"
               },
               "content": "Address the root causes: cost of living, job insecurity, housing crisis.",
               "reaction": {
@@ -4313,7 +4570,7 @@
             },
             {
               "author": {
-                "name": "Bianca Grija"
+                "name": "Clawrence Olivier"
               },
               "content": "Women shouldn't be reduced to birth rate statistics.",
               "reaction": {
@@ -4323,7 +4580,7 @@
             },
             {
               "author": {
-                "name": "Costel Echitate"
+                "name": "Catamaran Jones"
               },
               "content": "Support all families, not just the ones that fit a traditional mold.",
               "reaction": {
@@ -4335,7 +4592,7 @@
         },
         {
           "author": {
-            "name": "Mihai Demografescu"
+            "name": "Snugglesworth Glide"
           },
           "faction": "NEUTRU",
           "content": "Declining birth rates are a real challenge, but the solution needs to address why people aren't having children, not just pay them to.",
@@ -4343,7 +4600,7 @@
           "comments": [
             {
               "author": {
-                "name": "Otilia Masura"
+                "name": "Catsworth Frost"
               },
               "content": "Childcare costs, housing prices, work-life balance — fix those first.",
               "reaction": {
@@ -4353,7 +4610,7 @@
             },
             {
               "author": {
-                "name": "Valentin Centru"
+                "name": "Meowster Cat349"
               },
               "content": "A mix of immigration and family support is probably the answer.",
               "reaction": {
@@ -4363,7 +4620,7 @@
             },
             {
               "author": {
-                "name": "Felicia Realist"
+                "name": "Furrdinand Wells"
               },
               "content": "Look at what worked in Scandinavian countries. Comprehensive support, not just cash.",
               "reaction": {
@@ -4380,7 +4637,7 @@
       "posts": [
         {
           "author": {
-            "name": "Silviu Comertescu"
+            "name": "Cattington Fjord"
           },
           "faction": "GREEN",
           "content": "Free trade without green standards is a race to the bottom. We're importing deforestation, pollution, and exploitation wrapped in cheap goods.",
@@ -4388,7 +4645,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezara Padure"
+                "name": "Whiskerly Atwood"
               },
               "content": "Every cheap product has a hidden environmental cost.",
               "reaction": {
@@ -4398,7 +4655,7 @@
             },
             {
               "author": {
-                "name": "Lidia Natura"
+                "name": "Catsworth Shoulder"
               },
               "content": "Trade deals must include binding climate commitments.",
               "reaction": {
@@ -4408,7 +4665,7 @@
             },
             {
               "author": {
-                "name": "Augustin Piata"
+                "name": "Scratchley Morgan"
               },
               "content": "Protectionism kills growth. Trade lifts all boats.",
               "reaction": {
@@ -4420,7 +4677,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Comert"
+            "name": "Purrfessor Zoom"
           },
           "faction": "LIBERAL",
           "content": "Free trade is the engine of prosperity. Adding environmental red tape to trade deals slows growth and raises prices for everyone.",
@@ -4428,7 +4685,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Liber"
+                "name": "Purrfessor Stern"
               },
               "content": "Open markets create wealth. Regulation creates paperwork.",
               "reaction": {
@@ -4438,7 +4695,7 @@
             },
             {
               "author": {
-                "name": "Adriana Verde"
+                "name": "Whiskerino Rossi"
               },
               "content": "Wealth for whom? Not for the communities poisoned by unregulated factories.",
               "reaction": {
@@ -4448,7 +4705,7 @@
             },
             {
               "author": {
-                "name": "Cornel Eficient"
+                "name": "Cattington Steele"
               },
               "content": "Trade agreements can include standards without killing commerce.",
               "reaction": {
@@ -4460,7 +4717,7 @@
         },
         {
           "author": {
-            "name": "Petru Granitescu"
+            "name": "Mewberry Prairie"
           },
           "faction": "TRADITIONAL",
           "content": "Opening our borders to unregulated goods undermines our own producers who follow strict standards. Protect national industry first.",
@@ -4468,7 +4725,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Tara"
+                "name": "Whiskerton Marsh"
               },
               "content": "Our farmers can't compete with imports that ignore every rule.",
               "reaction": {
@@ -4478,7 +4735,7 @@
             },
             {
               "author": {
-                "name": "Ilie Mosie"
+                "name": "Purrcy Sardine"
               },
               "content": "National sovereignty means controlling what enters our markets.",
               "reaction": {
@@ -4488,7 +4745,7 @@
             },
             {
               "author": {
-                "name": "Minerva Global"
+                "name": "Meowtague Dive"
               },
               "content": "Isolation isn't the answer. We need smart trade, not no trade.",
               "reaction": {
@@ -4500,7 +4757,7 @@
         },
         {
           "author": {
-            "name": "Teodora Justescu"
+            "name": "Snugglesworth Crow"
           },
           "faction": "PROGRESSIST",
           "content": "Free trade without labor and environmental standards is just exploitation with extra steps. Workers everywhere deserve protection.",
@@ -4508,7 +4765,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "Cheap goods come at the cost of someone else's suffering.",
               "reaction": {
@@ -4518,7 +4775,7 @@
             },
             {
               "author": {
-                "name": "Catalina Muncitor"
+                "name": "Meowcolm Fraser"
               },
               "content": "Include worker rights in every trade agreement. Non-negotiable.",
               "reaction": {
@@ -4528,7 +4785,7 @@
             },
             {
               "author": {
-                "name": "Ionut Global"
+                "name": "Mewton Couch"
               },
               "content": "Fair trade, not just free trade.",
               "reaction": {
@@ -4538,7 +4795,7 @@
             },
             {
               "author": {
-                "name": "Delia Echitate"
+                "name": "Snugglesworth Pratt"
               },
               "content": "The countries that pollute most shouldn't be rewarded with market access.",
               "reaction": {
@@ -4550,7 +4807,7 @@
         },
         {
           "author": {
-            "name": "Matei Balantescu"
+            "name": "Hissandra Tumble"
           },
           "faction": "NEUTRU",
           "content": "Trade creates growth, but unregulated trade creates problems. The challenge is finding agreements that are both open and responsible.",
@@ -4558,7 +4815,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Include environmental benchmarks with review periods.",
               "reaction": {
@@ -4568,7 +4825,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Centru"
+                "name": "Furrdinand Current"
               },
               "content": "Absolute free trade and absolute protectionism both fail. The answer is in between.",
               "reaction": {
@@ -4578,7 +4835,7 @@
             },
             {
               "author": {
-                "name": "Sorina Realist"
+                "name": "Furrdinand Helm"
               },
               "content": "Phase in standards gradually so developing partners can adapt.",
               "reaction": {
@@ -4595,7 +4852,7 @@
       "posts": [
         {
           "author": {
-            "name": "Ovidiu Datescu"
+            "name": "Whiskerton Sleet"
           },
           "faction": "GREEN",
           "content": "Transparency in government spending could expose environmental crimes. But the data centers storing all this information have their own carbon footprint.",
@@ -4603,7 +4860,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezar Verde"
+                "name": "Snugsworth Bennett"
               },
               "content": "Open data on pollution levels would be transformative.",
               "reaction": {
@@ -4613,7 +4870,7 @@
             },
             {
               "author": {
-                "name": "Lidia Eco"
+                "name": "Snugglesworth Lap"
               },
               "content": "Right to know what companies dump in our rivers? Yes please.",
               "reaction": {
@@ -4623,7 +4880,7 @@
             },
             {
               "author": {
-                "name": "Augustin Tech"
+                "name": "Tabbington Cruz"
               },
               "content": "The energy cost of mass data storage is a real concern.",
               "reaction": {
@@ -4635,7 +4892,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Privatescu"
+            "name": "Scratchford Roll"
           },
           "faction": "LIBERAL",
           "content": "Privacy is a fundamental right. But 'access to information' shouldn't mean the government can demand data from private companies at will.",
@@ -4643,7 +4900,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Liber"
+                "name": "Purrfessor Stern"
               },
               "content": "My data is my property. Full stop.",
               "reaction": {
@@ -4653,7 +4910,7 @@
             },
             {
               "author": {
-                "name": "Adriana Deschis"
+                "name": "Clawford Benson"
               },
               "content": "Government transparency is different from personal privacy. Both matter.",
               "reaction": {
@@ -4663,7 +4920,7 @@
             },
             {
               "author": {
-                "name": "Cornel Piata"
+                "name": "Furrgus MacLeod"
               },
               "content": "Companies should compete on privacy protections. Let consumers choose.",
               "reaction": {
@@ -4675,7 +4932,7 @@
         },
         {
           "author": {
-            "name": "Petru Intimescu"
+            "name": "Cattington Savanna"
           },
           "faction": "TRADITIONAL",
           "content": "Privacy is sacred — it protects the family, the home, the individual from state overreach. Guard it fiercely.",
@@ -4683,7 +4940,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Casa"
+                "name": "Snugglesworth Garrigue"
               },
               "content": "What happens in our homes is our business. Not the government's.",
               "reaction": {
@@ -4693,7 +4950,7 @@
             },
             {
               "author": {
-                "name": "Ilie Traditie"
+                "name": "Mewberry Kibble"
               },
               "content": "Our ancestors valued discretion. So should we.",
               "reaction": {
@@ -4703,7 +4960,7 @@
             },
             {
               "author": {
-                "name": "Minerva Deschis"
+                "name": "Clawson Swoop"
               },
               "content": "But government transparency prevents corruption. That protects everyone.",
               "reaction": {
@@ -4713,7 +4970,7 @@
             },
             {
               "author": {
-                "name": "Neculai Mosie"
+                "name": "Kittsworth Torrent"
               },
               "content": "Balance is key. Privacy for citizens, transparency for institutions.",
               "reaction": {
@@ -4725,7 +4982,7 @@
         },
         {
           "author": {
-            "name": "Teodora Deschidescu"
+            "name": "Pawdington Gangway"
           },
           "faction": "PROGRESSIST",
           "content": "Access to information empowers citizens to hold power accountable. Privacy protects the vulnerable from surveillance. We need both.",
@@ -4733,7 +4990,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "Whistleblower protections must be part of this law.",
               "reaction": {
@@ -4743,7 +5000,7 @@
             },
             {
               "author": {
-                "name": "Catalina Acces"
+                "name": "Napolean Bonapat"
               },
               "content": "Open government data can expose systemic discrimination.",
               "reaction": {
@@ -4753,7 +5010,7 @@
             },
             {
               "author": {
-                "name": "Ionut Digital"
+                "name": "Hissandra Windowsill"
               },
               "content": "Tech companies hoard our data for profit. Time to take it back.",
               "reaction": {
@@ -4765,7 +5022,7 @@
         },
         {
           "author": {
-            "name": "Matei Infescu"
+            "name": "Mewton Sprint"
           },
           "faction": "NEUTRU",
           "content": "Privacy and transparency seem contradictory but they're complementary — privacy for individuals, transparency for institutions. The law tries to do both.",
@@ -4773,7 +5030,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Implementation will be the hard part. Good principles though.",
               "reaction": {
@@ -4783,7 +5040,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Centru"
+                "name": "Furrdinand Current"
               },
               "content": "GDPR showed it's possible but expensive to enforce.",
               "reaction": {
@@ -4793,7 +5050,7 @@
             },
             {
               "author": {
-                "name": "Sorina Realist"
+                "name": "Furrdinand Helm"
               },
               "content": "Start with government transparency. That's the easier win.",
               "reaction": {
@@ -4810,7 +5067,7 @@
       "posts": [
         {
           "author": {
-            "name": "Liana Techverde"
+            "name": "Kittredge Sack"
           },
           "faction": "GREEN",
           "content": "500 billion for digitalization? Only if it includes green tech standards. We can't build smart cities on dirty energy.",
@@ -4818,7 +5075,7 @@
           "comments": [
             {
               "author": {
-                "name": "Ciprian Eco"
+                "name": "Tailsworth Adler"
               },
               "content": "Digital infrastructure must run on renewables.",
               "reaction": {
@@ -4828,7 +5085,7 @@
             },
             {
               "author": {
-                "name": "Adina Verde"
+                "name": "Purrkins Thompson"
               },
               "content": "AI and data centers consume enormous energy. Plan for that.",
               "reaction": {
@@ -4838,7 +5095,7 @@
             },
             {
               "author": {
-                "name": "Florian Tech"
+                "name": "Napsworth Lovecraft"
               },
               "content": "Green tech IS digital tech. They go hand in hand.",
               "reaction": {
@@ -4850,7 +5107,7 @@
         },
         {
           "author": {
-            "name": "Serban Inovescu"
+            "name": "Napsworth Lagoon"
           },
           "faction": "LIBERAL",
           "content": "Government picking tech winners with 500 billion? The private sector innovates faster and more efficiently. Reduce taxes instead.",
@@ -4858,7 +5115,7 @@
           "comments": [
             {
               "author": {
-                "name": "Doina Piata"
+                "name": "Tailsworth Keats"
               },
               "content": "Silicon Valley wasn't built by government funds.",
               "reaction": {
@@ -4868,7 +5125,7 @@
             },
             {
               "author": {
-                "name": "Lucian Tech"
+                "name": "Cuddleton Chirp"
               },
               "content": "Actually, the internet, GPS, and touchscreens all came from government research.",
               "reaction": {
@@ -4878,7 +5135,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Liber"
+                "name": "Whiskerella Vortex"
               },
               "content": "Public-private partnerships are the sweet spot.",
               "reaction": {
@@ -4890,7 +5147,7 @@
         },
         {
           "author": {
-            "name": "Ion Mestesuescu"
+            "name": "Meowriarty String"
           },
           "faction": "TRADITIONAL",
           "content": "Digitalization shouldn't mean the death of craftsmanship and human connection. Invest in people, not just machines.",
@@ -4898,7 +5155,7 @@
           "comments": [
             {
               "author": {
-                "name": "Aurelia Mestesug"
+                "name": "Mewton Price"
               },
               "content": "Artisans and small workshops are being forgotten.",
               "reaction": {
@@ -4908,7 +5165,7 @@
             },
             {
               "author": {
-                "name": "Traian Traditie"
+                "name": "Meowster Cat346"
               },
               "content": "Technology should serve tradition, not replace it.",
               "reaction": {
@@ -4918,7 +5175,7 @@
             },
             {
               "author": {
-                "name": "Cornelia Viitor"
+                "name": "Kittsworth Hale"
               },
               "content": "You can preserve crafts AND embrace technology. It's not either/or.",
               "reaction": {
@@ -4928,7 +5185,7 @@
             },
             {
               "author": {
-                "name": "Vasile Mosie"
+                "name": "Meowster Cat354"
               },
               "content": "Train the older generation too. Don't leave them behind.",
               "reaction": {
@@ -4940,7 +5197,7 @@
         },
         {
           "author": {
-            "name": "Anca Digitalescu"
+            "name": "Pawsworth Nakamura"
           },
           "faction": "PROGRESSIST",
           "content": "Digital innovation can democratize access to education, healthcare, and government services — but only if the investment reaches everyone, not just tech hubs.",
@@ -4948,7 +5205,7 @@
           "comments": [
             {
               "author": {
-                "name": "Mirel Acces"
+                "name": "Tabbsworth Stream"
               },
               "content": "Rural broadband first. You can't innovate without internet.",
               "reaction": {
@@ -4958,7 +5215,7 @@
             },
             {
               "author": {
-                "name": "Bianca Echitate"
+                "name": "Meowrice Chevalier"
               },
               "content": "Digital skills training for marginalized communities is essential.",
               "reaction": {
@@ -4968,7 +5225,7 @@
             },
             {
               "author": {
-                "name": "Costel Drept"
+                "name": "Hissandra Troy"
               },
               "content": "Make sure this fund doesn't just enrich tech billionaires.",
               "reaction": {
@@ -4980,7 +5237,7 @@
         },
         {
           "author": {
-            "name": "Mihai Fondescu"
+            "name": "Hissington Slide"
           },
           "faction": "NEUTRU",
           "content": "500 billion is a serious commitment. Success depends on clear goals, independent oversight, and measurable outcomes. Without those, it's just spending.",
@@ -4988,7 +5245,7 @@
           "comments": [
             {
               "author": {
-                "name": "Otilia Masura"
+                "name": "Catsworth Frost"
               },
               "content": "Set KPIs and review every two years. Adjust as needed.",
               "reaction": {
@@ -4998,7 +5255,7 @@
             },
             {
               "author": {
-                "name": "Valentin Centru"
+                "name": "Meowster Cat349"
               },
               "content": "Compare with South Korea's digital transformation. Learn from the best.",
               "reaction": {
@@ -5008,7 +5265,7 @@
             },
             {
               "author": {
-                "name": "Felicia Realist"
+                "name": "Furrdinand Wells"
               },
               "content": "Some waste is inevitable. The question is whether the net impact is positive.",
               "reaction": {
@@ -5025,7 +5282,7 @@
       "posts": [
         {
           "author": {
-            "name": "Silviu Migratescu"
+            "name": "Furrgus Marina"
           },
           "faction": "GREEN",
           "content": "People migrate because of climate change, war, and poverty. Caps don't address root causes — they just make suffering invisible.",
@@ -5033,7 +5290,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezara Clima"
+                "name": "Hissbert Spencer"
               },
               "content": "Climate refugees will only increase. We need humane policies.",
               "reaction": {
@@ -5043,7 +5300,7 @@
             },
             {
               "author": {
-                "name": "Lidia Natura"
+                "name": "Catsworth Shoulder"
               },
               "content": "Borders are human constructs. The planet doesn't recognize them.",
               "reaction": {
@@ -5053,7 +5310,7 @@
             },
             {
               "author": {
-                "name": "Augustin Realist"
+                "name": "Napsworth Fischer"
               },
               "content": "Unlimited immigration strains public services. Some limits are practical.",
               "reaction": {
@@ -5065,7 +5322,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Frontescu"
+            "name": "Fuzzaldo Spin"
           },
           "faction": "LIBERAL",
           "content": "Immigration caps limit the labor market. Economies need workers, and artificial limits create shortages in healthcare, agriculture, and tech.",
@@ -5073,7 +5330,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Piata"
+                "name": "Tailspin Keel"
               },
               "content": "Let supply and demand determine immigration levels.",
               "reaction": {
@@ -5083,7 +5340,7 @@
             },
             {
               "author": {
-                "name": "Adriana Muncitor"
+                "name": "Mittens O'Brien"
               },
               "content": "Skilled immigration drives innovation. Don't cap talent.",
               "reaction": {
@@ -5093,7 +5350,7 @@
             },
             {
               "author": {
-                "name": "Cornel Tara"
+                "name": "Meowriarty Doyle"
               },
               "content": "Uncontrolled immigration depresses wages for existing workers.",
               "reaction": {
@@ -5105,7 +5362,7 @@
         },
         {
           "author": {
-            "name": "Petru Granicescu"
+            "name": "Fuzzington Steppe"
           },
           "faction": "TRADITIONAL",
           "content": "A nation without borders is not a nation. Controlled immigration protects our culture, our jobs, and our way of life.",
@@ -5113,7 +5370,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Tara"
+                "name": "Whiskerton Marsh"
               },
               "content": "We welcome guests, but our house has a capacity.",
               "reaction": {
@@ -5123,7 +5380,7 @@
             },
             {
               "author": {
-                "name": "Ilie Mosie"
+                "name": "Purrcy Sardine"
               },
               "content": "Integration takes time. Too many too fast overwhelms communities.",
               "reaction": {
@@ -5133,7 +5390,7 @@
             },
             {
               "author": {
-                "name": "Minerva Deschis"
+                "name": "Clawson Swoop"
               },
               "content": "Immigrants built half the infrastructure you're so proud of.",
               "reaction": {
@@ -5143,7 +5400,7 @@
             },
             {
               "author": {
-                "name": "Neculai Granita"
+                "name": "Purrsephone Cascade"
               },
               "content": "Control doesn't mean cruelty. We can be firm and humane.",
               "reaction": {
@@ -5155,7 +5412,7 @@
         },
         {
           "author": {
-            "name": "Teodora Solidarescu"
+            "name": "Catsworth Halyard"
           },
           "faction": "PROGRESSIST",
           "content": "Capping immigration at 5% is arbitrary and cruel. People fleeing war and poverty deserve compassion, not quotas.",
@@ -5163,7 +5420,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "Human rights don't stop at borders.",
               "reaction": {
@@ -5173,7 +5430,7 @@
             },
             {
               "author": {
-                "name": "Catalina Refugiu"
+                "name": "Scratchwell Park"
               },
               "content": "Integration programs work better than walls.",
               "reaction": {
@@ -5183,7 +5440,7 @@
             },
             {
               "author": {
-                "name": "Ionut Echitate"
+                "name": "Furrdinand Pillow"
               },
               "content": "Address why people migrate instead of punishing them for it.",
               "reaction": {
@@ -5195,7 +5452,7 @@
         },
         {
           "author": {
-            "name": "Matei Demografescu"
+            "name": "Catamaran Pounce"
           },
           "faction": "NEUTRU",
           "content": "Immigration policy needs to balance humanitarian obligations with practical capacity. A 5% cap is one approach — but is it the right number?",
@@ -5203,7 +5460,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Base the cap on economic data, not political pressure.",
               "reaction": {
@@ -5213,7 +5470,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Centru"
+                "name": "Furrdinand Current"
               },
               "content": "Points-based systems like Canada's might work better than hard caps.",
               "reaction": {
@@ -5223,7 +5480,7 @@
             },
             {
               "author": {
-                "name": "Sorina Realist"
+                "name": "Furrdinand Helm"
               },
               "content": "Whatever the policy, enforcement and integration support are key.",
               "reaction": {
@@ -5240,7 +5497,7 @@
       "posts": [
         {
           "author": {
-            "name": "Ovidiu Minerescu"
+            "name": "Meowtague Flurry"
           },
           "faction": "GREEN",
           "content": "Extraction quotas are essential. We're strip-mining the planet for gadgets while ignoring the ecological devastation left behind.",
@@ -5248,7 +5505,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezar Padure"
+                "name": "Kittson Novak"
               },
               "content": "Every mine destroys an ecosystem. Limits are the bare minimum.",
               "reaction": {
@@ -5258,7 +5515,7 @@
             },
             {
               "author": {
-                "name": "Lidia Natura"
+                "name": "Catsworth Shoulder"
               },
               "content": "Recycling existing materials should come before new extraction.",
               "reaction": {
@@ -5268,7 +5525,7 @@
             },
             {
               "author": {
-                "name": "Augustin Tech"
+                "name": "Tabbington Cruz"
               },
               "content": "Without rare earths, no batteries, no wind turbines. Think about that.",
               "reaction": {
@@ -5280,7 +5537,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Extractescu"
+            "name": "Tailspin Whirl"
           },
           "faction": "LIBERAL",
           "content": "Quotas on mining slow down the industries that power modern life — from smartphones to electric cars. Let the market set extraction levels.",
@@ -5288,7 +5545,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Piata"
+                "name": "Tailspin Keel"
               },
               "content": "Artificial scarcity drives up prices for everyone.",
               "reaction": {
@@ -5298,7 +5555,7 @@
             },
             {
               "author": {
-                "name": "Adriana Verde"
+                "name": "Whiskerino Rossi"
               },
               "content": "The market doesn't price in environmental destruction. That's the problem.",
               "reaction": {
@@ -5308,7 +5565,7 @@
             },
             {
               "author": {
-                "name": "Cornel Eficient"
+                "name": "Cattington Steele"
               },
               "content": "Innovation in extraction technology can reduce environmental impact.",
               "reaction": {
@@ -5320,7 +5577,7 @@
         },
         {
           "author": {
-            "name": "Petru Pamantescu"
+            "name": "Pawsworth Meadow"
           },
           "faction": "TRADITIONAL",
           "content": "The earth beneath our feet is our inheritance. Extract wisely, with respect for the land that sustains us.",
@@ -5328,7 +5585,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Mosie"
+                "name": "Purrkins Fen"
               },
               "content": "Our ancestors mined responsibly. We should too.",
               "reaction": {
@@ -5338,7 +5595,7 @@
             },
             {
               "author": {
-                "name": "Ilie Tara"
+                "name": "Fuzzington Mackerel"
               },
               "content": "National resources should benefit national citizens first.",
               "reaction": {
@@ -5348,7 +5605,7 @@
             },
             {
               "author": {
-                "name": "Minerva Viitor"
+                "name": "Napsworth Drip"
               },
               "content": "Responsible extraction is possible with modern technology.",
               "reaction": {
@@ -5358,7 +5615,7 @@
             },
             {
               "author": {
-                "name": "Neculai Batran"
+                "name": "Clawrence Rapids"
               },
               "content": "Leave something for the next generation.",
               "reaction": {
@@ -5370,7 +5627,7 @@
         },
         {
           "author": {
-            "name": "Teodora Resursescu"
+            "name": "Hissington Rigging"
           },
           "faction": "PROGRESSIST",
           "content": "Mining communities bear the health costs while corporations take the profits. Quotas protect people as much as the environment.",
@@ -5378,7 +5635,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "Environmental impact assessments should be mandatory and public.",
               "reaction": {
@@ -5388,7 +5645,7 @@
             },
             {
               "author": {
-                "name": "Catalina Sanatate"
+                "name": "Cattleya Dubois"
               },
               "content": "Mining towns have higher cancer rates. That's not a coincidence.",
               "reaction": {
@@ -5398,7 +5655,7 @@
             },
             {
               "author": {
-                "name": "Ionut Echitate"
+                "name": "Furrdinand Pillow"
               },
               "content": "Revenue from extraction must flow back to affected communities.",
               "reaction": {
@@ -5410,7 +5667,7 @@
         },
         {
           "author": {
-            "name": "Matei Resursescu"
+            "name": "Clawdius Flash"
           },
           "faction": "NEUTRU",
           "content": "We need rare earth minerals for the green transition, but unlimited extraction isn't sustainable. Smart quotas with regular review could work.",
@@ -5418,7 +5675,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Set quotas based on scientific assessments, not politics.",
               "reaction": {
@@ -5428,7 +5685,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Centru"
+                "name": "Furrdinand Current"
               },
               "content": "Invest in recycling technology to reduce dependence on new mining.",
               "reaction": {
@@ -5438,7 +5695,7 @@
             },
             {
               "author": {
-                "name": "Sorina Realist"
+                "name": "Furrdinand Helm"
               },
               "content": "Balance is possible. It just requires good data and political will.",
               "reaction": {
@@ -5455,7 +5712,7 @@
       "posts": [
         {
           "author": {
-            "name": "Silviu Digitalescu"
+            "name": "Pawsworth Harbor"
           },
           "faction": "GREEN",
           "content": "Big tech's monopoly power extends to environmental data too. Open platforms could help citizens track pollution and hold companies accountable.",
@@ -5463,7 +5720,7 @@
           "comments": [
             {
               "author": {
-                "name": "Cezara Eco"
+                "name": "Catsby Fitzgerald"
               },
               "content": "Data transparency can drive environmental action.",
               "reaction": {
@@ -5473,7 +5730,7 @@
             },
             {
               "author": {
-                "name": "Lidia Verde"
+                "name": "Whiskerton Belly"
               },
               "content": "Tech monopolies also monopolize the narrative on climate.",
               "reaction": {
@@ -5483,7 +5740,7 @@
             },
             {
               "author": {
-                "name": "Augustin Tech"
+                "name": "Tabbington Cruz"
               },
               "content": "This law is about markets, not the environment. Stay focused.",
               "reaction": {
@@ -5495,7 +5752,7 @@
         },
         {
           "author": {
-            "name": "Maximilian Techliber"
+            "name": "Catticus Bounce"
           },
           "faction": "LIBERAL",
           "content": "Regulating tech giants stifles the innovation that made them great. Consumers benefit from their platforms — don't fix what isn't broken.",
@@ -5503,7 +5760,7 @@
           "comments": [
             {
               "author": {
-                "name": "Stelian Piata"
+                "name": "Tailspin Keel"
               },
               "content": "Government bureaucrats can't design better markets than competition.",
               "reaction": {
@@ -5513,7 +5770,7 @@
             },
             {
               "author": {
-                "name": "Adriana Mic"
+                "name": "Tabitha Pawston"
               },
               "content": "Tell that to the small businesses crushed by platform algorithms.",
               "reaction": {
@@ -5523,7 +5780,7 @@
             },
             {
               "author": {
-                "name": "Cornel Inovescu"
+                "name": "Pawsworth Crane"
               },
               "content": "Light regulation yes. Heavy-handed intervention no.",
               "reaction": {
@@ -5535,7 +5792,7 @@
         },
         {
           "author": {
-            "name": "Petru Suveranescu"
+            "name": "Furrgus Valley"
           },
           "faction": "TRADITIONAL",
           "content": "Foreign tech giants control our digital lives. This law reasserts sovereignty over our digital marketplace and protects local businesses.",
@@ -5543,7 +5800,7 @@
           "comments": [
             {
               "author": {
-                "name": "Safta Tara"
+                "name": "Whiskerton Marsh"
               },
               "content": "Our data shouldn't be controlled by foreign corporations.",
               "reaction": {
@@ -5553,7 +5810,7 @@
             },
             {
               "author": {
-                "name": "Ilie Mosie"
+                "name": "Purrcy Sardine"
               },
               "content": "Support local tech companies. They understand our values.",
               "reaction": {
@@ -5563,7 +5820,7 @@
             },
             {
               "author": {
-                "name": "Minerva Global"
+                "name": "Meowtague Dive"
               },
               "content": "The internet is global. National regulation has limits.",
               "reaction": {
@@ -5575,7 +5832,7 @@
         },
         {
           "author": {
-            "name": "Teodora Echitescu"
+            "name": "Kittredge Bilge"
           },
           "faction": "PROGRESSIST",
           "content": "Tech monopolies exploit workers, avoid taxes, and crush competition. The Digital Markets Act is a step toward digital justice.",
@@ -5583,7 +5840,7 @@
           "comments": [
             {
               "author": {
-                "name": "Razvan Drept"
+                "name": "Whiskerella Oasis"
               },
               "content": "Platform workers deserve rights and fair pay.",
               "reaction": {
@@ -5593,7 +5850,7 @@
             },
             {
               "author": {
-                "name": "Catalina Acces"
+                "name": "Napolean Bonapat"
               },
               "content": "Data portability empowers users. Finally.",
               "reaction": {
@@ -5603,7 +5860,7 @@
             },
             {
               "author": {
-                "name": "Ionut Muncitor"
+                "name": "Whiskerella Tower"
               },
               "content": "Break up the monopolies. They're too powerful for democracy.",
               "reaction": {
@@ -5613,7 +5870,7 @@
             },
             {
               "author": {
-                "name": "Delia Echitate"
+                "name": "Snugglesworth Pratt"
               },
               "content": "Regulation should protect small creators and businesses online.",
               "reaction": {
@@ -5625,7 +5882,7 @@
         },
         {
           "author": {
-            "name": "Matei Platformescu"
+            "name": "Pawlowski Dash"
           },
           "faction": "NEUTRU",
           "content": "Tech regulation is tricky — too little and monopolies dominate, too much and innovation suffers. The DMA tries to find the middle ground.",
@@ -5633,7 +5890,7 @@
           "comments": [
             {
               "author": {
-                "name": "Viorel Masura"
+                "name": "Meowster Cat359"
               },
               "content": "Enforce it consistently. Rules without enforcement are meaningless.",
               "reaction": {
@@ -5643,7 +5900,7 @@
             },
             {
               "author": {
-                "name": "Nicoleta Centru"
+                "name": "Furrdinand Current"
               },
               "content": "The EU's approach is being watched globally. Get it right.",
               "reaction": {
@@ -5653,7 +5910,7 @@
             },
             {
               "author": {
-                "name": "Sorina Realist"
+                "name": "Furrdinand Helm"
               },
               "content": "Start with the biggest platforms. Expand gradually based on results.",
               "reaction": {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NaughtyAttributes;
+using TaleUtil;
 using UnityEngine;
 
 public class LibraryManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class LibraryManager : MonoBehaviour
     [Foldout("References")] public GameObject _continueButton;
     [Foldout("References")] public UIView_LibraryCard _cardPrefab;
     [Foldout("References")] public Transform _cardsParent;
+
+    [Foldout("References")] public GameObject _libraryBookUI;
 
     public static LibraryManager Instance;
 
@@ -19,6 +22,11 @@ public class LibraryManager : MonoBehaviour
     private LibraryCamera _camera;
     private LawManager _lawManager;
 
+    private BookBehavior _bookBehavior;
+
+    private bool _usedBook = false;
+    private bool _usedLaptop = false;
+
     private void Awake()
     {
         Instance = this;
@@ -26,7 +34,16 @@ public class LibraryManager : MonoBehaviour
 
     private void Start()
     {
+        _usedBook = false;
+        _usedLaptop = false;
         _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
+        _bookBehavior = _libraryBookUI.GetComponent<BookBehavior>();
+        if (_bookBehavior == null)
+        {
+            Log.Error("LibraryManager", "BookBehavior component not found on LibraryBookUI");
+            return;
+        }
+        _bookBehavior.OnBookClosed += OnBookClosed;
     }
 
     public void Initialize()
@@ -59,12 +76,49 @@ public class LibraryManager : MonoBehaviour
 
     public void UseBook()
     {
+        UIBookPage.RulePageData pageData = new UIBookPage.RulePageData();
+        pageData.title = GameManager.Instance.CurrentLaw.Name;
+        pageData.description = GameManager.Instance.CurrentLaw.Description;
+        pageData.longDescription = "";
+        pageData.effects = new List<string>();
+        foreach (var effect in GameManager.Instance.CurrentLaw.WelfareEffects)
+        {
+            pageData.effects.Add($"{effect.Indicator}: {effect.Value}");
+        }
+        pageData.effectsAreShown = false;
+        _bookBehavior.AddPage(pageData);
+        _libraryBookUI.SetActive(true);
+    }
+
+    public void OnBookClosed()
+    {
+        Log.Info("LibraryManager", "OnBookClose");
+        Debunk();
+        _usedBook = true;
+        CheckFinished();
     }
 
     public void UseLaptop()
     {
-        var camera = CameraManager.Instance.Camera;
+        if (_camera == null)
+            _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
+
         _camera.MoveToLaptop();
+    }
+
+    public void OnLaptopClosed()
+    {
+        RestoreCamera();
+        _usedLaptop = true;
+        CheckFinished();
+    }
+
+    private void RestoreCamera()
+    {
+        if (_camera == null)
+            _camera = CameraManager.Instance.Camera.GetComponent<LibraryCamera>();
+
+        _camera.RestoreCamera();
     }
 
     public void AddInteraction(NPCInteraction interaction, bool option)
@@ -86,5 +140,16 @@ public class LibraryManager : MonoBehaviour
     {
         foreach (var card in _spawnedCards)
             card.gameObject.SetActive(false);
+    }
+
+    private void CheckFinished()
+    {
+        if (_usedBook && _usedLaptop)
+        {
+            _usedBook = false;
+            _usedLaptop = false;
+            Tale.Wait(1f);
+            Tale.Exec(() => GameManager.Instance.OnLibraryEnded());
+        }
     }
 }

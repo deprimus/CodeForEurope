@@ -7,27 +7,24 @@ using TMPro;
 public class GameEndManager : MonoBehaviour
 {
     [Foldout("References")] public CanvasGroup _canvasGroup;
-    [Foldout("References")] public Image _ending;
 
-    [Foldout("References")] public Sprite traditionalistEnd;
-    [Foldout("References")] public Sprite leftEnd;
-    [Foldout("References")] public Sprite rightEnd;
-    [Foldout("References")] public Sprite libertarianEnd;
-    [Foldout("References")] public Sprite harmonyEnd;
+    [Foldout("Welfare Tier UI")] public TextMeshProUGUI _welfareScoreText;
+    [Foldout("Welfare Tier UI")] public TextMeshProUGUI _welfareTierText;
+    [Foldout("Welfare Tier UI")] public TextMeshProUGUI _welfareTierNarrationText;
 
-    [Foldout("Welfare UI")] public TextMeshProUGUI _welfareScoreText;
-    [Foldout("Welfare UI")] public TextMeshProUGUI _welfareTierText;
-    [Foldout("Welfare UI")] public TextMeshProUGUI _welfareDominantText;
-    [Foldout("Welfare UI")] public TextMeshProUGUI _welfareNarrationText;
+    [Foldout("Welfare Dominant UI")] public Image _welfareDominantImage;
+    [Foldout("Welfare Dominant UI")] public TextMeshProUGUI _welfareDominantText;
+    [Foldout("Welfare Dominant UI")] public TextMeshProUGUI _welfareDominantNarrationText;
 
-    public enum Ending
-    {
-        Traditionalist,
-        Left,
-        Right,
-        Libertarian,
-        Harmony
-    }
+    [Foldout("Welfare Dominant Sprites")] public Sprite gdpGoodSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite giniGoodSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite humanCapitalGoodSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite lifeExpectancyGoodSprite;
+
+    [Foldout("Welfare Dominant Sprites")] public Sprite gdpBadSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite giniBadSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite humanCapitalBadSprite;
+    [Foldout("Welfare Dominant Sprites")] public Sprite lifeExpectancyBadSprite;
 
     public static GameEndManager Instance { get; private set; }
 
@@ -38,6 +35,32 @@ public class GameEndManager : MonoBehaviour
 
     public void ShowGameEnd()
     {
+        if (_canvasGroup != null)
+        {
+            _canvasGroup.alpha = 1;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
+        }
+
+        var welfare = GameManager.Instance.Welfare;
+        var we = welfare.GetEnding();
+
+        // Welfare tier
+        if (_welfareScoreText != null)
+            _welfareScoreText.text = $"Welfare Score: {welfare.CompositeWelfareScore:P0}";
+        if (_welfareTierText != null)
+            _welfareTierText.text = we.TierTitle;
+        if (_welfareTierNarrationText != null)
+            _welfareTierNarrationText.text = we.TierNarration;
+
+        // Welfare dominant
+        if (_welfareDominantImage != null)
+            _welfareDominantImage.sprite = GetWelfareDominantSprite(we);
+        if (_welfareDominantText != null)
+            _welfareDominantText.text = we.DominantTitle;
+        if (_welfareDominantNarrationText != null)
+            _welfareDominantNarrationText.text = we.DominantNarration;
+
         Transition.SweepIn();
         Tale.Advance();
         Transition.SweepOut();
@@ -48,43 +71,23 @@ public class GameEndManager : MonoBehaviour
         );
 
         Tale.Scene("MainMenu");
-
-        // Faction ending (visual)
-        var ending = PickEnding();
-        switch (ending)
-        {
-            case Ending.Traditionalist: _ending.sprite = traditionalistEnd; break;
-            case Ending.Left:           _ending.sprite = leftEnd; break;
-            case Ending.Right:          _ending.sprite = rightEnd; break;
-            case Ending.Libertarian:    _ending.sprite = libertarianEnd; break;
-            case Ending.Harmony:        _ending.sprite = harmonyEnd; break;
-        }
-
-        // Welfare ending (text)
-        var welfare = GameManager.Instance.Welfare;
-        var we = welfare.GetEnding();
-
-        if (_welfareScoreText != null)
-            _welfareScoreText.text = $"Welfare Score: {welfare.CompositeWelfareScore:P0}";
-        if (_welfareTierText != null)
-            _welfareTierText.text = we.TierTitle;
-        if (_welfareDominantText != null)
-            _welfareDominantText.text = we.DominantTitle;
-        if (_welfareNarrationText != null)
-            _welfareNarrationText.text = $"{we.TierNarration}\n\n{we.DominantNarration}";
     }
 
-    private Ending PickEnding()
+    private Sprite GetWelfareDominantSprite(WelfareManager.WelfareEnding we)
     {
-        if (GameManager.Instance.TraditionalistPoints >= Config.DominanceThreshold)
-            return Ending.Traditionalist;
-        else if (GameManager.Instance.LeftPoints >= Config.DominanceThreshold)
-            return Ending.Left;
-        else if (GameManager.Instance.RightPoints >= Config.DominanceThreshold)
-            return Ending.Right;
-        else if (GameManager.Instance.LibertarianPoints >= Config.DominanceThreshold)
-            return Ending.Libertarian;
+        bool isGood = we.Tier == WelfareManager.CompositeTier.Flourishing;
 
-        return Ending.Harmony;
+        return (we.DominantIndicator, isGood) switch
+        {
+            (WelfareIndicator.GDP, true) => gdpGoodSprite,
+            (WelfareIndicator.Gini, true) => giniGoodSprite,
+            (WelfareIndicator.HumanCapital, true) => humanCapitalGoodSprite,
+            (WelfareIndicator.LifeExpectancy, true) => lifeExpectancyGoodSprite,
+            (WelfareIndicator.GDP, false) => gdpBadSprite,
+            (WelfareIndicator.Gini, false) => giniBadSprite,
+            (WelfareIndicator.HumanCapital, false) => humanCapitalBadSprite,
+            (WelfareIndicator.LifeExpectancy, false) => lifeExpectancyBadSprite,
+            _ => null
+        };
     }
 }
