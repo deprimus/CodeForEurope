@@ -34,6 +34,10 @@ public class StateManager : MonoBehaviour
         _scenes[(int)newState].SetActive(true);
 
         _currentState = newState;
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.SetOpenLawVisibility(newState);
+        }
     }
 }
 

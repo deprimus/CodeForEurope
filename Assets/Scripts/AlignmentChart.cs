@@ -12,6 +12,22 @@ public class AlignmentChart : MonoBehaviour
         var anchoredEconomic = AnchorToThirds(economicScore);
         var anchoredSocial = AnchorToThirds(socialScore);
 
+        if (anchoredEconomic > 10f) {
+            Debug.LogError($"Economic score is too high: {economicScore}");
+        }
+        if (anchoredEconomic < -10f) {
+            Debug.LogError($"Economic score is too low: {economicScore}");
+        }
+        if (anchoredSocial > 10f) {
+            Debug.LogError($"Social score is too high: {socialScore}");
+        }
+        if (anchoredSocial < -10f) {
+            Debug.LogError($"Social score is too low: {socialScore}");
+        }
+
+        anchoredEconomic = Mathf.Clamp(anchoredEconomic, -10f, 10f);
+        anchoredSocial = Mathf.Clamp(anchoredSocial, -10f, 10f);
+
         blip.anchoredPosition = new Vector2(
             anchoredEconomic / 10f * chartSize.x,
             anchoredSocial / 10f * chartSize.y

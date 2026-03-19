@@ -10,9 +10,37 @@ namespace TaleUtil
     public class Input
     {
         TaleMaster master;
+        static bool hijacked;
+        static int releaseRequestedFrame = -1;
 
         public Input(TaleMaster master) {
             this.master = master;
+        }
+
+        public static void Hijack() {
+            hijacked = true;
+            releaseRequestedFrame = -1;
+        }
+
+        public static void Release() {
+            if (!hijacked) {
+                return;
+            }
+            releaseRequestedFrame = Time.frameCount;
+        }
+
+        static bool IsHijacked() {
+            if (!hijacked) {
+                return false;
+            }
+
+            if (releaseRequestedFrame >= 0 && Time.frameCount > releaseRequestedFrame) {
+                hijacked = false;
+                releaseRequestedFrame = -1;
+                return false;
+            }
+
+            return true;
         }
 
         public bool Advance()
@@ -30,6 +58,9 @@ namespace TaleUtil
         }
 
         public static bool GetMouseButton(int button) {
+            if (IsHijacked()) {
+                return false;
+            }
 #if ENABLE_INPUT_SYSTEM
             return GetMouseButtonControl(button).isPressed;
 #else
@@ -38,6 +69,9 @@ namespace TaleUtil
         }
 
         public static bool GetMouseButtonDown(int button) {
+            if (IsHijacked()) {
+                return false;
+            }
 #if ENABLE_INPUT_SYSTEM
             return GetMouseButtonControl(button).wasPressedThisFrame;
 #else
@@ -46,6 +80,9 @@ namespace TaleUtil
         }
 
         public static bool GetMouseButtonUp(int button) {
+            if (IsHijacked()) {
+                return false;
+            }
 #if ENABLE_INPUT_SYSTEM
             return GetMouseButtonControl(button).wasReleasedThisFrame;
 #else
@@ -54,6 +91,9 @@ namespace TaleUtil
         }
 
         public static bool GetKey(KeyCode key) {
+            if (IsHijacked()) {
+                return false;
+            }
 #if ENABLE_INPUT_SYSTEM
             return GetKeyControl(key).isPressed;
 #else
@@ -62,6 +102,9 @@ namespace TaleUtil
         }
 
         public static bool GetKeyDown(KeyCode key) {
+            if (IsHijacked()) {
+                return false;
+            }
 #if ENABLE_INPUT_SYSTEM
             return GetKeyControl(key).wasPressedThisFrame;
 #else
@@ -70,6 +113,9 @@ namespace TaleUtil
         }
 
         public static bool GetKeyUp(KeyCode key) {
+            if (IsHijacked()) {
+                return false;
+            }
 #if ENABLE_INPUT_SYSTEM
             return GetKeyControl(key).wasReleasedThisFrame;
 #else
@@ -78,6 +124,9 @@ namespace TaleUtil
         }
 
         public static bool AnyModPressed() {
+            if (IsHijacked()) {
+                return false;
+            }
             return GetKey(KeyCode.LeftShift)    ||
                    GetKey(KeyCode.RightShift)   ||
                    GetKey(KeyCode.LeftControl)  ||
