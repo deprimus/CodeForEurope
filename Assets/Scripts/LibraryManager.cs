@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using NaughtyAttributes;
 using TaleUtil;
@@ -67,6 +68,9 @@ public class LibraryManager : MonoBehaviour
 
     public void InitializeUI()
     {
+        _usedBook = false;
+        _usedLaptop = false;
+
         foreach (var interaction in _interactions)
         {
             var verdict = interaction.Item2 ? "<color=#009f00>accepted</color>" : "<color=#9f0000>rejected</color>";
@@ -86,16 +90,19 @@ public class LibraryManager : MonoBehaviour
             // For debugging
             law = GameDatabase.Instance.Laws[0];
         }
-        pageData.title = law.Name;
-        pageData.description = law.Description;
-        pageData.longDescription = "";
-        pageData.effects = new List<string>();
-        foreach (var effect in law.WelfareEffects)
+        if (_bookBehavior.pagesData.All(p => p.title != law.Name))
         {
-            pageData.effects.Add($"{effect.Indicator}: {effect.Value}");
+            pageData.title = law.Name;
+            pageData.description = law.Description;
+            pageData.longDescription = "";
+            pageData.effects = new List<string>();
+            foreach (var effect in law.WelfareEffects)
+            {
+                pageData.effects.Add($"{effect.Indicator}: {effect.Value}");
+            }
+            pageData.effectsAreShown = false;
+            _bookBehavior.AddPage(pageData);
         }
-        pageData.effectsAreShown = false;
-        _bookBehavior.AddPage(pageData);
         _libraryBookUI.SetActive(true);
         _libraryBookCanvasGroup.DOFade(1, 0.5f).SetEase(Ease.OutCubic);
         _libraryBookCanvasGroup.blocksRaycasts = true;
@@ -162,12 +169,10 @@ public class LibraryManager : MonoBehaviour
 
     private void CheckButtonVisibility()
     {
-        Debug.Log("Checking button visibility");
-        Debug.Log("Used book: " + _usedBook);
-        Debug.Log("Used laptop: " + _usedLaptop);
         if (_usedBook && _usedLaptop)
         {
             LibraryNextButton.Instance.Show();
         }
+        else LibraryNextButton.Instance.Hide();
     }
 }

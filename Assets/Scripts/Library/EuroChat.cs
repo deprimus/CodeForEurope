@@ -28,6 +28,8 @@ public class EuroChat : MonoBehaviour
 
     private LaptopUI _laptopUI;
 
+    private ScrollRect _scrollRect;
+
     private void Awake()
     {
         Instance = this;
@@ -37,6 +39,7 @@ public class EuroChat : MonoBehaviour
             _catAvatars[i] = Resources.Load<Sprite>($"Avatars/cat_{i:D2}");
         }
         _laptopUI = GetComponent<LaptopUI>();
+        _scrollRect = GetComponentInChildren<ScrollRect>();
         gameObject.SetActive(false);
     }
 
@@ -58,6 +61,10 @@ public class EuroChat : MonoBehaviour
 
         foreach (var post in posts)
             SpawnPost(post);
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+
+        _scrollRect.verticalNormalizedPosition = 1f;
 
         _laptopUI.Show();
     }
@@ -116,7 +123,7 @@ public class EuroChat : MonoBehaviour
         }
 
         // Boost button
-        var boostTransform = go.transform.Find("Body/BoostNarrative");
+        var boostTransform = go.transform.Find("Body/BoostNarrative/Inner");
         if (boostTransform != null)
         {
             var boostBtn = boostTransform.GetComponent<Button>();
@@ -170,6 +177,12 @@ public class EuroChat : MonoBehaviour
 
         foreach (var b in _allBoostButtons)
             b.gameObject.SetActive(b == btn);
+
+        var text = btn.transform.Find("Inner/Title").GetComponent<TMP_Text>();
+        if (text != null)
+            text.text = $"BOOSTED";
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(content);
     }
 
     private void SetAvatar(Transform avatar, string faction)

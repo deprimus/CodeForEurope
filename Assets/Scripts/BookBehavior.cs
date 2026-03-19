@@ -21,6 +21,8 @@ public class BookBehavior : MonoBehaviour
     [SerializeField] GameObject pageParent;
 
     public event Action OnBookClosed;
+
+    public List<RulePageData> pagesData = new List<RulePageData>();
     
     private void Start()
     {
@@ -61,12 +63,22 @@ public class BookBehavior : MonoBehaviour
         }
         pages[pages.Count-1].SetAsLastSibling();
         page.GetComponent<UIBookPage>().SetPageData(pageData);
+
+        index = pages.Count - 1;
+        ForwardButtonActions();
+        pages[index].SetAsLastSibling();
+        pagesData.Add(pageData);
     }
 
     public void RotateForward()
     {
         if (rotate == true) { return; }
         index++;
+        if (index >= pages.Count)
+        {
+            index = pages.Count - 1;
+            return;
+        }
         float angle = 180; //in order to rotate the page forward, you need to set the rotation by 180 degrees around the y axis
         ForwardButtonActions();
         pages[index].SetAsLastSibling();
@@ -89,6 +101,12 @@ public class BookBehavior : MonoBehaviour
     public void RotateBack()
     {
         if (rotate == true) { return; }
+        index--;
+        if (index < 0)
+        {
+            index = 0;
+            return;
+        }
         float angle = 0; //in order to rotate the page back, you need to set the rotation to 0 degrees around the y axis
         pages[index].SetAsLastSibling();
         BackButtonActions();
