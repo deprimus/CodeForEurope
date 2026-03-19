@@ -28,9 +28,7 @@ public class QuizManager : MonoBehaviour {
     public GameObject phaseQuiz;
     public GameObject phaseResult;
 
-    public RectTransform blip;
-
-    public Vector2 chart;
+    public AlignmentChart alignmentChart;
 
     public TextMeshProUGUI resultText;
     public TextMeshProUGUI resultDescription;
@@ -190,9 +188,9 @@ public class QuizManager : MonoBehaviour {
         if (current >= rows.Count) {
             Debug.Log($"Economic: {economic}, Social: {social}");
 
-            var anchoredEconomic = AnchorToThirds(economic);
-            var anchoredSocial = AnchorToThirds(social);
-            blip.anchoredPosition = new Vector2(anchoredEconomic / 10f * chart.x, anchoredSocial / 10f * chart.y);
+            var anchoredScores = alignmentChart.UpdateBlipPosition(economic, social);
+            var anchoredEconomic = anchoredScores.x;
+            var anchoredSocial = anchoredScores.y;
 
             var alignment = GetPlayerAlignment();
             var str = "<color=gray>Neutral</color>";
@@ -246,21 +244,6 @@ public class QuizManager : MonoBehaviour {
         }
 
         ShowCurrentQuestion();
-    }
-
-    static float AnchorToThirds(float value) {
-        var third = 10f / 3f;
-        if (value >= -0.01f && value <= 0.01f) {
-            return 0f;
-        }
-        if (value > 0) {
-            if (value <= third) return third;
-            if (value <= 2f * third) return 2f * third;
-            return 10f;
-        }
-        if (value >= -third) return -third;
-        if (value >= -2f * third) return -2f * third;
-        return -10f;
     }
 
     FactionType? GetPlayerAlignment() {
