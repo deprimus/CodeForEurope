@@ -163,6 +163,8 @@ public class QuizManager : MonoBehaviour {
     }
 
     public void Choose(QuizAnswer answer) {
+        SoundManager.instance.Play(SoundManager.instance.select);
+
         if (!loaded || rows == null || current >= rows.Count) {
             return;
         }
