@@ -363,7 +363,7 @@
       dialogList.className = 'stack';
       (inter.dialogue || []).forEach((line, dIdx) => {
         const row = document.createElement('div');
-        row.className = 'row';
+        row.className = 'row dialog-row';
         const area = document.createElement('textarea');
         area.value = line;
         area.addEventListener('input', (e) => { inter.dialogue[dIdx] = e.target.value; markDirty(); });
@@ -402,7 +402,7 @@
       effectList.className = 'stack';
       (inter.effects || []).forEach((eff, eIdx) => {
         const row = document.createElement('div');
-        row.className = 'row';
+        row.className = 'row eff-row';
         row.append(
           createSelect('Type', eff.type, state.enums.InteractionEffectType, (nv) => { eff.type = nv; markDirty(); }),
           createField('Value', eff.value, (nv) => { eff.value = parseNumber(nv, eff.value); markDirty(); }, { type: 'number', number: true })
@@ -452,7 +452,7 @@
     target.innerHTML = '';
     (list || []).forEach((eff, idx) => {
       const row = document.createElement('div');
-      row.className = 'row';
+      row.className = 'row eff-row';
       row.append(
         createSelect('Type', eff[typeKey], enumOptions, (nv) => { eff[typeKey] = nv; markDirty(); }),
         createField(valueLabel, eff.value, (nv) => { eff.value = parseNumber(nv, eff.value); markDirty(); }, { type: 'number', number: true })
@@ -664,27 +664,45 @@
         const cList = document.createElement('div');
         cList.className = 'stack';
         (p.comments || []).forEach((c, cIdx) => {
-          const cRow = document.createElement('div');
-          cRow.className = 'card';
-          const cInputs = document.createElement('div');
-          cInputs.className = 'inputs';
-          cInputs.append(
-            createField('Author', c.author?.name, (v) => { c.author = c.author || {}; c.author.name = v; markDirty(); }),
-            createField('Content', c.content, (v) => { c.content = v; markDirty(); }),
-            createField('Likes', c.reaction?.likes ?? 0, (v) => { c.reaction = c.reaction || { likes: 0, dislikes: 0 }; c.reaction.likes = parseNumber(v, 0); markDirty(); }, { type: 'number', number: true }),
-            createField('Dislikes', c.reaction?.dislikes ?? 0, (v) => { c.reaction = c.reaction || { likes: 0, dislikes: 0 }; c.reaction.dislikes = parseNumber(v, 0); markDirty(); }, { type: 'number', number: true })
-          );
-          const cDel = document.createElement('button');
-          cDel.className = 'mini-btn danger';
-          cDel.type = 'button';
-          cDel.textContent = 'Remove comment';
-          cDel.addEventListener('click', () => {
-            p.comments.splice(cIdx, 1);
-            markDirty();
-            renderPosts();
-          });
-          cRow.append(cInputs, cDel);
-          cList.appendChild(cRow);
+        const cRow = document.createElement('div');
+        cRow.className = 'card';
+        const cInputs = document.createElement('div');
+        cInputs.className = 'inputs';
+        cInputs.append(
+          createField('Author', c.author?.name, (v) => { c.author = c.author || {}; c.author.name = v; markDirty(); }),
+          createField('Content', c.content, (v) => { c.content = v; markDirty(); })
+        );
+
+        const likeRow = document.createElement('div');
+        likeRow.className = 'likes-row';
+
+        const likesField = createField('Likes', c.reaction?.likes ?? 0, (v) => {
+          c.reaction = c.reaction || { likes: 0, dislikes: 0 };
+          c.reaction.likes = parseNumber(v, 0);
+          markDirty();
+        }, { type: 'number', number: true });
+
+        const dislikesField = createField('Dislikes', c.reaction?.dislikes ?? 0, (v) => {
+          c.reaction = c.reaction || { likes: 0, dislikes: 0 };
+          c.reaction.dislikes = parseNumber(v, 0);
+          markDirty();
+        }, { type: 'number', number: true });
+
+        const cDel = document.createElement('button');
+        cDel.className = 'mini-btn danger bottom-btn';
+        cDel.type = 'button';
+        cDel.textContent = 'Remove';
+        cDel.addEventListener('click', () => {
+          p.comments.splice(cIdx, 1);
+          markDirty();
+          renderPosts();
+        });
+
+        likeRow.append(likesField, dislikesField, cDel);
+
+        cInputs.append(likeRow);
+        cRow.append(cInputs);
+        cList.appendChild(cRow);
         });
         const addComment = document.createElement('button');
         addComment.className = 'mini-btn';

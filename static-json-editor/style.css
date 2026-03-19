@@ -343,6 +343,11 @@ code {
   width: 100%;
   font-size: 0.98rem;
   transition: border-color var(--transition), box-shadow var(--transition);
+  height: 42px;
+}
+
+select {
+  max-width: 260px;
 }
 
 .input:focus,
@@ -356,12 +361,43 @@ select:focus {
 textarea {
   min-height: 80px;
   resize: vertical;
+  height: auto;
 }
 
 .row {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.row > .field {
+  flex: 1 1 220px;
+}
+
+.dialog-row textarea {
+  flex: 1 1 80%;
+  min-width: 0;
+}
+
+.eff-row .field {
+  flex: 1 1 35%;
+  min-width: 140px;
+}
+
+.likes-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.likes-row .field {
+  flex: 1 1 40%;
+  min-width: 120px;
+}
+
+.bottom-btn {
+  margin-top: 12px;
 }
 
 .chip {
@@ -407,6 +443,7 @@ textarea {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
+  margin-top: 8px;
 }
 
 .pill {
@@ -423,9 +460,10 @@ textarea {
   background: var(--surface-2);
   color: #fff;
   border-radius: 8px;
-  padding: 6px 8px;
+  padding: 8px 10px;
   cursor: pointer;
   transition: border-color var(--transition), transform var(--transition);
+  height: 42px;
 }
 
 .mini-btn:hover {
@@ -442,6 +480,10 @@ textarea {
   letter-spacing: 0.08em;
   font-size: 0.78rem;
   color: var(--muted);
+}
+
+.top-gap {
+  margin-top: 6px;
 }
 
 @keyframes fadeIn {
