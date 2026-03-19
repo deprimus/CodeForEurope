@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,6 +14,11 @@ public class EuroChat : MonoBehaviour
     public GameObject commentPrefab;
 
     private Sprite[] _catAvatars;
+    private Button _activeBoostedButton;
+    private List<Button> _allBoostButtons = new List<Button>();
+
+    /// <summary>The faction string of the boosted post, or null if none boosted.</summary>
+    public string BoostedFaction { get; private set; }
 
     private static readonly Color ColorGreen       = new Color(0.26f, 0.80f, 0.26f);
     private static readonly Color ColorLiberal      = new Color(1.00f, 0.84f, 0.00f);
@@ -37,6 +43,9 @@ public class EuroChat : MonoBehaviour
     public void Show()
     {
         ClearContent();
+        BoostedFaction = null;
+        _activeBoostedButton = null;
+        _allBoostButtons.Clear();
 
         var law = GameManager.Instance.CurrentLaw;
         if (law == null)
@@ -105,6 +114,19 @@ public class EuroChat : MonoBehaviour
                     SpawnComment(comment, commentsParent);
             }
         }
+
+        // Boost button
+        var boostTransform = go.transform.Find("Body/BoostNarrative");
+        if (boostTransform != null)
+        {
+            var boostBtn = boostTransform.GetComponent<Button>();
+            if (boostBtn == null)
+                boostBtn = boostTransform.gameObject.AddComponent<Button>();
+
+            _allBoostButtons.Add(boostBtn);
+            var faction = post.faction;
+            boostBtn.onClick.AddListener(() => OnBoost(faction, boostBtn));
+        }
     }
 
     private void SpawnComment(CommentJson comment, Transform parent)
@@ -139,6 +161,15 @@ public class EuroChat : MonoBehaviour
                     downvotes.GetComponent<TMP_Text>().text = FormatCount(comment.reaction.dislikes);
             }
         }
+    }
+
+    private void OnBoost(string faction, Button btn)
+    {
+        BoostedFaction = faction;
+        _activeBoostedButton = btn;
+
+        foreach (var b in _allBoostButtons)
+            b.gameObject.SetActive(b == btn);
     }
 
     private void SetAvatar(Transform avatar, string faction)

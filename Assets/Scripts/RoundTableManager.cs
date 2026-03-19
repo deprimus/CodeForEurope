@@ -123,6 +123,27 @@ public class RoundTableManager : MonoBehaviour
 
         //userWinPercentage += ((userLawApprovalStatus ^ (userLawInfluence > 0)) * (-2) + 1) * Mathf.Abs(userLawInfluence);
         userWinPercentage += userLawApprovalStatus ? userLawInfluence : -userLawInfluence;
+
+        // Apply boost bias from EuroChat
+        var boostedFaction = EuroChat.Instance?.BoostedFaction;
+        if (!string.IsNullOrEmpty(boostedFaction))
+        {
+            var boostEffects = GameManager.Instance.CurrentLaw?.Effects;
+            if (boostEffects != null)
+            {
+                var factionType = PostFactionToFactionType(boostedFaction);
+                if (factionType.HasValue)
+                {
+                    int sum = 0;
+                    foreach (var e in boostEffects)
+                        if (e.Type == factionType.Value)
+                            sum += e.Value;
+
+                    if (sum > 0) userWinPercentage += 10;
+                    else if (sum < 0) userWinPercentage -= 10;
+                }
+            }
+        }
         
         var lawApproved = random <= userWinPercentage ? userLawApprovalStatus : !userLawApprovalStatus;
 
@@ -276,5 +297,18 @@ public class RoundTableManager : MonoBehaviour
             default:
                 return FactionType.Traditionalist;
         }
+    }
+
+    private static FactionType? PostFactionToFactionType(string faction)
+    {
+        if (string.IsNullOrEmpty(faction)) return null;
+        return faction.ToUpper() switch
+        {
+            "GREEN"        => FactionType.Left,
+            "LIBERAL"      => FactionType.Libertarian,
+            "TRADITIONAL"  => FactionType.Traditionalist,
+            "PROGRESSIST"  => FactionType.Right,
+            _              => null
+        };
     }
 }
