@@ -148,7 +148,11 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+<<<<<<< HEAD
     - _Rotation: 6.164642
+=======
+    - _Rotation: 0.59703726
+>>>>>>> cd0d71fad4f7f8a1a0b192ef4c88cc68ff3ebacc
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

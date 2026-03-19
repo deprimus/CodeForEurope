@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using Cysharp.Threading.Tasks;
 using NaughtyAttributes;
+using System.Text;
 public class GameManager : MonoBehaviour
 {
     public int TraditionalistPoints => _traditionalistPoints;
@@ -26,6 +27,18 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public IndicatorUI[] indicators = new IndicatorUI[System.Enum.GetNames(typeof(WelfareIndicator)).Length];
 
+    [SerializeField]
+    AlignmentChart alignmentChart;
+
+    [SerializeField]
+    GameObject openLawButton;
+
+    [SerializeField]
+    GameObject alignmentChartButton;
+
+    [SerializeField]
+    UIView_Law openLawView;
+
     private int _roundIndex = 0;
 
     [Foldout("Debug"), SerializeField, ReadOnly]
@@ -47,6 +60,9 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
 
+        openLawButton.SetActive(false);
+        alignmentChartButton.SetActive(false);
+
         await UniTask.Delay(500);
 
         StartGame();
@@ -54,9 +70,11 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        return;
+        alignmentChartButton.SetActive(true);
+
         _roundIndex = 0;
         Welfare = new WelfareManager();
+        RefreshAlignmentChart();
 
         if (GameDatabase.Instance == null)
         {
@@ -100,6 +118,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        SetOpenLawView(CurrentLaw);
         RoundTableManager.Instance.ShowLawCard();
     }
 
@@ -146,8 +165,8 @@ public class GameManager : MonoBehaviour
         Transition.SweepIn();
 
         // TODO: Re-enable auto-advance after testing EuroChat/Laptop UI
-        //Tale.Wait(1f);
-        //Tale.Exec(() => OnLibraryEnded());
+        Tale.Wait(1f);
+        Tale.Exec(() => OnLibraryEnded());
     }
 
     public void OnLibraryEnded()
@@ -193,6 +212,8 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            RefreshAlignmentChart();
+
             Welfare.ApplyEffects(CurrentLaw.WelfareEffects);
         }
         else
@@ -219,5 +240,36 @@ public class GameManager : MonoBehaviour
             StateManager.Instance.SwitchState(State.GameEnd);
             GameEndManager.Instance.ShowGameEnd();
         });
+    }
+
+    void RefreshAlignmentChart() {
+        if (alignmentChart == null) {
+            return;
+        }
+
+        var economicScore = _rightPoints - _leftPoints;
+        var socialScore = _traditionalistPoints - _libertarianPoints;
+        alignmentChart.UpdateBlipPosition(economicScore, socialScore);
+    }
+
+    public void SetOpenLawVisibility(State state)
+    {
+        if (openLawButton == null)
+        {
+            return;
+        }
+
+        openLawButton.SetActive(state == State.Beaureu || state == State.Library);
+    }
+
+    void SetOpenLawView(Law law)
+    {
+        if (openLawView == null || law == null)
+        {
+            return;
+        }
+
+        openLawView._title.text = law.Name;
+        openLawView._description.text = law.Description;
     }
 }

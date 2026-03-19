@@ -27,8 +27,14 @@ public class UIView_Law : MonoBehaviour
     [Foldout("Components")] public TextMeshProUGUI _description;
     [Foldout("Components")] public TextMeshProUGUI _effect;
 
+    [SerializeField]
+    bool disableBehavior = false;
+
     private void Awake()
     {
+        if (disableBehavior) {
+            return;
+        }
         _canvasGroup.alpha = 0;
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.interactable = false;
@@ -37,6 +43,9 @@ public class UIView_Law : MonoBehaviour
 
     public async void ShowLaw(Law law)
     {
+        if (disableBehavior) {
+            return;
+        }
         _title.text = law.Name;
         _description.text = law.Description;
 
@@ -49,10 +58,20 @@ public class UIView_Law : MonoBehaviour
 
         _canvasGroup.DOFade(1, 0.25f).SetEase(Ease.OutCubic);
         _transform.DOScale(1, 0.25f).SetEase(Ease.OutCubic).ChangeStartValue(Vector3.one * 0.75f);
+
+        Tale.Async(
+            Tale.Queue(
+                Tale.Advance(),
+                Tale.Exec(() => HideLaw())
+            )
+        );
     }
 
     public async void HideLaw()
     {
+        if (disableBehavior) {
+            return;
+        }
         _canvasGroup.blocksRaycasts = false;
         _canvasGroup.interactable = false;
 

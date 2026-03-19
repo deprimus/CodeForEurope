@@ -4,7 +4,7 @@ using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 
 // TODO: execution order is no longer required since the object is lazy init'ed
-[DefaultExecutionOrder(-1000)]
+[DefaultExecutionOrder(-999)]
 public class TaleMaster : MonoBehaviour {
     #region Fields
     public TaleUtil.Queue Queue { get; private set; }
