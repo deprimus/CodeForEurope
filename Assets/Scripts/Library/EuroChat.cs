@@ -20,6 +20,8 @@ public class EuroChat : MonoBehaviour
     private static readonly Color ColorProgressist  = new Color(0.98f, 0.26f, 0.26f);
     private static readonly Color ColorNeutral      = new Color(0.60f, 0.60f, 0.60f);
 
+    private LaptopUI _laptopUI;
+
     private void Awake()
     {
         Instance = this;
@@ -28,6 +30,7 @@ public class EuroChat : MonoBehaviour
         {
             _catAvatars[i] = Resources.Load<Sprite>($"Avatars/cat_{i:D2}");
         }
+        _laptopUI = GetComponent<LaptopUI>();
         gameObject.SetActive(false);
     }
 
@@ -36,27 +39,23 @@ public class EuroChat : MonoBehaviour
         ClearContent();
 
         var law = GameManager.Instance.CurrentLaw;
-        if (law == null) return;
+        if (law == null)
+        {
+            // For debugging
+            law = GameDatabase.Instance.Laws[0];
+        }
 
         var posts = GameDatabase.Instance.GetPostsForLaw(law.Name);
 
         foreach (var post in posts)
             SpawnPost(post);
 
-        gameObject.SetActive(true);
-        StartCoroutine(RebuildLayoutNextFrame());
-    }
-
-    private IEnumerator RebuildLayoutNextFrame()
-    {
-        yield return null;
-        if (content != null)
-            LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+        _laptopUI.Show();
     }
 
     public void Hide()
     {
-        gameObject.SetActive(false);
+        _laptopUI.Hide();
     }
 
     private void ClearContent()

@@ -1,9 +1,11 @@
 using UnityEngine;
 
-public class LibraryLaptop : MonoBehaviour
+public class LibraryLaptop : LibraryClickable
 {
-    public void OnMouseDown()
+    public override void OnMouseDown()
     {
+        base.OnMouseDown();
+
         LibraryManager.Instance.UseLaptop();
     }
 
