@@ -150,17 +150,26 @@ public class RoundTableManager : MonoBehaviour
             return e != null ? e.Value : (float?)null;
         }
 
-        string FormatSigned(float value) =>
-            value >= 0f ? $"+<color=green>{value:0.##}</color>" : $"<color=red>{value:0.##}</color>";
+        string FormatSigned(float value, bool invertColorMeaning = false)
+        {
+            bool isPositive = value >= 0f;
+            var number = isPositive ? $"+{value:0.##}" : $"{value:0.##}";
+
+            if (invertColorMeaning)
+                return isPositive ? $"<color=red>{number}</color>" : $"<color=green>{number}</color>";
+
+            return isPositive ? $"<color=green>{number}</color>" : $"<color=red>{number}</color>";
+        }
 
         string FormatLine(WelfareIndicator indicator, string name)
         {
             var v = GetEffectValue(indicator);
             if (!v.HasValue || Mathf.Abs(v.Value) < 0.00001f)
-                return "<color=grey>---</color>";
+                return "<color=#AAAAAA>---</color>";
 
             var signedValue = v.Value * multiplier;
-            return $"{FormatSigned(signedValue)} {name}";
+            bool invertColorMeaning = indicator == WelfareIndicator.Gini;
+            return $"{FormatSigned(signedValue, invertColorMeaning)} {name}";
         }
 
         var lines = new List<string>(4)
@@ -191,7 +200,7 @@ public class RoundTableManager : MonoBehaviour
         string FormatInfluenceLine(int value, string colorHex, string name)
         {
             if (!lawApproved || Mathf.Abs(value) < 0.00001f)
-                return "<color=grey>---</color>";
+                return "<color=#AAAAAA>---</color>";
 
             var signed = value >= 0 ? $"+{value}" : value.ToString();
             return $"<color={colorHex}>{signed} {name}</color>";
