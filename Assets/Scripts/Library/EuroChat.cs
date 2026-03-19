@@ -68,10 +68,14 @@ public class EuroChat : MonoBehaviour
     {
         var go = Instantiate(postPrefab, content);
 
+        var avatarColor = go.transform.Find("Header/AvatarColor");
+        if (avatarColor != null)
+            avatarColor.GetComponent<Image>().color = GetFactionColor(post.faction);
+
         // Avatar
-        var avatar = go.transform.Find("Header/Avatar");
+        var avatar = go.transform.Find("Header/AvatarColor/Avatar");
         if (avatar != null)
-            SetAvatar(avatar, post.faction);
+            SetAvatar(avatar, null);
 
         var title = go.transform.Find("Header/Text/Title");
         if (title != null)
@@ -146,20 +150,6 @@ public class EuroChat : MonoBehaviour
             img.sprite = _catAvatars[Random.Range(0, _catAvatars.Length)];
 
         img.color = Color.white;
-
-        // Faction status dot
-        if (!string.IsNullOrEmpty(faction))
-        {
-            var dot = new GameObject("FactionDot", typeof(RectTransform), typeof(Image));
-            dot.transform.SetParent(avatar, false);
-            var rt = dot.GetComponent<RectTransform>();
-            rt.anchorMin = new Vector2(1, 0);
-            rt.anchorMax = new Vector2(1, 0);
-            rt.pivot = new Vector2(1, 0);
-            rt.anchoredPosition = Vector2.zero;
-            rt.sizeDelta = new Vector2(12, 12);
-            dot.GetComponent<Image>().color = GetFactionColor(faction);
-        }
     }
 
     private static Color GetFactionColor(string faction)
