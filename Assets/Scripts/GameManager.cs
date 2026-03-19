@@ -163,10 +163,6 @@ public class GameManager : MonoBehaviour
         LibraryManager.Instance.InitializeUI();
 
         Transition.SweepIn();
-
-        // TODO: Re-enable auto-advance after testing EuroChat/Laptop UI
-        Tale.Wait(1f);
-        Tale.Exec(() => OnLibraryEnded());
     }
 
     public void OnLibraryEnded()
