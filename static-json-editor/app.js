@@ -152,6 +152,40 @@
     };
   }
 
+  function snippet(text, words = 3) {
+    if (!text) return '';
+    const parts = text.trim().split(/\s+/);
+    if (parts.length <= words) return text.trim();
+    return parts.slice(0, words).join(' ') + '...';
+  }
+
+  function attachCollapse(card, headerEl, titleEl, detailsEl, summaryText) {
+    const btn = document.createElement('button');
+    btn.className = 'collapse-btn';
+    btn.type = 'button';
+    btn.textContent = 'Collapse';
+
+    const summary = document.createElement('p');
+    summary.className = 'collapsed-summary';
+    summary.textContent = summaryText;
+    summary.style.display = 'none';
+
+    headerEl.appendChild(btn);
+    card.insertBefore(summary, detailsEl);
+
+    let collapsed = false;
+    const apply = () => {
+      detailsEl.classList.toggle('is-hidden', collapsed);
+      summary.style.display = collapsed ? 'block' : 'none';
+      btn.textContent = collapsed ? 'Expand' : 'Collapse';
+    };
+    const toggle = () => { collapsed = !collapsed; apply(); };
+
+    btn.addEventListener('click', toggle);
+    titleEl.addEventListener('click', toggle);
+    apply();
+  }
+
   // ---- Tabs -------------------------------------------------------------
 
   tabs.forEach(tab => {
@@ -214,9 +248,13 @@
       const header = document.createElement('div');
       header.className = 'card__header';
       const title = document.createElement('div');
+      title.className = 'card__title';
       title.innerHTML = `<h4>${npc.name || 'Untitled NPC'}</h4><p class="muted">${npc.id || 'No id set'}</p>`;
       header.append(title);
       card.appendChild(header);
+
+      const details = document.createElement('div');
+      details.className = 'card__details';
 
       const inputs = document.createElement('div');
       inputs.className = 'inputs';
@@ -262,9 +300,9 @@
       });
       orientWrap.append(orientList, addOrient);
       inputs.appendChild(orientWrap);
-      card.appendChild(inputs);
+      details.appendChild(inputs);
 
-      card.appendChild(createMiniButtons({
+      details.appendChild(createMiniButtons({
         onDuplicate: () => {
           npcs.splice(idx + 1, 0, cloneDeep(npc));
           markDirty();
@@ -279,6 +317,8 @@
         onMoveDown: () => { moveInPlace(npcs, idx, idx + 1); markDirty(); renderNPCs(); }
       }));
 
+      card.appendChild(details);
+      attachCollapse(card, header, title, details, npc.name || 'Untitled NPC');
       npcList.appendChild(card);
     });
   }
@@ -298,9 +338,13 @@
       const header = document.createElement('div');
       header.className = 'card__header';
       const title = document.createElement('div');
+      title.className = 'card__title';
       title.innerHTML = `<h4>${inter.name || 'Interaction'}</h4><p class="muted">${inter.npcId || 'No NPC linked'}</p>`;
       header.append(title);
       card.appendChild(header);
+
+      const details = document.createElement('div');
+      details.className = 'card__details';
 
       const inputs = document.createElement('div');
       inputs.className = 'inputs';
@@ -388,14 +432,18 @@
       effectWrap.append(effectList, addEffect);
       inputs.appendChild(effectWrap);
 
-      card.appendChild(inputs);
-      card.appendChild(createMiniButtons({
+      details.appendChild(inputs);
+      details.appendChild(createMiniButtons({
         onDuplicate: () => { interactions.splice(idx + 1, 0, cloneDeep(inter)); markDirty(); renderInteractions(); },
         onDelete: () => { interactions.splice(idx, 1); markDirty(); renderInteractions(); },
         onMoveUp: () => { moveInPlace(interactions, idx, idx - 1); markDirty(); renderInteractions(); },
         onMoveDown: () => { moveInPlace(interactions, idx, idx + 1); markDirty(); renderInteractions(); }
       }));
 
+      card.appendChild(details);
+      const summaryDialog = snippet((inter.dialogue || [])[0] || '', 3);
+      const summary = `${inter.name || 'Interaction'} ${inter.npcId || ''} ${summaryDialog}`.trim();
+      attachCollapse(card, header, title, details, summary);
       interactionList.appendChild(card);
     });
   }
@@ -458,12 +506,16 @@
       const header = document.createElement('div');
       header.className = 'card__header';
       const title = document.createElement('div');
+      title.className = 'card__title';
       title.innerHTML = `<h4>${law.name || 'Law'}</h4><p class="muted">${law.description || 'No short description'}</p>`;
       const iconNote = document.createElement('span');
       iconNote.className = 'badge';
       iconNote.textContent = 'iconPath is WIP in-game';
       header.append(title, iconNote);
       card.appendChild(header);
+
+      const details = document.createElement('div');
+      details.className = 'card__details';
 
       const inputs = document.createElement('div');
       inputs.className = 'inputs';
@@ -539,14 +591,17 @@
       interWrap.append(interList, addInter);
       inputs.appendChild(interWrap);
 
-      card.appendChild(inputs);
-      card.appendChild(createMiniButtons({
+      details.appendChild(inputs);
+      details.appendChild(createMiniButtons({
         onDuplicate: () => { laws.splice(idx + 1, 0, cloneDeep(law)); markDirty(); renderLaws(); },
         onDelete: () => { laws.splice(idx, 1); markDirty(); renderLaws(); },
         onMoveUp: () => { moveInPlace(laws, idx, idx - 1); markDirty(); renderLaws(); },
         onMoveDown: () => { moveInPlace(laws, idx, idx + 1); markDirty(); renderLaws(); }
       }));
 
+      card.appendChild(details);
+      const summary = `${law.name || 'Law'} — ${snippet(law.description, 3)}`;
+      attachCollapse(card, header, title, details, summary);
       lawList.appendChild(card);
     });
   }
@@ -565,9 +620,13 @@
       const header = document.createElement('div');
       header.className = 'card__header';
       const title = document.createElement('div');
+      title.className = 'card__title';
       title.innerHTML = `<h4>Law: ${block.lawName || 'Unset'}</h4><p class="muted">${(block.posts || []).length} posts</p>`;
       header.append(title);
       card.appendChild(header);
+
+      const details = document.createElement('div');
+      details.className = 'card__details';
 
       const inputs = document.createElement('div');
       inputs.className = 'inputs';
@@ -578,6 +637,17 @@
       (block.posts || []).forEach((p, pIdx) => {
         const pCard = document.createElement('div');
         pCard.className = 'card';
+        const pHeader = document.createElement('div');
+        pHeader.className = 'card__header';
+        const pTitle = document.createElement('div');
+        pTitle.className = 'card__title';
+        pTitle.innerHTML = `<h4>${p.author?.name || 'Author'}</h4><p class="muted">${p.faction || ''}</p>`;
+        pHeader.append(pTitle);
+        pCard.appendChild(pHeader);
+
+        const pDetails = document.createElement('div');
+        pDetails.className = 'card__details';
+
         const pInputs = document.createElement('div');
         pInputs.className = 'inputs';
         pInputs.append(
@@ -629,13 +699,17 @@
         commentsWrap.append(cList, addComment);
         pInputs.append(commentsWrap);
 
-        pCard.appendChild(pInputs);
-        pCard.appendChild(createMiniButtons({
+        pDetails.appendChild(pInputs);
+        pDetails.appendChild(createMiniButtons({
           onDuplicate: () => { block.posts.splice(pIdx + 1, 0, cloneDeep(p)); markDirty(); renderPosts(); },
           onDelete: () => { block.posts.splice(pIdx, 1); markDirty(); renderPosts(); },
           onMoveUp: () => { moveInPlace(block.posts, pIdx, pIdx - 1); markDirty(); renderPosts(); },
           onMoveDown: () => { moveInPlace(block.posts, pIdx, pIdx + 1); markDirty(); renderPosts(); }
         }));
+
+        pCard.appendChild(pDetails);
+        const pSummary = `Author: ${p.author?.name || 'Author'} — ${snippet(p.content, 5)}`;
+        attachCollapse(pCard, pHeader, pTitle, pDetails, pSummary);
 
         postList.appendChild(pCard);
       });
@@ -650,15 +724,18 @@
         renderPosts();
       });
       inputs.append(postList, addInnerPost);
-      card.appendChild(inputs);
+      details.appendChild(inputs);
 
-      card.appendChild(createMiniButtons({
+      details.appendChild(createMiniButtons({
         onDuplicate: () => { postsData.splice(idx + 1, 0, cloneDeep(block)); markDirty(); renderPosts(); },
         onDelete: () => { postsData.splice(idx, 1); markDirty(); renderPosts(); },
         onMoveUp: () => { moveInPlace(postsData, idx, idx - 1); markDirty(); renderPosts(); },
         onMoveDown: () => { moveInPlace(postsData, idx, idx + 1); markDirty(); renderPosts(); }
       }));
 
+      card.appendChild(details);
+      const summary = `Law: ${block.lawName || 'Unset'} - ${(block.posts || []).length} posts`;
+      attachCollapse(card, header, title, details, summary);
       postsList.appendChild(card);
     });
   }
@@ -677,9 +754,13 @@
       const header = document.createElement('div');
       header.className = 'card__header';
       const title = document.createElement('div');
+      title.className = 'card__title';
       title.innerHTML = `<h4>${op.lawName || 'Law name'}</h4><p class="muted">Pro / neutral / against takes</p>`;
       header.append(title);
       card.appendChild(header);
+
+      const details = document.createElement('div');
+      details.className = 'card__details';
 
       const inputs = document.createElement('div');
       inputs.className = 'inputs';
@@ -689,15 +770,17 @@
         createField('Neutral', op.neutral, (v) => { op.neutral = v; markDirty(); }, { multiline: true }),
         createField('Against', op.against, (v) => { op.against = v; markDirty(); }, { multiline: true })
       );
-      card.appendChild(inputs);
+      details.appendChild(inputs);
 
-      card.appendChild(createMiniButtons({
+      details.appendChild(createMiniButtons({
         onDuplicate: () => { opinions.splice(idx + 1, 0, cloneDeep(op)); markDirty(); renderOpinions(); },
         onDelete: () => { opinions.splice(idx, 1); markDirty(); renderOpinions(); },
         onMoveUp: () => { moveInPlace(opinions, idx, idx - 1); markDirty(); renderOpinions(); },
         onMoveDown: () => { moveInPlace(opinions, idx, idx + 1); markDirty(); renderOpinions(); }
       }));
 
+      card.appendChild(details);
+      attachCollapse(card, header, title, details, op.lawName || 'Opinion');
       opinionsList.appendChild(card);
     });
   }
