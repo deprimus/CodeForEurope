@@ -23,6 +23,8 @@ public class UIBookPage : MonoBehaviour
 
     public Image EffectsBackgroundImage;
 
+    public TextMeshProUGUI InsightsRemainingText;
+
     public List<Button> debunkButtons;
     private List<bool> _displayDebunkButtons;
 
@@ -64,6 +66,7 @@ public class UIBookPage : MonoBehaviour
             }
             RuleEffectsText.text = string.Join("\n", _debunkedEffectsText);
         }
+        UpdateInsightsRemainingText();
 
         ShowTextPage();
     }
@@ -75,6 +78,7 @@ public class UIBookPage : MonoBehaviour
         RuleEffectsText.gameObject.SetActive(false);
         RuleEffectsLabelText.gameObject.SetActive(false);
         EffectsBackgroundImage.gameObject.SetActive(false);
+        InsightsRemainingText.gameObject.SetActive(false);
         for(int i = 0; i < _displayDebunkButtons.Count; i++)
         {
             debunkButtons[i].gameObject.SetActive(false);
@@ -88,6 +92,7 @@ public class UIBookPage : MonoBehaviour
         RuleEffectsLabelText.gameObject.SetActive(true);
         RuleEffectsText.gameObject.SetActive(true);
         EffectsBackgroundImage.gameObject.SetActive(true);
+        InsightsRemainingText.gameObject.SetActive(true);
         for(int i = 0; i < _displayDebunkButtons.Count; i++)
         {
             debunkButtons[i].gameObject.SetActive(_displayDebunkButtons[i]);
@@ -109,5 +114,11 @@ public class UIBookPage : MonoBehaviour
                 _displayDebunkButtons[i] = false;
             }
         }
+        UpdateInsightsRemainingText();
+    }
+
+    private void UpdateInsightsRemainingText()
+    {
+        InsightsRemainingText.text = "Insights remaining: " + _debunkedEffectsAllowed;
     }
 }
