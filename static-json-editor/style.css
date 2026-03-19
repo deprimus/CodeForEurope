@@ -271,6 +271,7 @@ code {
 .stack {
   display: grid;
   gap: 12px;
+  margin-bottom: 4px;
 }
 
 .grid.two {
@@ -346,9 +347,7 @@ code {
   height: 42px;
 }
 
-select {
-  max-width: 260px;
-}
+
 
 .input:focus,
 textarea:focus,
@@ -380,9 +379,19 @@ textarea {
   min-width: 0;
 }
 
+.eff-row {
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
 .eff-row .field {
-  flex: 1 1 35%;
+  flex: 1 1 40%;
   min-width: 140px;
+}
+
+.eff-row .mini-btn {
+  align-self: flex-end;
+  margin-top: 12px;
 }
 
 .likes-row {

@@ -274,10 +274,10 @@
       orientList.className = 'stack';
       (npc.orientations || []).forEach((val, oIdx) => {
         const row = document.createElement('div');
-        row.className = 'row';
+        row.className = 'row eff-row';
         row.appendChild(createSelect('Value', val, state.enums.FactionType, (nv) => { npc.orientations[oIdx] = nv; markDirty(); }));
         const del = document.createElement('button');
-        del.className = 'mini-btn danger';
+        del.className = 'mini-btn danger bottom-btn';
         del.type = 'button';
         del.textContent = 'Remove';
         del.addEventListener('click', () => {
@@ -408,7 +408,7 @@
           createField('Value', eff.value, (nv) => { eff.value = parseNumber(nv, eff.value); markDirty(); }, { type: 'number', number: true })
         );
         const del = document.createElement('button');
-        del.className = 'mini-btn danger';
+        del.className = 'mini-btn danger bottom-btn';
         del.type = 'button';
         del.textContent = 'Remove';
         del.addEventListener('click', () => {
@@ -458,7 +458,7 @@
         createField(valueLabel, eff.value, (nv) => { eff.value = parseNumber(nv, eff.value); markDirty(); }, { type: 'number', number: true })
       );
       const del = document.createElement('button');
-      del.className = 'mini-btn danger';
+      del.className = 'mini-btn danger bottom-btn';
       del.type = 'button';
       del.textContent = 'Remove';
       del.addEventListener('click', () => {
