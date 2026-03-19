@@ -145,7 +145,5 @@ public class BookBehavior : MonoBehaviour
     public void CloseBook()
     {
         OnBookClosed?.Invoke();
-        gameObject.SetActive(false);
     }
-    
 }

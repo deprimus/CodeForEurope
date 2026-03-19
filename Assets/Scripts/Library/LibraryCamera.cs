@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class LibraryCamera : MonoBehaviour
 {
+    public static LibraryCamera Instance { get; private set; }
+
     private Animator _animator;
     private Vector3 _savedPosition;
     private Quaternion _savedRotation;
 
     private void Awake()
     {
+        Instance = this;
         _animator = GetComponent<Animator>();
     }
 

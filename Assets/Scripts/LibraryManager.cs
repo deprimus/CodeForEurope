@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using NaughtyAttributes;
 using TaleUtil;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class LibraryManager : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class LibraryManager : MonoBehaviour
     [Foldout("References")] public Transform _cardsParent;
 
     [Foldout("References")] public GameObject _libraryBookUI;
+    [Foldout("References")] public CanvasGroup _libraryBookCanvasGroup;
 
     public static LibraryManager Instance;
 
@@ -77,25 +80,39 @@ public class LibraryManager : MonoBehaviour
     public void UseBook()
     {
         UIBookPage.RulePageData pageData = new UIBookPage.RulePageData();
-        pageData.title = GameManager.Instance.CurrentLaw.Name;
-        pageData.description = GameManager.Instance.CurrentLaw.Description;
+        var law = GameManager.Instance.CurrentLaw;
+        if (law == null)
+        {
+            // For debugging
+            law = GameDatabase.Instance.Laws[0];
+        }
+        pageData.title = law.Name;
+        pageData.description = law.Description;
         pageData.longDescription = "";
         pageData.effects = new List<string>();
-        foreach (var effect in GameManager.Instance.CurrentLaw.WelfareEffects)
+        foreach (var effect in law.WelfareEffects)
         {
             pageData.effects.Add($"{effect.Indicator}: {effect.Value}");
         }
         pageData.effectsAreShown = false;
         _bookBehavior.AddPage(pageData);
         _libraryBookUI.SetActive(true);
+        _libraryBookCanvasGroup.DOFade(1, 0.5f).SetEase(Ease.OutCubic);
+        _libraryBookCanvasGroup.blocksRaycasts = true;
+        _libraryBookCanvasGroup.interactable = true;
     }
 
     public void OnBookClosed()
     {
-        Log.Info("LibraryManager", "OnBookClose");
-        Debunk();
+        _libraryBookCanvasGroup.DOFade(0, 0.5f).SetEase(Ease.InCubic)
+            .OnComplete(() => {
+                _libraryBookUI.SetActive(false);
+                Debunk();
+            });
+        _libraryBookCanvasGroup.blocksRaycasts = false;
+        _libraryBookCanvasGroup.interactable = false;
         _usedBook = true;
-        CheckFinished();
+        CheckButtonVisibility();
     }
 
     public void UseLaptop()
@@ -108,9 +125,10 @@ public class LibraryManager : MonoBehaviour
 
     public void OnLaptopClosed()
     {
+        Debug.Log("Laptop closed");
         RestoreCamera();
         _usedLaptop = true;
-        CheckFinished();
+        CheckButtonVisibility();
     }
 
     private void RestoreCamera()
@@ -142,14 +160,14 @@ public class LibraryManager : MonoBehaviour
             card.gameObject.SetActive(false);
     }
 
-    private void CheckFinished()
+    private void CheckButtonVisibility()
     {
+        Debug.Log("Checking button visibility");
+        Debug.Log("Used book: " + _usedBook);
+        Debug.Log("Used laptop: " + _usedLaptop);
         if (_usedBook && _usedLaptop)
         {
-            _usedBook = false;
-            _usedLaptop = false;
-            Tale.Wait(1f);
-            Tale.Exec(() => GameManager.Instance.OnLibraryEnded());
+            LibraryNextButton.Instance.Show();
         }
     }
 }

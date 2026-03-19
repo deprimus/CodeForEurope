@@ -19,12 +19,6 @@ public class LibraryView_Laptop : MonoBehaviour
         _originalRotation = transform.rotation;
     }
 
-    private void OnEnable()
-    {
-        _text.SetActive(true);
-        _arrow.SetActive(true);
-    }
-
     private void OnMouseDown()
     {
         if (_isBeingUsed || !_text.activeSelf)
@@ -35,9 +29,6 @@ public class LibraryView_Laptop : MonoBehaviour
 
     private async void UseLaptop()
     {
-        _text.SetActive(false);
-        _arrow.SetActive(false);
-
         _isBeingUsed = true;
         transform.DOMove(_target.position, 0.5f).SetEase(Ease.OutCubic);
         transform.DORotate(_target.rotation.eulerAngles, 0.5f).SetEase(Ease.OutCubic);
