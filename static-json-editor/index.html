@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeForEurope Data Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__content">
+      <p class="eyebrow">Static, local, private</p>
+      <h1>CodeForEurope content editor</h1>
+      <p class="lede">
+        Load your <code>game_database.json</code>, review every piece of content, make friendly edits, and download a fully compatible file for the game. Nothing leaves your device.
+      </p>
+      <div class="hero__actions">
+        <label class="button button--primary">
+          <input id="fileInput" type="file" accept=".json" hidden>
+          Load JSON
+        </label>
+        <button id="resetBtn" class="button button--ghost" type="button">Reset</button>
+      </div>
+      <ul class="hero__notes">
+        <li>Enums <code>FactionType</code> and <code>InteractionEffectType</code> are shown for reference only (work in progress for web editing). They stay as-is.</li>
+        <li>NPCs can change at any time; swap them freely based on your scenario needs.</li>
+        <li><code>iconPath</code> for laws is WIP in-game; keep paths for future use.</li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar__section">
+        <h2>Workflow</h2>
+        <ol class="steps">
+          <li>Load <code>game_database.json</code>.</li>
+          <li>Edit content by section.</li>
+          <li>Review warnings &amp; preview.</li>
+          <li>Download updated JSON.</li>
+        </ol>
+      </div>
+      <div class="sidebar__section">
+        <h2>Status</h2>
+        <div id="statusSummary" class="status status--idle">
+          Waiting for file...
+        </div>
+        <div id="warningList" class="warning-list"></div>
+      </div>
+      <div class="sidebar__section">
+        <h2>Actions</h2>
+        <button id="downloadBtn" class="button button--primary" type="button" disabled>Download JSON</button>
+        <button id="previewBtn" class="button button--ghost" type="button" disabled>Show preview</button>
+      </div>
+    </aside>
+
+    <section class="content">
+      <nav class="tabs" aria-label="Sections">
+        <button class="tab is-active" data-target="overview">Overview</button>
+        <button class="tab" data-target="fieldDetails">Field Details</button>
+        <button class="tab" data-target="npcs">NPCs</button>
+        <button class="tab" data-target="interactions">Interactions</button>
+        <button class="tab" data-target="laws">Laws</button>
+        <button class="tab" data-target="posts">EuroChat Posts</button>
+        <button class="tab" data-target="opinions">Opinions</button>
+        <button class="tab" data-target="preview">Preview</button>
+      </nav>
+
+      <section id="panel-overview" class="panel is-active">
+        <div class="card">
+          <h3>How to use</h3>
+          <ul class="bullets">
+            <li>Load the JSON file from your computer. It never uploads anywhere.</li>
+            <li>Edit using the cards in each section. Changes save instantly in memory.</li>
+            <li>Cross-reference checks will highlight missing links (e.g., interactions without NPCs).</li>
+            <li>When finished, download the updated file—fully compatible with the game format.</li>
+          </ul>
+        </div>
+        <div class="grid two">
+          <div class="card">
+            <h3>Inclusive wording</h3>
+            <p>
+              Explanations use neutral terms like “personal values” to keep the experience welcoming. Underlying JSON field names stay untouched for compatibility.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Live validation</h3>
+            <p>
+              Reference checks run after every change: missing NPC links, interaction names, posts without laws, etc. Warnings appear in the sidebar and in-section.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="panel-fieldDetails" class="panel">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h3>Field details (read-only)</h3>
+              <p class="muted">Enum reference for FactionType &amp; InteractionEffectType (WIP for web editing).</p>
+            </div>
+          </div>
+          <div id="fieldDetailsList" class="stack"></div>
+        </div>
+      </section>
+
+      <section id="panel-npcs" class="panel">
+        <div class="panel__header">
+          <h3>NPCs</h3>
+          <p class="muted">These personas can be swapped anytime based on your learning scenario.</p>
+        </div>
+        <div id="npcList" class="stack"></div>
+        <div class="panel__actions">
+          <button id="addNpcBtn" class="button button--primary" type="button">Add NPC</button>
+        </div>
+      </section>
+
+      <section id="panel-interactions" class="panel">
+        <div class="panel__header">
+          <h3>Interactions</h3>
+          <p class="muted">How visitors speak in the office and the influence they nudge.</p>
+        </div>
+        <div id="interactionList" class="stack"></div>
+        <div class="panel__actions">
+          <button id="addInteractionBtn" class="button button--primary" type="button">Add interaction</button>
+        </div>
+      </section>
+
+      <section id="panel-laws" class="panel">
+        <div class="panel__header">
+          <h3>Laws</h3>
+          <p class="muted">Each policy card includes descriptions, effects, welfare effects, and linked interactions.</p>
+        </div>
+        <div id="lawList" class="stack"></div>
+        <div class="panel__actions">
+          <button id="addLawBtn" class="button button--primary" type="button">Add law</button>
+        </div>
+      </section>
+
+      <section id="panel-posts" class="panel">
+        <div class="panel__header">
+          <h3>EuroChat posts</h3>
+          <p class="muted">Posts appear on the in-game laptop social feed.</p>
+        </div>
+        <div id="postsList" class="stack"></div>
+        <div class="panel__actions">
+          <button id="addPostGroupBtn" class="button button--primary" type="button">Add posts block</button>
+        </div>
+      </section>
+
+      <section id="panel-opinions" class="panel">
+        <div class="panel__header">
+          <h3>Opinions</h3>
+          <p class="muted">Concise takes shown in EuroChat when a law is discussed.</p>
+        </div>
+        <div id="opinionsList" class="stack"></div>
+        <div class="panel__actions">
+          <button id="addOpinionBtn" class="button button--primary" type="button">Add opinion</button>
+        </div>
+      </section>
+
+      <section id="panel-preview" class="panel">
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <h3>JSON preview</h3>
+              <p class="muted">Lightweight preview of the current data (truncated for readability).</p>
+            </div>
+          </div>
+          <pre id="previewBox" class="preview"></pre>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <template id="warningBadgeTemplate">
+    <span class="badge badge--warn"></span>
+  </template>
+
+  <script src="./app.js"></script>
+</body>
+</html>
