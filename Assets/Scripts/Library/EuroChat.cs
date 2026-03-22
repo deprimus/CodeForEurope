@@ -132,7 +132,10 @@ public class EuroChat : MonoBehaviour
 
             _allBoostButtons.Add(boostBtn);
             var faction = post.faction;
-            boostBtn.onClick.AddListener(() => OnBoost(faction, boostBtn));
+            boostBtn.onClick.AddListener(() => {
+                OnBoost(faction, boostBtn);
+                SoundManager.instance.Play(SoundManager.instance.select);
+            });
         }
     }
 
@@ -175,14 +178,19 @@ public class EuroChat : MonoBehaviour
         BoostedFaction = faction;
         _activeBoostedButton = btn;
 
-        foreach (var b in _allBoostButtons)
-            b.gameObject.SetActive(b == btn);
+        foreach (var b in _allBoostButtons) {
+            var cond = (b == btn);
+            
+            var group = b.GetComponent<CanvasGroup>();
+            group.interactable = cond;
+            group.alpha = cond ? 1f : 0.25f;
+        }
 
         var text = btn.transform.Find("Inner/Title").GetComponent<TMP_Text>();
         if (text != null)
             text.text = $"BOOSTED";
 
-        LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+        //LayoutRebuilder.ForceRebuildLayoutImmediate(content);
     }
 
     private void SetAvatar(Transform avatar, string faction)
